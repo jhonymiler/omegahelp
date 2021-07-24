@@ -82,7 +82,11 @@
                                         </div>
 
                                     </td>
-                                    <td class="mailbox-subject"><b>{$user_data.CLI_id}</b>
+                                    <td class="mailbox-subject"><b>{$user_data.EMP_fantasia}</b>
+                                        <p>
+                                            {$user_data.EMP_email}<br>
+                                            Fone: {$user_data.EMP_tel}
+                                        </p>
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -159,11 +163,13 @@
                         </div>
                         <div class="form-group">
                             <label>Empresa</label>
-                            <select name="CLI_id" class="form-control required">
+                            <select name="EMP_id" class="form-control required">
                                 <option value="">Selecione uma emrpesa</option>
-                                <option value="1">option 2</option>
-                                <option value="1">option 2</option>
-                                <option value="1">option 2</option>
+                                {if is_array($emplista) && count($emplista) > 0}
+                                    {foreach from=$emplista item="emps"}
+                                        <option value="{$emps.EMP_id}">{$emps.EMP_fantasia}</option>
+                                    {/foreach}
+                                {/if}}
                             </select>
                         </div>
                         <div class="form-group">

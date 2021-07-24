@@ -23,8 +23,8 @@
                                 <input name="EMP_razao" type="text" class="form-control" id="EMP_razao" required>
                             </div>
                             <div class="form-group">
-                                <label for="EMP_fantazia">Nome Fantazia</label>
-                                <input name="EMP_fantazia" type="text" class="form-control" id="EMP_fantazia">
+                                <label for="EMP_fantasia">Nome Fantasia</label>
+                                <input name="EMP_fantasia" type="text" class="form-control" id="EMP_fantasia">
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -183,7 +183,7 @@
                                             </td>
                                             <td>
                                                 <div class="col-md-12">
-                                                    <a href="#"><b>{$empresas.EMP_fantazia}</b></a>
+                                                    <a href="#"><b>{$empresas.EMP_fantasia}</b></a>
                                                     <p>
                                                         {$empresas.EMP_razao}<br>
                                                         Fone: {$empresas.EMP_tel}<br>

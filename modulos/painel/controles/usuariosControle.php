@@ -14,6 +14,7 @@ class usuariosControle extends painelControle
 {
     //put your code here
     protected $_user;
+    protected $_emp;
 
     public function __construct()
     {
@@ -22,12 +23,18 @@ class usuariosControle extends painelControle
             $this->redir('login');
             exit();
         }
-        $this->_db->_setTabela('usuarios');
         $this->_view->addNavLink('painel/usuarios', 'Usuarios');
 
         $this->_view->assign('current_link', 'usuarios');
         $this->_user = $this->loadModulo('painel', 'usuario');
-        
+        $this->_emp = $this->loadModulo('painel', 'empresas');
+
+        // prepara módulo de empresas
+        $this->_db->_setTabela('empresas');
+        $emps = $this->_emp->lista();
+        $this->_view->assign('emplista', $emps);
+        // prepara móculo de usuários
+        $this->_db->_setTabela('usuarios');
         $lista = $this->_user->listaUsuarios();
         $this->_view->assign('lista', $lista);
     }

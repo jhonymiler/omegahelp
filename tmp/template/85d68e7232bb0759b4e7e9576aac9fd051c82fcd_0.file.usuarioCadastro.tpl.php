@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-07-23 21:45:24
+/* Smarty version 3.1.39, created on 2021-07-23 22:26:45
   from 'C:\xampp\htdocs\sistemas\omegahelp\modulos\painel\views\usuarioCadastro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_60fb62a42cbc35_12180722',
+  'unifunc' => 'content_60fb6c558588c6_50262863',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '85d68e7232bb0759b4e7e9576aac9fd051c82fcd' => 
     array (
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\modulos\\painel\\views\\usuarioCadastro.tpl',
-      1 => 1627087518,
+      1 => 1627090003,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_60fb62a42cbc35_12180722 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60fb6c558588c6_50262863 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Media table sample -->
 <!-- DataTables  & Plugins -->
 <div class="row">
@@ -119,8 +119,14 @@ dist/img/atendente.png"
                                         </div>
 
                                     </td>
-                                    <td class="mailbox-subject"><b><?php echo $_smarty_tpl->tpl_vars['user_data']->value['CLI_id'];?>
+                                    <td class="mailbox-subject"><b><?php echo $_smarty_tpl->tpl_vars['user_data']->value['EMP_fantasia'];?>
 </b>
+                                        <p>
+                                            <?php echo $_smarty_tpl->tpl_vars['user_data']->value['EMP_email'];?>
+<br>
+                                            Fone: <?php echo $_smarty_tpl->tpl_vars['user_data']->value['EMP_tel'];?>
+
+                                        </p>
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -204,11 +210,22 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </div>
                         <div class="form-group">
                             <label>Empresa</label>
-                            <select name="CLI_id" class="form-control required">
+                            <select name="EMP_id" class="form-control required">
                                 <option value="">Selecione uma emrpesa</option>
-                                <option value="1">option 2</option>
-                                <option value="1">option 2</option>
-                                <option value="1">option 2</option>
+                                <?php if (is_array($_smarty_tpl->tpl_vars['emplista']->value) && count($_smarty_tpl->tpl_vars['emplista']->value) > 0) {?>
+                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['emplista']->value, 'emps');
+$_smarty_tpl->tpl_vars['emps']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['emps']->value) {
+$_smarty_tpl->tpl_vars['emps']->do_else = false;
+?>
+                                        <option value="<?php echo $_smarty_tpl->tpl_vars['emps']->value['EMP_id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['emps']->value['EMP_fantasia'];?>
+</option>
+                                    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                                <?php }?>}
                             </select>
                         </div>
                         <div class="form-group">

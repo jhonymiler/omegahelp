@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-07-23 22:00:07
+/* Smarty version 3.1.39, created on 2021-07-23 22:26:58
   from 'C:\xampp\htdocs\sistemas\omegahelp\modulos\painel\views\empresasCadastro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_60fb661720d966_79853569',
+  'unifunc' => 'content_60fb6c62f048f8_60907163',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1c157090e6285a19ff830604e155deb5af5b563d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\modulos\\painel\\views\\empresasCadastro.tpl',
-      1 => 1627088404,
+      1 => 1627089077,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_60fb661720d966_79853569 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60fb6c62f048f8_60907163 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row" id='cadastro'>
     <div class="col-md-12">
         <!-- general form elements -->
@@ -47,8 +47,8 @@ function content_60fb661720d966_79853569 (Smarty_Internal_Template $_smarty_tpl)
                                 <input name="EMP_razao" type="text" class="form-control" id="EMP_razao" required>
                             </div>
                             <div class="form-group">
-                                <label for="EMP_fantazia">Nome Fantazia</label>
-                                <input name="EMP_fantazia" type="text" class="form-control" id="EMP_fantazia">
+                                <label for="EMP_fantasia">Nome Fantasia</label>
+                                <input name="EMP_fantasia" type="text" class="form-control" id="EMP_fantasia">
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -215,7 +215,7 @@ $_smarty_tpl->tpl_vars['empresas']->do_else = false;
                                             </td>
                                             <td>
                                                 <div class="col-md-12">
-                                                    <a href="#"><b><?php echo $_smarty_tpl->tpl_vars['empresas']->value['EMP_fantazia'];?>
+                                                    <a href="#"><b><?php echo $_smarty_tpl->tpl_vars['empresas']->value['EMP_fantasia'];?>
 </b></a>
                                                     <p>
                                                         <?php echo $_smarty_tpl->tpl_vars['empresas']->value['EMP_razao'];?>

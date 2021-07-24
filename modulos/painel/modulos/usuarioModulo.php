@@ -60,7 +60,9 @@ class usuarioModulo extends Modulo
     
     public function listaUsuarios()
     {
-        return $this->_db->_select();
+        return $this->_db->_query(
+            "SELECT * FROM usuarios AS U RIGHT JOIN empresas AS E ON E.EMP_id=U.EMP_id;"
+        );
     }
 
     public function base64ToImage($base64_string)
@@ -103,11 +105,10 @@ class usuarioModulo extends Modulo
     
   
     
-    public function getUsuario($usuarioID)
+    public function getEmpresa($usuarioID)
     {
         $usuarios = $this->_db->_query(
-            "select * from usuarios u, niveis r ".
-                "where u.USU_nivel = r.id_nivel and u.USU_nivel = $usuarioID"
+            "select * from usuarios as U inner join empresas as E on U.EMP_id=E.EMP_id"
         );
         return $usuarios[0];
     }
