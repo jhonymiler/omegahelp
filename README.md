@@ -1,2 +1,2 @@
 # ow-admin
-Sistema MVC
+Sistema destinado ao atendimento online e controle de tickets
