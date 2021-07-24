@@ -12,10 +12,10 @@
  */
 class suporteControle extends Controlador
 {
+    private $user;
     public function __construct()
     {
         parent::__construct();
-        
         if (!Sessao::get('autenticado')) {
             $this->redir('login');
             exit();
@@ -23,14 +23,19 @@ class suporteControle extends Controlador
             $this->redir('painel');
             exit();
         }
+        $this->user = $this->loadModulo('painel', 'usuario');
+
         $this->_view->setTemplate('usuario');
     }
 
     public function index()
     {
-        $this->_view->assign('titulo', 'Painel dp Usuário');
-        $this->_view->assign('sessaoUsuario', Sessao::get('user'));
+        $this->_view->assign('titulo', 'Painel do Usuário');
+        $this->_view->assign('usuario', Sessao::get('user'));
         $this->_view->addNavLink('usuarios', 'Painel de Usuários');
+
+
+        $this->user->getEmpresa(Sessao::get('user')['USU_id']);
 
         $this->_view->assign('current_link', 'home');
         $this->_view->addConteudo('home');

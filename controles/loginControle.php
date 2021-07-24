@@ -51,6 +51,7 @@ class loginControle extends Controlador
                 if ($this->_user->_get('USU_senha') == md5($this->POST('senha'))) {
                     // se a senha for verdadeira
                     Sessao::set('autenticado', true);
+                    
                     $usuario = array(
                         'USU_id'         => $this->_user->_get('USU_id'),
                         'USU_nome'       => $this->_user->_get('USU_nome'),

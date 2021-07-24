@@ -15,11 +15,10 @@ class painelControle extends Controlador
     public function __construct()
     {
         parent::__construct();
-        $user = Sessao::get('user');
         if (!Sessao::get('autenticado')) {
             $this->redir('login');
             exit();
-        } elseif ($user['USU_nivel'] == 0) {
+        } elseif (Sessao::get('user')['USU_nivel'] == 0) {
             $this->redir('suporte');
             exit();
         }

@@ -113,7 +113,7 @@ class usuarioModulo extends Modulo
     public function getEmpresa($usuarioID)
     {
         $usuarios = $this->_db->_query(
-            "select * from usuarios as U inner join empresas as E on U.EMP_id=E.EMP_id"
+            "SELECT * FROM usuarios AS U LEFT OUTER JOIN empresas AS E ON E.EMP_id=U.EMP_id where USU_id='".$usuarioID."'"
         );
         return $usuarios[0];
     }

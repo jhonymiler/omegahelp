@@ -48,157 +48,38 @@
         <script src="{$_pgParams.path_layout}dist/js/adminlte.min.js"></script>
     </head>
 
-    <body class="hold-transition layout-top-nav">
+    <body class="hold-transition layout-top-nav" style="position: relative;">
         <div class="wrapper">
 
             <!-- Navbar -->
             <nav class="main-header navbar navbar-expand-md navbar-light navbar-dark">
                 <div class="container">
-                    <a href="../../index3.html" class="navbar-brand">
-                        <img src="{$_pgParams.path_layout}dist/img/aro-logo.png" alt="ARO HELPDESK"
-                            class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <a href="{$_pgParams.RAIZ}/usuarios" class="navbar-brand">
+                        <img src="{$_pgParams.path_layout}dist/img/aro-logo.png" alt="ARO HELPDESK" class="brand-image "
+                            style="opacity: .8">
                         <span class="brand-text font-weight-light">ARO HELPDESK</span>
                     </a>
-
-                    <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
-                        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
 
                     <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                         <!-- Left navbar links -->
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="index3.html" class="nav-link">Home</a>
+                                <a href="{$_pgParams.RAIZ}/usuarios" class="nav-link">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Contact</a>
+                                <a href="#" class="nav-link">Meus dados</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
-                                <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                                    <li><a href="#" class="dropdown-item">Some action </a></li>
-                                    <li><a href="#" class="dropdown-item">Some other action</a></li>
-
-                                    <li class="dropdown-divider"></li>
-
-                                    <!-- Level two dropdown-->
-                                    <li class="dropdown-submenu dropdown-hover">
-                                        <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false"
-                                            class="dropdown-item dropdown-toggle">Hover for action</a>
-                                        <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-                                            <li>
-                                                <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
-                                            </li>
-
-                                            <!-- Level three dropdown-->
-                                            <li class="dropdown-submenu">
-                                                <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false"
-                                                    class="dropdown-item dropdown-toggle">level 2</a>
-                                                <ul aria-labelledby="dropdownSubMenu3"
-                                                    class="dropdown-menu border-0 shadow">
-                                                    <li><a href="#" class="dropdown-item">3rd level</a></li>
-                                                    <li><a href="#" class="dropdown-item">3rd level</a></li>
-                                                </ul>
-                                            </li>
-                                            <!-- End Level three -->
-
-                                            <li><a href="#" class="dropdown-item">level 2</a></li>
-                                            <li><a href="#" class="dropdown-item">level 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <!-- End Level two -->
-                                </ul>
+                            <li class="nav-item">
+                                <a href="{$_pgParams.RAIZ}/login/sair" class="nav-link">Sair</a>
                             </li>
+
                         </ul>
 
-                        <!-- SEARCH FORM -->
-                        <form class="form-inline ml-0 ml-md-3">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+
                     </div>
 
                     <!-- Right navbar links -->
                     <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                        <!-- Messages Dropdown Menu -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" data-toggle="dropdown" href="#">
-                                <i class="fas fa-comments"></i>
-                                <span class="badge badge-danger navbar-badge">3</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                <a href="#" class="dropdown-item">
-                                    <!-- Message Start -->
-                                    <div class="media">
-                                        <img src="{$_pgParams.path_layout}dist/img/user1-128x128.jpg" alt="User Avatar"
-                                            class="img-size-50 mr-3 img-circle">
-                                        <div class="media-body">
-                                            <h3 class="dropdown-item-title">
-                                                Brad Diesel
-                                                <span class="float-right text-sm text-danger"><i
-                                                        class="fas fa-star"></i></span>
-                                            </h3>
-                                            <p class="text-sm">Call me whenever you can...</p>
-                                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- Message End -->
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item">
-                                    <!-- Message Start -->
-                                    <div class="media">
-                                        <img src="{$_pgParams.path_layout}dist/img/user8-128x128.jpg" alt="User Avatar"
-                                            class="img-size-50 img-circle mr-3">
-                                        <div class="media-body">
-                                            <h3 class="dropdown-item-title">
-                                                John Pierce
-                                                <span class="float-right text-sm text-muted"><i
-                                                        class="fas fa-star"></i></span>
-                                            </h3>
-                                            <p class="text-sm">I got your message bro</p>
-                                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- Message End -->
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item">
-                                    <!-- Message Start -->
-                                    <div class="media">
-                                        <img src="{$_pgParams.path_layout}dist/img/user3-128x128.jpg" alt="User Avatar"
-                                            class="img-size-50 img-circle mr-3">
-                                        <div class="media-body">
-                                            <h3 class="dropdown-item-title">
-                                                Nora Silvester
-                                                <span class="float-right text-sm text-warning"><i
-                                                        class="fas fa-star"></i></span>
-                                            </h3>
-                                            <p class="text-sm">The subject goes here</p>
-                                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- Message End -->
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                            </div>
-                        </li>
                         <!-- Notifications Dropdown Menu -->
                         <li class="nav-item dropdown">
                             <a class="nav-link" data-toggle="dropdown" href="#">
@@ -206,31 +87,22 @@
                                 <span class="badge badge-warning navbar-badge">15</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                <span class="dropdown-header">15 Notifications</span>
+                                <span class="dropdown-header">Notificações</span>
                                 <div class="dropdown-divider"></div>
                                 <a href="#" class="dropdown-item">
-                                    <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                    <span class="float-right text-muted text-sm">3 mins</span>
+                                    <i class="fas fa-envelope mr-2"></i> 2 Chamados Abertos
+                                    <span class="float-right text-muted text-sm">1 Dia</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a href="#" class="dropdown-item">
-                                    <i class="fas fa-users mr-2"></i> 8 friend requests
-                                    <span class="float-right text-muted text-sm">12 hours</span>
+                                    <i class="fas fa-file mr-2"></i> 1 Aguardando resposta
+                                    <span class="float-right text-muted text-sm">3 Min</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item">
-                                    <i class="fas fa-file mr-2"></i> 3 new reports
-                                    <span class="float-right text-muted text-sm">2 days</span>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                                <a href="#" class="dropdown-item dropdown-footer">Ver Todos Chamados</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                                <i class="fas fa-th-large"></i>
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
             </nav>
@@ -287,7 +159,78 @@
                 </div>
                 <!-- /.content -->
             </div>
+            <div id="chatContainer" class="col-md-6 col-sm-6 col-lg-4">
+                <!-- DIRECT CHAT WARNING -->
+                <div class="card card-warning direct-chat direct-chat-warning dark-mode">
+                    <div class="card-header">
+                        <h3 class="card-title">Chat</h3>
 
+                        <div class="card-tools">
+
+                            <button id="fechaChat" type="button" class="btn btn-tool" style="margin-top: 0px;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <!-- Conversations are loaded here -->
+                        <div class="direct-chat-messages">
+                            <!-- Message. Default to the left -->
+                            <div class="direct-chat-msg">
+                                <div class="direct-chat-infos clearfix">
+                                    <span class="direct-chat-name float-left">Alexander Pierce</span>
+                                    <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+                                </div>
+                                <!-- /.direct-chat-infos -->
+                                <img class="direct-chat-img" src="{$_pgParams.path_layout}dist/img/user1-128x128.jpg"
+                                    alt="Message User Image">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    Is this template really for free? That's unbelievable!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- /.direct-chat-msg -->
+
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <div class="direct-chat-infos clearfix">
+                                    <span class="direct-chat-name float-right">Sarah Bullock</span>
+                                    <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+                                </div>
+                                <!-- /.direct-chat-infos -->
+                                <img class="direct-chat-img" src="{$_pgParams.path_layout}dist/img/user3-128x128.jpg"
+                                    alt="Message User Image">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- /.direct-chat-msg -->
+                        </div>
+                        <!--/.direct-chat-messages-->
+
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <form action="#" method="post">
+                            <div class="input-group">
+                                <input type="text" name="message" placeholder="Digite a mensagem..."
+                                    class="form-control">
+                                <span class="input-group-append">
+                                    <button type="submit" class="btn btn-warning">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-footer-->
+                </div>
+                <!--/.direct-chat -->
+            </div>
             <footer class="main-footer">
                 <div class="float-right d-none d-sm-block">
                     <b>Version</b> 1.0.0
@@ -299,11 +242,23 @@
             </footer>
 
 
-
         </div>
+        <i id='chatbuttom' class="fas fa-comments bg-yellow "></i>
+
         <textarea id="campos" style="display: none;">{$campos}</textarea>
         <script type="text/javascript">
+            $("#chatContainer").hide();
+            $("#chatbuttom").click(function() {
+                $("#chatContainer").show(200);
+                $("#chatbuttom").hide();
+            });
+            $("#fechaChat").click(function() {
+                $("#chatbuttom").show();
+                $("#chatContainer").hide(200);
+            });
             $(document).ready(function() {
+
+
                 {if is_array($msg)}
                     {foreach item=mensagem from=$msg}
                         {foreach key=status item=m from=$mensagem}
