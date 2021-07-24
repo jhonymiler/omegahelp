@@ -3,25 +3,26 @@
   from 'C:\xampp\htdocs\sistemas\omegahelp\modulos\painel\views\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array(
   'version' => '3.1.39',
   'unifunc' => 'content_60fb59560e71d4_95571486',
   'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    '4e0e877c57a48b0a54375331bc345a8eb2a11aca' => 
-    array (
+  'file_dependency' =>
+  array(
+    '4e0e877c57a48b0a54375331bc345a8eb2a11aca' =>
+    array(
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\modulos\\painel\\views\\index.tpl',
       1 => 1626631566,
       2 => 'file',
     ),
   ),
-  'includes' => 
-  array (
+  'includes' =>
+  array(
   ),
-),false)) {
-function content_60fb59560e71d4_95571486 (Smarty_Internal_Template $_smarty_tpl) {
-?>        <!-- =========================================================== -->
+), false)) {
+    function content_60fb59560e71d4_95571486(Smarty_Internal_Template $_smarty_tpl)
+    {
+        ?>        <!-- =========================================================== -->
         <h5 class="mt-4 mb-2">Chamados</h5>
         <div class="row" id="home-chamados">
             <div class="col-md-3 col-sm-6 col-12">
@@ -314,7 +315,7 @@ function content_60fb59560e71d4_95571486 (Smarty_Internal_Template $_smarty_tpl)
                                         </div>
                                         <!-- /.direct-chat-infos -->
                                         <img class="direct-chat-img"
-                                            src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                            src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user1-128x128.jpg"
                                             alt="message user image">
                                         <!-- /.direct-chat-img -->
@@ -334,7 +335,7 @@ dist/img/user1-128x128.jpg"
                                         </div>
                                         <!-- /.direct-chat-infos -->
                                         <img class="direct-chat-img"
-                                            src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                            src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user3-128x128.jpg"
                                             alt="message user image">
                                         <!-- /.direct-chat-img -->
@@ -355,7 +356,7 @@ dist/img/user3-128x128.jpg"
                                         </div>
                                         <!-- /.direct-chat-infos -->
                                         <img class="direct-chat-img"
-                                            src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                            src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user1-128x128.jpg"
                                             alt="message user image">
                                         <!-- /.direct-chat-img -->
@@ -375,7 +376,7 @@ dist/img/user1-128x128.jpg"
                                         </div>
                                         <!-- /.direct-chat-infos -->
                                         <img class="direct-chat-img"
-                                            src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                            src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user3-128x128.jpg"
                                             alt="message user image">
                                         <!-- /.direct-chat-img -->
@@ -395,7 +396,7 @@ dist/img/user3-128x128.jpg"
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user1-128x128.jpg"
                                                     alt="User Avatar">
 
@@ -414,7 +415,7 @@ dist/img/user1-128x128.jpg"
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user7-128x128.jpg"
                                                     alt="User Avatar">
 
@@ -433,7 +434,7 @@ dist/img/user7-128x128.jpg"
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user3-128x128.jpg"
                                                     alt="User Avatar">
 
@@ -452,7 +453,7 @@ dist/img/user3-128x128.jpg"
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user5-128x128.jpg"
                                                     alt="User Avatar">
 
@@ -471,7 +472,7 @@ dist/img/user5-128x128.jpg"
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user6-128x128.jpg"
                                                     alt="User Avatar">
 
@@ -490,7 +491,7 @@ dist/img/user6-128x128.jpg"
                                         <li>
                                             <a href="#">
                                                 <img class="contacts-list-img"
-                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                                    src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user8-128x128.jpg"
                                                     alt="User Avatar">
 
@@ -549,49 +550,49 @@ dist/img/user8-128x128.jpg"
                             <div class="card-body p-0">
                                 <ul class="users-list clearfix">
                                     <li>
-                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user1-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Alexander Pierce</a>
                                         <span class="users-list-date">Today</span>
                                     </li>
                                     <li>
-                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user8-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Norman</a>
                                         <span class="users-list-date">Yesterday</span>
                                     </li>
                                     <li>
-                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user7-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Jane</a>
                                         <span class="users-list-date">12 Jan</span>
                                     </li>
                                     <li>
-                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user6-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">John</a>
                                         <span class="users-list-date">12 Jan</span>
                                     </li>
                                     <li>
-                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user2-160x160.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Alexander</a>
                                         <span class="users-list-date">13 Jan</span>
                                     </li>
                                     <li>
-                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user5-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Sarah</a>
                                         <span class="users-list-date">14 Jan</span>
                                     </li>
                                     <li>
-                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user4-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Nora</a>
                                         <span class="users-list-date">15 Jan</span>
                                     </li>
                                     <li>
-                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user3-128x128.jpg" alt="User Image">
                                         <a class="users-list-name" href="#">Nadia</a>
                                         <span class="users-list-date">15 Jan</span>
@@ -851,7 +852,7 @@ dist/img/user3-128x128.jpg" alt="User Image">
                         <ul class="products-list product-list-in-card pl-2 pr-2">
                             <li class="item">
                                 <div class="product-img">
-                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/default-150x150.png" alt="Product Image"
                                         class="img-size-50">
                                 </div>
@@ -866,7 +867,7 @@ dist/img/default-150x150.png" alt="Product Image"
                             <!-- /.item -->
                             <li class="item">
                                 <div class="product-img">
-                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/default-150x150.png" alt="Product Image"
                                         class="img-size-50">
                                 </div>
@@ -881,7 +882,7 @@ dist/img/default-150x150.png" alt="Product Image"
                             <!-- /.item -->
                             <li class="item">
                                 <div class="product-img">
-                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/default-150x150.png" alt="Product Image"
                                         class="img-size-50">
                                 </div>
@@ -899,7 +900,7 @@ dist/img/default-150x150.png" alt="Product Image"
                             <!-- /.item -->
                             <li class="item">
                                 <div class="product-img">
-                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/default-150x150.png" alt="Product Image"
                                         class="img-size-50">
                                 </div>
@@ -928,30 +929,31 @@ dist/img/default-150x150.png" alt="Product Image"
         <!-- PAGE PLUGINS -->
         <!-- jQuery Mapael -->
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/jquery-mousewheel/jquery.mousewheel.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/raphael/raphael.min.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/jquery-mapael/jquery.mapael.min.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/jquery-mapael/maps/usa_states.min.js"><?php echo '</script'; ?>
 >
         <!-- ChartJS -->
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/chart.js/Chart.min.js"><?php echo '</script'; ?>
 >
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/js/dashboard.js"><?php echo '</script'; ?>
 >
-<?php }
+<?php
+    }
 }

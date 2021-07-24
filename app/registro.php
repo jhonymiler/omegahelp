@@ -14,23 +14,27 @@ class Registro
     private $_data;
     
     //Esta classe não pode ser insanciada
-    private function __construct() {}
+    private function __construct()
+    {
+    }
     
     //singleton
     public static function getInstancia()
     {
-        if(!self::$_instancia instanceof self){
+        if (!self::$_instancia instanceof self) {
             self::$_instancia = new Registro();
         }
         return self::$_instancia;
     }
     
-    public function __set($name, $value) {
+    public function __set($name, $value)
+    {
         $this->_data[$name] = $value;
     }
     
-    public function __get($name) {
-        if(isset($this->_data[$name])){
+    public function __get($name)
+    {
+        if (isset($this->_data[$name])) {
             return $this->_data[$name];
         }
         

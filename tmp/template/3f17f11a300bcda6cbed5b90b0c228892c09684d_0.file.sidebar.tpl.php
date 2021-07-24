@@ -3,29 +3,30 @@
   from 'C:\xampp\htdocs\sistemas\omegahelp\views\painel\sidebar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array(
   'version' => '3.1.39',
   'unifunc' => 'content_60fb650d7092a6_19342310',
   'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    '3f17f11a300bcda6cbed5b90b0c228892c09684d' => 
-    array (
+  'file_dependency' =>
+  array(
+    '3f17f11a300bcda6cbed5b90b0c228892c09684d' =>
+    array(
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\views\\painel\\sidebar.tpl',
       1 => 1627088139,
       2 => 'file',
     ),
   ),
-  'includes' => 
-  array (
+  'includes' =>
+  array(
   ),
-),false)) {
-function content_60fb650d7092a6_19342310 (Smarty_Internal_Template $_smarty_tpl) {
-?><aside class="main-sidebar sidebar-dark-primary elevation-4">
+), false)) {
+    function content_60fb650d7092a6_19342310(Smarty_Internal_Template $_smarty_tpl)
+    {
+        ?><aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
 painel/" class="brand-link">
-        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/aro-logo.png" alt="ARO HELPDESK"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light"><b>ARO HELPDES</b></span>
@@ -39,16 +40,16 @@ dist/img/aro-logo.png" alt="ARO HELPDESK"
         <?php } else { ?>
             <?php $_smarty_tpl->_assignInScope('avatar', ((string)$_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'])."dist/img/avatar.png");?>
 
-        <?php }?>
+        <?php } ?>
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="<?php echo $_smarty_tpl->tpl_vars['avatar']->value;?>
-" class="img-circle elevation-2" alt="<?php echo $_smarty_tpl->tpl_vars['sessaoUsuario']->value['USU_nome'];?>
+                <img src="<?php echo $_smarty_tpl->tpl_vars['avatar']->value; ?>
+" class="img-circle elevation-2" alt="<?php echo $_smarty_tpl->tpl_vars['sessaoUsuario']->value['USU_nome']; ?>
 ">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><b><?php echo $_smarty_tpl->tpl_vars['sessaoUsuario']->value['USU_nome'];?>
+                <a href="#" class="d-block"><b><?php echo $_smarty_tpl->tpl_vars['sessaoUsuario']->value['USU_nome']; ?>
 </b></a>
             </div>
         </div>
@@ -61,7 +62,7 @@ dist/img/aro-logo.png" alt="ARO HELPDESK"
                 <!-- Add icons to the links using the .nav-icon class
    with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
 painel/" data-link="home" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -71,14 +72,14 @@ painel/" data-link="home" class="nav-link active">
 
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
 painel/empresas" data-link="empresas" class="nav-link">
                         <i class="nav-icon fas fa-user-tie "></i>
                         <p>Empresas</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
 painel/os" data-link="os" class="nav-link">
                         <i class="nav-icon fas fa-file-invoice-dollar"></i>
                         <p>Ordens de Serviço</p>
@@ -86,7 +87,7 @@ painel/os" data-link="os" class="nav-link">
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
 painel/chamados" data-link="chamados" class="nav-link">
                         <i class="nav-icon fas fa-ticket-alt"></i>
                         <p>
@@ -95,7 +96,7 @@ painel/chamados" data-link="chamados" class="nav-link">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
 painel/departamentos" data-link="departamentos" class="nav-link">
                         <i class="nav-icon fas fa-map-signs"></i>
                         <p>
@@ -104,7 +105,7 @@ painel/departamentos" data-link="departamentos" class="nav-link">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
 painel/usuarios" data-link="usuarios" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
@@ -113,7 +114,7 @@ painel/usuarios" data-link="usuarios" class="nav-link">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
 painel/suporte" data-link="suporte" class="nav-link">
                         <i class="nav-icon fas fa-question-circle"></i>
                         <p>
@@ -127,5 +128,6 @@ painel/suporte" data-link="suporte" class="nav-link">
     </div>
     <!-- /.sidebar -->
 </aside>
-<?php }
+<?php
+    }
 }

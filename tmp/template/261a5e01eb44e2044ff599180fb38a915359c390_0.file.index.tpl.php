@@ -3,110 +3,111 @@
   from 'C:\xampp\htdocs\sistemas\omegahelp\views\painel\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array(
   'version' => '3.1.39',
   'unifunc' => 'content_60fb5956027e02_99297848',
   'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    '261a5e01eb44e2044ff599180fb38a915359c390' => 
-    array (
+  'file_dependency' =>
+  array(
+    '261a5e01eb44e2044ff599180fb38a915359c390' =>
+    array(
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\views\\painel\\index.tpl',
       1 => 1626631566,
       2 => 'file',
     ),
   ),
-  'includes' => 
-  array (
+  'includes' =>
+  array(
     'file:sidebar.tpl' => 1,
   ),
-),false)) {
-function content_60fb5956027e02_99297848 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+), false)) {
+    function content_60fb5956027e02_99297848(Smarty_Internal_Template $_smarty_tpl)
+    {
+        ?><!DOCTYPE html>
 <html lang="pt-br">
 
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?php echo (($tmp = @$_smarty_tpl->tpl_vars['sessaoUsuario']->value['USU_nome'])===null||$tmp==='' ? "usuário" : $tmp);?>
- - <?php echo (($tmp = @$_smarty_tpl->tpl_vars['titulo']->value)===null||$tmp==='' ? "Sem Titulo" : $tmp);?>
+        <title><?php echo(($tmp = @$_smarty_tpl->tpl_vars['sessaoUsuario']->value['USU_nome'])===null||$tmp==='' ? "usuário" : $tmp); ?>
+ - <?php echo(($tmp = @$_smarty_tpl->tpl_vars['titulo']->value)===null||$tmp==='' ? "Sem Titulo" : $tmp); ?>
 </title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome Icons -->
-        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/fontawesome-free/css/all.css">
         <!-- overlayScrollbars -->
-        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
         <!-- Toastr -->
-        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/toastr/toastr.min.css">
-        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/css/adminlte.min.css">
 
         <!-- FAVICON -->
-        <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/aro-logo.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/favicon-16x16.png">
-        <link rel="manifest" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="manifest" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/site.webmanifest">
         <!-- DataTables -->
-        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet"
-            href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+            href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
         <!-- ./wrapper -->
-        <link href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/css/custom.css">
-        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/css/cropper.css">
 
         <!-- REQUIRED SCRIPTS -->
         <!-- jQuery -->
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/jquery/jquery.min.js"><?php echo '</script'; ?>
 >
         <!-- Bootstrap -->
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
 >
         <!-- overlayScrollbars -->
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"><?php echo '</script'; ?>
 >
         <!-- AdminLTE App -->
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/js/jquery.validate.min.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/js/jquery.validation.pt-br.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/inputmask/jquery.inputmask.min.js"><?php echo '</script'; ?>
 >
 
         <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/js/adminlte.min.js"><?php echo '</script'; ?>
 >
 
@@ -121,7 +122,7 @@ dist/js/adminlte.min.js"><?php echo '</script'; ?>
 
             <!-- Preloader -->
             <div class="preloader flex-column justify-content-center align-items-center">
-                <img class="animation__wobble" src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                <img class="animation__wobble" src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/aro-logo.png" alt="ARO HELPDESK"
                     height="60" width="60">
             </div>
@@ -135,14 +136,14 @@ dist/img/aro-logo.png" alt="ARO HELPDESK"
                                 class="fas fa-bars"></i></a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
 " class="nav-link">Home</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="#" class="nav-link">Configurações</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
 login/sair" class="nav-link">Sair</a>
                     </li>
                 </ul>
@@ -161,7 +162,7 @@ login/sair" class="nav-link">Sair</a>
                                 <!-- Message Start -->
 
                                 <div class="media">
-                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user1-128x128.jpg" alt="User Avatar"
                                         class="img-size-50 mr-3 img-circle">
                                     <div class="media-body">
@@ -180,7 +181,7 @@ dist/img/user1-128x128.jpg" alt="User Avatar"
                             <a href="#" class="dropdown-item">
                                 <!-- Message Start -->
                                 <div class="media">
-                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user8-128x128.jpg" alt="User Avatar"
                                         class="img-size-50 img-circle mr-3">
                                     <div class="media-body">
@@ -199,7 +200,7 @@ dist/img/user8-128x128.jpg" alt="User Avatar"
                             <a href="#" class="dropdown-item">
                                 <!-- Message Start -->
                                 <div class="media">
-                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+                                    <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 dist/img/user3-128x128.jpg" alt="User Avatar"
                                         class="img-size-50 img-circle mr-3">
                                     <div class="media-body">
@@ -256,8 +257,7 @@ dist/img/user3-128x128.jpg" alt="User Avatar"
 
 
             <!-- Main Sidebar Container -->
-            <?php $_smarty_tpl->_subTemplateRender('file:sidebar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
+            <?php $_smarty_tpl->_subTemplateRender('file:sidebar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false); ?>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -266,21 +266,21 @@ dist/img/user3-128x128.jpg" alt="User Avatar"
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1 class="m-0"><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
+                                <h1 class="m-0"><?php echo $_smarty_tpl->tpl_vars['titulo']->value; ?>
 </h1>
                             </div><!-- /.col -->
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <?php $_smarty_tpl->_assignInScope('counter', count($_smarty_tpl->tpl_vars['navLinks']->value));?>
+                                    <?php $_smarty_tpl->_assignInScope('counter', count($_smarty_tpl->tpl_vars['navLinks']->value)); ?>
                                     <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['navLinks']->value, 'link', false, NULL, 'i', array (
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['navLinks']->value, 'link', false, null, 'i', array(
   'iteration' => true,
 ));
-$_smarty_tpl->tpl_vars['link']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['link']->value) {
-$_smarty_tpl->tpl_vars['link']->do_else = false;
-$_smarty_tpl->tpl_vars['__smarty_foreach_i']->value['iteration']++;
-?>
+        $_smarty_tpl->tpl_vars['link']->do_else = true;
+        if ($_from !== null) {
+            foreach ($_from as $_smarty_tpl->tpl_vars['link']->value) {
+                $_smarty_tpl->tpl_vars['link']->do_else = false;
+                $_smarty_tpl->tpl_vars['__smarty_foreach_i']->value['iteration']++; ?>
 
                                         <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_i']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_i']->value['iteration'] : null) == $_smarty_tpl->tpl_vars['counter']->value) {?>
                                             <li class="breadcrumb-item active"><?php echo $_smarty_tpl->tpl_vars['link']->value['nome'];?>
@@ -291,10 +291,11 @@ echo $_smarty_tpl->tpl_vars['link']->value['url'];?>
 "><?php echo $_smarty_tpl->tpl_vars['link']->value['nome'];?>
 </a>
                                             </li>
-                                        <?php }?>
+                                        <?php } ?>
                                     <?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+            }
+        }
+        $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1); ?>
                                 </ol>
                             </div><!-- /.col -->
                         </div><!-- /.row -->
@@ -311,18 +312,18 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['_conteudo']->value, 'conteudo');
 $_smarty_tpl->tpl_vars['conteudo']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['conteudo']->value) {
-$_smarty_tpl->tpl_vars['conteudo']->do_else = false;
-?>
-                                <?php $_smarty_tpl->_subTemplateRender($_smarty_tpl->tpl_vars['conteudo']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
-?>
+if ($_from !== null) {
+    foreach ($_from as $_smarty_tpl->tpl_vars['conteudo']->value) {
+        $_smarty_tpl->tpl_vars['conteudo']->do_else = false; ?>
+                                <?php $_smarty_tpl->_subTemplateRender($_smarty_tpl->tpl_vars['conteudo']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true); ?>
                             <?php
+    }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         <?php } else { ?>
                             <?php $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'])."mosulos/painel/index.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
-                        <?php }?>
+                        <?php } ?>
                         <!-- /.conteudos -->
                     </div>
                     <!--/. container-fluid -->
@@ -342,7 +343,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </div>
             </footer>
         </div>
-        <textarea id="campos" style="display: none;"><?php echo $_smarty_tpl->tpl_vars['campos']->value;?>
+        <textarea id="campos" style="display: none;"><?php echo $_smarty_tpl->tpl_vars['campos']->value; ?>
 </textarea>
         <?php echo '<script'; ?>
  type="text/javascript">
@@ -351,34 +352,36 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msg']->value, 'mensagem');
 $_smarty_tpl->tpl_vars['mensagem']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['mensagem']->value) {
-$_smarty_tpl->tpl_vars['mensagem']->do_else = false;
-?>
+if ($_from !== null) {
+    foreach ($_from as $_smarty_tpl->tpl_vars['mensagem']->value) {
+        $_smarty_tpl->tpl_vars['mensagem']->do_else = false; ?>
                         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['mensagem']->value, 'm', false, 'status');
-$_smarty_tpl->tpl_vars['m']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['status']->value => $_smarty_tpl->tpl_vars['m']->value) {
-$_smarty_tpl->tpl_vars['m']->do_else = false;
-?>
+        $_smarty_tpl->tpl_vars['m']->do_else = true;
+        if ($_from !== null) {
+            foreach ($_from as $_smarty_tpl->tpl_vars['status']->value => $_smarty_tpl->tpl_vars['m']->value) {
+                $_smarty_tpl->tpl_vars['m']->do_else = false; ?>
                             $(document).Toasts('create', {
                                 toast: true,
                                 delay: 5000,
-                                class: '<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+                                class: '<?php echo $_smarty_tpl->tpl_vars['status']->value; ?>
 ',
                                 position: 'topRight',
                                 autohide: true,
-                                body: '<?php echo $_smarty_tpl->tpl_vars['m']->value;?>
+                                body: '<?php echo $_smarty_tpl->tpl_vars['m']->value; ?>
 '
                             });
                         <?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+            }
+        }
+        $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1); ?>
                     <?php
+    }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                <?php }?>
+                <?php } ?>
                 $(".nav-link").removeClass('active');
-                $("[data-link=<?php echo $_smarty_tpl->tpl_vars['current_link']->value;?>
+                $("[data-link=<?php echo $_smarty_tpl->tpl_vars['current_link']->value; ?>
 ]").addClass('active')
             });
             <?php if (!empty($_smarty_tpl->tpl_vars['campos']->value)) {?>
@@ -392,12 +395,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         $("[name=" + key + "]").val(json[key]);
                     }
                 };
-            <?php }?>
+            <?php } ?>
         <?php echo '</script'; ?>
 >
 
     </body>
 
 </html>
-<?php }
+<?php
+    }
 }

@@ -5,20 +5,19 @@
  *
  * @author Jonatas
  */
-class Requisicao {
-    
-    public  $_urlAtual;
-    public  $_navLinks;
+class Requisicao
+{
+    public $_urlAtual;
+    public $_navLinks;
     private $_modulo;
     private $_controlador;
     private $_metodo;
     private $_argumentos;
     private $_modules;
     
-    public function __construct() 
+    public function __construct()
     {
-        
-        if(isset($_GET['url'])){
+        if (isset($_GET['url'])) {
             $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
             $url = explode('/', $url);
             $this->_navLinks = $url;
@@ -26,48 +25,48 @@ class Requisicao {
             
             $this->_urlAtual = implode('/', $url);
             foreach (new DirectoryIterator(RAIZ."Modulos") as $Files) {
-                if($Files->isDir() && $Files->isDot()) continue;
+                if ($Files->isDir() && $Files->isDot()) {
+                    continue;
+                }
                 $this->_modules[] = $Files->getFilename();
             }
             
             /* modulos de la app */
             $this->_modulo = strtolower(array_shift($url));
             
-            if(!$this->_modulo){
+            if (!$this->_modulo) {
                 $this->_modulo = false;
-            }else{
-                if(count($this->_modules)){
-                    if(!in_array($this->_modulo, $this->_modules)){
+            } else {
+                if (count($this->_modules)) {
+                    if (!in_array($this->_modulo, $this->_modules)) {
                         $this->_controlador = $this->_modulo;
                         $this->_modulo = false;
-                    }
-                    else{
+                    } else {
                         $this->_controlador = strtolower(array_shift($url));
                         
-                        if(!$this->_controlador){
+                        if (!$this->_controlador) {
                             $this->_controlador = 'index';
                         }
                     }
-                }
-                else{
-                     $this->_controlador = $this->_modulo;
-                     $this->_modulo = false;
+                } else {
+                    $this->_controlador = $this->_modulo;
+                    $this->_modulo = false;
                 }
             }
             
             $this->_metodo = strtolower(array_shift($url));
-            $this->_argumentos = $url;           
-        }       
+            $this->_argumentos = $url;
+        }
         
-        if(!$this->_controlador){
+        if (!$this->_controlador) {
             $this->_controlador = CONTROLE_PATRAO;
         }
         
-        if(!$this->_metodo){
+        if (!$this->_metodo) {
             $this->_metodo = 'index';
         }
         
-        if(!isset($this->_argumentos)){
+        if (!isset($this->_argumentos)) {
             $this->_argumentos = array();
         }
         
@@ -75,7 +74,7 @@ class Requisicao {
         print_r($this);
         echo "</pre>";*/
     }
-	
+    
     public function getControlador()
     {
         return $this->_controlador;
@@ -96,4 +95,3 @@ class Requisicao {
         return $this->_argumentos;
     }
 }
-

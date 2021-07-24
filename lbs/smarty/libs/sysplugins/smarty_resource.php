@@ -15,7 +15,8 @@
  * @package Smarty
  * @subpackage TemplateResources
  */
-abstract class Smarty_Resource {
+abstract class Smarty_Resource
+{
     /**
      * cache for Smarty_Template_Source instances
      * @var array
@@ -71,7 +72,7 @@ abstract class Smarty_Resource {
      * @return string template source
      * @throws SmartyException if source cannot be loaded
      */
-    public abstract function getContent(Smarty_Template_Source $source);
+    abstract public function getContent(Smarty_Template_Source $source);
 
     /**
      * populate Source Object with meta data from Resource
@@ -79,7 +80,7 @@ abstract class Smarty_Resource {
      * @param Smarty_Template_Source   $source source object
      * @param Smarty_Internal_Template $_template     template object
      */
-    public abstract function populate(Smarty_Template_Source $source, Smarty_Internal_Template $_template=null);
+    abstract public function populate(Smarty_Template_Source $source, Smarty_Internal_Template $_template=null);
 
     /**
      * populate Source Object with timestamp and exists from Resource
@@ -135,7 +136,7 @@ abstract class Smarty_Resource {
         // set basename if not specified
         $_basename = $this->getBasename($compiled->source);
         if ($_basename === null) {
-            $_basename = basename( preg_replace('![^\w\/]+!', '_', $compiled->source->name) );
+            $_basename = basename(preg_replace('![^\w\/]+!', '_', $compiled->source->name));
         }
         // separate (optional) basename by dot
         if ($_basename) {
@@ -196,7 +197,7 @@ abstract class Smarty_Resource {
             $_parent = strpos($_path, '/../');
             if ($_parent === false) {
                 break;
-            } else if ($_parent === 0) {
+            } elseif ($_parent === 0) {
                 $_path = substr($_path, 3);
                 break;
             }
@@ -213,7 +214,7 @@ abstract class Smarty_Resource {
         }
         // revert to relative
         if (isset($_was_relative)) {
-            if (isset($_was_relative_prefix)){
+            if (isset($_was_relative_prefix)) {
                 $_path = $_was_relative_prefix . $_path;
             } else {
                 $_path = substr($_path, 1);
@@ -234,7 +235,7 @@ abstract class Smarty_Resource {
             // try string indexes
             if (isset($_directories[$match['key']])) {
                 $_directory = $_directories[$match['key']];
-            } else if (is_numeric($match['key'])) {
+            } elseif (is_numeric($match['key'])) {
                 // try numeric index
                 $match['key'] = (int) $match['key'];
                 if (isset($_directories[$match['key']])) {
@@ -295,8 +296,10 @@ abstract class Smarty_Resource {
                     throw new SmartyException("Default template handler not callable");
                 }
             }
-            $_return = call_user_func_array($_default_handler,
-                array($source->type, $source->name, &$_content, &$_timestamp, $source->smarty));
+            $_return = call_user_func_array(
+                $_default_handler,
+                array($source->type, $source->name, &$_content, &$_timestamp, $source->smarty)
+            );
             if (is_string($_return)) {
                 $source->timestamp = @filemtime($_return);
                 $source->exists = !!$source->timestamp;
@@ -324,7 +327,6 @@ abstract class Smarty_Resource {
     {
         $source->timestamp = @filemtime($file);
         return $source->exists = !!$source->timestamp;
-
     }
 
     /**
@@ -523,7 +525,7 @@ abstract class Smarty_Resource {
 
         // make sure configs are not loaded via anything smarty can't handle
         if (isset($_incompatible_resources[$type])) {
-            throw new SmartyException ("Unable to use resource '{$type}' for config");
+            throw new SmartyException("Unable to use resource '{$type}' for config");
         }
 
         // load resource handler, identify unique resource name
@@ -544,7 +546,6 @@ abstract class Smarty_Resource {
         self::$sources[$_cache_key] = $source;
         return $source;
     }
-
 }
 
 /**
@@ -561,7 +562,8 @@ abstract class Smarty_Resource {
  * @property boolean $template  Extended Template reference
  * @property string  $content   Source Content
  */
-class Smarty_Template_Source {
+class Smarty_Template_Source
+{
 
     /**
      * Name of the Class to compile this resource's contents with
@@ -755,7 +757,6 @@ class Smarty_Template_Source {
                 throw new SmartyException("source property '$property_name' does not exist.");
         }
     }
-
 }
 
 /**
@@ -769,7 +770,8 @@ class Smarty_Template_Source {
  *
  * @property string $content compiled content
  */
-class Smarty_Template_Compiled {
+class Smarty_Template_Compiled
+{
 
     /**
      * Compiled Filepath
@@ -824,7 +826,4 @@ class Smarty_Template_Compiled {
     {
         $this->source = $source;
     }
-
 }
-
-?>

@@ -3,25 +3,26 @@
   from 'C:\xampp\htdocs\sistemas\omegahelp\modulos\painel\views\departamentosCadastro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array(
   'version' => '3.1.39',
   'unifunc' => 'content_60fb6ca942b138_91382672',
   'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    '2da77066552a257f93e1ca478b633e569899b1aa' => 
-    array (
+  'file_dependency' =>
+  array(
+    '2da77066552a257f93e1ca478b633e569899b1aa' =>
+    array(
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\modulos\\painel\\views\\departamentosCadastro.tpl',
       1 => 1626631566,
       2 => 'file',
     ),
   ),
-  'includes' => 
-  array (
+  'includes' =>
+  array(
   ),
-),false)) {
-function content_60fb6ca942b138_91382672 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="row">
+), false)) {
+    function content_60fb6ca942b138_91382672(Smarty_Internal_Template $_smarty_tpl)
+    {
+        ?><div class="row">
     <div class="col-md-4">
         <!-- general form elements -->
         <div class="card card-primary">
@@ -37,7 +38,7 @@ function content_60fb6ca942b138_91382672 (Smarty_Internal_Template $_smarty_tpl)
 
             <!-- /.card-header -->
             <!-- form start -->
-            <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['formAction']->value;?>
+            <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['formAction']->value; ?>
 " id="formcadastro">
                 <div class="card-body">
                     <div class="form-group">
@@ -96,49 +97,49 @@ function content_60fb6ca942b138_91382672 (Smarty_Internal_Template $_smarty_tpl)
                                 <th></th>
                             </tr>
                         </thead>
-                        <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+                        <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
 painel/departamentos/excluir" id="deleteAll">
 
                             <tbody>
 
                                 <?php if (is_array($_smarty_tpl->tpl_vars['lista']->value)) {?>
                                     <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['lista']->value, 'departamentos', false, NULL, 'i', array (
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['lista']->value, 'departamentos', false, null, 'i', array(
 ));
 $_smarty_tpl->tpl_vars['departamentos']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['departamentos']->value) {
-$_smarty_tpl->tpl_vars['departamentos']->do_else = false;
-?>
+if ($_from !== null) {
+    foreach ($_from as $_smarty_tpl->tpl_vars['departamentos']->value) {
+        $_smarty_tpl->tpl_vars['departamentos']->do_else = false; ?>
                                         <tr>
                                             <td>
                                                 <div class="icheck-primary">
                                                     <input name="selAll[]" type="checkbox" class="check-table"
-                                                        value="<?php echo $_smarty_tpl->tpl_vars['departamentos']->value['DEP_id'];?>
+                                                        value="<?php echo $_smarty_tpl->tpl_vars['departamentos']->value['DEP_id']; ?>
 ">
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-md-12">
-                                                    <a href="#"><b><?php echo $_smarty_tpl->tpl_vars['departamentos']->value['DEP_titulo'];?>
+                                                    <a href="#"><b><?php echo $_smarty_tpl->tpl_vars['departamentos']->value['DEP_titulo']; ?>
 </b></a>
                                                 </div>
 
                                             </td>
                                             <td>
-                                                <p><?php echo $_smarty_tpl->tpl_vars['departamentos']->value['DEP_descricao'];?>
+                                                <p><?php echo $_smarty_tpl->tpl_vars['departamentos']->value['DEP_descricao']; ?>
 </p>
 
                                             </td>
                                             <td class="botao_tabela_edit_exclui">
-                                                <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
-painel/departamentos/editar/<?php echo $_smarty_tpl->tpl_vars['departamentos']->value['DEP_id'];?>
+                                                <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
+painel/departamentos/editar/<?php echo $_smarty_tpl->tpl_vars['departamentos']->value['DEP_id']; ?>
 "
                                                     class="btn btn-default">
                                                     <i class="fas fa-edit"></i>
 
                                                 </a>
-                                                <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
-painel/departamentos/excluir/<?php echo $_smarty_tpl->tpl_vars['departamentos']->value['DEP_id'];?>
+                                                <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
+painel/departamentos/excluir/<?php echo $_smarty_tpl->tpl_vars['departamentos']->value['DEP_id']; ?>
 "
                                                     class="btn btn-default">
                                                     <i class="fas fa-trash"></i>
@@ -146,9 +147,10 @@ painel/departamentos/excluir/<?php echo $_smarty_tpl->tpl_vars['departamentos']-
                                             </td>
                                         </tr>
                                     <?php
+    }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                                <?php }?>
+                                <?php } ?>
                             </tbody>
                         </form>
 
@@ -188,51 +190,51 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 <!-- /.modal -->
 
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables/jquery.dataTables.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables-responsive/js/dataTables.responsive.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables-responsive/js/responsive.bootstrap4.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables-buttons/js/dataTables.buttons.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables-buttons/js/buttons.bootstrap4.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/jszip/jszip.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/pdfmake/pdfmake.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/pdfmake/vfs_fonts.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables-buttons/js/buttons.html5.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables-buttons/js/buttons.print.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
 plugins/datatables-buttons/js/buttons.colVis.min.js"><?php echo '</script'; ?>
 >
 
@@ -274,5 +276,6 @@ plugins/datatables-buttons/js/buttons.colVis.min.js"><?php echo '</script'; ?>
     });
 <?php echo '</script'; ?>
 >
-<?php }
+<?php
+    }
 }
