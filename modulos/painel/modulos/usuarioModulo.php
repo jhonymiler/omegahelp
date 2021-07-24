@@ -40,7 +40,12 @@ class usuarioModulo extends Modulo
     // carrega o array com os campos e valores na classe
     public function _load($usuario)
     {
-        $usuario['USU_senha'] = md5($usuario['USU_senha']);
+        if (isset($usuario['USU_senha']) && $usuario['USU_senha'] != '') {
+            unset($usuario['USU_senha']);
+        } else {
+            $usuario['USU_senha'] = md5($usuario['USU_senha']);
+        }
+        
         $this->_db->_load($usuario);
     }
     // seleciona usuário
@@ -61,7 +66,7 @@ class usuarioModulo extends Modulo
     public function listaUsuarios()
     {
         return $this->_db->_query(
-            "SELECT * FROM usuarios AS U RIGHT JOIN empresas AS E ON E.EMP_id=U.EMP_id;"
+            "SELECT * FROM usuarios AS U LEFT OUTER JOIN empresas AS E ON E.EMP_id=U.EMP_id;"
         );
     }
 

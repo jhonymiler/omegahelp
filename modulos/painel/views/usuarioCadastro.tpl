@@ -283,13 +283,8 @@
         };
         $(function() {
 
-            $("input[type='checkbox']").each(function() {
-                if ($(this).val() > 0) {
-                    $(this).prop('checked', true);
-                } else {
-                    $(this).removeAttr('checked');
-                }
-            });
+
+
             $("#deletarSelecionados").click(function() {
                 var ids = [];
                 $('.check-table').each(function() {
@@ -437,6 +432,10 @@
 
         $(document).ready(function() {
 
+            {if isset($usuario.USU_nivel) && $usuario.USU_nivel>0}
+                $("input[name='USU_nivel']").prop('checked', true);
+
+            {/if}
 
 
 

@@ -15,11 +15,16 @@ class painelControle extends Controlador
     public function __construct()
     {
         parent::__construct();
-        
+        $user = Sessao::get('user');
         if (!Sessao::get('autenticado')) {
             $this->redir('login');
             exit();
+        } elseif ($user['USU_nivel'] == 0) {
+            $this->redir('suporte');
+            exit();
         }
+        $this->_view->setTemplate(DEFAOULT_LAYOUT);
+
         $this->_view->assign('titulo', 'Painel de Administração');
         $this->_view->assign('sessaoUsuario', Sessao::get('user'));
 

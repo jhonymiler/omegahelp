@@ -19,7 +19,7 @@ class loginControle extends Controlador
     {
         parent::__construct();
         $this->_user = $this->loadModulo('painel', 'usuario');
-        
+        $this->_view->setTemplate(DEFAOULT_LAYOUT);
         $this->_info = array(
             'nome'       => $this->_user->info['USU_nome'],
             'email'      => $this->_user->info['USU_email']
@@ -50,13 +50,13 @@ class loginControle extends Controlador
             } else {
                 if ($this->_user->_get('USU_senha') == md5($this->POST('senha'))) {
                     // se a senha for verdadeira
-                     
                     Sessao::set('autenticado', true);
                     $usuario = array(
                         'USU_id'         => $this->_user->_get('USU_id'),
                         'USU_nome'       => $this->_user->_get('USU_nome'),
                         'USU_email'      => $this->_user->_get('USU_email'),
                         'USU_imagem'     => $this->_user->_get('USU_imagem'),
+                        'USU_nivel'      => $this->_user->_get('USU_nivel'),
                         'sessao'         => time()
                     );
                     Sessao::set('user', $usuario);
@@ -67,7 +67,12 @@ class loginControle extends Controlador
         }
         
         if (Sessao::get('autenticado')===true) {
-            $this->redir('painel');
+            if ($this->_user->_get('USU_nivel')==0) {
+                $this->redir('suporte');
+            } else {
+                $this->redir('painel');
+            }
+            
             exit();
         } else {
             $this->index();

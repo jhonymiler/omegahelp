@@ -27,13 +27,24 @@ class View extends Smarty
         $this->_js        = array();
         $this->_paths     = array();
         $this->_jsPlugin  = array();
-        $this->_template  = DEFAOULT_LAYOUT;
         $this->_itemMenu  = '';
         // determina o cache
         $this->caching = false;
 
+        $this->setTemplate(DEFAOULT_LAYOUT);
+    }
+    
+    public function getPath($chave)
+    {
+        return $this->_paths[$chave];
+    }
+
+    public function setTemplate($temp)
+    {
         // DETERMINA OS CAMINHOS DO LAYOUT
         // seta as configurações do SMARTY
+        $this->_template  = $temp;
+
         $this->_paths['template'] = RAIZ . 'views' . DS .  $this->_template . DS;
         $this->template_dir = $this->_paths['template'];
         $this->config_dir   = RAIZ . 'views' . DS .  $this->_template . DS . 'configs' . DS;
@@ -67,11 +78,6 @@ class View extends Smarty
         $this->assign('_pgParams', $this->_pgParams);
     }
     
-    public function getPath($chave)
-    {
-        return $this->_paths[$chave];
-    }
-    
     
     public function addNavLink($url, $nome)
     {
@@ -81,19 +87,20 @@ class View extends Smarty
     public function addConteudo()
     {
         $args = func_get_args();
+       
         if (func_num_args() == 1) {
-            $template = $this->_paths['view']. DS .$args[0].'.tpl';
+            $template = $this->_paths['view'].$args[0].'.tpl';
         }
         if (func_num_args() >= 2) {
             $template = RAIZ . 'modulos' . DS . $this->_request->getModulo() . DS . 'views' . DS .$args[0].DS.$args[1].'.tpl';
         }
-
         // verifica se o caminh é válido
         if (!is_readable($template)) {
             $temp = $this->_paths['template'].'index.tpl';
         } else {
             $temp =  $template;
         }
+        
         $this->_conteudo[] = $temp;
     }
 

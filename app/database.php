@@ -138,7 +138,7 @@ class Database
 
         }
         // executa a query e retorna o registro
-        
+   
         $this->campos = $this->_query($retorno);
 
         return (is_array($this->campos) && count($this->campos)>0)?$this->campos:false;
