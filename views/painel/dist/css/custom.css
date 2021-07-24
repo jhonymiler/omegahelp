@@ -1,0 +1,56 @@
+.modal-header-blue {
+    background-color: #007bff !important;
+    color: #fff !important;
+}
+
+form .error {
+    border-color: red !important;
+}
+
+label.error {
+    border: 1px !important;
+    color: red !important;
+}
+
+#icon-avatar {
+    position: absolute;
+    right: 0;
+    padding: 6px;
+    background-color: rgb(214, 214, 214) !important;
+    bottom: 0;
+}
+
+#icon-avatar i {
+    font-size: 2em;
+}
+
+#imagem-avatar {
+    position: relative;
+    cursor: pointer;
+}
+
+#home-chamados .info-box-content {
+    font-size: 1.5em !important;
+}
+
+.cropper-view-box,
+.cropper-face {
+    border-radius: 50%;
+}
+
+.img-container img {
+    width: 100%;
+}
+
+
+.atendente {
+    position: absolute;
+    width: 68px;
+    left: -2px;
+    top: -9px;
+}
+
+.botao_tabela_edit_exclui {
+    padding-right: 5px;
+    width: 90px;
+}

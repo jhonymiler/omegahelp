@@ -1,0 +1,20 @@
+{
+    "name": "jhony/omegahelp",
+    "description": "Sistema de Helpdesk",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jhony\\Omegahelp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jonatas Miler Oliveira",
+            "email": "jonatasmiler@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "cboden/ratchet": "^0.4.3"
+    }
+}
