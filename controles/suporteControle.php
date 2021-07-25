@@ -31,13 +31,14 @@ class suporteControle extends Controlador
     public function index()
     {
         $this->_view->assign('titulo', 'Painel do Usuário');
-        $this->_view->assign('usuario', Sessao::get('user'));
         $this->_view->addNavLink('usuarios', 'Painel de Usuários');
-
-
-        $this->user->getEmpresa(Sessao::get('user')['USU_id']);
-
         $this->_view->assign('current_link', 'home');
+
+
+        $usu_emp = $this->user->getEmpresa(Sessao::get('user')['USU_id']);
+        $this->_view->assign('titulo', 'Painel do Usuário');
+        $this->_view->assign('usuario', $usu_emp);
+
         $this->_view->addConteudo('home');
         $this->_view->renderizar();
     }

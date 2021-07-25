@@ -1,16 +1,14 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-abstract class Controlador
+
+abstract class controlador
 {
     protected $_view;
     protected $_db;
     protected $_pgParams;
     protected $_request;
     protected $_registro;
+    protected $_data;
 
 
     public function __construct()
@@ -19,23 +17,23 @@ abstract class Controlador
         $this->_request = $this->_registro->_request;
         $this->_view = new View($this->_request);
         $this->_db = $this->_registro->_db;
-        
+    
         if (Sessao::get('user')) {
             $this->_view->assign('user', Sessao::get('user'));
         }
         $this->getLibs('classes/data.class');
-        $data = Data::getData();
-        $this->_view->assign('data', get_object_vars($data));
+        $this->_data = Data::getData();
+        $this->_view->assign('data', get_object_vars($this->_data));
     }
 
     abstract public function index();
-    
+
     protected function getUrlAtual()
     {
         return $this->_request->_urlAtual;
     }
-    
-    
+
+
     protected function loadModulo($modulo, $model = false)
     {
         if (!$model) {
@@ -54,12 +52,12 @@ abstract class Controlador
             throw new Exception('Erro ao Carregar Modulo');
         }
     }
-    
+
     // CARREGA AS LIVRARIAS LIBS
     protected function getLibs($libs)
     {
         $pathLibs = RAIZ.'lbs'.DS.$libs.'.php';
-        
+    
         if (is_readable($pathLibs)) {
             require_once $pathLibs;
         } else {
@@ -84,7 +82,7 @@ abstract class Controlador
             return false;
         }
     }
-    
+
     public function getIp()
     {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -107,7 +105,7 @@ abstract class Controlador
             }
         } else {
             $campos = strip_tags($campos);
-            
+        
             if (!addslashes($campos)) {
                 $campos = mysqli_real_escape_string(mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME), $campos);
             }
@@ -136,16 +134,16 @@ abstract class Controlador
         }
     }
 
-   
+
 
 
     protected function addMsg($tipo, $titulo, $msg)
     {
         $this->_view->_msg[] = array(
-            'tipo'=>$tipo,
-            'titulo'=>$titulo,
-            'msg'=>$msg
-        );
+        'tipo'=>$tipo,
+        'titulo'=>$titulo,
+        'msg'=>$msg
+    );
     }
 
     protected function getMsg()

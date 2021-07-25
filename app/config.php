@@ -1,6 +1,5 @@
 <?php
 
-
 define('DS', DIRECTORY_SEPARATOR); // para não dar conflito em sistemas que não são windows
 define('RAIZ', realpath(dirname(dirname(__FILE__))).DS); //diretório RAIZ da aplicação
 define('BASE_URL', 'http://localhost/sistemas/omegahelp/'); // url para postagens
@@ -13,12 +12,6 @@ define('APP_SLOGAN', 'Sistema de ajuda'); // template padrão
 define('APP_COMPANIA', 'JM SOLUTIONS'); // template padrão
 define('APP_PATH', RAIZ.'app'.DS);
 
-// BANCO DE DADOS
-define('DB_HOST', "localhost");
-define('DB_NAME', 'omegahelp');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_CHAR', 'utf8');
 
 try {
     // PEGAS OS PRINCIPAIS ARQUIVOS DO SISTEMA

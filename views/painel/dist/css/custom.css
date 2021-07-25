@@ -72,10 +72,19 @@ label.error {
 }
 
 .direct-chat-msg {
-    max-width: 75%;
+    max-width: 85%;
+    min-width: 60%;
 }
 
 .right {
     float: right;
-    ;
+}
+
+.left {
+    float: left;
+}
+
+.msg {
+    display: block;
+    clear: both;
 }

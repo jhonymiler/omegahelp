@@ -46,6 +46,8 @@
         <script src="{$_pgParams.path_layout}plugins/inputmask/jquery.inputmask.min.js"></script>
 
         <script src="{$_pgParams.path_layout}dist/js/adminlte.min.js"></script>
+        <script src="{$_pgParams.path_layout}dist/js/autobahn.js"></script>
+        <script src="{$_pgParams.path_layout}dist/js/chatCliente.js"></script>
     </head>
 
     <body class="hold-transition layout-top-nav" style="position: relative;">
@@ -139,19 +141,100 @@
                 <!-- Main content -->
                 <div class="content">
                     <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+
+                                <!-- Profile Image -->
+                                <div class="card card-primary card-outline">
+                                    <div class="card-body box-profile">
+                                        <div class="text-center">
+                                            {if  !empty($usuario.USU_imagem)}
+                                                {assign var="imagem" value="{$_pgParams.RAIZ}upload/{$usuario.USU_imagem}"}
+                                            {else}
+                                                {assign var="imagem" value="{$_pgParams.path_layout}dist/img/avatar.png"}
+
+                                            {/if}
+                                            <img class="profile-user-img img-fluid img-circle" src="{$imagem}"
+                                                alt="User profile picture">
+                                        </div>
+
+                                        <h3 class="profile-username text-center">{$usuario.USU_nome}</h3>
+
+                                        <p class="text-muted text-center">{$usuario.EMP_fantasia}</p>
+
+                                        <ul class="list-group list-group-unbordered mb-3">
+                                            <li class="list-group-item">
+                                                <b>Followers</b> <a class="float-right">1,322</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>Following</b> <a class="float-right">543</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>Friends</b> <a class="float-right">13,287</a>
+                                            </li>
+                                        </ul>
+
+                                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+
+                                <!-- About Me Box -->
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">About Me</h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <strong><i class="fas fa-book mr-1"></i> Education</strong>
+
+                                        <p class="text-muted">
+                                            B.S. in Computer Science from the University of Tennessee at Knoxville
+                                        </p>
+
+                                        <hr>
+
+                                        <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+
+                                        <p class="text-muted">Malibu, California</p>
+
+                                        <hr>
+
+                                        <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+
+                                        <p class="text-muted">
+                                            <span class="tag tag-danger">UI Design</span>
+                                            <span class="tag tag-success">Coding</span>
+                                            <span class="tag tag-info">Javascript</span>
+                                            <span class="tag tag-warning">PHP</span>
+                                            <span class="tag tag-primary">Node.js</span>
+                                        </p>
+
+                                        <hr>
+
+                                        <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+
+                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Etiam fermentum enim
+                                            neque.</p>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                            </div>
 
 
-
-                        {if is_array($_conteudo)}
-                            {foreach from=$_conteudo item=conteudo}
-                                {include file=$conteudo}
-                            {/foreach}
-                        {else}
-                            {include file="{$_pgParams.RAIZ}views/usuario/home.tpl"}
-                        {/if}
-
+                            {if is_array($_conteudo)}
+                                {foreach from=$_conteudo item=conteudo}
+                                    {include file=$conteudo}
+                                {/foreach}
+                            {else}
+                                {include file="{$_pgParams.RAIZ}views/usuario/home.tpl"}
+                            {/if}
 
 
+                        </div>
 
 
                         <!-- /.row -->
@@ -163,7 +246,7 @@
                 <!-- DIRECT CHAT WARNING -->
                 <div class="card card-warning direct-chat direct-chat-warning dark-mode">
                     <div class="card-header">
-                        <h3 class="card-title">Chat</h3>
+                        <h3 class="card-title"><b>Chat</b></h3>
 
                         <div class="card-tools">
 
@@ -175,50 +258,53 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <!-- Conversations are loaded here -->
-                        <div class="direct-chat-messages">
+                        <div id="ChatMensagens" class="direct-chat-messages">
                             <!-- Message. Default to the left -->
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-infos clearfix">
-                                    <span class="direct-chat-name float-left">Alexander Pierce</span>
-                                    <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+                            <div class="msg">
+                                <div class="direct-chat-msg left">
+                                    <div class="direct-chat-infos clearfix">
+                                        <span class="direct-chat-name float-left">Alexander Pierce</span>
+                                        <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+                                    </div>
+                                    <!-- /.direct-chat-infos -->
+                                    <img class="direct-chat-img"
+                                        src="{$_pgParams.path_layout}dist/img/user1-128x128.jpg"
+                                        alt="Message User Image">
+                                    <!-- /.direct-chat-img -->
+                                    <div class="direct-chat-text">
+                                        Is this template really for free? That's unbelievable!
+                                    </div>
+                                    <!-- /.direct-chat-text -->
                                 </div>
-                                <!-- /.direct-chat-infos -->
-                                <img class="direct-chat-img" src="{$_pgParams.path_layout}dist/img/user1-128x128.jpg"
-                                    alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    Is this template really for free? That's unbelievable!
-                                </div>
-                                <!-- /.direct-chat-text -->
                             </div>
-                            <!-- /.direct-chat-msg -->
-
-                            <!-- Message to the right -->
-                            <div class="direct-chat-msg right">
-                                <div class="direct-chat-infos clearfix">
-                                    <span class="direct-chat-name float-right">Sarah Bullock</span>
-                                    <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+                            <div class="msg">
+                                <div class="direct-chat-msg right">
+                                    <div class="direct-chat-infos clearfix">
+                                        <span class="direct-chat-name float-right">Sarah Bullock</span>
+                                        <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+                                    </div>
+                                    <!-- /.direct-chat-infos -->
+                                    <img class="direct-chat-img"
+                                        src="{$_pgParams.path_layout}dist/img/user3-128x128.jpg"
+                                        alt="Message User Image">
+                                    <!-- /.direct-chat-img -->
+                                    <div class="direct-chat-text">
+                                        You better believe it!
+                                    </div>
+                                    <!-- /.direct-chat-text -->
                                 </div>
-                                <!-- /.direct-chat-infos -->
-                                <img class="direct-chat-img" src="{$_pgParams.path_layout}dist/img/user3-128x128.jpg"
-                                    alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    You better believe it!
-                                </div>
-                                <!-- /.direct-chat-text -->
                             </div>
-                            <!-- /.direct-chat-msg -->
                         </div>
                         <!--/.direct-chat-messages-->
 
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <form action="#" method="post">
+                        <form id="enviaMsg" action="#" method="post">
                             <div class="input-group">
-                                <input type="text" name="message" placeholder="Digite a mensagem..."
-                                    class="form-control">
+                                <input id="chat-mensagem" sala="suporte_{$usuario.USU_id}" type="text"
+                                    name="{$usuario.USU_nome}" placeholder="Digite a mensagem..." class="form-control"
+                                    img="{$imagem}">
                                 <span class="input-group-append">
                                     <button type="submit" class="btn btn-warning">
                                         <i class="fas fa-paper-plane"></i>
@@ -256,8 +342,13 @@
                 $("#chatbuttom").show();
                 $("#chatContainer").hide(200);
             });
+
+
             $(document).ready(function() {
 
+                $("#ChatMensagens").animate({
+                    scrollTop: $("#ChatMensagens").prop("scrollHeight")
+                }, 500);
 
                 {if is_array($msg)}
                     {foreach item=mensagem from=$msg}

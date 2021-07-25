@@ -364,7 +364,7 @@ ab.Session = function ( wsuri, onopen, onclose, options ) {
             console.groupEnd();
         }
 
-        var o = e.data;
+        var o = JSON.parse( e.data );
         if ( o[ 1 ] in self._calls ) {
             if ( o[ 0 ] === ab._MESSAGE_TYPEID_CALL_RESULT ) {
 
