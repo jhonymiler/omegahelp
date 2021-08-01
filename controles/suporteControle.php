@@ -24,22 +24,17 @@ class suporteControle extends Controlador
             exit();
         }
         $this->user = $this->loadModulo('painel', 'usuario');
+        $usu_emp = $this->user->getEmpresa(Sessao::get('user')['USU_id']);
 
-        $this->_view->setTemplate('usuario');
+        $this->_view->setTemplate('suporte');
+        $this->_view->assign('titulo', 'Painel do Usuário');
+        $this->_view->assign('usuario', $usu_emp);
+
+        $this->_view->assign('current_link', 'home');
+        $this->_view->addNavLink('painel', 'Home');
     }
 
     public function index()
     {
-        $this->_view->assign('titulo', 'Painel do Usuário');
-        $this->_view->addNavLink('usuarios', 'Painel de Usuários');
-        $this->_view->assign('current_link', 'home');
-
-
-        $usu_emp = $this->user->getEmpresa(Sessao::get('user')['USU_id']);
-        $this->_view->assign('titulo', 'Painel do Usuário');
-        $this->_view->assign('usuario', $usu_emp);
-
-        $this->_view->addConteudo('home');
-        $this->_view->renderizar();
     }
 }

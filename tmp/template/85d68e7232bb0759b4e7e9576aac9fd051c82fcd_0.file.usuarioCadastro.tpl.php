@@ -1,28 +1,27 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-07-23 22:26:45
+/* Smarty version 3.1.39, created on 2021-08-01 13:29:32
   from 'C:\xampp\htdocs\sistemas\omegahelp\modulos\painel\views\usuarioCadastro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array(
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_60fb6c558588c6_50262863',
+  'unifunc' => 'content_6106cbecdac382_04734892',
   'has_nocache_code' => false,
-  'file_dependency' =>
-  array(
-    '85d68e7232bb0759b4e7e9576aac9fd051c82fcd' =>
-    array(
+  'file_dependency' => 
+  array (
+    '85d68e7232bb0759b4e7e9576aac9fd051c82fcd' => 
+    array (
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\modulos\\painel\\views\\usuarioCadastro.tpl',
-      1 => 1627090003,
+      1 => 1627835370,
       2 => 'file',
     ),
   ),
-  'includes' =>
-  array(
+  'includes' => 
+  array (
   ),
-), false)) {
-    function content_60fb6c558588c6_50262863(Smarty_Internal_Template $_smarty_tpl)
-    {
-        ?><!-- Media table sample -->
+),false)) {
+function content_6106cbecdac382_04734892 (Smarty_Internal_Template $_smarty_tpl) {
+?><!-- Media table sample -->
 <!-- DataTables  & Plugins -->
 <div class="row">
     <div class="col-md-6">
@@ -75,18 +74,18 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array(
 
                         <?php if (is_array($_smarty_tpl->tpl_vars['lista']->value)) {?>
                             <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['lista']->value, 'user_data', false, null, 'i', array(
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['lista']->value, 'user_data', false, NULL, 'i', array (
 ));
 $_smarty_tpl->tpl_vars['user_data']->do_else = true;
-if ($_from !== null) {
-    foreach ($_from as $_smarty_tpl->tpl_vars['user_data']->value) {
-        $_smarty_tpl->tpl_vars['user_data']->do_else = false; ?>
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['user_data']->value) {
+$_smarty_tpl->tpl_vars['user_data']->do_else = false;
+?>
                                 <tr>
                                     <td>
                                         <div class="icheck-primary">
                                             <input name="selUser" type="checkbox" class="check-table"
-                                                value="<?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_id']; ?>
-" id="user_<?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_id']; ?>
+                                                value="<?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_id'];?>
+" id="user_<?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_id'];?>
 ">
                                         </div>
                                     </td>
@@ -97,50 +96,50 @@ if ($_from !== null) {
                                             <?php } else { ?>
                                                 <?php $_smarty_tpl->_assignInScope('avatar', ((string)$_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'])."dist/img/avatar.png");?>
 
-                                            <?php } ?>
+                                            <?php }?>
                                             <?php if ($_smarty_tpl->tpl_vars['user_data']->value['USU_nivel'] > 1) {?>
                                                 <img width="65" src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 dist/img/atendente.png"
                                                     class="atendente" alt="Atendente">
-                                            <?php } ?>
-                                            <img width="50" src="<?php echo $_smarty_tpl->tpl_vars['avatar']->value; ?>
+                                            <?php }?>
+                                            <img width="50" src="<?php echo $_smarty_tpl->tpl_vars['avatar']->value;?>
 " class="img-circle elevation-2"
-                                                alt="<?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_nome']; ?>
+                                                alt="<?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_nome'];?>
 ">
                                         </div>
                                         <div class="col-md-9">
-                                            <a href="#"><b><?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_nome']; ?>
+                                            <a href="#"><b><?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_nome'];?>
 </b></a>
                                             <p>
-                                                <?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_email']; ?>
+                                                <?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_email'];?>
 <br>
-                                                Fone: <?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_tel']; ?>
+                                                Fone: <?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_tel'];?>
 
                                             </p>
                                         </div>
 
                                     </td>
-                                    <td class="mailbox-subject"><b><?php echo $_smarty_tpl->tpl_vars['user_data']->value['EMP_fantasia']; ?>
+                                    <td class="mailbox-subject"><b><?php echo $_smarty_tpl->tpl_vars['user_data']->value['EMP_fantasia'];?>
 </b>
                                         <p>
-                                            <?php echo $_smarty_tpl->tpl_vars['user_data']->value['EMP_email']; ?>
+                                            <?php echo $_smarty_tpl->tpl_vars['user_data']->value['EMP_email'];?>
 <br>
-                                            Fone: <?php echo $_smarty_tpl->tpl_vars['user_data']->value['EMP_tel']; ?>
+                                            Fone: <?php echo $_smarty_tpl->tpl_vars['user_data']->value['EMP_tel'];?>
 
                                         </p>
                                     </td>
                                     <td></td>
                                     <td></td>
                                     <td class="botao_tabela_edit_exclui">
-                                        <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
-painel/usuarios/editar/<?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_id']; ?>
+                                        <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+painel/usuarios/editar/<?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_id'];?>
 "
                                             class="btn btn-default">
                                             <i class="fas fa-edit"></i>
 
                                         </a>
-                                        <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
-painel/usuarios/excluir/<?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_id']; ?>
+                                        <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+painel/usuarios/excluir/<?php echo $_smarty_tpl->tpl_vars['user_data']->value['USU_id'];?>
 "
                                             class="btn btn-default">
                                             <i class="fas fa-trash"></i>
@@ -150,10 +149,9 @@ painel/usuarios/excluir/<?php echo $_smarty_tpl->tpl_vars['user_data']->value['U
                                     </td>
                                 </tr>
                             <?php
-    }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                        <?php } ?>
+                        <?php }?>
                     </tbody>
                 </table>
             </div>
@@ -185,9 +183,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                         <?php } else { ?>
                                             <?php $_smarty_tpl->_assignInScope('imagem', ((string)$_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'])."dist/img/avatar.png");?>
 
-                                        <?php } ?>
+                                        <?php }?>
 
-                                        <img src="<?php echo $_smarty_tpl->tpl_vars['imagem']->value; ?>
+                                        <img src="<?php echo $_smarty_tpl->tpl_vars['imagem']->value;?>
 " width="100" id="img-avatar"></label>
                                     <span id="icon-avatar" class="badge">
                                         <i class="fas fa-camera"></i>
@@ -195,7 +193,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <input type="file" id="up_img" style="display: none;">
                                     <?php if ((isset($_smarty_tpl->tpl_vars['campos']->value))) {?>
                                         <input type="text" name="USU_id" style="display: none;" value="">
-                                    <?php } ?>
+                                    <?php }?>
                                 </div>
                                 <div class="col-9">
                                     <label for="USU_nome">Nome Completo</label>
@@ -218,17 +216,16 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['emplista']->value, 'emps');
 $_smarty_tpl->tpl_vars['emps']->do_else = true;
-if ($_from !== null) {
-    foreach ($_from as $_smarty_tpl->tpl_vars['emps']->value) {
-        $_smarty_tpl->tpl_vars['emps']->do_else = false; ?>
-                                        <option value="<?php echo $_smarty_tpl->tpl_vars['emps']->value['EMP_id']; ?>
-"><?php echo $_smarty_tpl->tpl_vars['emps']->value['EMP_fantasia']; ?>
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['emps']->value) {
+$_smarty_tpl->tpl_vars['emps']->do_else = false;
+?>
+                                        <option value="<?php echo $_smarty_tpl->tpl_vars['emps']->value['EMP_id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['emps']->value['EMP_fantasia'];?>
 </option>
                                     <?php
-    }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                                <?php } ?>}
+                                <?php }?>}
                             </select>
                         </div>
                         <div class="form-group">
@@ -252,7 +249,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 </div>
                             </div>
                             <div id="mostra-campo-senha">
-                            <?php } ?>
+                            <?php }?>
                             <div class="form-group">
                                 <label for="senha">Senha</label>
                                 <input type="password" name="USU_senha" class="form-control" id="senha"
@@ -263,7 +260,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 <input type="password" class="form-control" name="confirma_senha" id="confirma_senha">
                             </div>
                             <?php if ((isset($_smarty_tpl->tpl_vars['campos']->value))) {?>
-                        </div><?php } ?>
+                        </div><?php }?>
                         <div id="meti_o_loko"></div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -298,75 +295,115 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/datatables/jquery.dataTables.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/datatables-responsive/js/dataTables.responsive.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/datatables-responsive/js/responsive.bootstrap4.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/datatables-buttons/js/dataTables.buttons.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/datatables-buttons/js/buttons.bootstrap4.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/jszip/jszip.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/pdfmake/pdfmake.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/pdfmake/vfs_fonts.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/datatables-buttons/js/buttons.html5.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/datatables-buttons/js/buttons.print.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/datatables-buttons/js/buttons.colVis.min.js"><?php echo '</script'; ?>
 >
 
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 dist/js/jquery.dm-uploader.min.js"><?php echo '</script'; ?>
 >
 
 <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout']; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 dist/js/cropper.js"><?php echo '</script'; ?>
 >
 
 
 <?php echo '<script'; ?>
 >
-    var local = '<?php echo $_smarty_tpl->tpl_vars['FormAction']->value; ?>
+    var local = '<?php echo $_smarty_tpl->tpl_vars['FormAction']->value;?>
 ';
-    var redir = '<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
+    var redir = '<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
 painel/usuarios';
-    var delAll = '<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ']; ?>
+    var delAll = '<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
 painel/usuarios/excluir';
+
+    <?php if ((isset($_smarty_tpl->tpl_vars['campos']->value))) {?>
+        $("#mostra-campo-senha").hide();
+        $("#senha").prop("disabled", true);
+        $("#novo-registro").modal('toggle');
+        $("#alt_senha").change(function() {
+            if ($(this).is(":checked")) {
+                $("#mostra-campo-senha").show();
+                $("#senha").prop("disabled", false);
+                $("#confirma_senha").prop("disabled", false);
+
+            } else {
+                $("#mostra-campo-senha").hide();
+                $("#senha").prop("disabled", true);
+                $("#confirma_senha").prop("disabled", true);
+
+
+
+            }
+        });
+
+    <?php }?>
+
+
     
         function enviar() {
+            $('#cadastro').validate({
+                rules: {
+                    USU_senha: {
+                        required: false,
+                        minlength: 5
+                    },
+                    confirma_senha: {
+                        required: false,
+                        minlength: 5,
+                        equalTo: "#senha"
+                    },
+                    USU_empresa: {
+                        required: false
+                    }
+                }
+            });
             $.ajax({
                 type: 'POST',
                 url: local,
@@ -388,13 +425,8 @@ painel/usuarios/excluir';
         };
         $(function() {
 
-            $("input[type='checkbox']").each(function() {
-                if ($(this).val() > 0) {
-                    $(this).prop('checked', true);
-                } else {
-                    $(this).removeAttr('checked');
-                }
-            });
+
+
             $("#deletarSelecionados").click(function() {
                 var ids = [];
                 $('.check-table').each(function() {
@@ -540,80 +572,11 @@ painel/usuarios/excluir';
             return canvas;
         }
 
-        $(document).ready(function() {
 
+        <?php if ((isset($_smarty_tpl->tpl_vars['usuario']->value['USU_nivel'])) && $_smarty_tpl->tpl_vars['usuario']->value['USU_nivel'] > 0) {?>
+            $("input[name='USU_nivel']").prop('checked', true);
 
-
-
-            <?php if ((isset($_smarty_tpl->tpl_vars['campos']->value))) {?>
-                $("#mostra-campo-senha").hide();
-                $("#senha").prop("disabled", true);
-                $("#novo-registro").modal('toggle');
-                $("#alt_senha").change(function() {
-                    if ($(this).is(":checked")) {
-                        $("#mostra-campo-senha").show();
-                        $("#senha").prop("disabled", false);
-                        $("#confirma_senha").prop("disabled", false);
-                        $('#cadastro').validate({
-                            rules: {
-                                USU_senha: {
-                                    required: true,
-                                    minlength: 5
-                                },
-                                confirma_senha: {
-                                    required: true,
-                                    minlength: 5,
-                                    equalTo: "#senha"
-                                },
-                                USU_empresa: {
-                                    required: true
-                                }
-                            }
-                        });
-
-                    } else {
-                        $("#mostra-campo-senha").hide();
-                        $("#senha").prop("disabled", true);
-                        $("#confirma_senha").prop("disabled", true);
-
-                        $('#cadastro').validate({
-                            rules: {
-                                USU_senha: {
-                                    required: false,
-                                    minlength: 5
-                                },
-                                confirma_senha: {
-                                    required: false,
-                                    minlength: 5,
-                                    equalTo: "#senha"
-                                },
-                                USU_empresa: {
-                                    required: false
-                                }
-                            }
-                        });
-
-                    }
-                });
-            <?php } else { ?>
-                $('#cadastro').validate({
-                    rules: {
-                        USU_senha: {
-                            required: true,
-                            minlength: 5
-                        },
-                        confirma_senha: {
-                            required: true,
-                            minlength: 5,
-                            equalTo: "#senha"
-                        },
-                        USU_empresa: {
-                            required: true
-                        }
-                    }
-                });
-            <?php } ?>
-        });
+        <?php }?>
     <?php echo '</script'; ?>
 >
 
@@ -621,6 +584,5 @@ painel/usuarios/excluir';
 
 
     <!-- /.card -->
-<?php
-    }
+<?php }
 }

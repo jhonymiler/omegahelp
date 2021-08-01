@@ -15,7 +15,7 @@ class painelControle extends Controlador
     public function __construct()
     {
         parent::__construct();
-        $this->_view->assign('usuario', $usu_emp);
+        //$this->_view->assign('usuario', $usu_emp);
         if (!Sessao::get('autenticado')) {
             $this->redir('login');
             exit();

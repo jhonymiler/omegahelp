@@ -228,7 +228,7 @@
                                 {include file=$conteudo}
                             {/foreach}
                         {else}
-                            {include file="{$_pgParams.RAIZ}mosulos/painel/index.tpl"}
+                            {include file="{$_pgParams.RAIZ}modulos/painel/views/index.tpl"}
                         {/if}
                         <!-- /.conteudos -->
                     </div>

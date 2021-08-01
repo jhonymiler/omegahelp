@@ -260,8 +260,48 @@
     var local = '{$FormAction}';
     var redir = '{$_pgParams.RAIZ}painel/usuarios';
     var delAll = '{$_pgParams.RAIZ}painel/usuarios/excluir';
+
+    {if isset($campos)}
+        $("#mostra-campo-senha").hide();
+        $("#senha").prop("disabled", true);
+        $("#novo-registro").modal('toggle');
+        $("#alt_senha").change(function() {
+            if ($(this).is(":checked")) {
+                $("#mostra-campo-senha").show();
+                $("#senha").prop("disabled", false);
+                $("#confirma_senha").prop("disabled", false);
+
+            } else {
+                $("#mostra-campo-senha").hide();
+                $("#senha").prop("disabled", true);
+                $("#confirma_senha").prop("disabled", true);
+
+
+
+            }
+        });
+
+    {/if}
+
+
     {literal}
         function enviar() {
+            $('#cadastro').validate({
+                rules: {
+                    USU_senha: {
+                        required: false,
+                        minlength: 5
+                    },
+                    confirma_senha: {
+                        required: false,
+                        minlength: 5,
+                        equalTo: "#senha"
+                    },
+                    USU_empresa: {
+                        required: false
+                    }
+                }
+            });
             $.ajax({
                 type: 'POST',
                 url: local,
@@ -430,84 +470,11 @@
             return canvas;
         }
 
-        $(document).ready(function() {
 
-            {if isset($usuario.USU_nivel) && $usuario.USU_nivel>0}
-                $("input[name='USU_nivel']").prop('checked', true);
+        {if isset($usuario.USU_nivel) && $usuario.USU_nivel>0}
+            $("input[name='USU_nivel']").prop('checked', true);
 
-            {/if}
-
-
-
-            {if isset($campos)}
-                $("#mostra-campo-senha").hide();
-                $("#senha").prop("disabled", true);
-                $("#novo-registro").modal('toggle');
-                $("#alt_senha").change(function() {
-                    if ($(this).is(":checked")) {
-                        $("#mostra-campo-senha").show();
-                        $("#senha").prop("disabled", false);
-                        $("#confirma_senha").prop("disabled", false);
-                        $('#cadastro').validate({
-                            rules: {
-                                USU_senha: {
-                                    required: true,
-                                    minlength: 5
-                                },
-                                confirma_senha: {
-                                    required: true,
-                                    minlength: 5,
-                                    equalTo: "#senha"
-                                },
-                                USU_empresa: {
-                                    required: true
-                                }
-                            }
-                        });
-
-                    } else {
-                        $("#mostra-campo-senha").hide();
-                        $("#senha").prop("disabled", true);
-                        $("#confirma_senha").prop("disabled", true);
-
-                        $('#cadastro').validate({
-                            rules: {
-                                USU_senha: {
-                                    required: false,
-                                    minlength: 5
-                                },
-                                confirma_senha: {
-                                    required: false,
-                                    minlength: 5,
-                                    equalTo: "#senha"
-                                },
-                                USU_empresa: {
-                                    required: false
-                                }
-                            }
-                        });
-
-                    }
-                });
-            {else}
-                $('#cadastro').validate({
-                    rules: {
-                        USU_senha: {
-                            required: true,
-                            minlength: 5
-                        },
-                        confirma_senha: {
-                            required: true,
-                            minlength: 5,
-                            equalTo: "#senha"
-                        },
-                        USU_empresa: {
-                            required: true
-                        }
-                    }
-                });
-            {/if}
-        });
+        {/if}
     </script>
 
     <!-- /.col -->

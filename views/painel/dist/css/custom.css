@@ -88,3 +88,14 @@ label.error {
     display: block;
     clear: both;
 }
+
+.select2-container--default .select2-selection--single {
+    border: 1px solid #ced4da;
+    padding: .46875rem .75rem;
+    height: calc(2.25rem + 2px);
+}
+
+.tag-input {
+    font-size: 1em;
+    ;
+}

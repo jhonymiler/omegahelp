@@ -9,6 +9,9 @@
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css"
+            crossorigin="anonymous">
+
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/fontawesome-free/css/all.css">
         <!-- overlayScrollbars -->
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
@@ -16,7 +19,6 @@
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
         <!-- Toastr -->
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/toastr/toastr.min.css">
-        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/adminlte.min.css">
 
         <!-- FAVICON -->
         <link rel="apple-touch-icon" sizes="180x180" href="{$_pgParams.path_layout}dist/img/aro-logo.png">
@@ -29,9 +31,15 @@
             href="{$_pgParams.path_layout}plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
         <!-- ./wrapper -->
+        <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/select2/css/select2.min.css">
+
         <link href="{$_pgParams.path_layout}dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/adminlte.min.css">
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/custom.css">
+
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/cropper.css">
+        <link href="{$_pgParams.path_layout}plugins/inputfile/css/fileinput.css" media="all" rel="stylesheet"
+            type="text/css" />
 
         <!-- REQUIRED SCRIPTS -->
         <!-- jQuery -->
@@ -164,76 +172,33 @@
 
                                         <ul class="list-group list-group-unbordered mb-3">
                                             <li class="list-group-item">
-                                                <b>Followers</b> <a class="float-right">1,322</a>
+                                                <b>Meus chamados</b> <a class="float-right">2</a>
                                             </li>
                                             <li class="list-group-item">
-                                                <b>Following</b> <a class="float-right">543</a>
+                                                <b>Aguardando sua resposta</b> <a class="float-right">1</a>
                                             </li>
                                             <li class="list-group-item">
-                                                <b>Friends</b> <a class="float-right">13,287</a>
+                                                <b>Pendentes</b> <a class="float-right">1</a>
                                             </li>
                                         </ul>
-
-                                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                                     </div>
                                     <!-- /.card-body -->
                                 </div>
                                 <!-- /.card -->
 
-                                <!-- About Me Box -->
-                                <div class="card card-primary">
-                                    <div class="card-header">
-                                        <h3 class="card-title">About Me</h3>
-                                    </div>
-                                    <!-- /.card-header -->
-                                    <div class="card-body">
-                                        <strong><i class="fas fa-book mr-1"></i> Education</strong>
-
-                                        <p class="text-muted">
-                                            B.S. in Computer Science from the University of Tennessee at Knoxville
-                                        </p>
-
-                                        <hr>
-
-                                        <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-                                        <p class="text-muted">Malibu, California</p>
-
-                                        <hr>
-
-                                        <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
-
-                                        <p class="text-muted">
-                                            <span class="tag tag-danger">UI Design</span>
-                                            <span class="tag tag-success">Coding</span>
-                                            <span class="tag tag-info">Javascript</span>
-                                            <span class="tag tag-warning">PHP</span>
-                                            <span class="tag tag-primary">Node.js</span>
-                                        </p>
-
-                                        <hr>
-
-                                        <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Etiam fermentum enim
-                                            neque.</p>
-                                    </div>
-                                    <!-- /.card-body -->
-                                </div>
-                                <!-- /.card -->
                             </div>
 
+                            <div class="col-md-9">
+                                {if is_array($_conteudo)}
+                                    {foreach from=$_conteudo item=conteudo}
+                                        {include file=$conteudo}
+                                    {/foreach}
+                                {else}
+                                    {include file="{$_pgParams.RAIZ}modulos/suporte/views/index.tpl"}
+                                {/if}
 
-                            {if is_array($_conteudo)}
-                                {foreach from=$_conteudo item=conteudo}
-                                    {include file=$conteudo}
-                                {/foreach}
-                            {else}
-                                {include file="{$_pgParams.RAIZ}views/usuario/home.tpl"}
-                            {/if}
 
-
+                            </div>
                         </div>
 
 

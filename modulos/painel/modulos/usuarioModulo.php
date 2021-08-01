@@ -41,9 +41,9 @@ class usuarioModulo extends Modulo
     public function _load($usuario)
     {
         if (isset($usuario['USU_senha']) && $usuario['USU_senha'] != '') {
-            unset($usuario['USU_senha']);
-        } else {
             $usuario['USU_senha'] = md5($usuario['USU_senha']);
+        } elseif (isset($usuario['USU_senha']) && $usuario['USU_senha'] == '') {
+            unset($usuario['USU_senha']);
         }
         
         $this->_db->_load($usuario);
