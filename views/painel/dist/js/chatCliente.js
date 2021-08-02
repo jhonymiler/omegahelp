@@ -53,6 +53,7 @@ $( function () {
             m = "left";
             n = 'left';
             t = 'right';
+            $( "#qtdUsuarios" ).hide( 500 );
         }
 
         text = '<div class="msg" >' +
@@ -70,16 +71,19 @@ $( function () {
     }
 
     $( "#enviaMsg" ).submit( function () {
-        var msg = {
-            'sala': room,
-            'nome': $( "#chat-mensagem" ).attr( 'name' ),
-            'imagem': $( "#chat-mensagem" ).attr( 'img' ),
-            'texto': $( "#chat-mensagem" ).val()
-        };
+        if ( $( "#chat-mensagem" ).val() != '' ) {
+            var msg = {
+                'sala': room,
+                'nome': $( "#chat-mensagem" ).attr( 'name' ),
+                'imagem': $( "#chat-mensagem" ).attr( 'img' ),
+                'texto': $( "#chat-mensagem" ).val()
+            };
+            $( "#slide-smile" ).removeClass( "direct-chat-contacts-open" );
 
-        conn.publish( room, msg );
-        //exibeMsg(msg);
-        $( "#chat-mensagem" ).val( '' ).focus();
+            conn.publish( room, msg );
+            //exibeMsg(msg);
+            $( "#chat-mensagem" ).val( '' ).focus();
+        }
         return false;
     } );
 

@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
         <!-- Toastr -->
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/toastr/toastr.min.css">
+        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/emojis.css">
 
         <!-- FAVICON -->
         <link rel="apple-touch-icon" sizes="180x180" href="{$_pgParams.path_layout}dist/img/aro-logo.png">
@@ -34,7 +35,7 @@
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/select2/css/select2.min.css">
 
         <link href="{$_pgParams.path_layout}dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/adminlte.min.css">
+        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/adminlte.css">
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/custom.css">
 
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/cropper.css">
@@ -152,39 +153,85 @@
                         <div class="row">
                             <div class="col-md-3">
 
-                                <!-- Profile Image -->
-                                <div class="card card-primary card-outline">
-                                    <div class="card-body box-profile">
-                                        <div class="text-center">
-                                            {if  !empty($usuario.USU_imagem)}
-                                                {assign var="imagem" value="{$_pgParams.RAIZ}upload/{$usuario.USU_imagem}"}
-                                            {else}
-                                                {assign var="imagem" value="{$_pgParams.path_layout}dist/img/avatar.png"}
 
-                                            {/if}
-                                            <img class="profile-user-img img-fluid img-circle" src="{$imagem}"
-                                                alt="User profile picture">
+
+                                {if  !empty($usuario.USU_imagem)}
+                                    {assign var="imagem" value="{$_pgParams.RAIZ}upload/{$usuario.USU_imagem}"}
+                                {else}
+                                    {assign var="imagem" value="{$_pgParams.path_layout}dist/img/avatar.png"}
+
+                                {/if}
+
+                                <div class="card card-widget widget-user shadow">
+                                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                                    <div class="widget-user-header bg-info">
+                                        <h3 class="widget-user-username">{$usuario.USU_nome}</h3>
+                                        <h5 class="widget-user-desc">{$usuario.EMP_fantasia}</h5>
+
+                                    </div>
+                                    <div class="widget-user-image">
+                                        <img class="img-circle elevation-2" src="{$imagem}" alt="User Avatar">
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col-sm-4 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header"><span class="badge bg-info">4</span>
+                                                    </h5>
+                                                    <span style="font-size:12px;">Chamados</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header"><span
+                                                            class="badge bg-success">3</span></h5>
+                                                    <span style="font-size:12px;">Atendidos</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4">
+                                                <div class="description-block">
+                                                    <h5 class="description-header"><span
+                                                            class="badge bg-danger">1</span></h5>
+                                                    <span style="font-size:12px;">Aguardando</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
                                         </div>
-
-                                        <h3 class="profile-username text-center">{$usuario.USU_nome}</h3>
-
-                                        <p class="text-muted text-center">{$usuario.EMP_fantasia}</p>
-
-                                        <ul class="list-group list-group-unbordered mb-3">
-                                            <li class="list-group-item">
-                                                <b>Meus chamados</b> <a class="float-right">2</a>
+                                        <!-- /.row -->
+                                    </div>
+                                    <div class="card-footer p-0">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a href="{$_pgParams.RAIZ}suporte/" class="nav-link">
+                                                    Página Inicial
+                                                </a>
                                             </li>
-                                            <li class="list-group-item">
-                                                <b>Aguardando sua resposta</b> <a class="float-right">1</a>
+                                            <li class="nav-item">
+                                                <a href="#" class="nav-link">
+                                                    Meu Perfil
+                                                </a>
                                             </li>
-                                            <li class="list-group-item">
-                                                <b>Pendentes</b> <a class="float-right">1</a>
+                                            <li class="nav-item">
+                                                <a href="{$_pgParams.RAIZ}suporte/chamados/novo" class="nav-link">
+                                                    Novo Chamado
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{$_pgParams.RAIZ}suporte/chamados/" class="nav-link">
+                                                    Meus Chamados
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
-                                    <!-- /.card-body -->
                                 </div>
-                                <!-- /.card -->
+
+
+
 
                             </div>
 
@@ -209,59 +256,51 @@
             </div>
             <div id="chatContainer" class="col-md-6 col-sm-6 col-lg-4">
                 <!-- DIRECT CHAT WARNING -->
-                <div class="card card-warning direct-chat direct-chat-warning dark-mode">
+                <div id="slide-smile" class="card card-warning direct-chat direct-chat-warning dark-mode">
                     <div class="card-header">
                         <h3 class="card-title"><b>Chat</b></h3>
 
                         <div class="card-tools">
-
-                            <button id="fechaChat" type="button" class="btn btn-tool" style="margin-top: 0px;">
+                            <button type="button" class="btn btn-tool" title="Smiles" data-widget="chat-pane-toggle">
+                                <i class="fas fa-smile"></i>
+                            </button>
+                            <button id="fechaChat" type="button" class="btn btn-tool">
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <!-- Conversations are loaded here -->
+
                         <div id="ChatMensagens" class="direct-chat-messages">
-                            <!-- Message. Default to the left -->
-                            <div class="msg">
-                                <div class="direct-chat-msg left">
-                                    <div class="direct-chat-infos clearfix">
-                                        <span class="direct-chat-name float-left">Alexander Pierce</span>
-                                        <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
-                                    </div>
-                                    <!-- /.direct-chat-infos -->
-                                    <img class="direct-chat-img"
-                                        src="{$_pgParams.path_layout}dist/img/user1-128x128.jpg"
-                                        alt="Message User Image">
-                                    <!-- /.direct-chat-img -->
-                                    <div class="direct-chat-text">
-                                        Is this template really for free? That's unbelievable!
-                                    </div>
-                                    <!-- /.direct-chat-text -->
+                            <div id="qtdUsuarios" class="small-box bg-info   ">
+                                <div class="inner">
+                                    <h3>6 Usuários</h3>
+
+                                    <p>Aguardando atendimento</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-user-plus"></i>
                                 </div>
                             </div>
                             <div class="msg">
-                                <div class="direct-chat-msg right">
-                                    <div class="direct-chat-infos clearfix">
-                                        <span class="direct-chat-name float-right">Sarah Bullock</span>
-                                        <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
-                                    </div>
-                                    <!-- /.direct-chat-infos -->
+                                <div class="direct-chat-msg left">
+                                    <div class="direct-chat-infos clearfix"><span
+                                            class="direct-chat-name float-left">Suporte</span><span
+                                            class="direct-chat-timestamp float-right">01/08/2021 19:37:47Hs</span></div>
                                     <img class="direct-chat-img"
-                                        src="{$_pgParams.path_layout}dist/img/user3-128x128.jpg"
-                                        alt="Message User Image">
-                                    <!-- /.direct-chat-img -->
-                                    <div class="direct-chat-text">
-                                        You better believe it!
-                                    </div>
-                                    <!-- /.direct-chat-text -->
+                                        src="http://localhost/sistemas/omegahelp/views/painel/dist/img/aro-logo.png"
+                                        alt="Suporte">
+                                    <div class="direct-chat-text">Olá, breve irei lhe atender. Por favor aguarde um
+                                        momento.</div>
                                 </div>
                             </div>
                         </div>
                         <!--/.direct-chat-messages-->
-
+                        <!-- Conversations are loaded here -->
+                        <div class="direct-chat-contacts">
+                            <div id="smiles"></div>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
@@ -271,10 +310,20 @@
                                     name="{$usuario.USU_nome}" placeholder="Digite a mensagem..." class="form-control"
                                     img="{$imagem}">
                                 <span class="input-group-append">
+                                    <button type="button" class="btn btn-outline-warning" title="Smiles"
+                                        data-widget="chat-pane-toggle">
+                                        <i class="fas fa-smile"></i>
+                                    </button>
+                                </span>
+
+                                <span class="input-group-append">
                                     <button type="submit" class="btn btn-warning">
                                         <i class="fas fa-paper-plane"></i>
                                     </button>
                                 </span>
+
+
+
                             </div>
                         </form>
                     </div>
@@ -297,7 +346,20 @@
         <i id='chatbuttom' class="fas fa-comments bg-yellow "></i>
 
         <textarea id="campos" style="display: none;">{$campos}</textarea>
-        <script type="text/javascript">
+        <script src="{$_pgParams.path_layout}dist/js/twemoji.min.js" crossorigin="anonymous"></script>
+        <script src="{$_pgParams.path_layout}dist/js/DisMojiPicker.js"></script>
+
+        <script>
+            $("#smiles").disMojiPicker()
+
+            $("#smiles").picker(emoji => $("#chat-mensagem").val($("#chat-mensagem").val() + emoji));
+            twemoji.parse(document.body);
+
+
+            var d = new Date();
+            dataHora = (d.toLocaleString());
+            $(".direct-chat-timestamp").html(dataHora);
+
             $("#chatContainer").hide();
             $("#chatbuttom").click(function() {
                 $("#chatContainer").show(200);
