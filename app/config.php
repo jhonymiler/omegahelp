@@ -3,7 +3,7 @@
 define('DS', DIRECTORY_SEPARATOR); // para não dar conflito em sistemas que não são windows
 define('RAIZ', realpath(dirname(dirname(__FILE__))).DS); //diretório RAIZ da aplicação
 //define('BASE_URL', 'http://localhost/sistemas/omegahelp/'); // url para postagens
-define('BASE_URL', 'http://omegahelp.pagekite.me/'); // url para postagens
+define('BASE_URL', 'http://omegahelp.aro/'); // url para postagens
 define('CONTROLE_PATRAO', 'index'); //controlador padão da aplicação
 define('DEFAOULT_LAYOUT', 'painel'); // template padrão
 define('TIME', 10); //Tempomáximo de acesso STANDBY em minutos
