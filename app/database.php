@@ -308,7 +308,7 @@ class Database
         // seleciona os verdadeiros nomes das colunas
         if (preg_match('/^[a-zA-Z0-9_]+$/', $this->tabela)) {
             $query = mysqli_query($this->conexao, "SELECT * FROM ".$this->tabela);
-            $num_fields = mysqli_num_fields($query);
+            //$num_fields = mysqli_num_fields($query);
             while ($fields = mysqli_fetch_field($query)) {
                 array_push($this->nomesReais, $fields->name);
             }

@@ -70,7 +70,7 @@ class Data
         }
         
         $this->data 	    		= $this->dia.'/'.$this->mes.'/'.$this->ano;
-        $this->nomediadasemana 	= $this->diasdasemana[$this->semana];
+        $this->nomediadasemana 	    = $this->diasdasemana[$this->semana];
         $this->nomedomes 			= $this->meses[$this->mes];
         $this->por_extenso			= $this->nomediadasemana.', '.$this->dia.' de '.$this->nomedomes.' de '.$this->ano;
         $this->por_extenso_curta	= substr($this->nomediadasemana, 0, 3).', '.$this->dia.'/'.substr($this->nomedomes, 0, 3).'/'.$this->ano;

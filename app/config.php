@@ -12,6 +12,7 @@ define('APP_NOME', 'ARO HELP'); // template padrão
 define('APP_SLOGAN', 'Sistema de ajuda'); // template padrão
 define('APP_COMPANIA', 'JM SOLUTIONS'); // template padrão
 define('APP_PATH', RAIZ.'app'.DS);
+define('UPLOAD', RAIZ.'upload');
 
 
 try {

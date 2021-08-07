@@ -1922,6 +1922,7 @@ class Upload
             'application/x-gzip',
             'application/x-latex',
             'application/x-midi',
+            'text/xml',
             'application/xml',
             'application/x-msexcel',
             'application/x-rar',
@@ -1941,7 +1942,6 @@ class Upload
             'text/plain',
             'text/rtf',
             'text/richtext',
-            'text/xml',
             'video/*',
             'text/csv',
             'text/x-c',
@@ -1966,6 +1966,7 @@ class Upload
             'json' => 'application/json',
             'tiff' => 'image/tiff',
             'css' => 'text/css',
+            'xml' => 'text/xml',
             'xml' => 'application/xml',
             'doc' => 'application/msword',
             'xls' => 'application/vnd.ms-excel',
@@ -3223,21 +3224,24 @@ class Upload
                 if ($this->file_force_extension && empty($file_src_name_ext)) {
                     if ($key = array_search($this->file_src_mime, $this->mime_types)) {
                         $file_src_name_ext = $key;
+                        
                         $file_src_name = $file_src_name_body . '.' . $file_src_name_ext;
                         $this->log .= '- file renamed as ' . $file_src_name_body . '.' . $file_src_name_ext . '!<br />';
                     }
                 }
+                
                 // if the file is text based, or has a dangerous extension, we rename it as .txt
-                if ((((substr($this->file_src_mime, 0, 5) == 'text/' && $this->file_src_mime != 'text/rtf') || strpos($this->file_src_mime, 'javascript') !== false)  && (substr($file_src_name, -4) != '.txt'))
+                if ((((substr($this->file_src_mime, 0, 5) == 'text/' && $this->file_src_mime != 'text/rtf' && $this->file_src_mime != 'text/xml')  || strpos($this->file_src_mime, 'javascript') !== false)  && (substr($file_src_name, -4) != '.txt'))
                     || preg_match('/\.(' . implode('|', $this->blacklist) . ')$/i', $this->file_src_name)
                     || $this->file_force_extension && empty($file_src_name_ext)) {
                     $this->file_src_mime = 'text/plain';
                     if ($this->file_src_name_ext) {
                         $file_src_name_body = $file_src_name_body . '.' . $this->file_src_name_ext;
+                    } else {
+                        $file_src_name_ext = 'txt';
+                        $file_src_name = $file_src_name_body . '.' . $file_src_name_ext;
+                        $this->log .= '- script renamed as ' . $file_src_name_body . '.' . $file_src_name_ext . '!<br />';
                     }
-                    $file_src_name_ext = 'txt';
-                    $file_src_name = $file_src_name_body . '.' . $file_src_name_ext;
-                    $this->log .= '- script renamed as ' . $file_src_name_body . '.' . $file_src_name_ext . '!<br />';
                 }
             }
 
@@ -4881,7 +4885,7 @@ class Upload
                                             $filter,
                                             $this->image_text_font,
                                             $k * ($line_width  + ($k > 0 && $k < (sizeof($text)) ? $this->image_text_line_spacing : 0)),
-                                            $text_height - (2 * $this->image_text_padding_y) - ($this->image_text_alignment == 'l' ? 0 : (($t_height - strlen($v) * $char_width) / ($this->image_text_alignment == 'r' ? 1 : 2))) ,
+                                            $text_height - (2 * $this->image_text_padding_y) - ($this->image_text_alignment == 'l' ? 0 : (($t_height - strlen($v) * $char_width) / ($this->image_text_alignment == 'r' ? 1 : 2))),
                                             $v,
                                             $text_color
                                         );

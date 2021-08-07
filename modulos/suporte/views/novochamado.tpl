@@ -8,29 +8,28 @@
         <div class="card-body">
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label>Assunto</label>
+                    <label>Digite uma pergunta</label>
                     <input autocomplete="off" name="CHA_assunto" id="CHA_assunto" class="form-control">
                 </div>
                 <div class="form-group  col-md-6">
-                    <label>Departamento</label>
-                    <select name="DEP_id" id="DEP_id" class="form-control select2" style="width: 100%;">
-                        <option selected="selected">Alabama</option>
-                        <option>Alaska</option>
-                        <option>California</option>
-                        <option>Delaware</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Washington</option>
+                    <label>Em qual parte do sistema?</label>
+                    <select name="TIP_id" id="TIP_id" class="form-control  select2" style="width: 100%;">
+                        <option value="">Escolha um tipo</option>
+                        {if is_array($tipos) && isset($tipos)}
+                            {foreach from=$tipos item="tipo"}
+                                <option value="{$tipo.TIP_id}">{$tipo.TIP_tipo}</option>
+                            {/foreach}
+                        {/if}
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Mensagem</label>
-                <textarea rows="5" id="CHA_mensagem" class="form-control" name="CHA_mensagem"></textarea>
+                <label for="exampleInputPassword1">Nos dê mais detalhes do ocorrido.</label>
+                <textarea rows="5" id="CHA_texto" class="form-control" name="CHA_texto"></textarea>
 
             </div>
             <div class="form-group">
-                <label>Upload de arquivos</label>
+                <label>Envie-nos prints ou arquivos que demonstrem seu problema.</label>
                 <div class="file-loading">
                     <input id="file-pt-BR" name="files[]" type="file" multiple>
                 </div>
@@ -49,8 +48,16 @@
 
 <script src="{$_pgParams.path_layout}plugins/inputfile/js/theme.js" type="text/javascript"></script>
 <script>
+    $("#arquivos").submit(function() {
+        return validacao();
+    });
+
+
+    $('#TIP_id').select2();
+
     $(document).ready(function() {
-        $('#DEP_id').select2();
+
+
 
         $('#file-pt-BR').fileinput({
             theme: 'fas',
@@ -72,14 +79,13 @@
         });
 
         $('#arquivos').on('paste', function(eventObj) {
-            $('#file-pt-BR').fileinput('paste', eventObj); // copies files or images data in clipboard
+            $('#file-pt-BR').fileinput('paste',
+                eventObj); // copies files or images data in clipboard
         });
     });
-</script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#CHA_mensagem'), {
 
+    ClassicEditor
+        .create(document.querySelector('#CHA_texto'), {
             toolbar: {
                 items: [
                     'heading',
@@ -112,16 +118,9 @@
                 ]
             },
             licenseKey: '',
-
-
-
         })
         .then(editor => {
             window.editor = editor;
-
-
-
-
         })
         .catch(error => {
             console.error('Oops, something went wrong!');
@@ -131,4 +130,57 @@
             console.warn('Build id: 8gu4f69zasvi-1abbksipscam');
             console.error(error);
         });
+
+    function validacao() {
+        var valid = true;
+        var valida = unserialize($("#arquivos").serialize());
+        var msg = '';
+
+        if (valida.CHA_assunto == '') {
+            valid = false;
+            $("#CHA_assunto").attr('style', 'border:1px solid red;');
+        } else {
+            $("#CHA_assunto").removeAttr('style');
+        }
+
+        //alert(valida.TIP_id)
+        if (valida.TIP_id == '') {
+            valid = false;
+            $(".selection>span").attr('style', 'border:1px solid red;');
+
+        } else {
+            $(".selection>span").removeAttr('style');
+        }
+        if (valida.CHA_texto == '') {
+            valid = false;
+
+            $(".ck-editor").attr('style', 'border:1px solid red;');
+        } else {
+            $(".ck-editor").removeAttr('style');
+        }
+        if (valid == false) {
+            $(document).Toasts('create', {
+                toast: true,
+                delay: 5000,
+                class: 'bg-danger',
+                position: 'topRight',
+                autohide: true,
+                fade: true,
+                title: 'Erro!',
+                body: 'Os campos em vermelho são obrigatórios. Por favor preencha-os.'
+            });
+        }
+
+        return valid;
+    }
+
+    function unserialize(data) {
+        data = data.split('&');
+        var response = {};
+        for (var k in data) {
+            var newData = data[k].split('=');
+            response[newData[0]] = newData[1];
+        }
+        return response;
+    }
 </script>

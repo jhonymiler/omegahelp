@@ -23,9 +23,9 @@ class chamadosControle extends suporteControle
             $this->redir('login');
             exit();
         }
-        //$this->_db->_setTabela('chamados');
+        $this->_db->_setTabela('chamados');
         $this->_view->addNavLink('suporte/chamados', 'Chamados');
-        //$this->chamados = $this->loadModulo('suporte', 'chamados');
+        $this->chamados = $this->loadModulo('suporte', 'chamados');
     }
 
     
@@ -42,19 +42,14 @@ class chamadosControle extends suporteControle
     
     public function novo()
     {
-        $post = $this->POST();
-        
-        
+        $tipos = $this->chamados->listaTipos();
+        $this->_view->assign('tipos', $tipos);
+                  
         if ($this->POST()) {
-            echo "<pre>";
-            print_r($post);
-            print_r($_FILES);
-            echo "</pre>";
-            exit();
-
-            if (is_array($this->chamados->load($this->POST()))) {
+            if (is_array($this->chamados->load($this->POST(), $_FILES))) {
                 if ($this->_db->_grava()) {
                     $this->_view->addMsg('sucesso', 'Chamado gravado com Sucesso');
+                    $this->index();
                 } else {
                     $this->_view->addMsg('erro', 'Chamado não pode ser gravado.');
                 }

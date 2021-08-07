@@ -3,6 +3,7 @@
 class Modulo
 {
     protected $_db;
+    protected $_data;
 
 
     // constroi conexao
@@ -10,17 +11,10 @@ class Modulo
     {
         $this->_registro = Registro::getInstancia();
         $this->_db = $this->_registro->_db;
+        $this->getLibs('data.class');
+        $this->_data = Data::getData();
     }
-    /*
-        Exemplo:
-        $array = array(
-            array('id'=>1,"nome"=>"Fulano","sobrenome"=>"Da silva"),
-            array('id'=>1,"nome"=>"Ciclano","sobrenome"=>"Da Costa"),
-        );
-        $this->array_orderby($array, 'nome', SORT_DESC);
-
-    */
-
+    
     public function array_orderby()
     {
         $args = func_get_args();
@@ -53,5 +47,64 @@ bsaaaaaaacceeeeiiiidnoooooouuuyybyRr-es----------- (-)';
         $string = preg_replace('/-+/', '-', $string);
 
         return utf8_encode($string);
+    }
+
+    // CARREGA AS LIVRARIAS LIBS
+    protected function getLibs($libs)
+    {
+        $pathLibs = RAIZ.'lbs'.DS.'classes'.DS.$libs.'.php';
+    
+        if (is_readable($pathLibs)) {
+            require_once $pathLibs;
+        } else {
+            throw new Exception('ERRO ao carregar a livraria, LIBS');
+        }
+    }
+
+    protected function upload($arquivos)
+    {
+        $this->getLibs('upload'); // Chama a classe upload
+        $files = array();
+        $files_name = array();
+
+
+        foreach ($arquivos['files']['name'] as $key => $value) {
+            if (!empty($_FILES['files']['name'][$key])) {
+                $name  = $_FILES['files']['name'][$key];
+                $type  = $_FILES['files']['type'][$key];
+                $tmp   = $_FILES['files']['tmp_name'][$key];
+                $error = $_FILES['files']['error'][$key];
+                $size  = $_FILES['files']['size'][$key];
+                $files[] = [
+                      'name'     => $name
+                    , 'type'     => $type
+                    , 'tmp_name' => $tmp
+                    , 'error'    => $error
+                    , 'size'     => $size
+                ];
+            }
+        }
+
+       
+        foreach ($files as $file) {
+            $up = new upload($file, 'pt_BR');
+            if ($up->uploaded) {
+                $d = new DateTime('NOW');
+                $up->file_new_name_body = $this->slug($up->file_src_name_body).'_'.$d->format('u');
+               
+                $up->process(UPLOAD);
+                if ($up->processed) {
+                    echo 'image done';
+                    $files_name[] = $up->file_dst_name;
+                    $up->clean();
+                } else {
+                    echo 'error : ' . $up->error;
+                }
+            } else {
+                echo '<h1>IMAGE NOT UPLOADED</H1>';
+            }
+        }
+
+        return $files_name;
     }
 }

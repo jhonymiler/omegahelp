@@ -21,9 +21,6 @@ abstract class controlador
         if (Sessao::get('user')) {
             $this->_view->assign('user', Sessao::get('user'));
         }
-        $this->getLibs('classes/data.class');
-        $this->_data = Data::getData();
-        $this->_view->assign('data', get_object_vars($this->_data));
     }
 
     abstract public function index();
@@ -53,17 +50,7 @@ abstract class controlador
         }
     }
 
-    // CARREGA AS LIVRARIAS LIBS
-    protected function getLibs($libs)
-    {
-        $pathLibs = RAIZ.'lbs'.DS.$libs.'.php';
     
-        if (is_readable($pathLibs)) {
-            require_once $pathLibs;
-        } else {
-            throw new Exception('ERRO ao carregar a livraria, LIBS');
-        }
-    }
     // PEGA UM TEXTO EM UM POST E TRATA
     protected function POST($clave=false)
     {
