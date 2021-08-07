@@ -26,7 +26,8 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Mensagem</label>
-                <textarea class="form-control" name="CHA_mensagem"></textarea>
+                <textarea rows="5" id="CHA_mensagem" class="form-control" name="CHA_mensagem"></textarea>
+
             </div>
             <div class="form-group">
                 <label>Upload de arquivos</label>
@@ -44,6 +45,8 @@
 <script src="{$_pgParams.path_layout}plugins/select2/js/select2.full.min.js"></script>
 <script src="{$_pgParams.path_layout}plugins/inputfile/js/fileinput.js" type="text/javascript"></script>
 <script src="{$_pgParams.path_layout}plugins/inputfile/js/pt-BR.js" type="text/javascript"></script>
+<script src="{$_pgParams.path_layout}plugins/ckeditor/build/ckeditor.js"></script>
+
 <script src="{$_pgParams.path_layout}plugins/inputfile/js/theme.js" type="text/javascript"></script>
 <script>
     $(document).ready(function() {
@@ -72,4 +75,60 @@
             $('#file-pt-BR').fileinput('paste', eventObj); // copies files or images data in clipboard
         });
     });
+</script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#CHA_mensagem'), {
+
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|'
+                ]
+            },
+            language: 'pt-br',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:inline',
+                    'imageStyle:block',
+                    'imageStyle:side'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells'
+                ]
+            },
+            licenseKey: '',
+
+
+
+        })
+        .then(editor => {
+            window.editor = editor;
+
+
+
+
+        })
+        .catch(error => {
+            console.error('Oops, something went wrong!');
+            console.error(
+                'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+            );
+            console.warn('Build id: 8gu4f69zasvi-1abbksipscam');
+            console.error(error);
+        });
 </script>

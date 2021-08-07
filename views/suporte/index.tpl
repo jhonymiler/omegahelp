@@ -36,6 +36,7 @@
 
         <link href="{$_pgParams.path_layout}dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/adminlte.css">
+        <link rel="stylesheet" type="text/css" href="{$_pgParams.path_layout}plugins/ckeditor/examples/styles.css">
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/custom.css">
 
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/cropper.css">

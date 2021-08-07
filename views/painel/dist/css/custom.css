@@ -68,8 +68,9 @@ label.error {
 #chatContainer {
     position: fixed;
     right: 0.1em;
-    bottom: 2em;
+    bottom: 0em;
     z-index: 999;
+    display: none;
 }
 
 .direct-chat-msg {
