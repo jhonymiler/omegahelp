@@ -7,7 +7,6 @@
 require_once 'app/config.php';
 
 
-
 try {
     Sessao::init();
     
