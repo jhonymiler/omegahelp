@@ -1,8 +1,8 @@
 <?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Classe para tickets (chamados)
+ * Trabalha as páginas para exibição ao usuário
  */
 
 /**
@@ -35,7 +35,6 @@ class chamadosControle extends suporteControle
 
         $this->_view->addNavLink('usuarios', 'Painel de Usuários');
         $this->_view->assign('current_link', 'chamados');
-
         $this->_view->addConteudo('home');
         $this->_view->renderizar();
     }

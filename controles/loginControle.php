@@ -41,7 +41,7 @@ class loginControle extends Controlador
         Sessao::set('autenticado', false);
 
         if (!$this->POST('email')) {
-            $this->_view->assign('_error', 'Digite um nome de Usuário');
+            $assign = $this->_view->assign('_error', 'Digite um nome de Usuário');
         } elseif (!$this->POST('senha')) {
             $this->_view->assign('_error', 'Digite uma senha');
         } else {

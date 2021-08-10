@@ -6,7 +6,7 @@ class Ferramentas
      *  PROCESSA A NOVA REQUISIÇÃO
      *
      * requisição qualquer passada para processamento
-     * @param request $x
+     * @param request $peticion
      */
     public static function rodar(Requisicao $peticion)
     {

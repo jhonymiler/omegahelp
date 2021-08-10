@@ -19,7 +19,7 @@ class suporteControle extends Controlador
         if (!Sessao::get('autenticado')) {
             $this->redir('login');
             exit();
-        } elseif (Sessao::get('USU_nivel') > 0) {
+        } elseif (Sessao::get('user')['USU_nivel'] > 0) {
             $this->redir('painel');
             exit();
         }
