@@ -60,6 +60,38 @@ class Sessao
             Session::set('tempo', time());
         }
     }
+    
+    public static function addMsg($tipo='sucesso',$msg='') {
+        $status = '';
+        switch ($status) {
+            case 'erro':
+                $status = 'bg-danger';
+                break;
+            case 'sucesso':
+                $status = 'bg-success';
+                break;
+            case 'alerta':
+                $status = 'bg-warning';
+                break;
+            case 'info':
+                $status = 'bg-info';
+                break;
+            default:
+                $status = 'bg-info';
+                break;
+        }
+        
+        $_SESSION['msg'][] = array(
+            'tipo'=>$status,
+            'msg'=>$msg
+         );
+    }
+    
+    public static function getMsg($limpa=true) {
+        $msg = $_SESSION['msg'];
+        if($limpa===true) unset($_SESSION['msg']);
+        return $msg;
+    }
 
     /**
      * destroi uma ou todas as sessões

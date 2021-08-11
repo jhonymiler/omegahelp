@@ -163,7 +163,7 @@
                                 <th><input id="select-all" type="checkbox"></th>
                                 <th>Informações</th>
                                 <th>Contato</th>
-                                <th>Chamados</th>
+                                <th>Protocolos</th>
                                 <th>Ordens de Serviço</th>
                                 <th></th>
                             </tr>

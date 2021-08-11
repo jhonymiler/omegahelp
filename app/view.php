@@ -144,19 +144,5 @@ class View extends Smarty
         }
     }
 
-    public function addMsg($status, $msg)
-    {
-        switch ($status) {
-            case 'erro':
-                $status = 'bg-danger';
-                break;
-            case 'sucesso':
-                $status = 'bg-success';
-                break;
-            case 'info':
-                $status = 'bg-info';
-                break;
-        }
-        $this->_msg[][$status] = $msg;
-    }
+   
 }

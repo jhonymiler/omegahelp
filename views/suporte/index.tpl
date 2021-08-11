@@ -102,7 +102,7 @@
                                 <span class="dropdown-header">Notificações</span>
                                 <div class="dropdown-divider"></div>
                                 <a href="#" class="dropdown-item">
-                                    <i class="fas fa-envelope mr-2"></i> 2 Chamados Abertos
+                                    <i class="fas fa-envelope mr-2"></i> 2 Protocolos Abertos
                                     <span class="float-right text-muted text-sm">1 Dia</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
@@ -111,7 +111,7 @@
                                     <span class="float-right text-muted text-sm">3 Min</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item dropdown-footer">Ver Todos Chamados</a>
+                                <a href="#" class="dropdown-item dropdown-footer">Ver Todos Protocolos</a>
                             </div>
                         </li>
 
@@ -179,7 +179,7 @@
                                                 <div class="description-block">
                                                     <h5 class="description-header"><span class="badge bg-info">4</span>
                                                     </h5>
-                                                    <span style="font-size:12px;">Chamados</span>
+                                                    <span style="font-size:12px;">Protocolos</span>
                                                 </div>
                                                 <!-- /.description-block -->
                                             </div>
@@ -218,13 +218,13 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="{$_pgParams.RAIZ}suporte/chamados/novo" class="nav-link">
-                                                    Novo Chamado
+                                                <a href="{$_pgParams.RAIZ}suporte/protocolos/novo" class="nav-link">
+                                                    Novo Protocolo
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="{$_pgParams.RAIZ}suporte/chamados/" class="nav-link">
-                                                    Meus Chamados
+                                                <a href="{$_pgParams.RAIZ}suporte/protocolos/" class="nav-link">
+                                                    Meus Protocolos
                                                 </a>
                                             </li>
                                         </ul>
@@ -378,7 +378,7 @@
                     scrollTop: $("#ChatMensagens").prop("scrollHeight")
                 }, 500);
 
-                {if is_array($msg)}
+                {if is_array($msg = Sessao::getMesg())}
                     {foreach item=mensagem from=$msg}
                         {foreach key=status item=m from=$mensagem}
                             $(document).Toasts('create', {

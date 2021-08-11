@@ -1,6 +1,6 @@
         <!-- =========================================================== -->
-        <h5 class="mt-4 mb-2">Chamados</h5>
-        <div class="row" id="home-chamados">
+        <h5 class="mt-4 mb-2">Protocolos</h5>
+        <div class="row" id="home-protocolos">
             <div class="col-md-3 col-sm-6 col-12">
                 <div class="info-box bg-info">
                     <span class="info-box-icon"><i class="fas fa-ticket-alt"></i></span>
@@ -88,7 +88,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Chamados X Ordens de Serviço</h5>
+                        <h5 class="card-title">Protocolos X Ordens de Serviço</h5>
 
                     </div>
                     <!-- /.card-header -->
@@ -108,7 +108,7 @@
                             <!-- /.col -->
                             <div class="col-md-4">
                                 <p class="text-center">
-                                    <strong>Tipos de Chamados</strong>
+                                    <strong>Tipos de Protocolos</strong>
                                 </p>
 
                                 <div class="progress-group">

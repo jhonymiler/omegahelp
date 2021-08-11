@@ -6,28 +6,31 @@
  */
 
 /**
- * Description of chamadosModulo
+ * Description of protocolosModulo
  *
  * @author Jonatas
  */
-class chamadosModulo extends Modulo
+class protocolosModulo extends Modulo
 {
    
     //put your code here
     public $erro;
 
-    private $tabela = 'chamados';
+    private $tabela = 'protocolos';
     private $usuario;
     private $tipos;
     private $respostas;
     private $empresa = array();
+    
+    private $novoProtocolo;
+    private $arquivos=array();
 
     public function __construct()
     {
         parent::__construct();
     }
 
-    //Lista todos Chamados deste usuário
+    //Lista todos Protocolos deste usuário
     public function lista()
     {
         $this->_db->_setTabela($this->tabela);
@@ -37,7 +40,7 @@ class chamadosModulo extends Modulo
 
     public function listaTipos()
     {
-        $this->_db->_setTabela('tipoChamados');
+        $this->_db->_setTabela('tipoProtocolos');
         $this->tipos = $this->_db->_select();
         return is_array($this->tipos)? $this->tipos : false;
     }
@@ -54,23 +57,36 @@ class chamadosModulo extends Modulo
     }
     public function load($campos, $arquivos)
     {
-        $this->_db->_setTabela('chamados');
+        $this->_db->_setTabela('protocolos');
 
-        $c = array(
+        $this->$novoProtocolo = array(
             'CHA_assunto'=>$campos['CHA_assunto'],
             'CHA_texto'=>$campos['CHA_texto'],
-            'CHA_tipo'=>$campos['CHA_tipo'],
-            'CHA_prioridade'=>$campos[''],
-            'CHA_aberto'=>$campos[''],
-            'CHA_alterado'=>$campos[''],
-            'CHA_fechado'=>$campos[''],
-            'USU_id'=>$campos['']
+            'TIP_id'=>$campos['TIP_id'],
+//            'CHA_prioridade'=>$campos[''],
+//            'CHA_aberto'=>$campos[''],
+//            'CHA_alterado'=>$campos[''],
+//            'CHA_fechado'=>$campos[''],
+            'USU_id'=>Sessao::get('user')['USU_id']
         );
-        $this->_db->_load();
+        
+        
+        // Realiza upload dos arquivos
         if (isset($arquivos['files']['name']) && is_array($arquivos['files']['name'])) {
-            $arq = $this->upload($arquivos);
+            $this->arquivos = $this->upload($arquivos);
         }
+        
+        
     }
+    
+    
+    
+    public function grava(){
+        $this->_db->_setTabela($this->tabela); // seta a tabela protocolos
+        $this->_db->_load($this->novoProtocolo);
+        return $this->_db->_grava();
+    }
+    
     public function atualiza($id)
     {
         return $this->_db->_atualiza('EMP_id', $id);

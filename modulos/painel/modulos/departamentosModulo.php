@@ -32,7 +32,7 @@ class departamentosModulo extends Modulo
     {
         return $this->_db->_select();
     }
-    public function getCLienteID($id)
+    public function getDepartamentoID($id)
     {
         $this->departamento =  $this->_db->_select('DEP_id', $id);
         return $this->departamento;

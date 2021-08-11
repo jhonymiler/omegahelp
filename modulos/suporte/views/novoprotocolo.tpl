@@ -1,14 +1,14 @@
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Cadastro de Chamados</h3>
+        <h3 class="card-title">{$titulo}</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form id="arquivos" action='{$_pgParams.RAIZ}suporte/chamados/novo' method="post" enctype="multipart/form-data">
+    <form id="arquivos" action='{$_pgParams.RAIZ}suporte/protocolos/novo' method="post" enctype="multipart/form-data">
         <div class="card-body">
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label>Digite uma pergunta</label>
+                    <label>Qual a Ocorrência?</label>
                     <input autocomplete="off" name="CHA_assunto" id="CHA_assunto" class="form-control">
                 </div>
                 <div class="form-group  col-md-6">
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Nos dê mais detalhes do ocorrido.</label>
+                <label for="CHA_texto">Nos dê mais detalhes do ocorrido.</label>
                 <textarea rows="5" id="CHA_texto" class="form-control" name="CHA_texto"></textarea>
 
             </div>

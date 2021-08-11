@@ -41,7 +41,7 @@
                             <th><input id="select-all" type="checkbox"></th>
                             <th>Nome</th>
                             <th>Empresa</th>
-                            <th>Chamados</th>
+                            <th>Protocolos</th>
                             <th>Ordens de Serviço</th>
                             <th></th>
                         </tr>

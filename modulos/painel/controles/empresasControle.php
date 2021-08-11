@@ -49,9 +49,9 @@ class empresasControle extends painelControle
         if ($this->POST()) {
             if (is_array($this->empresa->load($this->POST()))) {
                 if ($this->_db->_grava()) {
-                    $this->_view->addMsg('sucesso', 'Empresa gravada com Sucesso');
+                    Sessao::addMsg('sucesso', 'Empresa gravada com Sucesso');
                 } else {
-                    $this->_view->addMsg('erro', 'Empresa não pode ser gravada.');
+                    Sessao::addMsg('erro', 'Empresa não pode ser gravada.');
                 }
             }
         }
@@ -64,9 +64,9 @@ class empresasControle extends painelControle
         if ($this->POST()) {
             $this->empresa->load($this->POST());
             if ($this->empresa->atualiza($id)) {
-                $this->_view->addMsg('sucesso', 'Empresa atualizado com Sucesso');
+                Sessao::addMsg('sucesso', 'Empresa atualizado com Sucesso');
             } else {
-                $this->_view->addMsg('erro', 'Não foi possível atualizar esta empresa.');
+                Sessao::addMsg('erro', 'Não foi possível atualizar esta empresa.');
             }
             $this->_view->assign('campos', json_encode($this->POST()));
         }
@@ -77,7 +77,7 @@ class empresasControle extends painelControle
             $this->_view->assign('empresa', $cli[0]);
             $this->_view->assign('campos', json_encode($cli[0]));
         } else {
-            $this->_view->addMsg('erro', 'Empresa não existe!');
+            Sessao::addMsg('erro', 'Empresa não existe!');
 
             $this->_view->assign('formAction', BASE_URL.'painel/empresas/editar');
         }
@@ -94,15 +94,15 @@ class empresasControle extends painelControle
     {
         if (is_numeric($id)) {
             if ($this->empresa->excluir($id)) {
-                $this->_view->addMsg('sucesso', 'Empresa excluido com Sucesso');
+                Sessao::addMsg('sucesso', 'Empresa excluido com Sucesso');
             } else {
-                $this->_view->addMsg('erro', 'Não foi possível excluir esta Empresa.');
+                Sessao::addMsg('erro', 'Não foi possível excluir esta Empresa.');
             }
         } elseif ($this->POST()) {
             if ($this->empresa->excluir($this->POST('selAll'))) {
-                $this->_view->addMsg('sucesso', 'Todas as Empresas selecionadas foram excluidas.');
+                Sessao::addMsg('sucesso', 'Todas as Empresas selecionadas foram excluidas.');
             } else {
-                $this->_view->addMsg('erro', 'Não foi possível excluir esta Empresa.');
+                Sessao::addMsg('erro', 'Não foi possível excluir esta Empresa.');
             }
         }
         $this->index();

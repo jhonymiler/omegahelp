@@ -4,7 +4,7 @@
         <h3 class="card-title float-left">Lista de Chamdos</h3>
         <!-- Check all button -->
         <div class="btn-group float-right">
-            <a type="button" href="{$_pgParams.RAIZ}suporte/chamados/novo" class="btn btn-block bg-gradient-success ">
+            <a type="button" href="{$_pgParams.RAIZ}suporte/protocolos/novo" class="btn btn-block bg-gradient-success ">
                 <i class="fas fa-plus"></i>
                 Novo
             </a>
@@ -12,7 +12,7 @@
     </div>
     <!-- ./card-header -->
     <div class="card-body">
-        <table id="chamados-lista" class="table table-bordered table-hover">
+        <table id="protocolos-lista" class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>#</th>
@@ -124,7 +124,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#chamados-lista').DataTable({
+        $('#protocolos-lista').DataTable({
             "paging": true,
             "lengthChange": false,
             "searching": false,

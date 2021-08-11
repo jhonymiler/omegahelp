@@ -55,10 +55,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{$_pgParams.RAIZ}painel/chamados" data-link="chamados" class="nav-link">
+                    <a href="{$_pgParams.RAIZ}painel/protocolos" data-link="protocolos" class="nav-link">
                         <i class="nav-icon fas fa-ticket-alt"></i>
                         <p>
-                            Chamados
+                            Protocolos
                         </p>
                     </a>
                 </li>

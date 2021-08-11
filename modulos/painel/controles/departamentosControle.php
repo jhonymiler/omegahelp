@@ -49,9 +49,9 @@ class departamentosControle extends painelControle
         if ($this->POST()) {
             if (is_array($this->departamento->load($this->POST()))) {
                 if ($this->_db->_grava()) {
-                    $this->_view->addMsg('sucesso', 'Departamento gravado com Sucesso');
+                    Sessao::addMsg('sucesso', 'Departamento gravado com Sucesso');
                 } else {
-                    $this->_view->addMsg('erro', 'Departamento não pode ser gravado.');
+                    Sessao::addMsg('erro', 'Departamento não pode ser gravado.');
                 }
             }
         }
@@ -64,20 +64,20 @@ class departamentosControle extends painelControle
         if ($this->POST()) {
             $this->departamento->load($this->POST());
             if ($this->departamento->atualiza($id)) {
-                $this->_view->addMsg('sucesso', 'Departamento atualizado com Sucesso');
+                Sessao::addMsg('sucesso', 'Departamento atualizado com Sucesso');
             } else {
-                $this->_view->addMsg('erro', 'Não foi possível atualizar este Departamento.');
+                Sessao::addMsg('erro', 'Não foi possível atualizar este Departamento.');
             }
             $this->_view->assign('campos', json_encode($this->POST()));
         }
 
-        if ($cli = $this->departamento->getDepartamentoID($id)) {
-            $this->_view->assign('titulo', 'Editando departamento:'.$cli[0]['CLI_fantazia']);
-            $this->_view->assign('formAction', BASE_URL.'painel/departamentos/editar/'.$cli[0]['CLI_id']);
-            $this->_view->assign('Departamento', $cli[0]);
-            $this->_view->assign('campos', json_encode($cli[0]));
+        if ($dep = $this->departamento->getDepartamentoID($id)) {
+            $this->_view->assign('titulo', 'Editando departamento:'.$dep[0]['DEP_titulo']);
+            $this->_view->assign('formAction', BASE_URL.'painel/departamentos/editar/'.$dep[0]['DEP_id']);
+            $this->_view->assign('Departamento', $dep[0]);
+            $this->_view->assign('campos', json_encode($dep[0]));
         } else {
-            $this->_view->addMsg('erro', 'Departamento não existe!');
+            Sessao::addMsg('erro', 'Departamento não existe!');
 
             $this->_view->assign('formAction', BASE_URL.'painel/departamentos/editar');
         }
@@ -94,15 +94,15 @@ class departamentosControle extends painelControle
     {
         if (is_numeric($id)) {
             if ($this->departamento->excluir($id)) {
-                $this->_view->addMsg('sucesso', 'Departamento excluido com Sucesso');
+                Sessao::addMsg('sucesso', 'Departamento excluido com Sucesso');
             } else {
-                $this->_view->addMsg('erro', 'Não foi possível excluir este Departamento.');
+                Sessao::addMsg('erro', 'Não foi possível excluir este Departamento.');
             }
         } elseif ($this->POST()) {
             if ($this->departamento->excluir($this->POST('selAll'))) {
-                $this->_view->addMsg('sucesso', 'Todos os departamentos selecionados foram excluidos.');
+                Sessao::addMsg('sucesso', 'Todos os departamentos selecionados foram excluidos.');
             } else {
-                $this->_view->addMsg('erro', 'Não foi possível excluir este Departamento.');
+                Sessao::addMsg('erro', 'Não foi possível excluir este Departamento.');
             }
         }
         $this->index();

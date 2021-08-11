@@ -64,9 +64,9 @@ class usuariosControle extends painelControle
             }
             
             if ($this->_user->_grava()) {
-                $this->_view->addMsg('sucesso', 'Usuário gravado com Sucesso');
+                Sessao::addMsg('sucesso', 'Usuário gravado com Sucesso');
             } else {
-                $this->_view->addMsg('erro', "Usuário não pode ser gravado.");
+                Sessao::addMsg('erro', "Usuário não pode ser gravado.");
             }
         }
         $this->index();
@@ -90,9 +90,9 @@ class usuariosControle extends painelControle
                     $this->_user->upImagem();
                 }
                 if ($this->_user->_atualiza($id)) {
-                    $this->_view->addMsg('sucesso', 'Usuário atualizado com Sucesso');
+                    Sessao::addMsg('sucesso', 'Usuário atualizado com Sucesso');
                 } else {
-                    $this->_view->addMsg('erro', 'Usuário não pode ser atualizado');
+                    Sessao::addMsg('erro', 'Usuário não pode ser atualizado');
                 }
                 $this->_view->assign('campos', json_encode($this->POST()));
             }
@@ -110,15 +110,15 @@ class usuariosControle extends painelControle
     {
         if (is_numeric($id)) {
             if ($this->_user->_excluir($id)) {
-                $this->_view->addMsg('sucesso', 'Usuário excluido com Sucesso');
+                Sessao::addMsg('sucesso', 'Usuário excluido com Sucesso');
             } else {
-                $this->_view->addMsg('erro', 'Usuário não pode ser excluído');
+                Sessao::addMsg('erro', 'Usuário não pode ser excluído');
             }
         } elseif ($this->POST()) {
             if ($this->_db->_query('DELETE FROM usuarios WHERE USU_id IN ('.$this->POST('selUser').')')) {
-                $this->_view->addMsg('sucesso', 'Todos os usuários selecionados foram excluidos.');
+                Sessao::addMsg('sucesso', 'Todos os usuários selecionados foram excluidos.');
             } else {
-                $this->_view->addMsg('erro', 'Os usuários não puderam ser excluídos');
+                Sessao::addMsg('erro', 'Os usuários não puderam ser excluídos');
             }
         }
         $this->index();

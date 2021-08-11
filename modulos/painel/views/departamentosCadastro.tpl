@@ -48,6 +48,12 @@
                     <div class="input-group input-group-mm">
                         <!-- Check all button -->
                         <div class="btn-group" style="margin-left: 10px;">
+                            <div class="btn-group">
+                                <a href="{$_pgParams.RAIZ}painel/departamentos/novo" type="button" class="btn btn-success" id="novo-cadastro">
+                                    <i class="fas fa-plus"></i>
+                                    Novo
+                                </a>
+                            </div>
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-danger">
                                 <i class="fas fa-trash"></i>
                                 Excluir Selecionados
@@ -82,7 +88,7 @@
                                             <td>
                                                 <div class="icheck-primary">
                                                     <input name="selAll[]" type="checkbox" class="check-table"
-                                                        value="{$departamentos.DEP_id}">
+                                                           value="{$departamentos.DEP_id}">
                                                 </div>
                                             </td>
                                             <td>
@@ -97,12 +103,12 @@
                                             </td>
                                             <td class="botao_tabela_edit_exclui">
                                                 <a href="{$_pgParams.RAIZ}painel/departamentos/editar/{$departamentos.DEP_id}"
-                                                    class="btn btn-default">
+                                                   class="btn btn-default">
                                                     <i class="fas fa-edit"></i>
 
                                                 </a>
                                                 <a href="{$_pgParams.RAIZ}painel/departamentos/excluir/{$departamentos.DEP_id}"
-                                                    class="btn btn-default">
+                                                   class="btn btn-default">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>
@@ -162,7 +168,8 @@
 
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
+        {literal}
         var table = $("#example1").DataTable({
             "language": pt_br,
             "responsive": true,
@@ -173,23 +180,24 @@
             "ordering": true,
             "rowReorder": true,
             "columnDefs": [
-                { orderable: false, className: 'reorder', targets: [0, -1] },
-                { orderable: true, targets: '_all' }
+                {orderable: false, className: 'reorder', targets: [0, -1]},
+                {orderable: true, targets: '_all'}
             ]
         });
+        {/literal}
         $("#example1_filter").hide();
 
-        $('#busca').on('keyup', function() {
+        $('#busca').on('keyup', function () {
             table.search(this.value).draw();
         });
 
 
-        $("#select-all").click(function() {
+        $("#select-all").click(function () {
             $('.check-table').prop('checked', this.checked);
         });
 
 
-        $("#deletarSelecionados").click(function() {
+        $("#deletarSelecionados").click(function () {
             $("#deleteAll").submit();
         });
 

@@ -94,14 +94,13 @@ bsaaaaaaacceeeeiiiidnoooooouuuyybyRr-es----------- (-)';
                
                 $up->process(UPLOAD);
                 if ($up->processed) {
-                    echo 'image done';
                     $files_name[] = $up->file_dst_name;
                     $up->clean();
                 } else {
-                    echo 'error : ' . $up->error;
+                    Sessao::addMsg('erro',$up->error);
                 }
             } else {
-                echo '<h1>IMAGE NOT UPLOADED</H1>';
+                Sessao::addMsg('sucesso','Arquivos gravados com sucesso!');
             }
         }
 
