@@ -71,11 +71,11 @@ class empresasControle extends painelControle
             $this->_view->assign('campos', json_encode($this->POST()));
         }
 
-        if ($cli = $this->empresa->getEmpresaID($id)) {
-            $this->_view->assign('titulo', 'Editando empresa:'.$cli[0]['EMP_fantazia']);
-            $this->_view->assign('formAction', BASE_URL.'painel/empresas/editar/'.$cli[0]['EMP_id']);
-            $this->_view->assign('empresa', $cli[0]);
-            $this->_view->assign('campos', json_encode($cli[0]));
+        if ($emp = $this->empresa->getEmpresaID($id)) {
+            $this->_view->assign('titulo', 'Editando empresa:'.$emp[0]['EMP_fantasia']);
+            $this->_view->assign('formAction', BASE_URL.'painel/empresas/editar/'.$emp[0]['EMP_id']);
+            $this->_view->assign('empresa', $emp[0]);
+            $this->_view->assign('campos', json_encode($emp[0]));
         } else {
             Sessao::addMsg('erro', 'Empresa não existe!');
 

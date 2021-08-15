@@ -32,7 +32,7 @@ class empresasModulo extends Modulo
     {
         return $this->_db->_select();
     }
-    public function getCLienteID($id)
+    public function getEmpresaID($id)
     {
         $this->empresa =  $this->_db->_select('EMP_id', $id);
         $endereco = explode(', ', $this->empresa[0]['EMP_endereco']);

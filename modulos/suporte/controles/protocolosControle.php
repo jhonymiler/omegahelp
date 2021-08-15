@@ -10,14 +10,14 @@
  *
  * @author Jonatas
  */
-class protocolosControle extends suporteControle
-{
+class protocolosControle extends suporteControle {
+
     //put your code here
     protected $protocolos;
     public $erro;
+    public $anexos;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         if (!Sessao::get('autenticado')) {
             $this->redir('login');
@@ -26,11 +26,19 @@ class protocolosControle extends suporteControle
         $this->_db->_setTabela('protocolos');
         $this->_view->addNavLink('suporte/protocolos', 'Protocolos');
         $this->protocolos = $this->loadModulo('suporte', 'protocolos');
+        $this->anexos = $this->loadModulo('suporte', 'anexos');
+
+        $listaProtocolos = $this->protocolos->getListaUser();
+
+        $this->_view->assign('listaProtocolos', $listaProtocolos);
+        $this->_view->assign('abertos', $this->protocolos->qtd(false, Sessao::get('user')['USU_id']));
+        $this->_view->assign('atendidos', $this->protocolos->qtd(2, Sessao::get('user')['USU_id']));
+        $this->_view->assign('aguardando', $this->protocolos->qtd(1, Sessao::get('user')['USU_id']));
     }
 
-    
-    public function index()
-    {
+    public function index() {
+
+
         $this->_view->assign('titulo', 'Painel do Usuário');
 
         $this->_view->addNavLink('usuarios', 'Painel de Usuários');
@@ -38,75 +46,43 @@ class protocolosControle extends suporteControle
         $this->_view->addConteudo('home');
         $this->_view->renderizar();
     }
-    
-    public function novo()
-    {
+
+    public function novo() {
         $tipos = $this->protocolos->listaTipos();
         $this->_view->assign('tipos', $tipos);
-                  
-        if ($this->POST()) {
-            if (is_array($this->protocolos->load($this->POST(), $_FILES))) {
-                if ($this->_db->_grava()) {
-                    Sessao::addMsg('sucesso', 'Protocolo gravado com Sucesso');
-                    $this->index();
-                } else {
-                    Sessao::addMsg('erro', 'Protocolo não pode ser gravado.');
-                }
-            }
-        }
-        $this->_view->addConteudo('novoprotocolo');
-        $this->_view->renderizar();
-    }
-    
-    
-    public function editar($id)
-    {
+
         if ($this->POST()) {
             $this->protocolos->load($this->POST());
-            if ($this->protocolos->atualiza($id)) {
-                Sessao::addMsg('sucesso', 'Protocolo atualizado com Sucesso');
+            if ($id = $this->protocolos->grava()) {
+                Sessao::addMsg('sucesso', 'Protocolo gravado com Sucesso');
+                if ($id > 0 && is_array($_FILES['files']['name'])) {
+                    if ($this->anexos->grava('PRO_id', $id)) {
+                        Sessao::addMsg('sucesso', 'Anexos adicionados com sucesso');
+                    } else {
+                        Sessao::addMsg('erro', 'Os anexos não puderam ser adicionados');
+                    }
+                }
             } else {
-                Sessao::addMsg('erro', 'Não foi possível atualizar este protocolos.');
+                Sessao::addMsg('erro', 'O Protocolo não pode ser gravado.');
             }
-            $this->_view->assign('campos', json_encode($this->POST()));
-        }
-
-        if ($cli = $this->protocolos->getProtocoloID($id)) {
-            $this->_view->assign('titulo', 'Editando protocolos:'.$cli[0]['EMP_fantazia']);
-            $this->_view->assign('formAction', BASE_URL.'painel/protocolos/editar/'.$cli[0]['EMP_id']);
-            $this->_view->assign('protocolos', $cli[0]);
-            $this->_view->assign('campos', json_encode($cli[0]));
+            $this->redir('suporte/protocolos/');
         } else {
-            Sessao::addMsg('erro', 'Protocolo não existe!');
-
-            $this->_view->assign('formAction', BASE_URL.'painel/protocolos/editar');
+            $this->_view->addConteudo('novoprotocolo');
+            $this->_view->renderizar();
         }
-            
-        $lista = $this->protocolos->lista();
-        $this->_view->assign('lista', $lista);
+    }
 
-        $this->_view->addNavLink('painel/protocolos/editar', 'Editar protocolos');
-        $this->_view->addConteudo('protocolosCadastro');
+    public function ver($proID) {
+        
+        $protocolo = $this->protocolos->getProtocolo($proID);
+        
+        $this->_view->assign('protocolo', $protocolo);
+        $this->_view->assign('titulo', 'Protocolo #'.$proID);
+
+        $this->_view->addNavLink('protocolo', 'Protocolo');
+        $this->_view->assign('current_link', 'protocolos');
+        $this->_view->addConteudo('protocolo');
         $this->_view->renderizar();
     }
-    
-    public function excluir($id = false)
-    {
-        if (is_numeric($id)) {
-            if ($this->protocolos->excluir($id)) {
-                Sessao::addMsg('sucesso', 'Protocolo excluido com Sucesso');
-            } else {
-                Sessao::addMsg('erro', 'Não foi possível excluir este Protocolo.');
-            }
-        } elseif ($this->POST()) {
-            if ($this->protocolos->excluir($this->POST('selAll'))) {
-                Sessao::addMsg('sucesso', 'Todos os Protocolos selecionados foram excluidos.');
-            } else {
-                Sessao::addMsg('erro', 'Não foi possível excluir este Protocolo.');
-            }
-        }
-        $this->index();
 
-        exit;
-    }
 }

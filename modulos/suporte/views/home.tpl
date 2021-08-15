@@ -16,93 +16,30 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Departamento</th>
                     <th>Assunto</th>
                     <th>Date</th>
                     <th>Status</th>
+                    <th></th>
+
                 </tr>
             </thead>
             <tbody>
-                <tr data-widget="expandable-table" aria-expanded="false">
-                    <td>183</td>
-                    <td>Suporte</td>
-                    <td>Recebimento</td>
-                    <td>25/07/2021 15:35Hs</td>
-                    <td><span class="badge bg-success">Respondido</span></td>
-                </tr>
-                <tr class="expandable-body">
-                    <td colspan="5">
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.
-                        </p>
-                    </td>
-                </tr>
-                <tr data-widget="expandable-table" aria-expanded="false">
-                    <td>168</td>
-                    <td>Dep. Técnico</td>
-                    <td>Financeiro</td>
-                    <td>15/07/2021 13:28Hs</td>
-                    <td><span class="badge bg-danger">Aguardando</span></td>
-                </tr>
-                <tr class="expandable-body">
-                    <td colspan="5">
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.
-                        </p>
-                    </td>
-                </tr>
-                <tr data-widget="expandable-table" aria-expanded="false">
-                    <td>183</td>
-                    <td>Comercial</td>
-                    <td>Faturamento</td>
-                    <td>14/07/2021 16:11Hs</td>
-                    <td><span class="badge bg-info">Redirecionado</span></td>
-                </tr>
-                <tr class="expandable-body">
-                    <td colspan="5">
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.
-                        </p>
-                    </td>
-                </tr>
-                <tr data-widget="expandable-table" aria-expanded="false">
-                    <td>183</td>
-                    <td>Suporte</td>
-                    <td>Faturamento</td>
-                    <td>12/07/2021 09:25Hs</td>
-                    <td><span class="badge bg-success">Respondido</span></td>
-                </tr>
-                <tr class="expandable-body">
-                    <td colspan="5">
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.
-                        </p>
-                    </td>
-                </tr>
+                {if $listaProtocolos}
+                    {foreach from=$listaProtocolos item="pro" name=i}
+                        <tr >
+                            <td>{$pro.PRO_id}</td>
+                            <td>[{$pro.TIP_tipo}] {$pro.PRO_assunto}</td>
+                            <td>{$pro.PRO_aberto}</td>
+                            <td><span class="badge bg-{$pro.STA_corHtml}">{$pro.STA_status}</span></td>
+                            <td>
+                                <a href="{$_pgParams.RAIZ}suporte/protocolos/ver/{$pro.PRO_id}" class="btn btn-primary float-right">
+                                    <i class="fa fa-eye"></i> Ver
+                                </a>
+                            </td>
+                        </tr>
+                       
+                    {/foreach}
+                {/if}
 
             </tbody>
         </table>
@@ -123,7 +60,7 @@
 <script src="{$_pgParams.path_layout}plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#protocolos-lista').DataTable({
             "paging": true,
             "lengthChange": false,

@@ -88,7 +88,7 @@ class Sessao
     }
     
     public static function getMsg($limpa=true) {
-        $msg = $_SESSION['msg'];
+        $msg = is_array($_SESSION['msg'])?$_SESSION['msg']:'';
         if($limpa===true) unset($_SESSION['msg']);
         return $msg;
     }

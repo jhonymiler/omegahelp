@@ -8,8 +8,8 @@
         <div class="card-body">
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label>Qual a Ocorrência?</label>
-                    <input autocomplete="off" name="CHA_assunto" id="CHA_assunto" class="form-control">
+                    <label>Titulo da Ocorrência</label>
+                    <input autocomplete="off" name="PRO_assunto" id="PRO_assunto" class="form-control">
                 </div>
                 <div class="form-group  col-md-6">
                     <label>Em qual parte do sistema?</label>
@@ -24,8 +24,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="CHA_texto">Nos dê mais detalhes do ocorrido.</label>
-                <textarea rows="5" id="CHA_texto" class="form-control" name="CHA_texto"></textarea>
+                <label for="PRO_texto">Nos dê mais detalhes do ocorrido.</label>
+                <textarea rows="5" id="PRO_texto" class="form-control" name="PRO_texto"></textarea>
 
             </div>
             <div class="form-group">
@@ -48,14 +48,15 @@
 
 <script src="{$_pgParams.path_layout}plugins/inputfile/js/theme.js" type="text/javascript"></script>
 <script>
-    $("#arquivos").submit(function() {
+    $("#arquivos").submit(function () {
         return validacao();
     });
 
 
+
     $('#TIP_id').select2();
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
 
 
@@ -64,83 +65,87 @@
             language: 'pt-BR',
             browseOnZoneClick: true,
             showRemove: true,
-            allowedFileExtensions: ['jpg', 'png', 'gif', 'xls', 'xlsx', 'doc', 'docx', 'pdf', 'xml'],
+            allowedFileExtensions: ['jpg','jpeg', 'png', 'gif', 'xls', 'xlsx', 'doc', 'docx', 'pdf', 'xml','zip','rar'],
             previewFileIconSettings: {
                 'doc': '<i class="fa fa-file-word text-primary"></i>',
                 'docx': '<i class="fa fa-file-word text-primary"></i>',
                 'xls': '<i class="fa fa-file-excel text-success"></i>',
                 'xlsx': '<i class="fa fa-file-excel text-success"></i>',
                 'pdf': '<i class="fa file-pdf text-danger"></i>',
+                'xml': '<i class="fa file-xml text-success"></i>',
                 'zip': '<i class="fa fa-file-archive text-muted"></i>',
+                'rar': '<i class="fa fa-file-archive text-muted"></i>'
             },
-            slugCallback: function(filename) {
+            slugCallback: function (filename) {
                 return filename.replace('(', '_').replace(']', '_');
             }
         });
 
-        $('#arquivos').on('paste', function(eventObj) {
+        $('#arquivos').on('paste', function (eventObj) {
             $('#file-pt-BR').fileinput('paste',
-                eventObj); // copies files or images data in clipboard
+                    eventObj); // copies files or images data in clipboard
         });
     });
 
     ClassicEditor
-        .create(document.querySelector('#CHA_texto'), {
-            toolbar: {
-                items: [
-                    'heading',
-                    '|',
-                    'bold',
-                    'italic',
-                    'link',
-                    'bulletedList',
-                    'numberedList',
-                    '|',
-                    'outdent',
-                    'indent',
-                    '|'
-                ]
-            },
-            language: 'pt-br',
-            image: {
-                toolbar: [
-                    'imageTextAlternative',
-                    'imageStyle:inline',
-                    'imageStyle:block',
-                    'imageStyle:side'
-                ]
-            },
-            table: {
-                contentToolbar: [
-                    'tableColumn',
-                    'tableRow',
-                    'mergeTableCells'
-                ]
-            },
-            licenseKey: '',
-        })
-        .then(editor => {
-            window.editor = editor;
-        })
-        .catch(error => {
-            console.error('Oops, something went wrong!');
-            console.error(
-                'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
-            );
-            console.warn('Build id: 8gu4f69zasvi-1abbksipscam');
-            console.error(error);
-        });
+            .create(document.querySelector('#PRO_texto'), {
+                toolbar: {
+                    items: [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        '|',
+                        'outdent',
+                        'indent',
+                        '|'
+                    ]
+                },
+                language: 'pt-br',
+                image: {
+                    toolbar: [
+                        'imageTextAlternative',
+                        'imageStyle:inline',
+                        'imageStyle:block',
+                        'imageStyle:side'
+                    ]
+                },
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells'
+                    ]
+                },
+                licenseKey: '',
+            })
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(error => {
+                console.error('Oops, something went wrong!');
+                console.error(
+                        'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+                        );
+                console.warn('Build id: 8gu4f69zasvi-1abbksipscam');
+                console.error(error);
+            });
+
+
 
     function validacao() {
         var valid = true;
         var valida = unserialize($("#arquivos").serialize());
         var msg = '';
 
-        if (valida.CHA_assunto == '') {
+        if (valida.PRO_assunto == '') {
             valid = false;
-            $("#CHA_assunto").attr('style', 'border:1px solid red;');
+            $("#PRO_assunto").attr('style', 'border:1px solid red;');
         } else {
-            $("#CHA_assunto").removeAttr('style');
+            $("#PRO_assunto").removeAttr('style');
         }
 
         //alert(valida.TIP_id)
@@ -151,7 +156,7 @@
         } else {
             $(".selection>span").removeAttr('style');
         }
-        if (valida.CHA_texto == '') {
+        if (editor.getData() == '') {
             valid = false;
 
             $(".ck-editor").attr('style', 'border:1px solid red;');
@@ -172,6 +177,8 @@
         }
 
         return valid;
+        
+
     }
 
     function unserialize(data) {

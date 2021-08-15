@@ -19,6 +19,7 @@ class Requisicao
     {
         if (isset($_GET['url'])) {
             $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
+            $url = preg_replace('/([^a-z0-9.-\/]+)/i', '', $url);
             $url = explode('/', $url);
             $this->_navLinks = $url;
             $url = array_filter($url);

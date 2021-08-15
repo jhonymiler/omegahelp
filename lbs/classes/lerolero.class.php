@@ -1,7 +1,7 @@
-﻿<?
+﻿<?php
 
-class lerolero {
-
+class lerolero
+{
     private $bloco = array(
         0 => array(
             "Caros amigos, ",
@@ -133,31 +133,36 @@ class lerolero {
     ));
 
     // pega o um titulo randomico curto
-    function getTitulo() {
+    public function getTitulo()
+    {
         // mistura os arrays somente do bloco 1
         shuffle($this->bloco[1]);
         return ucfirst($this->bloco[1][0]); // deixa a primeira letra da string maiúscula
     }
 
     // pega um mine texto para chamadas ou descrções
-    function getChamada() {
+    public function getChamada()
+    {
         return $this->getFrase(2);
     }
 
     // pega um texto longo
-    function getTexto() {
-        return $this->getFrase(20);
+    public function getTexto($numFrases = 20)
+    {
+        return $this->getFrase($numFrases);
     }
 
     // mistura os arras dentro dos blocos
-    function mistura() {
+    public function mistura()
+    {
         for ($i = 0; $i < count($this->bloco); $i++) {
             shuffle($this->bloco[$i]);
         }
     }
 
     // pega i texto e o titulo randomicamente
-    function getFrase($numFrazes) {
+    public function getFrase($numFrazes)
+    {
         $paragrafo = 0;
         $fraze = '';
         // gera as linhas
@@ -179,17 +184,16 @@ class lerolero {
                     $paragrafo = 0;
                 }
                 // se o numero de frazes for 0 encerra o loop
-                if (--$numFrazes <= 0)
+                if (--$numFrazes <= 0) {
                     break;
+                }
             }
         }
         return $fraze;
     }
-
 }
 
-/*$l = new lerolero;
+$l = new lerolero;
 echo '<h3>'.$l->getTitulo().'</h3>';
 echo $l->getChamada().'<br><br>';
-echo $l->getTexto();
-*/
+echo $l->getTexto(5);
