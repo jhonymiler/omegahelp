@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11-Ago-2021 às 04:11
+-- Tempo de geração: 16-Ago-2021 às 01:00
 -- Versão do servidor: 10.4.19-MariaDB
 -- versão do PHP: 8.0.7
 
@@ -30,10 +30,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `anexos` (
   `ANE_id` int(11) NOT NULL,
   `ANE_arquivo` varchar(200) NOT NULL,
-  `CHA_id` int(11) NOT NULL,
-  `PRO_id` bigint(20) NOT NULL,
-  `RES_id` int(11) NOT NULL
+  `CHA_id` bigint(11) DEFAULT NULL,
+  `PRO_id` bigint(20) DEFAULT NULL,
+  `RES_id` bigint(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `anexos`
+--
+
+INSERT INTO `anexos` (`ANE_id`, `ANE_arquivo`, `CHA_id`, `PRO_id`, `RES_id`) VALUES
+(10, 'cadastro-usuarios_361117.png', NULL, 20, NULL),
+(11, 'escopo-documentacao-fiscal_376322.docx', NULL, 20, NULL),
+(12, 'home_386786.png', NULL, 20, NULL),
+(13, 'home2_394823.png', NULL, 20, NULL);
 
 -- --------------------------------------------------------
 
@@ -95,13 +105,21 @@ CREATE TABLE `protocolos` (
   `PRO_assunto` varchar(200) NOT NULL,
   `PRO_texto` text NOT NULL,
   `TIP_id` int(10) NOT NULL,
-  `PRO_status` int(2) NOT NULL DEFAULT 0,
-  `PRO_prioridade` int(2) NOT NULL DEFAULT 0,
+  `PRO_status` int(2) NOT NULL DEFAULT 1,
+  `PRO_prioridade` int(2) NOT NULL DEFAULT 1,
   `PRO_aberto` datetime NOT NULL DEFAULT current_timestamp(),
   `PRO_alterado` datetime DEFAULT NULL,
   `PRO_fechado` datetime DEFAULT NULL,
   `USU_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `protocolos`
+--
+
+INSERT INTO `protocolos` (`PRO_id`, `PRO_assunto`, `PRO_texto`, `TIP_id`, `PRO_status`, `PRO_prioridade`, `PRO_aberto`, `PRO_alterado`, `PRO_fechado`, `USU_id`) VALUES
+(19, 'Teste 1', 'Testando', 3, 1, 1, '2021-08-15 12:18:16', NULL, NULL, 2),
+(20, 'Teste 2', 'Teste 2', 8, 1, 1, '2021-08-15 12:18:44', NULL, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -121,20 +139,44 @@ CREATE TABLE `respostas` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tipochamados`
+-- Estrutura da tabela `statusprotocolos`
 --
 
-CREATE TABLE `tipochamados` (
+CREATE TABLE `statusprotocolos` (
+  `STA_id` int(11) NOT NULL,
+  `STA_status` varchar(200) NOT NULL,
+  `STA_corHtml` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `statusprotocolos`
+--
+
+INSERT INTO `statusprotocolos` (`STA_id`, `STA_status`, `STA_corHtml`) VALUES
+(1, 'Aguardando', 'warning'),
+(2, 'Respondido', 'success'),
+(3, 'Em Avaliação', 'info'),
+(4, 'Aguardando Retorno do Cliente', 'error'),
+(5, 'Aguardando Retorno Interna', 'info'),
+(6, 'Finalizado', 'success');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tipoprotocolos`
+--
+
+CREATE TABLE `tipoprotocolos` (
   `TIP_id` int(11) NOT NULL,
   `TIP_tipo` varchar(200) NOT NULL,
   `TIP_prioridade` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `tipochamados`
+-- Extraindo dados da tabela `tipoprotocolos`
 --
 
-INSERT INTO `tipochamados` (`TIP_id`, `TIP_tipo`, `TIP_prioridade`) VALUES
+INSERT INTO `tipoprotocolos` (`TIP_id`, `TIP_tipo`, `TIP_prioridade`) VALUES
 (1, 'Atualização', ''),
 (2, 'Cadastro Produto', ''),
 (3, 'Compras', ''),
@@ -222,9 +264,15 @@ ALTER TABLE `respostas`
   ADD PRIMARY KEY (`RES_id`);
 
 --
--- Índices para tabela `tipochamados`
+-- Índices para tabela `statusprotocolos`
 --
-ALTER TABLE `tipochamados`
+ALTER TABLE `statusprotocolos`
+  ADD PRIMARY KEY (`STA_id`);
+
+--
+-- Índices para tabela `tipoprotocolos`
+--
+ALTER TABLE `tipoprotocolos`
   ADD PRIMARY KEY (`TIP_id`);
 
 --
@@ -242,7 +290,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anexos`
 --
 ALTER TABLE `anexos`
-  MODIFY `ANE_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ANE_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `departamentos`
@@ -260,7 +308,7 @@ ALTER TABLE `empresas`
 -- AUTO_INCREMENT de tabela `protocolos`
 --
 ALTER TABLE `protocolos`
-  MODIFY `PRO_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `PRO_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `respostas`
@@ -269,9 +317,15 @@ ALTER TABLE `respostas`
   MODIFY `RES_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `tipochamados`
+-- AUTO_INCREMENT de tabela `statusprotocolos`
 --
-ALTER TABLE `tipochamados`
+ALTER TABLE `statusprotocolos`
+  MODIFY `STA_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de tabela `tipoprotocolos`
+--
+ALTER TABLE `tipoprotocolos`
   MODIFY `TIP_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
