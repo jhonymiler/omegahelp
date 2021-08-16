@@ -1,5 +1,5 @@
 {if is_array($protocolo)}
-    <div class="card card-widget">
+    <div class="card card-widget"> 
         <div class="card-header">
             <div class="user-block">
                 <span class="username"><a href="#">{$protocolo.PRO_assunto}</a></span>
