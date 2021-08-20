@@ -193,7 +193,7 @@ class lerolero
     }
 }
 
-$l = new lerolero;
+/*$l = new lerolero;
 echo '<h3>'.$l->getTitulo().'</h3>';
 echo $l->getChamada().'<br><br>';
-echo $l->getTexto(5);
+echo $l->getTexto(5);*/

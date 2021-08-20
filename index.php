@@ -4,6 +4,7 @@
  * Config da aplicação
  * @author Jonatas Miler  <jonatasmiler@gmail.com>
  */
+
 require_once 'app/config.php';
 
 
@@ -16,10 +17,11 @@ try {
     date_default_timezone_set('America/Sao_Paulo');
     
     $Registro = Registro::getInstancia();
-    $Registro->_request = new Requisicao();
-    $Registro->_db = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_CHAR);
-
+    $Registro->_request = new Requisicao;
+    $Registro->_db = new Database;
+    
     Ferramentas::rodar($Registro->_request);
+
 } catch (Exception $e) {
     echo $e->getMessage();
 }

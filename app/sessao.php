@@ -3,6 +3,7 @@
 /**
  * ferramenta para manipulação das sessões da pagina
  */
+
 class Sessao
 {
     /**
