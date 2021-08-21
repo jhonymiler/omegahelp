@@ -8,7 +8,7 @@
 require_once 'app/config.php';
 
 
-try {
+try { 
     Sessao::init();
     Sessao::set('msg',array());
     
