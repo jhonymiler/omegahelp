@@ -17,7 +17,7 @@ try {
     date_default_timezone_set('America/Sao_Paulo');
     
     $Registro = Registro::getInstancia();
-    $Registro->_request = new Requisicao;
+    $Registro->_request = new Requisicao; 
     $Registro->_db = new Database;
     
     Ferramentas::rodar($Registro->_request);
