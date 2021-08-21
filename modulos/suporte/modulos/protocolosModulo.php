@@ -27,7 +27,7 @@ class protocolosModulo extends Modulo {
     public function __construct() {
         parent::__construct();
         
-    }
+    } 
 
     //Lista todos Protocolos deste usuário
     public function lista() {
