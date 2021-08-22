@@ -28,8 +28,8 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar nav-collapse-hide-child flex-column" data-widget="treeview" role="menu"
-                data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-collapse-hide-child nav-child-indent"
+                data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
    with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
@@ -59,8 +59,17 @@
                         <i class="nav-icon fas fa-ticket-alt"></i>
                         <p>
                             Protocolos
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <!-- <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{$_pgParams.RAIZ}painel/protocolos" data-link="protocolos-novo" class="nav-link">
+                                <i class="fa fa-plus nav-icon"></i>
+                                <p>Novo</p>
+                            </a>
+                        </li>
+                    </ul> !-->
                 </li>
                 <li class="nav-item">
                     <a href="{$_pgParams.RAIZ}painel/departamentos" data-link="departamentos" class="nav-link">
