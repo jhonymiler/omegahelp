@@ -25,6 +25,8 @@ class protocolosControle extends painelControle
             $this->redir('login');
             exit();
         }
+
+        //$this->_db->_select(); 
         $this->_db->_setTabela('protocolos');
         $this->_view->addNavLink('painel/protocolos', 'Protocolos');
         $this->protocolos = $this->loadModulo('painel', 'protocolos');
@@ -75,6 +77,13 @@ class protocolosControle extends painelControle
         }
     }
 
+    /**
+     * Mostra o protocolo na página para o cliente
+     *
+     * @param [type] $proID
+     *
+     * @return void
+     */
     public function ver($proID)
     {
         $protocolo = $this->protocolos->getProtocolo($proID);
