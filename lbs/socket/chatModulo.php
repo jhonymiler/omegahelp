@@ -13,9 +13,11 @@
  */
 namespace App;
 
-class chatModulo {
+class chatModulo
+{
     //put your code here
-    public function __construct() {
-        echo "modulooooooooooooooooooooooooooooo";
+    public function __construct()
+    {
+        //echo "modulooooooooooooooooooooooooooooo";
     }
 }
