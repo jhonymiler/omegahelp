@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Description of request
+ * Classe que desmembra a url passada para a chamada dos controles e modulos
+ * do sistema
  *
  * @author Jonatas
  */
@@ -18,13 +19,18 @@ class Requisicao
     public function __construct()
     {
         if (isset($_GET['url'])) {
+            // Pega a url e ajuda a sanitizar 
             $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
-            $url = preg_replace('/([^a-z0-9.-\/]+)/i', '', $url);
+            // Trata possíveis injections deixando apenas algumas pontuações e alfanumericos
+            $url = preg_replace('/([^a-z0-9.-_\/]+)/i', '', $url);
             $url = explode('/', $url);
             $this->_navLinks = $url;
             $url = array_filter($url);
             
+            // separa os blocos da url separados por barra
             $this->_urlAtual = implode('/', $url);
+            // lista os modulos da pasta modulos para verificação se o modulo passado
+            // no url realmente existe dentro da pasta
             foreach (new DirectoryIterator(RAIZ."Modulos") as $Files) {
                 if ($Files->isDir() && $Files->isDot()) {
                     continue;
@@ -32,7 +38,7 @@ class Requisicao
                 $this->_modules[] = $Files->getFilename();
             }
             
-            /* modulos de la app */
+            // o último bloco do url é o módulo que queremos chamar
             $this->_modulo = strtolower(array_shift($url));
             
             if (!$this->_modulo) {
