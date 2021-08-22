@@ -25,7 +25,6 @@ class protocolosControle extends painelControle
             $this->redir('login');
             exit();
         }
-        $this->_db->_sel
         $this->_db->_setTabela('protocolos');
         $this->_view->addNavLink('painel/protocolos', 'Protocolos');
         $this->protocolos = $this->loadModulo('painel', 'protocolos');
