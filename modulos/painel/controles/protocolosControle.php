@@ -10,7 +10,7 @@
  *
  * @author Jonatas
  */
-class protocolosControle extends suporteControle
+class protocolosControle extends painelControle
 {
 
     //put your code here
@@ -26,25 +26,25 @@ class protocolosControle extends suporteControle
             exit();
         }
         $this->_db->_setTabela('protocolos');
-        $this->_view->addNavLink('suporte/protocolos', 'Protocolos');
+        $this->_view->addNavLink('painel/protocolos', 'Protocolos');
         $this->protocolos = $this->loadModulo('painel', 'protocolos');
         $this->anexos = $this->loadModulo('painel', 'anexos');
 
         $listaProtocolos = $this->protocolos->getListaUser();
 
         $this->_view->assign('listaProtocolos', $listaProtocolos);
-        $this->_view->assign('abertos', $this->protocolos->qtd(false, Sessao::get('user')['USU_id']));
-        $this->_view->assign('atendidos', $this->protocolos->qtd(2, Sessao::get('user')['USU_id']));
-        $this->_view->assign('aguardando', $this->protocolos->qtd(1, Sessao::get('user')['USU_id']));
+        $this->_view->assign('abertos', $this->protocolos->qtd(false, false));
+        $this->_view->assign('atendidos', $this->protocolos->qtd(2, false));
+        $this->_view->assign('aguardando', $this->protocolos->qtd(1, false));
     }
 
     public function index()
     {
         $this->_view->assign('titulo', 'Painel do Usuário');
 
-        $this->_view->addNavLink('usuarios', 'Painel de Usuários');
+        $this->_view->addNavLink('protocolos', 'Gerenciamento de Protocolos');
         $this->_view->assign('current_link', 'protocolos');
-        $this->_view->addConteudo('home');
+        $this->_view->addConteudo('protocolos');
         $this->_view->renderizar();
     }
 
@@ -67,7 +67,7 @@ class protocolosControle extends suporteControle
             } else {
                 Sessao::addMsg('erro', 'O Protocolo não pode ser gravado.');
             }
-            $this->redir('suporte/protocolos/');
+            $this->redir('painel/protocolos/');
         } else {
             $this->_view->addConteudo('novoprotocolo');
             $this->_view->renderizar();

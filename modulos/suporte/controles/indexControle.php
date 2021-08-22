@@ -18,8 +18,8 @@ class indexControle extends suporteControle {
     //put your code here
     public function __construct() {
         parent::__construct();
-        $this->protocolos = $this->loadModulo('suporte', 'protocolos');
-        $this->anexos = $this->loadModulo('suporte', 'anexos');
+        $this->protocolos = $this->loadModulo('painel', 'protocolos');
+        $this->anexos = $this->loadModulo('painel', 'anexos');
     }
 
     public function index() {
