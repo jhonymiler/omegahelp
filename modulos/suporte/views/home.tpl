@@ -26,18 +26,19 @@
             <tbody>
                 {if $listaProtocolos}
                     {foreach from=$listaProtocolos item="pro" name=i}
-                        <tr >
+                        <tr>
                             <td>{$pro.PRO_id}</td>
                             <td>[{$pro.TIP_tipo}] {$pro.PRO_assunto}</td>
                             <td>{$pro.PRO_aberto}</td>
                             <td><span class="badge bg-{$pro.STA_corHtml}">{$pro.STA_status}</span></td>
                             <td>
-                                <a href="{$_pgParams.RAIZ}suporte/protocolos/ver/{$pro.PRO_id}" class="btn btn-primary float-right">
+                                <a href="{$_pgParams.RAIZ}suporte/protocolos/ver/{$pro.PRO_id}"
+                                    class="btn btn-primary float-right">
                                     <i class="fa fa-eye"></i> Ver
                                 </a>
                             </td>
                         </tr>
-                       
+
                     {/foreach}
                 {/if}
 
@@ -60,15 +61,26 @@
 <script src="{$_pgParams.path_layout}plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#protocolos-lista').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
+            "language": pt_br,
             "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "paging": true,
+            "select": true,
+            "ordering": true,
+            "rowReorder": true,
+            "columnDefs": [{
+                    orderable: false,
+                    className: 'reorder',
+                    targets: [0, -1]
+                },
+                {
+                    orderable: true,
+                    targets: '_all'
+                }
+            ]
         });
     });
 </script>
