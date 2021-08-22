@@ -18,6 +18,5 @@ class chatModulo
     //put your code here
     public function __construct()
     {
-        //echo "modulooooooooooooooooooooooooooooo";
     }
 }
