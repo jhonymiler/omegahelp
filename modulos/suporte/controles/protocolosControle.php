@@ -17,6 +17,7 @@ class protocolosControle extends suporteControle
     protected $protocolos;
     public $erro;
     public $anexos;
+    public $user;
 
     public function __construct()
     {
@@ -27,28 +28,30 @@ class protocolosControle extends suporteControle
         }
         $this->_db->_setTabela('protocolos');
         $this->_view->addNavLink('suporte/protocolos', 'Protocolos');
+
+        $this->user = Sessao::get('user');
         $this->protocolos = $this->loadModulo('painel', 'protocolos');
         $this->anexos = $this->loadModulo('painel', 'anexos');
 
-        $listaProtocolos = $this->protocolos->getListaUser();
+        $listaProtocolos = $this->protocolos->getListaUser($this->user['USU_id']);
 
         $this->_view->assign('listaProtocolos', $listaProtocolos);
-        $this->_view->assign('abertos', $this->protocolos->qtd(false, Sessao::get('user')['USU_id']));
-        $this->_view->assign('atendidos', $this->protocolos->qtd(2, Sessao::get('user')['USU_id']));
-        $this->_view->assign('aguardando', $this->protocolos->qtd(1, Sessao::get('user')['USU_id']));
+        $this->_view->assign('abertos', $this->protocolos->qtd(false, $this->user['USU_id']));
+        $this->_view->assign('atendidos', $this->protocolos->qtd(2, $this->user['USU_id']));
+        $this->_view->assign('aguardando', $this->protocolos->qtd(1, $this->user['USU_id']));
     }
 
     public function index()
     {
-        $this->_view->assign('titulo', 'Painel do Usuário');
+        $this->_view->assign('titulo', 'Meus protocolos');
 
-        $this->_view->addNavLink('usuarios', 'Painel de Usuários');
+        $this->_view->addNavLink('usuarios', 'Meus protocolos');
         $this->_view->assign('current_link', 'protocolos');
         $this->_view->addConteudo('home');
         $this->_view->renderizar();
     }
 
-    public function novo()
+    public function novo() 
     {
         $tipos = $this->protocolos->listaTipos();
         $this->_view->assign('tipos', $tipos);
@@ -77,8 +80,11 @@ class protocolosControle extends suporteControle
     public function ver($proID)
     {
         $protocolo = $this->protocolos->getProtocolo($proID);
-        
+        $anexos = $this->anexos->getProAnexos($proID);
+
+
         $this->_view->assign('protocolo', $protocolo);
+        $this->_view->assign('anexos', $anexos);
         $this->_view->assign('titulo', 'Protocolo #'.$proID);
 
         $this->_view->addNavLink('protocolo', 'Protocolo');

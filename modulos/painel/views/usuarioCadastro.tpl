@@ -353,20 +353,24 @@
 
             var table = $("#example1").DataTable({
                 "language": pt_br,
-                "responsive": false,
+                "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "searching": true,
                 "paging": true,
+                "select": true,
                 "ordering": true,
                 "rowReorder": true,
-                "columnDefs": [
-                    { orderable: false, className: 'reorder', targets: [0, -1] },
-                    { orderable: true, targets: '_all' }
+                "columnDefs": [{
+                        orderable: false,
+                        className: 'reorder',
+                        targets: [0, -1]
+                    },
+                    {
+                        orderable: true,
+                        targets: '_all'
+                    }
                 ]
-
-
-            })
+            });
             $("#example1_filter").hide();
             $('#busca').on('keyup', function() {
                 table.search(this.value).draw();
@@ -384,100 +388,100 @@
                 maxFileSize: 3000000, // 3 Megs max
                 multiple: false,
                 allowedTypes: 'image/*',
-            extFilter: ['jpg', 'jpeg', 'png'],
-            auto: false,
-            queue: true,
-            onNewFile: function(id, file) {
+                extFilter: ['jpg', 'jpeg', 'png'],
+                auto: false,
+                queue: true,
+                onNewFile: function(id, file) {
 
 
-                // When a new file is added using the file selector or the DnD area
-                if (typeof FileReader !== "undefined") {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
+                    // When a new file is added using the file selector or the DnD area
+                    if (typeof FileReader !== "undefined") {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
 
 
-                        var img = document.getElementById('img-avatar');
-                        var img_crop = document.getElementById('image-crop');
-                        var button = document.getElementById('cortar');
-                        var croppedCanvas;
-                        var roundedCanvas;
+                            var img = document.getElementById('img-avatar');
+                            var img_crop = document.getElementById('image-crop');
+                            var button = document.getElementById('cortar');
+                            var croppedCanvas;
+                            var roundedCanvas;
 
 
-                        $(img).attr('src', e.target.result);
-                        $(img_crop).attr('src', e.target.result);
-                        $('#cropimagem').show();
+                            $(img).attr('src', e.target.result);
+                            $(img_crop).attr('src', e.target.result);
+                            $('#cropimagem').show();
 
 
-                        var cropper = new Cropper(img_crop, {
-                            aspectRatio: 1,
-                            viewMode: 3
-                        });
+                            var cropper = new Cropper(img_crop, {
+                                aspectRatio: 1,
+                                viewMode: 3
+                            });
 
-                        button.onclick = function() {
+                            button.onclick = function() {
 
-                            croppedCanvas = cropper.getCroppedCanvas();
-                            roundedCanvas = getRoundedCanvas(croppedCanvas);
-                            Dataimagem = roundedCanvas.toDataURL();
-                            $(img).attr('src', Dataimagem);
-                            $(img_crop).attr('src', '');
+                                croppedCanvas = cropper.getCroppedCanvas();
+                                roundedCanvas = getRoundedCanvas(croppedCanvas);
+                                Dataimagem = roundedCanvas.toDataURL();
+                                $(img).attr('src', Dataimagem);
+                                $(img_crop).attr('src', '');
 
 
-                            document.getElementById("meti_o_loko").innerHTML =
-                                '<textarea name="USU_imagem" maxlength="10000000000" cols="10000000000" rows="10000000000" style="display:none;">' +
-                                Dataimagem + '</textarea>';
-                            $('#cropimagem').hide();
-                            cropper.destroy();
+                                document.getElementById("meti_o_loko").innerHTML =
+                                    '<textarea name="USU_imagem" maxlength="10000000000" cols="10000000000" rows="10000000000" style="display:none;">' +
+                                    Dataimagem + '</textarea>';
+                                $('#cropimagem').hide();
+                                cropper.destroy();
+
+
+                            };
 
 
                         };
-
-
+                        reader.readAsDataURL(file);
                     };
-                    reader.readAsDataURL(file);
-                };
-            }
+                }
+
+            });
+
+
+
+
+
+
+
+
 
         });
-
-
-
-
-
-
-
-
-
-    });
 
     {/literal}
 
 
 
-        function getRoundedCanvas(sourceCanvas) {
-            var canvas = document.createElement('canvas');
-            var context = canvas.getContext('2d');
-            var width = sourceCanvas.width;
-            var height = sourceCanvas.height;
+    function getRoundedCanvas(sourceCanvas) {
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        var width = sourceCanvas.width;
+        var height = sourceCanvas.height;
 
-            canvas.width = width;
-            canvas.height = height;
-            context.imageSmoothingEnabled = true;
-            context.drawImage(sourceCanvas, 0, 0, width, height);
-            context.globalCompositeOperation = 'destination-in';
-            context.beginPath();
-            context.arc(width / 2, height / 2, Math.min(width, height) / 2, 0, 2 * Math.PI, true);
-            context.fill();
-            return canvas;
-        }
-
-
-        {if isset($usuario.USU_nivel) && $usuario.USU_nivel>0}
-            $("input[name='USU_nivel']").prop('checked', true);
-
-        {/if}
-    </script>
-
-    <!-- /.col -->
+        canvas.width = width;
+        canvas.height = height;
+        context.imageSmoothingEnabled = true;
+        context.drawImage(sourceCanvas, 0, 0, width, height);
+        context.globalCompositeOperation = 'destination-in';
+        context.beginPath();
+        context.arc(width / 2, height / 2, Math.min(width, height) / 2, 0, 2 * Math.PI, true);
+        context.fill();
+        return canvas;
+    }
 
 
-    <!-- /.card -->
+    {if isset($usuario.USU_nivel) && $usuario.USU_nivel>0}
+        $("input[name='USU_nivel']").prop('checked', true);
+
+    {/if}
+</script>
+
+<!-- /.col -->
+
+
+<!-- /.card -->

@@ -279,14 +279,20 @@
             "language": pt_br,
             "responsive": true,
             "lengthChange": false,
-            "autoWidth": true,
+            "autoWidth": false,
             "paging": true,
             "select": true,
             "ordering": true,
             "rowReorder": true,
-            "columnDefs": [
-                { orderable: false, className: 'reorder', targets: [0, -1] },
-                { orderable: true, targets: '_all' }
+            "columnDefs": [{
+                    orderable: false,
+                    className: 'reorder',
+                    targets: [0, -1]
+                },
+                {
+                    orderable: true,
+                    targets: '_all'
+                }
             ]
         });
         $("#example1_filter").hide();

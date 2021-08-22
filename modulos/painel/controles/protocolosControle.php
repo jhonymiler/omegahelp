@@ -25,17 +25,20 @@ class protocolosControle extends painelControle
             $this->redir('login');
             exit();
         }
+
+        //$this->_db->_select(); 
         $this->_db->_setTabela('protocolos');
         $this->_view->addNavLink('painel/protocolos', 'Protocolos');
         $this->protocolos = $this->loadModulo('painel', 'protocolos');
         $this->anexos = $this->loadModulo('painel', 'anexos');
 
-        $listaProtocolos = $this->protocolos->getListaUser();
+        $listaProtocolos = $this->protocolos->ListaTodos();
 
         $this->_view->assign('listaProtocolos', $listaProtocolos);
         $this->_view->assign('abertos', $this->protocolos->qtd(false, false));
         $this->_view->assign('atendidos', $this->protocolos->qtd(2, false));
         $this->_view->assign('aguardando', $this->protocolos->qtd(1, false));
+        $this->_view->assign('pendentes', $this->protocolos->qtd(1, false));
     }
 
     public function index()
@@ -74,6 +77,13 @@ class protocolosControle extends painelControle
         }
     }
 
+    /**
+     * Mostra o protocolo na página para o cliente
+     *
+     * @param [type] $proID
+     *
+     * @return void
+     */
     public function ver($proID)
     {
         $protocolo = $this->protocolos->getProtocolo($proID);

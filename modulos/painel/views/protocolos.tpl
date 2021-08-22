@@ -1,29 +1,31 @@
         <!-- =========================================================== -->
         <!-- Small Box (Stat card) -->
-        <h5 class="mb-2 mt-4">Small Box</h5>
         <div class="row">
+
             <div class="col-md-6 col-12">
+                <h5 class="mb-2 mt-4">Small Box</h5>
+
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-6 col-6">
                         <!-- small card -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
-                                <p>New Orders</p>
+                                <h3>{$abertos.qtd}</h3>
+                                <p>Abertos</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-shopping-cart"></i>
+                                <i class="fas fa-ticket-alt"></i>
                             </div>
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-6 col-6">
                         <!-- small card -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                                <h3>{$atendidos.qtd}</h3>
 
-                                <p>Bounce Rate</p>
+                                <p>Atendidos</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -31,12 +33,12 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-6 col-6">
                         <!-- small card -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>44</h3>
-                                <p>User Registrations</p>
+                                <h3>{$aguardando.qtd}</h3>
+                                <p>aguardando</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-user-plus"></i>
@@ -44,12 +46,12 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-6 col-6">
                         <!-- small card -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>65</h3>
-                                <p>Unique Visitors</p>
+                                <h3>{$pendentes.qtd}</h3>
+                                <p>Pendentes</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-chart-pie"></i>
@@ -57,22 +59,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="card-body col-12">
-                        <p class="text-center">
-                            <strong>Relatório do dia: 1 Jan, 2021 - 30 Jul, 2021</strong>
-                        </p>
-
-                        <div class="chart">
-                            <!-- Sales Chart Canvas -->
-                            <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
-                        </div>
-                        <!-- /.chart-responsive -->
-                    </div>
-                </div>
             </div>
-            <!-- ./col -->
-            <div class="col-md-6">
+            <div class="card-body col-md-6 col-12">
+                <p class="text-center">
+                    <strong>Relatório do dia: 1 Jan, 2021 - 30 Jul, 2021</strong>
+                </p>
+
+                <div class="chart">
+                    <!-- Sales Chart Canvas -->
+                    <canvas id="salesChart" height="250"></canvas>
+                </div>
+                <!-- /.chart-responsive -->
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="row">
+            <div class="col-md-12">
 
                 <div class="card">
 
@@ -154,13 +156,24 @@
         <script>
             $(document).ready(function() {
                 $('#protocolos-lista').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false,
+                    "language": pt_br,
                     "responsive": true,
+                    "lengthChange": false,
+                    "autoWidth": false,
+                    "paging": true,
+                    "select": true,
+                    "ordering": true,
+                    "rowReorder": true,
+                    "columnDefs": [{
+                            orderable: false,
+                            className: 'reorder',
+                            targets: [0, -1]
+                        },
+                        {
+                            orderable: true,
+                            targets: '_all'
+                        }
+                    ]
                 });
             });
         </script>

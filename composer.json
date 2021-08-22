@@ -16,5 +16,8 @@
     "require": {
         "php": "^8.0",
         "cboden/ratchet": "^0.4.3"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.6"
     }
 }
