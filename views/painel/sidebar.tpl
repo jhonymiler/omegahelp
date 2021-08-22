@@ -1,4 +1,5 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
     <!-- Brand Logo -->
     <a href="{$_pgParams.RAIZ}painel/" class="brand-link">
         <img src="{$_pgParams.path_layout}dist/img/aro-logo.png" alt="ARO HELPDESK"
@@ -28,7 +29,7 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar nav-collapse-hide-child flex-column" data-widget="treeview" role="menu"
+            <ul class="nav nav-pills nav-sidebar flex-column nav-collapse-hide-child" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
    with font-awesome or any other icon font library -->
