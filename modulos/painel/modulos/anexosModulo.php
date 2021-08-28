@@ -16,13 +16,15 @@ class anexosModulo extends Modulo
     private $arquivos = array();
     private $tabela = 'anexos';
     private $ext_arquivos;
+    private $ext_custom;
     private $ext_imagens;
 
     public function __construct()
     {
         parent::__construct();
         $this->_db->_setTabela($this->tabela); // seta a tabela protocolos
-        $this->ext_arquivos = array('xls', 'xlsx', 'doc', 'docx', 'pdf', 'xml', 'zip', 'rar');
+        $this->ext_arquivos = array('xls', 'xlsx', 'doc', 'docx', 'pdf');
+        $this->ext_custom = array('xml', 'zip', 'rar');
         $this->ext_imagens = array('jpg', 'jpeg', 'png', 'gif');
     }
     /**
@@ -42,6 +44,14 @@ class anexosModulo extends Modulo
         }
     }
 
+    /**
+     * Função para adicionar campos customuzados 
+     * informações para exibir no front como por exemplo icones.
+     *
+     * @param [Array] $anexos
+     *
+     * @return Array
+     */
     public function trataAnexo($anexos)
     {
         if (is_array($anexos)) {
@@ -52,13 +62,15 @@ class anexosModulo extends Modulo
                 // se existir coloca a extensão do arquivo na variável
                 $info = new SplFileInfo($anexos[$i]['ANE_arquivo']);
                 if (in_array($info->getExtension(), $this->ext_arquivos)) {
-                    $anexos[$i]['extensao'] = $info->getExtension();
+                    $anexos[$i]['icone'] = 'fa-file-' . $info->getExtension();
                     // se for imagem passa uma variável indicando como imagem para que
                     // ao invés de trazer um ícone no front, trazer a imagem para ser exibida
                 } elseif (in_array($info->getExtension(), $this->ext_imagens)) { // se não, coloca a extensão file
                     $anexos[$i]['imagem'] = true;
+                } elseif (in_array($info->getExtension(), $this->ext_custom)) { // se não, coloca a extensão file
+                    $anexos[$i]['icone'] = 'icon-' . $info->getExtension();
                 } else { // se não, seta a extensão como file para trazer um ícone genérico
-                    $anexos[$i]['extensao'] = 'file';
+                    $anexos[$i]['icone'] = 'fa-file-file';
                 }
             }
             return $anexos;

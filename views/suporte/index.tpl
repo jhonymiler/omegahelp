@@ -41,8 +41,10 @@
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/cropper.css">
         <link href="{$_pgParams.path_layout}plugins/inputfile/css/fileinput.css" media="all" rel="stylesheet"
             type="text/css" />
-        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/custom.css">
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/lightbox/css/lightbox.css">
+        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/custom-icon/icons-svg.css">
+
+        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/custom.css">
 
         <!-- REQUIRED SCRIPTS -->
         <!-- jQuery -->
@@ -65,12 +67,12 @@
         <div class="wrapper">
 
             <!-- Navbar -->
-            <nav class="main-header navbar navbar-expand-md navbar-light navbar-dark">
-                <div class="container">
+            <nav class="main-header navbar navbar-expand-md navbar-light navbar-dark" style="padding: 0;">
+                <div class="container brand-link">
                     <a href="{$_pgParams.RAIZ}/usuarios" class="navbar-brand">
                         <img src="{$_pgParams.path_layout}dist/img/aro-logo.png" alt="ARO HELPDESK" class="brand-image "
                             style="opacity: .8">
-                        <span class="brand-text font-weight-light">ARO HELPDESK</span>
+                        <span class="brand-text font-weight-light"> ARO HELPDESK</span>
                     </a>
 
                     <div class="collapse navbar-collapse order-3" id="navbarCollapse">

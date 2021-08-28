@@ -121,3 +121,7 @@ label.error {
 .fa-file-pdf:before {
     color: firebrick;
 }
+
+.icon-xml:before {
+    color: blueviolet;
+}

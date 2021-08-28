@@ -74,7 +74,7 @@
             "columnDefs": [{
                     orderable: false,
                     className: 'reorder',
-                    targets: [0, -1]
+                    targets: [-1]
                 },
                 {
                     orderable: true,
