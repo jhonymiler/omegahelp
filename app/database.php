@@ -19,7 +19,7 @@ class Database
     public $dataset        = null;
     public $linhasafetadas = -1;
 
-    
+
     //nome da tabela
     public $tabela = '';
     // $campos =  array campo=>valor
@@ -37,27 +37,27 @@ class Database
             $this->tabela = $tabela;
         }
         $this->conecta();
-    }//construtor do objeto da conexão
-    
-    
+    } //construtor do objeto da conexão
+
+
     public function __destruct()
     {
-        if ($this->conexao != null):
-             mysqli_close($this->conexao);
+        if ($this->conexao != null) :
+            mysqli_close($this->conexao);
         endif;
-    }// destrói o objeto da conexão
+    } // destrói o objeto da conexão
 
-    
-    
+
+
     public function conecta()
     {
         $this->conexao = mysqli_connect($this->host, $this->dbUser, $this->dbPass, $this->db)
-        or die($this->trataerro(__FILE__, __FUNCTION__, mysqli_errno($this->conexao), mysqli_error($this->conexao), true));
-        
-        mysqli_query($this->conexao, "SET NAMES '".DB_CHAR."'");
-        mysqli_query($this->conexao, "SET character_set_connection=".DB_CHAR);
-        mysqli_query($this->conexao, "SET character_set_client=".DB_CHAR);
-        mysqli_query($this->conexao, "SET character_set_results=".DB_CHAR);
+            or die($this->trataerro(__FILE__, __FUNCTION__, mysqli_errno($this->conexao), mysqli_error($this->conexao), true));
+
+        mysqli_query($this->conexao, "SET NAMES '" . DB_CHAR . "'");
+        mysqli_query($this->conexao, "SET character_set_connection=" . DB_CHAR);
+        mysqli_query($this->conexao, "SET character_set_client=" . DB_CHAR);
+        mysqli_query($this->conexao, "SET character_set_results=" . DB_CHAR);
     }
     /*
      * @param $arquivo = arquivo a ser gravado os erros
@@ -67,33 +67,33 @@ class Database
      * @param $geraexcept = determina de ao gerar este erro a execução do script vai parar de funcionar ali onde deu o erro
      * ou continuará executando o script normalmente;
      */
-    public function trataerro($arquivo=null, $rotina=null, $numerro=null, $msgerro=null, $geraexcept=false)
+    public function trataerro($arquivo = null, $rotina = null, $numerro = null, $msgerro = null, $geraexcept = false)
     {
         if ($arquivo == null) {
             $arquivo = "não informado";
         }
-        if ($rotina==null) {
+        if ($rotina == null) {
             $rotina = "nao informada";
         }
-        if ($numerro==null) {
+        if ($numerro == null) {
             $numerro = mysqli_errno($this->conexao);
         }
-        if ($msgerro==null) {
+        if ($msgerro == null) {
             $msgerro = mysqli_error($this->conexao);
         }
         $resultado = 'Ocorreu um erro com o seguintes detalhes:<br>
-            <b>Arquivo:</b> '.$arquivo.'<br>
-            <b>Rotina:</b> '.$rotina.'<br>
-            <b>Num Erro:</b> '.$numerro.'<br>
-            <b>Msg Erro:</b> '.$msgerro.'<br>
+            <b>Arquivo:</b> ' . $arquivo . '<br>
+            <b>Rotina:</b> ' . $rotina . '<br>
+            <b>Num Erro:</b> ' . $numerro . '<br>
+            <b>Msg Erro:</b> ' . $msgerro . '<br>
         ';
-        
-        if ($geraexcept==false) {
+
+        if ($geraexcept == false) {
             echo $resultado;
         } else {
             die($resultado);
         }
-    }// tratamento de erro
+    } // tratamento de erro
 
     public function _setTabela($tabela)
     {
@@ -112,25 +112,25 @@ class Database
         //print_r($args);
         //exit();
         $this->tabela;
-        $select = "SELECT * FROM ".$this->tabela;
+        $select = "SELECT * FROM " . $this->tabela;
         // verifica as alternativas de select
         switch (is_array($args)) {
-            // se não hover argumentos seleciona tudo
+                // se não hover argumentos seleciona tudo
             case func_num_args() == 0:
                 $retorno = $select;
                 break;
-            /*// se houver apenas um argumento e for numerico: seleciona pela id
+                /*// se houver apenas um argumento e for numerico: seleciona pela id
             case func_num_args() == 1 && is_numeric($args[0]):
                 $retorno = $select." WHERE ".$this->_addPrefixo('id')." = ".(int)$args[0];
                 break;
             */
-            // se houver 2 argumentos e ambos forem numericos
+                // se houver 2 argumentos e ambos forem numericos
             case func_num_args() == 2 && is_numeric($args[0]) && is_numeric($args[1]):
                 // seleciona tudo com limite argumento1,argumento2
-                $retorno = $select." LIMIT ".$args[0].",".$args[1];
+                $retorno = $select . " LIMIT " . $args[0] . "," . $args[1];
                 break;
 
-            // se houver o campo1, for string e estiver setado o segundo campo
+                // se houver o campo1, for string e estiver setado o segundo campo
             case func_num_args() > 1 && is_string($args[0]) && isset($args[1]):
                 // seleciona tudo da tabela com nomeDoCampo=>Valor
                 // se houver um terceiro considera-se um adicional como ex: ORDER BY... ou LIMIT...
@@ -139,20 +139,19 @@ class Database
                 } else {
                     $adicional = '';
                 }
-                
-                $retorno = $select." WHERE ".$args[0]." = '".$args[1]."' ".$adicional;
+
+                $retorno = $select . " WHERE " . $args[0] . " = '" . $args[1] . "' " . $adicional;
                 break;
             default:
                 return false;
-
         }
         // executa a query e retorna o registro
-   
+
         $this->campos = $this->_query($retorno);
 
-        return (is_array($this->campos) && count($this->campos)>0)?$this->campos:false;
+        return (is_array($this->campos) && count($this->campos) > 0) ? $this->campos : false;
     }
-    
+
     /*------------------------VALORES------------------------*/
     // seta valores somente no primeiro registro do array _set('email','email@email.com');
     // ou _set( array('nome'=>'jose','email','email@email.com') );
@@ -176,10 +175,10 @@ class Database
                         $campos = $this->_set($campo, $valor, $i);
                     }
                     break;
-                
+
                 case func_num_args() == 3:
 
-                    $i = ($args[2])?$args[2]:0;
+                    $i = ($args[2]) ? $args[2] : 0;
                     $campo = $args[0];
                     $valor = $args[1];
                     if ($this->_isValid($campo)) {
@@ -187,35 +186,35 @@ class Database
                     }
                     break;
             }
-            
+
             $i++;
         }
     }
-    
-    
+
+
     /*---------------------BUSCAS---------------------*/
-    
+
     //  $user = new Registro("funcionarios");
     //  print_r($user->_busca("login", 's'));
-    
+
     public function _busca($campo, $valor)
     {
-        $this->campos = $this->_query("SELECT * FROM ".$this->tabela." WHERE ".$campo." REGEXP '".$valor."'");
+        $this->campos = $this->_query("SELECT * FROM " . $this->tabela . " WHERE " . $campo . " REGEXP '" . $valor . "'");
         return $this->campos;
     }
 
-    
+
     /*---------------------EDIÇÃO---------------------*/
     public function _atualiza($chavePrimaria, $valor)
     {
         foreach ($this->campos as $campo => $val) {
             if ($campo != $chavePrimaria) {
-                $string[] = $campo."='".$val."'\n";
+                $string[] = $campo . "='" . $val . "'\n";
             }
         }
-        return $this->_query(" UPDATE ".$this->tabela." SET ".implode(',', $string)." WHERE ".$chavePrimaria." = '".$valor."'");
+        return $this->_query(" UPDATE " . $this->tabela . " SET " . implode(',', $string) . " WHERE " . $chavePrimaria . " = '" . $valor . "'");
     }
-    
+
     public function _grava()
     {
         $i = 0;
@@ -223,10 +222,10 @@ class Database
             foreach ($this->campos as $campo => $valor) {
                 if ($campo != 'id') {
                     $campos[] = $campo;
-                    $valores[] = "'".$valor."'";
+                    $valores[] = "'" . $valor . "'";
                 }
             }
-            if ($this->_query("INSERT INTO ".$this->tabela." (".implode(',', $campos).") VALUES (".implode(',', $valores).")")) {
+            if ($this->_query("INSERT INTO " . $this->tabela . " (" . implode(',', $campos) . ") VALUES (" . implode(',', $valores) . ")")) {
                 $id = mysqli_insert_id($this->conexao);
             }
         }
@@ -236,13 +235,13 @@ class Database
             return $id = "";
         }
     }
-    
-    
+
+
     public function _delete($campo, $valor)
     {
-        return $this->_query(" DELETE FROM ".$this->tabela." WHERE ".$campo." ='".$valor."'");
+        return $this->_query(" DELETE FROM " . $this->tabela . " WHERE " . $campo . " ='" . $valor . "'");
     }
-    
+
     /*------------------------FERRAMENTAS-----------------------*/
     // Query do Mysql
     public function _query($param)
@@ -262,7 +261,7 @@ class Database
             return false;
         }
     }
-    
+
     // função boa pra procurar palavra
     public function procpalavras($frase, $palavras, $resultado = 0)
     {
@@ -298,16 +297,16 @@ class Database
         }
         return $this->campos;
     }
-    
- 
 
-    
+
+
+
     // carrega os verdadeiros campos da tabela para comparação
     private function _loadCampos()
     {
         // seleciona os verdadeiros nomes das colunas
         if (preg_match('/^[a-zA-Z0-9_]+$/', $this->tabela)) {
-            $query = mysqli_query($this->conexao, "SELECT * FROM ".$this->tabela);
+            $query = mysqli_query($this->conexao, "SELECT * FROM " . $this->tabela);
             //$num_fields = mysqli_num_fields($query);
             while ($fields = mysqli_fetch_field($query)) {
                 array_push($this->nomesReais, $fields->name);
@@ -320,13 +319,13 @@ class Database
     {
         return $this->campos[$campo];
     }
-    
+
     /*// adiciona o prefixo no nome dos campos para gravação ou seleção
     private function _addPrefixo($param)
     {
         return strtoupper(substr($this->tabela, 0, 3))."_".$param;
     }*/
-    
+
     public function _getReg($param = "array")
     {
         switch ($param) {
@@ -342,17 +341,17 @@ class Database
                     $xml = new Xml($this->tabela);
                 }
                 $xml->fromArray($this->campos[0]);
-                
+
                 return $xml->getDocument();
                 break;
-                
+
             default:
                 if (isset($this->campos[0])) {
                     return $this->campos[0];
                 } else {
                     return $this->campos;
                 }
-                
+
                 break;
         }
     }
@@ -370,13 +369,13 @@ class Database
     // passa os erros para a variavel $this->erro
     private function _setErro($no, $msg)
     {
-        return $this->erro .= "[".$no."] = ".$msg."\n";
+        return $this->erro .= "[" . $no . "] = " . $msg . "\n";
     }
 
     // pega os erros ocorridos
     public function _getErro()
     {
         $msg = "Erros ocorridos\n";
-        return $msg.$this->erro."\n";
+        return $msg . $this->erro . "\n";
     }
 }
