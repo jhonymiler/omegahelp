@@ -1,4 +1,5 @@
-<div class="card">
+{include file="{$_pgParams.REAL_PATH}modulos/suporte/views/card-user.tpl"}
+<div class="card col-md-9">
 
     <div class="card-header">
         <h3 class="card-title float-left">Lista de Chamdos</h3>
@@ -47,6 +48,11 @@
     </div>
     <!-- /.card-body -->
 </div>
+</div>
+
+
+
+
 <script src="{$_pgParams.path_layout}plugins/datatables/jquery.dataTables.js"></script>
 <script src="{$_pgParams.path_layout}plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="{$_pgParams.path_layout}plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>

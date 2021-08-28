@@ -22,6 +22,7 @@ class protocolosModulo extends Modulo
     private $respostas;
     private $empresa = array();
     private $novoProtocolo;
+    private $novaResposta;
     private $arquivos = array();
     private $status;
 
@@ -63,10 +64,27 @@ class protocolosModulo extends Modulo
         );
     }
 
+    public function loadResposta($campos)
+    {
+        $this->novaResposta = array(
+            'RES_texto' => $campos['RES_texto'],
+            'PRO_id' => $campos['PRO_id'],
+            'USU_id' => Sessao::get('user')['USU_id']
+        );
+    }
+
     public function grava()
     {
         $this->_db->_setTabela($this->tabela); // seta a tabela protocolos
         $this->_db->_load($this->novoProtocolo);
+
+        return $this->_db->_grava();
+    }
+
+    public function gravaResposta()
+    {
+        $this->_db->_setTabela('respostas'); // seta a tabela protocolos
+        $this->_db->_load($this->novaResposta);
 
         return $this->_db->_grava();
     }
@@ -157,6 +175,21 @@ class protocolosModulo extends Modulo
             where p.PRO_id=" . $id;
 
             return $this->_db->_query($sql)[0];
+        } else {
+            return false;
+        }
+    }
+
+    public function getRespostas($ProID)
+    {
+        if (is_numeric($ProID)) {
+            $sql = "SELECT r.RES_id, r.RES_texto, r.USU_id, u.USU_nome,u.USU_imagem,
+            DATE_FORMAT(r.RES_data,'%d/%m/%Y %H:%m:%s') as RES_data
+            FROM respostas as r 
+            inner join usuarios as u on u.USU_id=r.USU_id
+			where r.PRO_id='" . $ProID . "' AND r.RES_visivel='1'";
+
+            return $this->_db->_query($sql);
         } else {
             return false;
         }

@@ -34,10 +34,11 @@ class anexosModulo extends Modulo
      *
      * @return array ou false
      */
-    public function getProAnexos($id)
+    public function getAnexos($campo, $id)
     {
-        $anexos = $this->_db->_select('PRO_id', $id);
+        $anexos = $this->_db->_select($campo, $id);
         if (is_array($anexos)) {
+
             return $this->trataAnexo($anexos);
         } else {
             return false;
