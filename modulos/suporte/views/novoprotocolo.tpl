@@ -87,7 +87,7 @@
             }
         });
 
-        $('#arquivos').on('paste', function(eventObj) {
+        $('body').on('paste', function(eventObj) {
             $('#file-pt-BR').fileinput('paste',
                 eventObj); // copies files or images data in clipboard
         });

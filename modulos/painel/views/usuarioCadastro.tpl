@@ -275,39 +275,66 @@
                 $("#mostra-campo-senha").hide();
                 $("#senha").prop("disabled", true);
                 $("#confirma_senha").prop("disabled", true);
-
-
-
             }
         });
 
     {/if}
 
 
-    {literal}
-        function enviar() {
-            $('#cadastro').validate({
-                rules: {
-                    USU_senha: {
-                        required: false,
-                        minlength: 5
-                    },
-                    confirma_senha: {
-                        required: false,
-                        minlength: 5,
-                        equalTo: "#senha"
-                    },
-                    USU_empresa: {
-                        required: false
-                    }
+
+    function enviar() {
+        $('#cadastro').validate({
+            rules: {
+                USU_senha: {
+                    required: false,
+                    minlength: 5
+                },
+                confirma_senha: {
+                    required: false,
+                    minlength: 5,
+                    equalTo: "#senha"
+                },
+                USU_empresa: {
+                    required: true
+                }
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: '{$FormAction}',
+            data: $("#cadastro").serialize(),
+            processData: false,
+            cache: false,
+            beforeSend: function() {
+                $preloader = $('.preloader')
+                if ($preloader) {
+                    $preloader.attr('style', 'height:100%');
+                    $preloader.children().show();
+                }
+            },
+            success: function(data) {
+                //window.location.href = redir;
+            }
+        });
+        return false;
+    };
+    $(function() {
+
+
+
+        $("#deletarSelecionados").click(function() {
+            var ids = [];
+            $('.check-table').each(function() {
+                if ($(this).is(":checked")) {
+                    ids.push($(this).val());
                 }
             });
             $.ajax({
                 type: 'POST',
-                url: local,
-                data: $("#cadastro").serialize(),
-                processData: false,
-                cache: false,
+                url: delAll,
+                data: {
+                    selUser: ids.join()
+                },
                 beforeSend: function() {
                     $preloader = $('.preloader')
                     if ($preloader) {
@@ -320,140 +347,103 @@
                 }
             });
             return false;
-        };
-        $(function() {
+        });
+
+
+        var table = $("#example1").DataTable({
+            "language": pt_br,
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "paging": true,
+            "select": true,
+            "ordering": true,
+            "rowReorder": true,
+            "columnDefs": [{
+                    orderable: false,
+                    className: 'reorder',
+                    targets: [0, -1]
+                },
+                {
+                    orderable: true,
+                    targets: '_all'
+                }
+            ]
+        });
+        $("#example1_filter").hide();
+        $('#busca').on('keyup', function() {
+            table.search(this.value).draw();
+        });
+
+        $("#select-all").click(function() {
+            $('.check-table').prop('checked', this.checked);
+        });
+        $('[data-mask]').inputmask()
 
 
 
-            $("#deletarSelecionados").click(function() {
-                var ids = [];
-                $('.check-table').each(function() {
-                    if ($(this).is(":checked")) {
-                        ids.push($(this).val());
-                    }
-                });
-                $.ajax({
-                    type: 'POST',
-                    url: delAll,
-                    data: {selUser:ids.join()},
-                    beforeSend: function() {
-                        $preloader = $('.preloader')
-                        if ($preloader) {
-                            $preloader.attr('style', 'height:100%');
-                            $preloader.children().show();
-                        }
-                    },
-                    success: function(data) {
-                        window.location.href = redir;
-                    }
-                });
-                return false;
-            });
+        $('#up_img').dmUploader({ //
+            //url: '/usuarios/registro/novo',
+            maxFileSize: 3000000, // 3 Megs max
+            multiple: false,
+            allowedTypes: 'image/*',
+            extFilter: ['jpg', 'jpeg', 'png'],
+            auto: false,
+            queue: true,
+            onNewFile: function(id, file) {
 
 
-            var table = $("#example1").DataTable({
-                "language": pt_br,
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "paging": true,
-                "select": true,
-                "ordering": true,
-                "rowReorder": true,
-                "columnDefs": [{
-                        orderable: false,
-                        className: 'reorder',
-                        targets: [0, -1]
-                    },
-                    {
-                        orderable: true,
-                        targets: '_all'
-                    }
-                ]
-            });
-            $("#example1_filter").hide();
-            $('#busca').on('keyup', function() {
-                table.search(this.value).draw();
-            });
-
-            $("#select-all").click(function() {
-                $('.check-table').prop('checked', this.checked);
-            });
-            $('[data-mask]').inputmask()
+                // When a new file is added using the file selector or the DnD area
+                if (typeof FileReader !== "undefined") {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
 
 
-
-            $('#up_img').dmUploader({ //
-                //url: '/usuarios/registro/novo',
-                maxFileSize: 3000000, // 3 Megs max
-                multiple: false,
-                allowedTypes: 'image/*',
-                extFilter: ['jpg', 'jpeg', 'png'],
-                auto: false,
-                queue: true,
-                onNewFile: function(id, file) {
+                        var img = document.getElementById('img-avatar');
+                        var img_crop = document.getElementById('image-crop');
+                        var button = document.getElementById('cortar');
+                        var croppedCanvas;
+                        var roundedCanvas;
 
 
-                    // When a new file is added using the file selector or the DnD area
-                    if (typeof FileReader !== "undefined") {
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
+                        $(img).attr('src', e.target.result);
+                        $(img_crop).attr('src', e.target.result);
+                        $('#cropimagem').show();
 
 
-                            var img = document.getElementById('img-avatar');
-                            var img_crop = document.getElementById('image-crop');
-                            var button = document.getElementById('cortar');
-                            var croppedCanvas;
-                            var roundedCanvas;
+                        var cropper = new Cropper(img_crop, {
+                            aspectRatio: 1,
+                            viewMode: 3
+                        });
+
+                        button.onclick = function() {
+
+                            croppedCanvas = cropper.getCroppedCanvas();
+                            roundedCanvas = getRoundedCanvas(croppedCanvas);
+                            Dataimagem = roundedCanvas.toDataURL();
+                            $(img).attr('src', Dataimagem);
+                            $(img_crop).attr('src', '');
 
 
-                            $(img).attr('src', e.target.result);
-                            $(img_crop).attr('src', e.target.result);
-                            $('#cropimagem').show();
-
-
-                            var cropper = new Cropper(img_crop, {
-                                aspectRatio: 1,
-                                viewMode: 3
-                            });
-
-                            button.onclick = function() {
-
-                                croppedCanvas = cropper.getCroppedCanvas();
-                                roundedCanvas = getRoundedCanvas(croppedCanvas);
-                                Dataimagem = roundedCanvas.toDataURL();
-                                $(img).attr('src', Dataimagem);
-                                $(img_crop).attr('src', '');
-
-
-                                document.getElementById("meti_o_loko").innerHTML =
-                                    '<textarea name="USU_imagem" maxlength="10000000000" cols="10000000000" rows="10000000000" style="display:none;">' +
-                                    Dataimagem + '</textarea>';
-                                $('#cropimagem').hide();
-                                cropper.destroy();
-
-
-                            };
+                            document.getElementById("meti_o_loko").innerHTML =
+                                '<textarea name="USU_imagem" maxlength="10000000000" cols="10000000000" rows="10000000000" style="display:none;">' +
+                                Dataimagem + '</textarea>';
+                            $('#cropimagem').hide();
+                            cropper.destroy();
 
 
                         };
-                        reader.readAsDataURL(file);
+
+
                     };
-                }
-
-            });
-
-
-
-
-
-
-
-
+                    reader.readAsDataURL(file);
+                };
+            }
 
         });
+    });
 
-    {/literal}
+
 
 
 
