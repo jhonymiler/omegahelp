@@ -15,7 +15,7 @@ class Modulo
         $this->getLibs('data.class');
         $this->_data = Data::getData();
     }
-    
+
     public function array_orderby()
     {
         $args = func_get_args();
@@ -53,8 +53,8 @@ bsaaaaaaacceeeeiiiidnoooooouuuyybyRr-es----------- (-)';
     // CARREGA AS LIVRARIAS LIBS
     protected function getLibs($libs)
     {
-        $pathLibs = RAIZ.'lbs'.DS.'classes'.DS.$libs.'.php';
-    
+        $pathLibs = RAIZ . 'lbs' . DS . 'classes' . DS . $libs . '.php';
+
         if (is_readable($pathLibs)) {
             require_once $pathLibs;
         } else {
@@ -77,34 +77,55 @@ bsaaaaaaacceeeeiiiidnoooooouuuyybyRr-es----------- (-)';
                 $error = $_FILES['files']['error'][$key];
                 $size  = $_FILES['files']['size'][$key];
                 $files[] = [
-                      'name'     => $name
-                    , 'type'     => $type
-                    , 'tmp_name' => $tmp
-                    , 'error'    => $error
-                    , 'size'     => $size
+                    'name'     => $name, 'type'     => $type, 'tmp_name' => $tmp, 'error'    => $error, 'size'     => $size
                 ];
             }
         }
 
-       
+
         foreach ($files as $file) {
             $up = new upload($file, 'pt_BR');
             if ($up->uploaded) {
                 $d = new DateTime('NOW');
-                $up->file_new_name_body = $this->slug($up->file_src_name_body).'_'.$d->format('u');
-               
+                $up->file_new_name_body = $this->slug($up->file_src_name_body) . '_' . $d->format('u');
+
                 $up->process(UPLOAD);
                 if ($up->processed) {
                     $files_name[] = $up->file_dst_name;
                     $up->clean();
                 } else {
-                    Sessao::addMsg('erro',$up->error);
+                    Sessao::addMsg('erro', $up->error);
                 }
             } else {
-                Sessao::addMsg('sucesso','Arquivos gravados com sucesso!');
+                Sessao::addMsg('sucesso', 'Arquivos gravados com sucesso!');
             }
         }
 
         return $files_name;
+    }
+
+    /**
+     * Função para cortar o texto
+     *
+     * @param [String] $texto
+     * @param int $limite
+     * @param bool $quebra
+     *
+     * @return String
+     */
+    public function corta_texto($texto, $limite = 50, $quebra = false)
+    {
+        $tamanho = strlen($texto);
+        if ($tamanho <= $limite) { //Verifica se o tamanho do texto é menor ou igual ao limite
+            $novo_texto = $texto;
+        } else { // Se o tamanho do texto for maior que o limite
+            if ($quebra == true) { // Verifica a opção de quebrar o texto
+                $novo_texto = trim(substr($texto, 0, $limite)) . "...";
+            } else { // Se não, corta $texto na última palavra antes do limite
+                $ultimo_espaco = strrpos(substr($texto, 0, $limite), " "); // Localiza o útlimo espaço antes de $limite
+                $novo_texto = trim(substr($texto, 0, $ultimo_espaco)) . "..."; // Corta o $texto até a posição localizada
+            }
+        }
+        return $novo_texto; // Retorna o valor formatado
     }
 }

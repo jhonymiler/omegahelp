@@ -81,15 +81,19 @@ class protocolosControle extends painelControle
      * Mostra o protocolo na página para o cliente
      *
      * @param [type] $proID
-     *
+     * 
      * @return void
      */
     public function ver($proID)
     {
         $protocolo = $this->protocolos->getProtocolo($proID);
-        
+        if ($protocolo->PRO_id) {
+            $anexos = $this->protocolos->getProAnexos($proID);
+        }
+
         $this->_view->assign('protocolo', $protocolo);
-        $this->_view->assign('titulo', 'Protocolo #'.$proID);
+        $this->_view->assign('anexos', $anexos);
+        $this->_view->assign('titulo', 'Protocolo #' . $proID);
 
         $this->_view->addNavLink('protocolo', 'Protocolo');
         $this->_view->assign('current_link', 'protocolos');

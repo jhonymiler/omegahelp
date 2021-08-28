@@ -7,10 +7,10 @@
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome Icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css"
-              crossorigin="anonymous">
+            crossorigin="anonymous">
 
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/fontawesome-free/css/all.css">
         <!-- overlayScrollbars -->
@@ -29,7 +29,7 @@
         <!-- DataTables -->
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet"
-              href="{$_pgParams.path_layout}plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+            href="{$_pgParams.path_layout}plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
         <!-- ./wrapper -->
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/select2/css/select2.min.css">
@@ -37,11 +37,12 @@
         <link href="{$_pgParams.path_layout}dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/adminlte.css">
         <link rel="stylesheet" type="text/css" href="{$_pgParams.path_layout}plugins/ckeditor/examples/styles.css">
-        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/custom.css">
 
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/cropper.css">
         <link href="{$_pgParams.path_layout}plugins/inputfile/css/fileinput.css" media="all" rel="stylesheet"
-              type="text/css" />
+            type="text/css" />
+        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/custom.css">
+        <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/lightbox/css/lightbox.css">
 
         <!-- REQUIRED SCRIPTS -->
         <!-- jQuery -->
@@ -68,7 +69,7 @@
                 <div class="container">
                     <a href="{$_pgParams.RAIZ}/usuarios" class="navbar-brand">
                         <img src="{$_pgParams.path_layout}dist/img/aro-logo.png" alt="ARO HELPDESK" class="brand-image "
-                             style="opacity: .8">
+                            style="opacity: .8">
                         <span class="brand-text font-weight-light">ARO HELPDESK</span>
                     </a>
 
@@ -136,7 +137,7 @@
 
                                         {if $smarty.foreach.i.iteration == $counter}
                                             <li class="breadcrumb-item active">{$link.nome}</li>
-                                            {else}
+                                        {else}
                                             <li class="breadcrumb-item"><a href="{$_pgParams.RAIZ}{$link.url}">{$link.nome}</a>
                                             </li>
                                         {/if}
@@ -177,7 +178,8 @@
                                         <div class="row">
                                             <div class="col-sm-4 border-right">
                                                 <div class="description-block">
-                                                    <h5 class="description-header"><span class="badge bg-info">{$abertos.qtd}</span>
+                                                    <h5 class="description-header"><span
+                                                            class="badge bg-info">{$abertos.qtd}</span>
                                                     </h5>
                                                     <span style="font-size:12px;">Protocolos</span>
                                                 </div>
@@ -290,8 +292,8 @@
                                             class="direct-chat-name float-left">Suporte</span><span
                                             class="direct-chat-timestamp float-right">01/08/2021 19:37:47Hs</span></div>
                                     <img class="direct-chat-img"
-                                         src="http://localhost/sistemas/omegahelp/views/painel/dist/img/aro-logo.png"
-                                         alt="Suporte">
+                                        src="http://localhost/sistemas/omegahelp/views/painel/dist/img/aro-logo.png"
+                                        alt="Suporte">
                                     <div class="direct-chat-text">Olá, breve irei lhe atender. Por favor aguarde um
                                         momento.</div>
                                 </div>
@@ -308,11 +310,11 @@
                         <form id="enviaMsg" action="#" method="post">
                             <div class="input-group">
                                 <input id="chat-mensagem" sala="suporte_{$usuario.USU_id}" type="text"
-                                       name="{$usuario.USU_nome}" placeholder="Digite a mensagem..." class="form-control"
-                                       img="{$imagem}">
+                                    name="{$usuario.USU_nome}" placeholder="Digite a mensagem..." class="form-control"
+                                    img="{$imagem}">
                                 <span class="input-group-append">
                                     <button type="button" class="btn btn-outline-warning" title="Smiles"
-                                            data-widget="chat-pane-toggle">
+                                        data-widget="chat-pane-toggle">
                                         <i class="fas fa-smile"></i>
                                     </button>
                                 </span>
@@ -362,49 +364,48 @@
             $(".direct-chat-timestamp").html(dataHora);
 
             $("#chatContainer").hide();
-            $("#chatbuttom").click(function () {
+            $("#chatbuttom").click(function() {
                 $("#chatContainer").show(200);
                 $("#chatbuttom").hide();
             });
-            $("#fechaChat").click(function () {
+            $("#fechaChat").click(function() {
                 $("#chatbuttom").show();
                 $("#chatContainer").hide(200);
             });
 
 
-            $(document).ready(function () {
+            $(document).ready(function() {
 
                 $("#ChatMensagens").animate({
                     scrollTop: $("#ChatMensagens").prop("scrollHeight")
                 }, 500);
 
-            {if is_array($msg)}
-                {foreach key=status item=m from=$msg}
-                $(document).Toasts('create', {
-                    toast: true,
-                    delay: 5000,
-                    class: '{$status}',
-                    position: 'topRight',
-                    autohide: true,
-                    body: '{$m}'
-                });
-                {/foreach}
-            {/if}
+                {if is_array($msg)}
+                    {foreach key=status item=m from=$msg}
+                        $(document).Toasts('create', {
+                            toast: true,
+                            delay: 5000,
+                            class: '{$status}',
+                            position: 'topRight',
+                            autohide: true,
+                            body: '{$m}'
+                        });
+                    {/foreach}
+                {/if}
                 $(".nav-link").removeClass('active');
                 $("[data-link={$current_link}]").addClass('active')
             });
             {if !empty($campos)}
-            $(document).ready(function () {
-                var campos = JSON.parse($("#campos").val());
-                preencher(campos);
-            });
+                $(document).ready(function() {
+                    var campos = JSON.parse($("#campos").val());
+                    preencher(campos);
+                });
 
-            function preencher(json) {
-                for (var key in json) {
-                    $("[name=" + key + "]").val(json[key]);
-                }
-            }
-            ;
+                function preencher(json) {
+                    for (var key in json) {
+                        $("[name=" + key + "]").val(json[key]);
+                    }
+                };
             {/if}
         </script>
 

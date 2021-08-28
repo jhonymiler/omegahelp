@@ -32,7 +32,6 @@ class protocolosControle extends suporteControle
         $this->user = Sessao::get('user');
         $this->protocolos = $this->loadModulo('painel', 'protocolos');
         $this->anexos = $this->loadModulo('painel', 'anexos');
-
         $listaProtocolos = $this->protocolos->getListaUser($this->user['USU_id']);
 
         $this->_view->assign('listaProtocolos', $listaProtocolos);
@@ -51,7 +50,7 @@ class protocolosControle extends suporteControle
         $this->_view->renderizar();
     }
 
-    public function novo() 
+    public function novo()
     {
         $tipos = $this->protocolos->listaTipos();
         $this->_view->assign('tipos', $tipos);
@@ -80,12 +79,13 @@ class protocolosControle extends suporteControle
     public function ver($proID)
     {
         $protocolo = $this->protocolos->getProtocolo($proID);
-        $anexos = $this->anexos->getProAnexos($proID);
-
+        if ($protocolo["PRO_id"]) {
+            $anexos = $this->anexos->getProAnexos($protocolo["PRO_id"]);
+        }
 
         $this->_view->assign('protocolo', $protocolo);
         $this->_view->assign('anexos', $anexos);
-        $this->_view->assign('titulo', 'Protocolo #'.$proID);
+        $this->_view->assign('titulo', 'Protocolo #' . $proID);
 
         $this->_view->addNavLink('protocolo', 'Protocolo');
         $this->_view->assign('current_link', 'protocolos');
