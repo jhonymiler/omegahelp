@@ -121,3 +121,12 @@ label.error {
 .fa-file-pdf:before {
     color: firebrick;
 }
+
+.icon-xml:before {
+    color: blueviolet;
+}
+
+.card-comments .card-comment .mailbox-attachments img {
+    width: 100%;
+    height: auto;
+}

@@ -10,7 +10,7 @@
  *
  * @author Jonatas
  */
- 
+
 class protocolosModulo extends Modulo
 {
 
@@ -22,6 +22,7 @@ class protocolosModulo extends Modulo
     private $respostas;
     private $empresa = array();
     private $novoProtocolo;
+    private $novaResposta;
     private $arquivos = array();
     private $status;
 
@@ -52,7 +53,7 @@ class protocolosModulo extends Modulo
         return is_array($this->tipos) ? $this->tipos : false;
     }
 
-    
+
     public function load($campos)
     {
         $this->novoProtocolo = array(
@@ -63,11 +64,28 @@ class protocolosModulo extends Modulo
         );
     }
 
+    public function loadResposta($campos)
+    {
+        $this->novaResposta = array(
+            'RES_texto' => $campos['RES_texto'],
+            'PRO_id' => $campos['PRO_id'],
+            'USU_id' => Sessao::get('user')['USU_id']
+        );
+    }
+
     public function grava()
     {
         $this->_db->_setTabela($this->tabela); // seta a tabela protocolos
         $this->_db->_load($this->novoProtocolo);
-        
+
+        return $this->_db->_grava();
+    }
+
+    public function gravaResposta()
+    {
+        $this->_db->_setTabela('respostas'); // seta a tabela protocolos
+        $this->_db->_load($this->novaResposta);
+
         return $this->_db->_grava();
     }
 
@@ -89,7 +107,7 @@ class protocolosModulo extends Modulo
     {
         return $this->erro = $this->_db->_getErro();
     }
-    
+
     /**
      * Lista todos os protocolos trazendo
      * trazendo os status e os tipos de protocolos pelo usuário logado.
@@ -103,10 +121,10 @@ class protocolosModulo extends Modulo
             SELECT p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml, DATE_FORMAT(P.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,t.TIP_tipo,t.TIP_prioridade 
             FROM protocolos p 
             inner join tipoprotocolos t on t.TIP_id=p.TIP_id 
-            inner join statusprotocolos as s on p.PRO_status=s.STA_id where p.USU_id=".$userID;
-        
+            inner join statusprotocolos as s on p.PRO_status=s.STA_id where p.USU_id=" . $userID . " order by PRO_id desc";
+
             $lista = $this->_db->_query($sql);
-        
+
             if (is_array($lista)) {
                 return $lista;
             } else {
@@ -124,18 +142,18 @@ class protocolosModulo extends Modulo
      * @param boolean $id
      * @return void
      */
-    public function qtd($status=false, $id=false)
+    public function qtd($status = false, $id = false)
     {
         if ($id) {
-            $u = ' AND USU_id='.$id;
+            $u = ' AND USU_id=' . $id;
         } else {
             $u = '';
         }
-        
+
         if (!$status) {
-            $sql = "SELECT count(*) as qtd FROM protocolos WHERE PRO_status <> 6".$u;
+            $sql = "SELECT count(*) as qtd FROM protocolos WHERE PRO_status <> 6" . $u;
         } else {
-            $sql = "SELECT count(*) as qtd FROM protocolos WHERE PRO_status=".$status.$u;
+            $sql = "SELECT count(*) as qtd FROM protocolos WHERE PRO_status=" . $status . $u;
         }
         $qtd =  $this->_db->_query($sql);
         return $qtd[0];
@@ -154,9 +172,24 @@ class protocolosModulo extends Modulo
             FROM protocolos p 
             inner join tipoprotocolos t on t.TIP_id=p.TIP_id 
             inner join statusprotocolos as s on p.PRO_status=s.STA_id 
-            where p.PRO_id=".$id;
-    
+            where p.PRO_id=" . $id;
+
             return $this->_db->_query($sql)[0];
+        } else {
+            return false;
+        }
+    }
+
+    public function getRespostas($ProID)
+    {
+        if (is_numeric($ProID)) {
+            $sql = "SELECT r.RES_id, r.RES_texto, r.USU_id, u.USU_nome,u.USU_imagem,
+            DATE_FORMAT(r.RES_data,'%d/%m/%Y %H:%m:%s') as RES_data
+            FROM respostas as r 
+            inner join usuarios as u on u.USU_id=r.USU_id
+			where r.PRO_id='" . $ProID . "' AND r.RES_visivel='1'";
+
+            return $this->_db->_query($sql);
         } else {
             return false;
         }

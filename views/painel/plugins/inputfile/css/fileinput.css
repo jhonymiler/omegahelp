@@ -111,28 +111,26 @@ input[type=file].file-loading {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 160px;
-    height: 15px;
     margin: auto;
 }
 
-.file-zoom-content > .file-object.type-video,
-.file-zoom-content > .file-object.type-flash,
-.file-zoom-content > .file-object.type-image {
+.file-zoom-content>.file-object.type-video,
+.file-zoom-content>.file-object.type-flash,
+.file-zoom-content>.file-object.type-image {
     max-width: 100%;
     max-height: 100%;
     width: auto;
 }
 
-.file-zoom-content > .file-object.type-video,
-.file-zoom-content > .file-object.type-flash {
+.file-zoom-content>.file-object.type-video,
+.file-zoom-content>.file-object.type-flash {
     height: 100%;
 }
 
-.file-zoom-content > .file-object.type-pdf,
-.file-zoom-content > .file-object.type-html,
-.file-zoom-content > .file-object.type-text,
-.file-zoom-content > .file-object.type-default {
+.file-zoom-content>.file-object.type-pdf,
+.file-zoom-content>.file-object.type-html,
+.file-zoom-content>.file-object.type-text,
+.file-zoom-content>.file-object.type-default {
     width: 100%;
 }
 
@@ -182,11 +180,11 @@ input[type=file].file-loading {
     padding-left: 1.875rem;
 }
 
-.file-caption.icon-visible > .input-group-lg .file-caption-name {
+.file-caption.icon-visible>.input-group-lg .file-caption-name {
     padding-left: 2.1rem;
 }
 
-.file-caption.icon-visible > .input-group-sm .file-caption-name {
+.file-caption.icon-visible>.input-group-sm .file-caption-name {
     padding-left: 1.5rem;
 }
 
@@ -268,18 +266,13 @@ input[type=file].file-loading {
 }
 
 .krajee-default.file-preview-frame {
-    margin: 8px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    padding: 6px;
+    padding-top: 6px;
     float: left;
     text-align: center;
 }
 
-.krajee-default.file-preview-frame .kv-file-content {
-    width: 213px;
-    height: 160px;
-}
 
 .krajee-default .file-preview-other-frame {
     display: flex;
@@ -406,7 +399,7 @@ input[type=file].file-loading {
     height: 2.4rem;
     top: 50%;
     border-radius: 50%;
-    text-align:center;
+    text-align: center;
 }
 
 .btn-navigate * {
@@ -568,7 +561,7 @@ input[type=file].file-loading {
     background: transparent;
 }
 
-.file-zoom-content > * {
+.file-zoom-content>* {
     display: inline-block;
     vertical-align: middle;
 }
@@ -585,12 +578,12 @@ input[type=file].file-loading {
     max-height: 100%;
 }
 
-.file-zoom-content > .file-object.type-image {
+.file-zoom-content>.file-object.type-image {
     height: auto;
     min-height: inherit;
 }
 
-.file-zoom-content > .file-object.type-audio {
+.file-zoom-content>.file-object.type-audio {
     width: auto;
     height: 30px;
 }
