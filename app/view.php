@@ -1,8 +1,5 @@
 <?php
 
-/**
- *
- */
 require_once RAIZ . 'lbs' . DS . 'smarty' . DS . 'Smarty.class.php';
 
 class View extends Smarty

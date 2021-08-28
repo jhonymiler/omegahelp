@@ -101,3 +101,23 @@ label.error {
     font-size: 1em;
     ;
 }
+
+.mailbox-attachment-name {
+    font-size: 12px;
+}
+
+.fa-file-word:before,
+.fa-file-doc:before,
+.fa-file-docx:before {
+    color: dodgerblue;
+}
+
+.fa-file-excel:before,
+.fa-file-xls:before,
+.fa-file-xlsx:before {
+    color: green;
+}
+
+.fa-file-pdf:before {
+    color: firebrick;
+}

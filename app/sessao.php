@@ -41,7 +41,7 @@ class Sessao
         }
     }
 
-    
+
 
     // DERTERMINA O TEMPO DE ACESSO
     public static function tempo()
@@ -61,8 +61,9 @@ class Sessao
             Session::set('tempo', time());
         }
     }
-    
-    public static function addMsg($tipo='sucesso',$msg='') {
+
+    public static function addMsg($tipo = 'sucesso', $msg = '')
+    {
         $status = '';
         switch ($status) {
             case 'erro':
@@ -81,16 +82,17 @@ class Sessao
                 $status = 'bg-info';
                 break;
         }
-        
+
         $_SESSION['msg'][] = array(
-            'tipo'=>$status,
-            'msg'=>$msg
-         );
+            'tipo' => $status,
+            'msg' => $msg
+        );
     }
-    
-    public static function getMsg($limpa=true) {
-        $msg = is_array($_SESSION['msg'])?$_SESSION['msg']:'';
-        if($limpa===true) unset($_SESSION['msg']);
+
+    public static function getMsg($limpa = true)
+    {
+        $msg = is_array($_SESSION['msg']) ? $_SESSION['msg'] : '';
+        if ($limpa === true) unset($_SESSION['msg']);
         return $msg;
     }
 

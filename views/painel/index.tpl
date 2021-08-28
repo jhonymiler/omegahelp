@@ -54,7 +54,7 @@
 
     </head>
 
-    <body class="control-sidebar-slide-open sidebar-mini-md sidebar-collapse">
+    <body class="sidebar-collapse control-sidebar-slide-open sidebar-mini-md">
         <div class="wrapper">
 
             <!-- Preloader -->
