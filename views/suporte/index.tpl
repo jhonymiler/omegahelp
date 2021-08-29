@@ -66,6 +66,11 @@
     <body class="hold-transition layout-top-nav" style="position: relative;">
         <div class="wrapper">
 
+            <!-- Preloader -->
+            <div class="preloader flex-column justify-content-center align-items-center">
+                <img class="animation__wobble" src="{$_pgParams.path_layout}dist/img/aro-logo.png" alt="ARO HELPDESK"
+                    height="60" width="60">
+            </div>
 
 
             {if  !empty($usuario.USU_imagem)}
