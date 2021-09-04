@@ -66,7 +66,10 @@
                                                 {assign var="avatar" value="{$_pgParams.path_layout}dist/img/avatar.png"}
 
                                             {/if}
-                                            {if $user_data.USU_nivel > 1}
+                                            {if $user_data.USU_nivel == 1}
+                                                <img width="65" src="{$_pgParams.path_layout}dist/img/atendente.png"
+                                                    class="atendente" alt="Atendente">
+                                            {elseif $user_data.USU_nivel == 3}
                                                 <img width="65" src="{$_pgParams.path_layout}dist/img/atendente.png"
                                                     class="atendente" alt="Atendente">
                                             {/if}
@@ -177,13 +180,25 @@
                             <div class="form-group">
                                 <label for="USU_nivel">Nível</label>
 
-                                <select name="USU_nivel" class="form-control required">
+                                <select id="USU_nivel" name="USU_nivel" class="form-control required">
                                     <option value="0">Usuário</option>
                                     <option value="1">Atendente</option>
                                     <option value="3">Administrador</option>
                                 </select>
                             </div>
                         {/if}
+                        <div class="form-group">
+                            <label for="USU_nivel">Departamento</label>
+
+                            <select id="DEP_id" name="DEP_id" class="form-control required">
+                                <option value="0">Nenhum</option>
+                                {foreach from=$departamentos item="departamento"}
+                                    <option value="{$departamento.DEP_id}">{$departamento.DEP_titulo}</option>
+                                {/foreach}
+                                <option value="null">Todos</option>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label for="USU_email">Email</label>
                             <input type="email" class="form-control" name="USU_email" id="USU_email"
@@ -300,26 +315,79 @@
                 },
                 USU_empresa: {
                     required: true
+                },
+                USU_nivel: {
+                    required: true
                 }
             }
         });
-        $.ajax({
-            type: 'POST',
-            url: '{$FormAction}',
-            data: $("#cadastro").serialize(),
-            processData: false,
-            cache: false,
-            beforeSend: function() {
-                $preloader = $('.preloader')
-                if ($preloader) {
-                    $preloader.attr('style', 'height:100%');
-                    $preloader.children().show();
+        if ($("#USU_nivel").val() < 1 && $("#DEP_id").val() > 0) {
+            $(document).Toasts('create', {
+                toast: true,
+                delay: 5000,
+                class: 'bg-danger',
+                position: 'topRight',
+                autohide: true,
+                fade: true,
+                title: 'Erro!',
+                body: 'O usuário não pode possuir departamento.'
+            });
+            $("DEP_id").val(0)
+        } else if ($("#USU_nivel").val() == 3 && $("#DEP_id").val() != 'null') {
+            $(document).Toasts('create', {
+                toast: true,
+                delay: 5000,
+                class: 'bg-danger',
+                position: 'topRight',
+                autohide: true,
+                fade: true,
+                title: 'Erro!',
+                body: 'O Administrador deve ter acesso a todos os departamentos.'
+            });
+            $("DEP_id").val(0)
+        } else if ($("#USU_nivel").val() == 1 && $("#DEP_id").val() == 0) {
+            $(document).Toasts('create', {
+                toast: true,
+                delay: 5000,
+                class: 'bg-danger',
+                position: 'topRight',
+                autohide: true,
+                fade: true,
+                title: 'Erro!',
+                body: 'Selecione um departamento para o Atendente.'
+            });
+            $("DEP_id").val(0)
+        } else if ($("#USU_nivel").val() == 1 && $("#DEP_id").val() == 'null') {
+            $(document).Toasts('create', {
+                toast: true,
+                delay: 5000,
+                class: 'bg-danger',
+                position: 'topRight',
+                autohide: true,
+                fade: true,
+                title: 'Erro!',
+                body: 'O Atendente não pode ter todos os departamentos.'
+            });
+            $("DEP_id").val(0)
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: '{$FormAction}',
+                data: $("#cadastro").serialize(),
+                processData: false,
+                cache: false,
+                beforeSend: function() {
+                    $preloader = $('.preloader')
+                    if ($preloader) {
+                        $preloader.attr('style', 'height:100%');
+                        $preloader.children().show();
+                    }
+                },
+                success: function(data) {
+                    window.location.href = redir;
                 }
-            },
-            success: function(data) {
-                window.location.href = redir;
-            }
-        });
+            });
+        }
         return false;
     };
     $(function() {

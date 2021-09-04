@@ -2,5 +2,6 @@
 .vscode
 /tmp/
 /nbproject/private/
+.github
 omegahelp.git
 .gitignore

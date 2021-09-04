@@ -23,7 +23,7 @@ class protocolosModulo extends Modulo
     private $empresa = array();
     private $novoProtocolo;
     private $novaResposta;
-    private $listaTodos;
+    private $lista;
     private $arquivos = array();
     private $status;
 
@@ -37,31 +37,24 @@ class protocolosModulo extends Modulo
 
         $sql = "
             SELECT 
-                p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml, 
-                DATE_FORMAT(P.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,
-                t.TIP_tipo,t.TIP_prioridade, e.EMP_fantasia, u.USU_nome,u.USU_imagem,u.USU_email
-            FROM protocolos p 
-            inner join tipoprotocolos t on t.TIP_id=p.TIP_id 
-            inner join usuarios as u on u.USU_id=p.USU_id
-            inner join empresas as e on e.EMP_id=u.EMP_id
-            inner join statusprotocolos as s on p.PRO_status=s.STA_id  order by PRO_id desc";
+            p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml, 
+            DATE_FORMAT(P.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,
+            t.TIP_tipo,t.TIP_prioridade, e.EMP_fantasia, u.USU_nome,u.USU_imagem,
+            u.USU_email,d.DEP_id,d.DEP_titulo
+        FROM protocolos p 
+        inner join tipoprotocolos t on t.TIP_id=p.TIP_id 
+        inner join usuarios as u on u.USU_id=p.USU_id
+        inner join empresas as e on e.EMP_id=u.EMP_id
+        left join departamentos as d on d.DEP_id=p.DEP_id and d.DEP_id=u.DEP_id
+        inner join statusprotocolos as s on p.PRO_status=s.STA_id  order by PRO_id desc;";
 
         $lista = $this->_db->_query($sql);
 
         if (is_array($lista)) {
-            return $lista;
+            return $this->lista = $lista;
         } else {
             return false;
         }
-    }
-    /**
-     * Lista todos os protocolos puxando pelo usuário logado
-     */
-    public function lista()
-    {
-        $this->_db->_setTabela($this->tabela);
-        $this->usuario = $this->_db->_select('USU_id', Sessao::get('user')['USU_id']);
-        return is_array($this->usuario) ? $this->usuario : false;
     }
 
     /**

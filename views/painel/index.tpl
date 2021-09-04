@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
         <!-- Toastr -->
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/toastr/toastr.min.css">
-        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/adminlte.min.css">
+        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/adminlte.css">
 
         <!-- FAVICON -->
         <link rel="apple-touch-icon" sizes="180x180" href="{$_pgParams.path_layout}dist/img/aro-logo.png">

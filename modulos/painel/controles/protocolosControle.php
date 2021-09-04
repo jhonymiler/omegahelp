@@ -32,7 +32,9 @@ class protocolosControle extends painelControle
         $this->protocolos = $this->loadModulo('painel', 'protocolos');
         $this->anexos = $this->loadModulo('painel', 'anexos');
 
+        //if (Sessao::get('user')['USU_nivel'] = 3) {
         $listaProtocolos = $this->protocolos->ListaTodos();
+        //}
 
         $this->_view->assign('listaProtocolos', $listaProtocolos);
         $this->_view->assign('abertos', $this->protocolos->qtd(false, false));

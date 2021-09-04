@@ -29,11 +29,15 @@ class usuariosControle extends painelControle
         $this->_user = $this->loadModulo('painel', 'usuario');
         $this->_emp = $this->loadModulo('painel', 'empresas');
 
-        // prepara módulo de empresas
+        // lista de departamentos para o cadastro
+        $this->_db->_setTabela('departamentos');
+        $lista = $this->_db->_select();
+        $this->_view->assign('departamentos', $lista);
+        // lista de empresas para o cadastro
         $this->_db->_setTabela('empresas');
         $emps = $this->_emp->lista();
         $this->_view->assign('emplista', $emps);
-        // prepara móculo de usuários
+        // lista de usuário 
         $this->_db->_setTabela('usuarios');
         $lista = $this->_user->listaUsuarios();
         $this->_view->assign('lista', $lista);
