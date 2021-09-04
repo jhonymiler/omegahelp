@@ -79,26 +79,30 @@ class protocolosControle extends suporteControle
     public function ver($proID)
     {
         $protocolo = $this->protocolos->getProtocolo($proID);
-        $respostas = $this->protocolos->getRespostas($proID);
-        if ($protocolo["PRO_id"]) {
-            $anexos = $this->anexos->getAnexos('PRO_id', $protocolo["PRO_id"]);
-        }
-
-        if (is_array($respostas)) {
-            foreach ($respostas as $k => $v) {
-                $respostas[$k]['anexos'] = $this->anexos->getAnexos('RES_id', $v["RES_id"]);
+        if (isset($protocolo["PRO_id"])) {
+            $respostas = $this->protocolos->getRespostas($proID);
+            if (is_array($respostas)) {
+                foreach ($respostas as $k => $v) {
+                    $respostas[$k]['anexos'] = $this->anexos->getAnexos('RES_id', $v["RES_id"]);
+                }
             }
+            $qtdRespostas = is_array($respostas) ? count($respostas) : 0;
+
+            $anexos = $this->anexos->getAnexos('PRO_id', $protocolo["PRO_id"]);
+            $this->_view->assign('anexos', $anexos);
+            $this->_view->assign('respostas', $respostas);
+            $this->_view->assign('protocolo', $protocolo);
+            $this->_view->assign('respostaQtd', $qtdRespostas);
+
+            $this->_view->assign('titulo', 'Protocolo #' . $proID);
+
+            $this->_view->addNavLink('protocolo', 'Protocolo');
+            $this->_view->assign('current_link', 'protocolos');
+            $this->_view->addConteudo('protocolo');
+            $this->_view->renderizar();
+        } else {
+            $this->redir('suporte/protocolos/');
         }
-
-        $this->_view->assign('protocolo', $protocolo);
-        $this->_view->assign('respostas', $respostas);
-        $this->_view->assign('anexos', $anexos);
-        $this->_view->assign('titulo', 'Protocolo #' . $proID);
-
-        $this->_view->addNavLink('protocolo', 'Protocolo');
-        $this->_view->assign('current_link', 'protocolos');
-        $this->_view->addConteudo('protocolo');
-        $this->_view->renderizar();
     }
 
     public function resposta()

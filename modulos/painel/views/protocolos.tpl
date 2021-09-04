@@ -95,6 +95,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Proprietário</th>
                                     <th>Assunto</th>
                                     <th>Date</th>
                                     <th>Status</th>
@@ -107,6 +108,10 @@
                                     {foreach from=$listaProtocolos item="pro" name=i}
                                         <tr>
                                             <td>{$pro.PRO_id}</td>
+                                            <td>
+                                                <b>{$pro.USU_nome}</b><br>
+                                                <span style="font-size: 11px;">{$pro.EMP_fantasia}</span>
+                                            </td>
                                             <td>[{$pro.TIP_tipo}] {$pro.PRO_assunto}</td>
                                             <td>{$pro.PRO_aberto}</td>
                                             <td><span class="badge bg-{$pro.STA_corHtml}">{$pro.STA_status}</span></td>
@@ -155,7 +160,7 @@
 
         <script>
             $(document).ready(function() {
-                $('#protocolos-lista').DataTable({
+                var table = $('#protocolos-lista').DataTable({
                     "language": pt_br,
                     "responsive": true,
                     "lengthChange": false,
@@ -165,15 +170,15 @@
                     "ordering": true,
                     "rowReorder": true,
                     "columnDefs": [{
-                            orderable: false,
-                            className: 'reorder',
-                            targets: [0, -1]
-                        },
-                        {
-                            orderable: true,
-                            targets: '_all'
-                        }
-                    ]
+                        orderable: true,
+                        className: 'reorder',
+                        targets: [0]
+                    }, {
+                        orderable: false,
+                        targets: [-1],
+                    }]
                 });
-            });
+                table.columns('.reorder').order('desc').draw();
+
+            })
         </script>

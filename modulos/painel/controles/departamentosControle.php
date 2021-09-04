@@ -30,22 +30,22 @@ class departamentosControle extends painelControle
         $this->departamento = $this->loadModulo('painel', 'departamentos');
     }
 
-    
+
     public function index()
     {
         $lista = $this->departamento->lista();
         $this->_view->assign('lista', $lista);
 
-        $this->_view->assign('titulo', 'Gerenciamnto de departamentos');
-        $this->_view->assign('formAction', BASE_URL.'painel/departamentos/novo');
+        $this->_view->assign('titulo', 'Gerenciamento de departamentos');
+        $this->_view->assign('formAction', BASE_URL . 'painel/departamentos/novo');
         $this->_view->addConteudo('departamentosCadastro');
         $this->_view->renderizar();
     }
-    
+
     public function novo()
     {
         $post = $this->POST();
-        
+
         if ($this->POST()) {
             if (is_array($this->departamento->load($this->POST()))) {
                 if ($this->_db->_grava()) {
@@ -57,8 +57,8 @@ class departamentosControle extends painelControle
         }
         $this->index();
     }
-    
-    
+
+
     public function editar($id)
     {
         if ($this->POST()) {
@@ -72,16 +72,16 @@ class departamentosControle extends painelControle
         }
 
         if ($dep = $this->departamento->getDepartamentoID($id)) {
-            $this->_view->assign('titulo', 'Editando departamento:'.$dep[0]['DEP_titulo']);
-            $this->_view->assign('formAction', BASE_URL.'painel/departamentos/editar/'.$dep[0]['DEP_id']);
+            $this->_view->assign('titulo', 'Editando departamento:' . $dep[0]['DEP_titulo']);
+            $this->_view->assign('formAction', BASE_URL . 'painel/departamentos/editar/' . $dep[0]['DEP_id']);
             $this->_view->assign('Departamento', $dep[0]);
             $this->_view->assign('campos', json_encode($dep[0]));
         } else {
             Sessao::addMsg('erro', 'Departamento não existe!');
 
-            $this->_view->assign('formAction', BASE_URL.'painel/departamentos/editar');
+            $this->_view->assign('formAction', BASE_URL . 'painel/departamentos/editar');
         }
-            
+
         $lista = $this->departamento->lista();
         $this->_view->assign('lista', $lista);
 
@@ -89,7 +89,7 @@ class departamentosControle extends painelControle
         $this->_view->addConteudo('departamentosCadastro');
         $this->_view->renderizar();
     }
-    
+
     public function excluir($id = false)
     {
         if (is_numeric($id)) {

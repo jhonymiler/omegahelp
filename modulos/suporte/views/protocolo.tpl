@@ -50,48 +50,29 @@
                                 </span><!-- /.username -->
                                 {$res.RES_texto}
                                 {if isset($res.anexos) && is_array($res.anexos)}
-                                    <div class="card card-outline card-primary collapsed-card">
-                                        <div class="card-header">
-                                            <h3 class="card-title"><b><i class="fas fa-paperclip"></i> Anexos</b></h3>
 
-                                            <div class="card-tools">
-                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                                    style="margin: 0;">
-                                                    <i class="fas fa-minus"></i>
-                                                </button>
-                                            </div>
-                                            <!-- /.card-tools -->
-                                        </div>
-                                        <!-- /.card-header -->
-                                        <div class="card-body">
-                                            <ul class="mailbox-attachments d-flex align-items-stretch clearfix row">
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <ul class="mailbox-attachments row">
 
-                                                {foreach from=$res.anexos item="aneRes"}
-                                                    <li class="col-md-2">
-                                                        {if isset($aneRes.icone)}
+                                            {foreach from=$res.anexos item="aneRes"}
+                                                <li class="col-md-2">
+                                                    {if isset($aneRes.icone)}
+                                                        <a href="{$_pgParams.RAIZ}upload/{$aneRes.ANE_arquivo}"
+                                                            class="btn btn-default btn-block" target="_blank">
                                                             <span class="mailbox-attachment-icon"><i class="far {$aneRes.icone}"></i></span>
-                                                        {elseif isset($aneRes.imagem) }
-                                                            <a href="{$_pgParams.RAIZ}upload/{$aneRes.ANE_arquivo}"
-                                                                data-lightbox="roadtrip"><img
-                                                                    src="{$_pgParams.RAIZ}upload/{$aneRes.ANE_arquivo}" width="100%"></a>
-                                                        {/if}
-                                                        <div class="mailbox-attachment-info">
-                                                            <span title="{$aneRes.ANE_arquivo}" class="mailbox-attachment-name">
-                                                                <i class="fas fa-paperclip"></i> {$aneRes.nomecortado}
-                                                            </span>
-                                                            <span class="mailbox-attachment-size clearfix mt-1">
-                                                                <a href="{$_pgParams.RAIZ}upload/{$aneRes.ANE_arquivo}"
-                                                                    class="btn btn-default btn-sm float-right" target="_blank"><i
-                                                                        class="fas fa-cloud-download-alt"></i></a>
-                                                            </span>
-                                                        </div>
-                                                    </li>
-                                                {/foreach}
+                                                        </a>
+                                                    {elseif isset($aneRes.imagem) }
+                                                        <a href="{$_pgParams.RAIZ}upload/{$aneRes.ANE_arquivo}"
+                                                            class="btn btn-default btn-block clearfix" data-lightbox="roadtrip"><img
+                                                                src="{$_pgParams.RAIZ}upload/{$aneRes.ANE_arquivo}" width="100%"></a>
+                                                    {/if}
+                                                </li>
+                                            {/foreach}
 
-                                            </ul>
-                                        </div>
-                                        <!-- /.card-body -->
+                                        </ul>
                                     </div>
+                                    <!-- /.card-body -->
                                 {/if}
                             </div>
                             <!-- /.comment-text -->
@@ -168,47 +149,43 @@
             </div>
 
         </div>
-        <!-- .Anexos -->
-        <div class="card card-outline card-primary">
-            <div class="card-header">
-                <h3 class="card-title"><b><i class="fas fa-paperclip"></i> Anexos</b></h3>
+        {if isset($anexos) && is_array($anexos)}
+            <!-- .Anexos -->
+            <div class="card card-outline card-primary">
+                <div class="card-header">
+                    <h3 class="card-title"><b><i class="fas fa-paperclip"></i> Anexos</b></h3>
 
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" style="margin: 0;">
-                        <i class="fas fa-minus"></i>
-                    </button>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" style="margin: 0;">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.card-tools -->
                 </div>
-                <!-- /.card-tools -->
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <ul class="mailbox-attachments d-flex align-items-stretch clearfix row">
-                    {if isset($anexos) && is_array($anexos)}
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <ul class="mailbox-attachments d-flex align-items-stretch clearfix row">
+
                         {foreach from=$anexos item="arq"}
-                            <li class="col-md-6">
+                            <li class="col-md-4 clearfix">
                                 {if isset($arq.icone)}
-                                    <span class="mailbox-attachment-icon"><i class="far {$arq.icone}"></i></span>
+                                    <a href="{$_pgParams.RAIZ}upload/{$arq.ANE_arquivo}" class="btn btn-default btn-block"
+                                        target="_blank">
+                                        <span class="mailbox-attachment-icon"><i class="far {$arq.icone}"></i></span>
+                                    </a>
                                 {elseif isset($arq.imagem) }
-                                    <a href="{$_pgParams.RAIZ}upload/{$arq.ANE_arquivo}" data-lightbox="roadtrip"><img
-                                            src="{$_pgParams.RAIZ}upload/{$arq.ANE_arquivo}" width="100%"></a>
+                                    <a href="{$_pgParams.RAIZ}upload/{$arq.ANE_arquivo}" data-lightbox="roadtrip"
+                                        class="btn btn-default btn-block"><img src="{$_pgParams.RAIZ}upload/{$arq.ANE_arquivo}"
+                                            width="100%"></a>
                                 {/if}
-                                <div class="mailbox-attachment-info">
-                                    <span title="{$arq.ANE_arquivo}" class="mailbox-attachment-name">
-                                        <i class="fas fa-paperclip"></i> {$arq.nomecortado}
-                                    </span>
-                                    <span class="mailbox-attachment-size clearfix mt-1">
-                                        <a href="{$_pgParams.RAIZ}download/{$arq.ANE_arquivo}"
-                                            class="btn btn-default btn-sm float-right"><i class="fas fa-cloud-download-alt"></i></a>
-                                    </span>
-                                </div>
                             </li>
                         {/foreach}
-                    {/if}
-                </ul>
+                    </ul>
+                </div>
+                <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.Anexos -->
+            <!-- /.Anexos -->
+        {/if}
     </div>
 {/if}
 

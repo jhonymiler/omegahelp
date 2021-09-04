@@ -23,6 +23,7 @@ class protocolosModulo extends Modulo
     private $empresa = array();
     private $novoProtocolo;
     private $novaResposta;
+    private $listaTodos;
     private $arquivos = array();
     private $status;
 
@@ -31,8 +32,30 @@ class protocolosModulo extends Modulo
         parent::__construct();
     }
 
+    public function listaTodos()
+    {
+
+        $sql = "
+            SELECT 
+                p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml, 
+                DATE_FORMAT(P.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,
+                t.TIP_tipo,t.TIP_prioridade, e.EMP_fantasia, u.USU_nome,u.USU_imagem,u.USU_email
+            FROM protocolos p 
+            inner join tipoprotocolos t on t.TIP_id=p.TIP_id 
+            inner join usuarios as u on u.USU_id=p.USU_id
+            inner join empresas as e on e.EMP_id=u.EMP_id
+            inner join statusprotocolos as s on p.PRO_status=s.STA_id  order by PRO_id desc";
+
+        $lista = $this->_db->_query($sql);
+
+        if (is_array($lista)) {
+            return $lista;
+        } else {
+            return false;
+        }
+    }
     /**
-     * Lista todos os protocolos puzando pelo usuário logado
+     * Lista todos os protocolos puxando pelo usuário logado
      */
     public function lista()
     {
@@ -173,8 +196,17 @@ class protocolosModulo extends Modulo
             inner join tipoprotocolos t on t.TIP_id=p.TIP_id 
             inner join statusprotocolos as s on p.PRO_status=s.STA_id 
             where p.PRO_id=" . $id;
+            $protocolo = $this->_db->_query($sql);
 
-            return $this->_db->_query($sql)[0];
+            if (is_array($protocolo)) {
+                if (count($protocolo) >= 1) {
+                    return $protocolo[0];
+                } else {
+                    return $protocolo;
+                }
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

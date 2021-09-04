@@ -30,22 +30,22 @@ class empresasControle extends painelControle
         $this->empresa = $this->loadModulo('painel', 'empresas');
     }
 
-    
+
     public function index()
     {
         $lista = $this->empresa->lista();
         $this->_view->assign('lista', $lista);
 
-        $this->_view->assign('titulo', 'Gerenciamnto de Empresas');
-        $this->_view->assign('formAction', BASE_URL.'painel/empresas/novo');
+        $this->_view->assign('titulo', 'Gerenciamento de Empresas');
+        $this->_view->assign('formAction', BASE_URL . 'painel/empresas/novo');
         $this->_view->addConteudo('empresasCadastro');
         $this->_view->renderizar();
     }
-    
+
     public function novo()
     {
         $post = $this->POST();
-        
+
         if ($this->POST()) {
             if (is_array($this->empresa->load($this->POST()))) {
                 if ($this->_db->_grava()) {
@@ -57,8 +57,8 @@ class empresasControle extends painelControle
         }
         $this->index();
     }
-    
-    
+
+
     public function editar($id)
     {
         if ($this->POST()) {
@@ -72,16 +72,16 @@ class empresasControle extends painelControle
         }
 
         if ($emp = $this->empresa->getEmpresaID($id)) {
-            $this->_view->assign('titulo', 'Editando empresa:'.$emp[0]['EMP_fantasia']);
-            $this->_view->assign('formAction', BASE_URL.'painel/empresas/editar/'.$emp[0]['EMP_id']);
+            $this->_view->assign('titulo', 'Editando empresa:' . $emp[0]['EMP_fantasia']);
+            $this->_view->assign('formAction', BASE_URL . 'painel/empresas/editar/' . $emp[0]['EMP_id']);
             $this->_view->assign('empresa', $emp[0]);
             $this->_view->assign('campos', json_encode($emp[0]));
         } else {
             Sessao::addMsg('erro', 'Empresa não existe!');
 
-            $this->_view->assign('formAction', BASE_URL.'painel/empresas/editar');
+            $this->_view->assign('formAction', BASE_URL . 'painel/empresas/editar');
         }
-            
+
         $lista = $this->empresa->lista();
         $this->_view->assign('lista', $lista);
 
@@ -89,7 +89,7 @@ class empresasControle extends painelControle
         $this->_view->addConteudo('empresasCadastro');
         $this->_view->renderizar();
     }
-    
+
     public function excluir($id = false)
     {
         if (is_numeric($id)) {

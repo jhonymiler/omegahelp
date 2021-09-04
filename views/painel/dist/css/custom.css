@@ -58,7 +58,7 @@ label.error {
 #chatbuttom {
     position: fixed;
     right: 0.5em;
-    bottom: 0.5em;
+    bottom: 2em;
     font-size: 2em;
     border-radius: 50%;
     padding: 0.5em;
@@ -104,6 +104,10 @@ label.error {
 
 .mailbox-attachment-name {
     font-size: 12px;
+}
+
+.mailbox-attachment-icon {
+    font-size: 35px !important;
 }
 
 .fa-file-word:before,

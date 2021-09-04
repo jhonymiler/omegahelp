@@ -172,14 +172,18 @@
                                 {/if}}
                             </select>
                         </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" name="USU_nivel" class="custom-control-input" id="USU_nivel"
-                                    value="1">
-                                <label class="custom-control-label" for="USU_nivel">É Atendente?</label>
-                            </div>
-                        </div>
+                        {if is_array($user) && $user.USU_nivel > 1}
 
+                            <div class="form-group">
+                                <label for="USU_nivel">Nível</label>
+
+                                <select name="USU_nivel" class="form-control required">
+                                    <option value="0">Usuário</option>
+                                    <option value="1">Atendente</option>
+                                    <option value="3">Administrador</option>
+                                </select>
+                            </div>
+                        {/if}
                         <div class="form-group">
                             <label for="USU_email">Email</label>
                             <input type="email" class="form-control" name="USU_email" id="USU_email"
@@ -313,7 +317,7 @@
                 }
             },
             success: function(data) {
-                //window.location.href = redir;
+                window.location.href = redir;
             }
         });
         return false;
@@ -463,12 +467,6 @@
         context.fill();
         return canvas;
     }
-
-
-    {if isset($usuario.USU_nivel) && $usuario.USU_nivel>0}
-        $("input[name='USU_nivel']").prop('checked', true);
-
-    {/if}
 </script>
 
 <!-- /.col -->

@@ -39,7 +39,6 @@ class indexControle extends suporteControle
         $this->_view->addNavLink('usuarios', 'Painel de Usuários');
         $this->_view->assign('current_link', 'home');
         $this->_view->addConteudo('home');
-        $this->_view->renderizar();
-        ;
+        $this->_view->renderizar();;
     }
 }

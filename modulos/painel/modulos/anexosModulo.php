@@ -74,6 +74,27 @@ class anexosModulo extends Modulo
                     $anexos[$i]['icone'] = 'fa-file-file';
                 }
             }
+
+            // Separo os arquivos das imagens dentro do array e organizo para que
+            // primeiro seja listado os arquivos e depois a imagem para exibição
+            // no front end.
+            $imagens = array();
+            $arquivo = array();
+            // verifico e separo as chaves imagem e icone em arrays separados
+            foreach ($anexos as $b => $a) {
+                $keys = array_keys($anexos[$b]);
+                if (in_array('imagem', $keys)) {
+                    $imagens[$b] = $anexos[$b];
+                } elseif (in_array('icone', $keys)) {
+                    $arquivo[$b] = $anexos[$b];
+                }
+            }
+            // junto os dois arrays que foram separados
+            if (count($imagens) > 0 || count($arquivo) > 0) {
+                $anexos = array();
+                $anexos =  $arquivo + $imagens;
+            }
+
             return $anexos;
         } else {
             return false;

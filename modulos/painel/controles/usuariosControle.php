@@ -42,9 +42,9 @@ class usuariosControle extends painelControle
 
     public function index()
     {
-        $this->_view->assign('titulo', 'Gerenciamnto de usuários');
+        $this->_view->assign('titulo', 'Gerenciamento de usuários');
 
-        $this->_view->addNavLink('usuarios/registro', 'Gerenciamnto de usuários');
+        $this->_view->addNavLink('usuarios/registro', 'Gerenciamento de usuários');
 
         $this->_view->assign('FormAction', BASE_URL . 'painel/usuarios/novo');
         $this->_view->addConteudo('usuarioCadastro');

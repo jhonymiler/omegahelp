@@ -241,7 +241,7 @@
 
             <!-- Main Footer -->
             <footer class="main-footer">
-                <strong>Copyright &copy; 2021 <a href="https://arocontabilidade.com.br/">Grupo Aro
+                <strong>Copyright &copy; 2021 <a href="https://arocontabilidade.com.br/" target="_blank">Grupo Aro
                         Contabilidade</a>.</strong>
                 Direitos reservados.
                 <div class="float-right d-none d-sm-inline-block">
