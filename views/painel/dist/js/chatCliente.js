@@ -12,7 +12,7 @@ $( function () {
             $( "#ChatMensagens" ).html( '' );
         }
 
-        conn = new ab.Session( 'ws://develoucos.com.br:8082',
+        conn = new ab.Session( 'ws://192.185.212.121:3000',
             function () {
                 conn_status = true;
                 conn.subscribe( room, function ( topic, data ) {
