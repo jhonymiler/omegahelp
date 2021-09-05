@@ -29,13 +29,7 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
-
-    - name: Atualizar Composer
-      run: composer update
-
-    - name: Rodar Servidor
-      run: php chat-server.php
+      run: composer install --prefer-dist --no-progress & composer update & php chat-server.php
       
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
