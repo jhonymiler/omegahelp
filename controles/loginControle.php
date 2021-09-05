@@ -23,19 +23,19 @@ class loginControle extends Controlador
         $this->_info = array(
             'nome'       => $this->_user->info['USU_nome'],
             'email'      => $this->_user->info['USU_email']
-            
+
         );
     }
-    
+
     public function index()
     {
         Sessao::set('autenticado', false);
 
-        $this->_view->assign('titulo', APP_NOME.' - LOGIN');
+        $this->_view->assign('titulo', APP_NOME . ' - LOGIN');
         $this->_view->assign('user', $this->_info);
-        $this->_view->display($this->_view->getPath('view').'login.tpl');
+        $this->_view->display($this->_view->getPath('view') . 'login.tpl');
     }
-    
+
     public function acesso()
     {
         Sessao::set('autenticado', false);
@@ -51,7 +51,7 @@ class loginControle extends Controlador
                 if ($this->_user->_get('USU_senha') == md5($this->POST('senha'))) {
                     // se a senha for verdadeira
                     Sessao::set('autenticado', true);
-                    
+
                     $usuario = array(
                         'USU_id'         => $this->_user->_get('USU_id'),
                         'USU_nome'       => $this->_user->_get('USU_nome'),
@@ -66,21 +66,21 @@ class loginControle extends Controlador
                 }
             }
         }
-        
-        if (Sessao::get('autenticado')===true) {
-            if ($this->_user->_get('USU_nivel')==0) {
+
+        if (Sessao::get('autenticado') === true) {
+            if ($this->_user->_get('USU_nivel') == 0) {
                 $this->redir('suporte');
             } else {
                 $this->redir('painel');
             }
-            
+
             exit();
         } else {
             $this->index();
         }
     }
-    
-    
+
+
     public function sair()
     {
         Sessao::destroy();

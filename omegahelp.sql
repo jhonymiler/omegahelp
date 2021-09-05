@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Set-2021 às 06:37
+-- Tempo de geração: 05-Set-2021 às 17:30
 -- Versão do servidor: 10.4.19-MariaDB
 -- versão do PHP: 8.0.7
 
@@ -254,7 +254,7 @@ CREATE TABLE `usuarios` (
   `USU_tel` varchar(20) NOT NULL,
   `USU_nivel` int(3) NOT NULL,
   `EMP_id` int(11) NOT NULL,
-  `DEP_id` int(11) NOT NULL
+  `DEP_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -262,9 +262,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`USU_id`, `USU_nome`, `USU_email`, `USU_senha`, `USU_imagem`, `USU_tel`, `USU_nivel`, `EMP_id`, `DEP_id`) VALUES
-(1, 'Jonatas Miler', 'jonatas@aroerp.com.br', 'e7a3d94707400e3992cccbb6b41065f5', 'jonatas-miler_1630194557.png', '(14) 99707-6506', 3, 1, 0),
-(2, 'Teste Usuário', 'teste@teste.com', 'e10adc3949ba59abbe56e057f20f883e', 'teste-usuario_1630763776.png', '(99) 99999-9999', 0, 1, 0),
-(7, 'Usuário Teste 2', 'teste2@teste.com.br', 'e8d95a51f3af4a3b134bf6bb680a213a', 'usuario-teste-2_1630794461.png', '(99) 99999-9999', 1, 1, 3);
+(1, 'Jonatas Miler', 'jonatas@aroerp.com.br', 'e7a3d94707400e3992cccbb6b41065f5', 'jonatas-miler_1630194557.png', '(14) 99707-6506', 3, 1, NULL),
+(2, 'Teste Usuário', 'usuario@teste.com.br', '76bb1ff3699e0af3750e9fa119dea44e', 'teste-usuario_1630763776.png', '(99) 99999-9999', 0, 1, 0),
+(7, 'Usuário Teste 2', 'teste@teste.com.br', '76bb1ff3699e0af3750e9fa119dea44e', 'usuario-teste-2_1630794461.png', '(99) 99999-9999', 1, 1, 3);
 
 --
 -- Índices para tabelas despejadas

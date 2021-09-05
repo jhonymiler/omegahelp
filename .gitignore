@@ -1,8 +1,5 @@
 /vendor/
 .vscode
 /tmp/
-omegahelp.git
-.gitignore
-config.php
-database.php
+/app/
 composer.lock
