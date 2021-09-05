@@ -134,7 +134,7 @@ class protocolosModulo extends Modulo
     {
         if (is_int($userID)) {
             $sql = "
-            SELECT p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml, DATE_FORMAT(P.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,t.TIP_tipo,t.TIP_prioridade 
+            SELECT p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml, DATE_FORMAT(p.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,t.TIP_tipo,t.TIP_prioridade 
             FROM protocolos p 
             inner join tipoprotocolos t on t.TIP_id=p.TIP_id 
             inner join statusprotocolos as s on p.PRO_status=s.STA_id where p.USU_id=" . $userID . " order by PRO_id desc";
