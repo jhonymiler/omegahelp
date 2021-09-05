@@ -2,9 +2,9 @@
 
 // BANCO DE DADOS
 define('DB_HOST', "localhost");
-define('DB_NAME', 'leaofl07_omegahelp');
-define('DB_USER', 'leaofl07_user');
-define('DB_PASS', '!@#omega!@#');
+define('DB_NAME', 'omegahelp');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 define('DB_CHAR', 'utf8');
 
 
