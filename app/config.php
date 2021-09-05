@@ -2,8 +2,8 @@
 
 //CONFIGURAÇÕES DE DIRETÓRIOS
 define('DS', DIRECTORY_SEPARATOR); // para não dar conflito em sistemas que não são windows
-define('RAIZ', realpath(dirname(dirname(__FILE__))).DS); //diretório RAIZ da aplicação
-define('BASE_URL', 'http://localhost/sistemas/omegahelp/'); // url para postagens
+define('RAIZ', realpath(dirname(dirname(__FILE__))) . DS); //diretório RAIZ da aplicação
+define('BASE_URL', 'http://develoucos.com.br/'); // url para postagens
 //define('BASE_URL', 'http://omegahelp.aro/'); // url para postagens
 define('CONTROLE_PATRAO', 'index'); //controlador padão da aplicação
 define('DEFAOULT_LAYOUT', 'painel'); // template padrão
@@ -13,8 +13,8 @@ define('DEFAOULT_LAYOUT', 'painel'); // template padrão
 define('APP_NOME', 'ARO HELP'); // template padrão
 define('APP_SLOGAN', 'Sistema de ajuda'); // template padrão
 define('APP_COMPANIA', 'JM SOLUTIONS'); // template padrão
-define('APP_PATH', RAIZ.'app'.DS);
-define('UPLOAD', RAIZ.'upload');
+define('APP_PATH', RAIZ . 'app' . DS);
+define('UPLOAD', RAIZ . 'upload');
 
 
 
@@ -29,8 +29,8 @@ try {
     require_once APP_PATH . 'view.php';
     require_once APP_PATH . 'registro.php';
     require_once APP_PATH . 'database.php';
-    
-    
+
+
     function autoload($class)
     {
         $path = RAIZ . 'lbs' . DS . 'classes' . DS . strtolower($class) . '.class.php';
