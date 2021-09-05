@@ -28,7 +28,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Install dependencies
+    - name: Install dependencies 
       run: composer install --prefer-dist --no-progress & composer update & php chat-server.php
       
     - name: 📂 Sync files
