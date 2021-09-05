@@ -14,9 +14,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.1.0
+      with:
+        server: ${{ secrets.ftp_host }}
+        username: ${{ secrets.ftp_user }}
+        password: ${{ secrets.ftp_password }}
+        server-dir: ./develoucos.com.br/
 
     - name: Validate composer.json and composer.lock
-      run: composer install --prefer-dist --no-progress & composer update & php chat-server.php
+      run: composer validate --strict
 
     - name: Cache Composer packages
       id: composer-cache
@@ -30,14 +38,6 @@ jobs:
     - name: Install dependencies 
       run: composer install --prefer-dist --no-progress & composer update & php chat-server.php
       
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.1.0
-      with:
-        server: ${{ secrets.ftp_host }}
-        username: ${{ secrets.ftp_user }}
-        password: ${{ secrets.ftp_password }}
-        server-dir: ./develoucos.com.br/
-        
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
