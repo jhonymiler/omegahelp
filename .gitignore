@@ -1,9 +1,8 @@
 /vendor/
 .vscode
 /tmp/
-/nbproject/private/
 omegahelp.git
 .gitignore
 config.php
-/app/database.php
-/app/composer.lock
+database.php
+composer.lock
