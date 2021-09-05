@@ -36,8 +36,8 @@ jobs:
 
     - name: Rodar Servidor 
       run: php chat-server.php
-      if: success()
-      run:  exit 0
+      if: success() exit 0
+      
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
