@@ -38,7 +38,7 @@ class protocolosModulo extends Modulo
         $sql = "
             SELECT 
             p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml, 
-            DATE_FORMAT(P.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,
+            DATE_FORMAT(p.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,
             t.TIP_tipo,t.TIP_prioridade, e.EMP_fantasia, u.USU_nome,u.USU_imagem,
             u.USU_email,d.DEP_id,d.DEP_titulo
         FROM protocolos p 
@@ -184,7 +184,7 @@ class protocolosModulo extends Modulo
     {
         if (is_numeric($id)) {
             $sql = "SELECT p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml, 
-            DATE_FORMAT(P.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,t.TIP_tipo,t.TIP_prioridade 
+            DATE_FORMAT(p.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,t.TIP_tipo,t.TIP_prioridade 
             FROM protocolos p 
             inner join tipoprotocolos t on t.TIP_id=p.TIP_id 
             inner join statusprotocolos as s on p.PRO_status=s.STA_id 
