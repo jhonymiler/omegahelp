@@ -30,7 +30,11 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
+
+    - name: Atualizar Composer
       run: composer update
+
+    - name: Rodar Servidor
       run: php chat-server.php
       
     - name: 📂 Sync files
