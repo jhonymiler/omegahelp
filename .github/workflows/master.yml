@@ -21,7 +21,6 @@ jobs:
         server: ${{ secrets.ftp_host }}
         username: ${{ secrets.ftp_user }}
         password: ${{ secrets.ftp_password }}
-        server-dir: ./develoucos.com.br/
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
