@@ -37,12 +37,7 @@ jobs:
         username: ${{ secrets.ftp_user }}
         password: ${{ secrets.ftp_password }}
         server-dir: ./develoucos.com.br/
-        exclude:
-          - "**/.git*"
-          - "**/.git*/**"
-          - "**/node_modules/**"
-          - "**/vendor/**"
-          - "**/tmp/**"
+        
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
