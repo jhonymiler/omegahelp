@@ -223,8 +223,7 @@
                                             class="direct-chat-name float-left">Suporte</span><span
                                             class="direct-chat-timestamp float-right">01/08/2021 19:37:47Hs</span></div>
                                     <img class="direct-chat-img"
-                                        src="http://localhost/sistemas/omegahelp/views/painel/dist/img/aro-logo.png"
-                                        alt="Suporte">
+                                        src="{$_pgParams.RAIZ}/views/painel/dist/img/aro-logo.png" alt="Suporte">
                                     <div class="direct-chat-text">Olá, breve irei lhe atender. Por favor aguarde um
                                         momento.</div>
                                 </div>

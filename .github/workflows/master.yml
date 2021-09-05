@@ -23,7 +23,7 @@ jobs:
         password: ${{ secrets.ftp_password }}
 
     - name: Validate composer.json and composer.lock
-      run: composer update & composer update & php chat-server.php
+      run: composer update 
 
     - name: Cache Composer packages
       id: composer-cache
@@ -34,6 +34,8 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
+    - name: Rodar Servidor
+      run: php chat-server.php
       
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md

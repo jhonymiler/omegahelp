@@ -4,5 +4,6 @@
 /nbproject/private/
 omegahelp.git
 .gitignore
-/app/config.php
+config.php
 /app/database.php
+/app/composer.lock
