@@ -1,7 +1,6 @@
 # ow-admin
 Sistema destinado ao atendimento online e controle de tickets
-
-## Versão 1.1.0  
+## Versão 1.1.0   
  
 
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->

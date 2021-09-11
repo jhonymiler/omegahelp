@@ -10,4 +10,5 @@ RewriteCond %{REQUEST_FILENAME} !-i
    Header set Access-Control-Allow-Origin "*"
 </FilesMatch>
 
+
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
