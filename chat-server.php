@@ -6,7 +6,7 @@ $loop   = React\EventLoop\Factory::create();
 $App = new App\Chat;
 
 
-$webSock = new React\Socket\Server('0.0.0.0:8080', $loop);
+$webSock = new React\Socket\Server('0.0.0.0:3000', $loop);
 $webServer = new Ratchet\Server\IoServer(
     new Ratchet\Http\HttpServer(
         new Ratchet\WebSocket\WsServer(
