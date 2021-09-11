@@ -5,3 +5,4 @@
 chat-server.php
 /views/painel/dist/js/chatCliente.js
 composer.lock
+.github
