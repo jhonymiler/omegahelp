@@ -12,7 +12,7 @@ $( function () {
             $( "#ChatMensagens" ).html( '' );
         }
 
-        conn = new ab.Session( 'ws://localhost:3000',
+        conn = new ab.Session( 'ws://develoucos.com.br:8080',
             function () {
                 conn_status = true;
                 conn.subscribe( room, function ( topic, data ) {

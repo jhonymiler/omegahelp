@@ -14,28 +14,31 @@
 
 namespace App;
 
-class chatControle {
+class chatControle
+{
 
     protected $subscribedTopics = array();
     protected $messages = array();
 
-    public function __construct() {
-        
+    public function __construct()
+    {
     }
-    
-    public function Inscritos($conn, $topic) {
+
+    public function Inscrever($conn, $topic)
+    {
         $this->subscribedTopics[$topic->getId()] = $topic;
         //enviar historico das mensagens
         if (isset($this->messages[$topic->getId()])) {
             $json = '[' . $this->messages[$topic->getId()] . ']';
             //envia o histórico apenas para o usuário que acabou de "conectar/subscribe"
-            echo $topic->getId();
+            //echo $topic->getId();
             $conn->event($topic, $json);
         }
     }
-    
-    public function Publicar($conn, $topic, $event, $exclude, $eligible) {
-         if (!isset($this->messages[$topic->getId()])) {
+
+    public function Publicar($conn, $topic, $event, $exclude, $eligible)
+    {
+        if (!isset($this->messages[$topic->getId()])) {
             $this->messages[$topic->getId()] = json_encode($event);
         } else {
             $this->messages[$topic->getId()] .= ', ' . json_encode($event);
@@ -44,5 +47,4 @@ class chatControle {
         //dispara a mensagem para todos usuários do mesmo tópicp
         $topic->broadcast($event);
     }
-
 }
