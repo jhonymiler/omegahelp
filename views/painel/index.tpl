@@ -262,17 +262,15 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 {if is_array($msg)}
-                    {foreach item=mensagem from=$msg}
-                        {foreach key=status item=m from=$mensagem}
-                            $(document).Toasts('create', {
-                                toast: true,
-                                delay: 5000,
-                                class: '{$status}',
-                                position: 'topRight',
-                                autohide: true,
-                                body: '{$m}'
-                            });
-                        {/foreach}
+                    {foreach item=m from=$msg}
+                        $(document).Toasts('create', {
+                            toast: true,
+                            delay: 5000,
+                            class: '{$m.tipo}',
+                            position: 'topRight',
+                            autohide: true,
+                            body: '{$m.msg}'
+                        });
                     {/foreach}
                 {/if}
                 $(".nav-link").removeClass('active');

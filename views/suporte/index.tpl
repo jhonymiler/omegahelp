@@ -311,14 +311,14 @@
                 }, 500);
 
                 {if is_array($msg)}
-                    {foreach key=status item=m from=$msg}
+                    {foreach item=m from=$msg}
                         $(document).Toasts('create', {
                             toast: true,
                             delay: 5000,
-                            class: '{$status}',
+                            class: '{$m.tipo}',
                             position: 'topRight',
                             autohide: true,
-                            body: '{$m}'
+                            body: '{$m.msg}'
                         });
                     {/foreach}
                 {/if}
