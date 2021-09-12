@@ -14,6 +14,8 @@ namespace App;
  * @author Jhony
  */
 
+//use App\chatControle;
+//use App\chatModulo;
 use Ratchet\ConnectionInterface;
 use Ratchet\Wamp\WampServerInterface;
 
@@ -23,13 +25,20 @@ use Ratchet\Wamp\WampServerInterface;
 class Chat implements WampServerInterface
 {
 
-    protected $Controle;
+    protected $subscribedTopics = array();
+    protected $messages = array();
 
     public function onSubscribe(ConnectionInterface $conn, $topic)
     {
 
-        $this->Controle = new chatControle;
-        $this->controle->Inscrever($conn, $topic);
+        $this->subscribedTopics[$topic->getId()] = $topic;
+        //enviar historico das mensagens
+        if (isset($this->messages[$topic->getId()])) {
+            $json = '[' . $this->messages[$topic->getId()] . ']';
+            //envia o histórico apenas para o usuário que acabou de "conectar/subscribe"
+            //echo $topic->getId();
+            $conn->event($topic, $json);
+        }
     }
 
     public function onUnSubscribe(ConnectionInterface $conn, $topic)
@@ -53,7 +62,14 @@ class Chat implements WampServerInterface
     public function onPublish(ConnectionInterface $conn, $topic, $event, array $exclude, array $eligible)
     {
 
-        $this->Controle->Publicar($conn, $topic, $event, $exclude, $eligible);
+        if (!isset($this->messages[$topic->getId()])) {
+            $this->messages[$topic->getId()] = json_encode($event);
+        } else {
+            $this->messages[$topic->getId()] .= ', ' . json_encode($event);
+        }
+        //$conn->send(json_encode($event));
+        //dispara a mensagem para todos usuários do mesmo tópicp
+        $topic->broadcast($event);
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e)
