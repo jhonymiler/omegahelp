@@ -78,6 +78,8 @@ foreach ($v->data['chat'] as $candidato => $qtd) {
     }
 
 
+
+
     if (Sessao::get('votou') == true) {
 
         $chat = $v->data['chat'][$candidato] > 0 ? $v->data['chat'][$candidato] * 100 / $soma['chat'] : 0;
