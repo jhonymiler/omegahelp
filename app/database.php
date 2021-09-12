@@ -3,8 +3,8 @@
 // BANCO DE DADOS
 define('DB_HOST', "localhost");
 define('DB_NAME', 'omegahelp');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_USER', 'user');
+define('DB_PASS', 'omegasenha');
 define('DB_CHAR', 'utf8');
 
 
