@@ -1,10 +1,6 @@
 /vendor/
 .vscode
 /tmp/
-/app/config.php
-/app/database.php
-chat-server.php
-/views/painel/dist/js/chatCliente.js
 composer.lock
 .github
 omegahelp.git
