@@ -57,6 +57,15 @@
     <body class="sidebar-collapse control-sidebar-slide-open sidebar-mini-md">
         <div class="wrapper">
 
+            {if  !empty($usuario.USU_imagem)}
+                {assign var="imagem" value="{$_pgParams.RAIZ}upload/{$usuario.USU_imagem}"}
+            {else}
+                {assign var="imagem" value="{$_pgParams.path_layout}dist/img/avatar.png"}
+
+            {/if}
+
+
+
             <!-- Preloader -->
             <div class="preloader flex-column justify-content-center align-items-center">
                 <img class="animation__wobble" src="{$_pgParams.path_layout}dist/img/aro-logo.png" alt="ARO HELPDESK"
@@ -253,17 +262,15 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 {if is_array($msg)}
-                    {foreach item=mensagem from=$msg}
-                        {foreach key=status item=m from=$mensagem}
-                            $(document).Toasts('create', {
-                                toast: true,
-                                delay: 5000,
-                                class: '{$status}',
-                                position: 'topRight',
-                                autohide: true,
-                                body: '{$m}'
-                            });
-                        {/foreach}
+                    {foreach item=m from=$msg}
+                        $(document).Toasts('create', {
+                            toast: true,
+                            delay: 5000,
+                            class: '{$m.tipo}',
+                            position: 'topRight',
+                            autohide: true,
+                            body: '{$m.msg}'
+                        });
                     {/foreach}
                 {/if}
                 $(".nav-link").removeClass('active');

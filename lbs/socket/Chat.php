@@ -25,20 +25,16 @@ use Ratchet\Wamp\WampServerInterface;
 class Chat implements WampServerInterface
 {
 
-    protected $subscribedTopics = array();
-    protected $messages = array();
+    protected $controle;
+
+    public function __construct()
+    {
+        $this->controle = new chatControle;
+    }
 
     public function onSubscribe(ConnectionInterface $conn, $topic)
     {
-
-        $this->subscribedTopics[$topic->getId()] = $topic;
-        //enviar historico das mensagens
-        if (isset($this->messages[$topic->getId()])) {
-            $json = '[' . $this->messages[$topic->getId()] . ']';
-            //envia o histórico apenas para o usuário que acabou de "conectar/subscribe"
-            //echo $topic->getId();
-            $conn->event($topic, $json);
-        }
+        $this->controle->Inscrever($conn, $topic);
     }
 
     public function onUnSubscribe(ConnectionInterface $conn, $topic)

@@ -183,11 +183,13 @@ class protocolosModulo extends Modulo
     public function getProtocolo($id)
     {
         if (is_numeric($id)) {
-            $sql = "SELECT p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml, 
+            $sql = "SELECT p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml,u.USU_nome,e.EMP_fantasia, 
             DATE_FORMAT(p.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,t.TIP_tipo,t.TIP_prioridade 
             FROM protocolos p 
             inner join tipoprotocolos t on t.TIP_id=p.TIP_id 
             inner join statusprotocolos as s on p.PRO_status=s.STA_id 
+            inner join usuarios as u on u.USU_id=p.USU_id
+            inner join empresas as e on u.EMP_id=e.EMP_id
             where p.PRO_id=" . $id;
             $protocolo = $this->_db->_query($sql);
 

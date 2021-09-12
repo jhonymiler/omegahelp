@@ -5,6 +5,7 @@ $( function () {
     var conn;
     var conn_status = false;
 
+
     window.onload = function () {
         if ( conn_status ) {
             conn.close();
@@ -12,7 +13,7 @@ $( function () {
             $( "#ChatMensagens" ).html( '' );
         }
 
-        conn = new ab.Session( 'ws://develoucos.com.br:3000',
+        conn = new ab.Session( 'ws://localhost:3000',
             function () {
                 conn_status = true;
                 conn.subscribe( room, function ( topic, data ) {
