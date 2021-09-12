@@ -116,7 +116,7 @@
                                             <td>{$pro.PRO_aberto}</td>
                                             <td><span class="badge bg-{$pro.STA_corHtml}">{$pro.STA_status}</span></td>
                                             <td>
-                                                <a href="{$_pgParams.RAIZ}suporte/protocolos/ver/{$pro.PRO_id}"
+                                                <a href="{$_pgParams.RAIZ}painel/protocolos/ver/{$pro.PRO_id}"
                                                     class="btn btn-primary float-right">
                                                     <i class="fa fa-eye"></i> Ver
                                                 </a>

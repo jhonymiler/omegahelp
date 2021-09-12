@@ -89,17 +89,52 @@ class protocolosControle extends painelControle
     public function ver($proID)
     {
         $protocolo = $this->protocolos->getProtocolo($proID);
-        if ($protocolo->PRO_id) {
-            $anexos = $this->protocolos->getProAnexos($proID);
+        if (isset($protocolo["PRO_id"])) {
+            $respostas = $this->protocolos->getRespostas($proID);
+            if (is_array($respostas)) {
+                foreach ($respostas as $k => $v) {
+                    $respostas[$k]['anexos'] = $this->anexos->getAnexos('RES_id', $v["RES_id"]);
+                }
+            }
+            $qtdRespostas = is_array($respostas) ? count($respostas) : 0;
+
+            $anexos = $this->anexos->getAnexos('PRO_id', $protocolo["PRO_id"]);
+            $this->_view->assign('anexos', $anexos);
+            $this->_view->assign('respostas', $respostas);
+            $this->_view->assign('protocolo', $protocolo);
+            $this->_view->assign('respostaQtd', $qtdRespostas);
+
+            $this->_view->assign('titulo', 'Protocolo #' . $proID);
+
+            $this->_view->addNavLink('protocolo', 'Protocolo');
+            $this->_view->assign('current_link', 'protocolos');
+            $this->_view->addConteudo('protocolo');
+            $this->_view->renderizar();
+        } else {
+            $this->redir('suporte/protocolos/');
         }
+    }
 
-        $this->_view->assign('protocolo', $protocolo);
-        $this->_view->assign('anexos', $anexos);
-        $this->_view->assign('titulo', 'Protocolo #' . $proID);
+    public function resposta()
+    {
+        if ($this->POST()) {
 
-        $this->_view->addNavLink('protocolo', 'Protocolo');
-        $this->_view->assign('current_link', 'protocolos');
-        $this->_view->addConteudo('protocolo');
-        $this->_view->renderizar();
+            $this->protocolos->loadResposta($this->POST());
+            if ($id = $this->protocolos->gravaResposta()) {
+                Sessao::addMsg('sucesso', 'Resposta gravada com sucesso');
+                if ($id > 0 && is_array($_FILES['files']['name'])) {
+                    if ($this->anexos->grava('RES_id', $id)) {
+                        Sessao::addMsg('sucesso', 'Anexos adicionados com sucesso');
+                    } else {
+                        Sessao::addMsg('erro', 'Os anexos não puderam ser adicionados');
+                    }
+                }
+            } else {
+                Sessao::addMsg('erro', 'A resposta não pode ser gravada.');
+            }
+            $this->redir('suporte/protocolos/ver/' . $this->POST()['PRO_id']);
+        } else {
+            $this->redir('suporte/protocolos');
+        }
     }
 }
