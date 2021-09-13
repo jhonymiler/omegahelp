@@ -38,6 +38,16 @@ class Votos
         return $this->data = json_decode($json_file, true);
     }
 }
+if (isset($_POST['voto']) && count($_POST['voto']) > 0 && Sessao::get('votou') == false) {
+
+    $v = new Votos;
+    $v->get();
+    $v->data['chat'][$_POST['voto']['chat']]++;
+    $v->data['chamado'][$_POST['voto']['chamado']]++;
+    $v->save();
+    Sessao::set('votou', true);
+    $v = '';
+}
 
 
 //--------------------Contagem de votos-------------//
@@ -51,15 +61,6 @@ foreach ($v->data as $tipo => $candidato) {
     }
 }
 
-if (isset($_POST['voto']) && count($_POST['voto']) > 0 && Sessao::get('votou') == false) {
-
-    $v = new Votos;
-    $v->get();
-    $v->data['chat'][$_POST['voto']['chat']]++;
-    $v->data['chamado'][$_POST['voto']['chamado']]++;
-    $v->save();
-    Sessao::set('votou', true);
-}
 
 
 //echo $soma['chat'] . "<br>";
