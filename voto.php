@@ -311,7 +311,7 @@ foreach ($v->data['chat'] as $candidato => $qtd) {
 <div class="register">
     <div class="row">
         <div class="col-md-3 register-left">
-            <img src="http://localhost/sistemas/omegahelp/views/painel/dist/img/aro-logo-icon.png" alt="" />
+            <img src="<?php echo BASE_URL ?>/views/painel/dist/img/aro-logo-icon.png" alt="" />
             <h3>Votação</h3>
             <p>Por favor, votem em 2 audios, um para novos chamados e outro para mensagens do chat!</p>
         </div>
