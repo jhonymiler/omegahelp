@@ -2,6 +2,6 @@
 .vscode
 /tmp/
 composer.lock
-.github
 omegahelp.git
 LICENSE
+.gitignore
