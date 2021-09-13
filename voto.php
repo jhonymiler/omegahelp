@@ -80,7 +80,7 @@ foreach ($v->data['chat'] as $candidato => $qtd) {
 
 
 
-    if (Sessao::get('votou') == true) {
+    if (Sessao::get('votou') == true || isset($_GET['contagem'])) {
 
         $chat = $v->data['chat'][$candidato] > 0 ? $v->data['chat'][$candidato] * 100 / $soma['chat'] : 0;
         $chamado = $v->data['chamado'][$candidato] > 0 ? $v->data['chamado'][$candidato] * 100 / $soma['chamado'] : 0;
@@ -311,7 +311,7 @@ foreach ($v->data['chat'] as $candidato => $qtd) {
 <div class="register">
     <div class="row">
         <div class="col-md-3 register-left">
-            <img src="<?php echo BASE_URL ?>/views/painel/dist/img/aro-logo-icon.png" alt="" />
+            <img src="<?php echo BASE_URL ?>views/painel/dist/img/aro-logo-icon.png" alt="" />
             <h3>Votação</h3>
             <p>Por favor, votem em 2 audios, um para novos chamados e outro para mensagens do chat!</p>
         </div>
