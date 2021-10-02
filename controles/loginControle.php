@@ -80,6 +80,20 @@ class loginControle extends Controlador
         }
     }
 
+    public function recuperar_senha()
+    {
+        Sessao::set('autenticado', false);
+
+        if ($this->POST('email')) {
+            if (!is_array($this->_user->_selectUser("USU_email", $this->POST('email')))) {
+                $this->_view->assign('alterar_senha', true);
+            }
+        }
+
+        $this->_view->assign('titulo', APP_NOME . ' - Recuperar Senha');
+        $this->_view->display($this->_view->getPath('view') . 'recupera_senha.tpl');
+    }
+
 
     public function sair()
     {

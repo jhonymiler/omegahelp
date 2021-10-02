@@ -17,7 +17,7 @@ abstract class controlador
         $this->_request = $this->_registro->_request;
         $this->_view = new View($this->_request);
         $this->_db = $this->_registro->_db;
-    
+
         if (Sessao::get('user')) {
             $this->_view->assign('user', Sessao::get('user'));
         }
@@ -34,11 +34,11 @@ abstract class controlador
     protected function loadModulo($modulo, $model = false)
     {
         if (!$model) {
-            $model = $modulo.'Modulo';
-            $pathModelo = RAIZ.'models'.DS.$model.'.php';
+            $model = $modulo . 'Modulo';
+            $pathModelo = RAIZ . 'models' . DS . $model . '.php';
         } else {
-            $model = $model.'Modulo';
-            $pathModelo = RAIZ.'modulos'.DS.$modulo.DS.'modulos'.DS.$model.'.php';
+            $model = $model . 'Modulo';
+            $pathModelo = RAIZ . 'modulos' . DS . $modulo . DS . 'modulos' . DS . $model . '.php';
         }
 
         if (is_readable($pathModelo)) {
@@ -50,9 +50,9 @@ abstract class controlador
         }
     }
 
-    
+
     // PEGA UM TEXTO EM UM POST E TRATA
-    protected function POST($clave=false)
+    protected function POST($clave = false)
     {
         if (count($_POST)) {
             if ($clave == false) {
@@ -92,7 +92,7 @@ abstract class controlador
             }
         } else {
             $campos = strip_tags($campos);
-        
+
             if (!addslashes($campos)) {
                 $campos = mysqli_real_escape_string(mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME), $campos);
             }
@@ -113,28 +113,35 @@ abstract class controlador
     protected function redir($path = false)
     {
         if ($path == false) {
-            header('location:'.BASE_URL);
+            header('location:' . BASE_URL);
             exit;
         } else {
-            header('location:'.BASE_URL.$path);
+            header('location:' . BASE_URL . $path);
             exit;
         }
     }
 
 
 
-
-    protected function addMsg($tipo, $titulo, $msg)
+    protected function encript($str)
     {
-        $this->_view->_msg[] = array(
-        'tipo'=>$tipo,
-        'titulo'=>$titulo,
-        'msg'=>$msg
-    );
+        $e = '';
+        $q = strlen($str);
+        for ($i = 0; $i < $q; $i++) {
+            $e .= chr(ceil($q / 57 / 5) ^ ord($str[$i]));
+        }
+        return strtoupper(implode(unpack("H*", $e)));
     }
 
-    protected function getMsg()
+
+    protected function decript($str)
     {
-        return $this->_view->_msg;
+        $e = '';
+        $str = pack("H*", $str);
+        $q = strlen($str);
+        for ($i = 0; $i < $q; $i++) {
+            $e .= chr(ceil($q / 57 / 5) ^ ord($str[$i]));
+        }
+        return $e;
     }
 }
