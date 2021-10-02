@@ -60,7 +60,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="icheck-primary">
-                                    <a href="forgot-password.html">Esqueci minha senha!</a>
+                                    <a href="{$_pgParams.RAIZ}login/recuperar_senha">Esqueci minha senha!</a>
                                 </div>
                             </div>
                             <!-- /.col -->
