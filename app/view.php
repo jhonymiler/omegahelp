@@ -48,6 +48,10 @@ class View extends Smarty
         $this->cache_dir    = RAIZ . 'tmp' . DS . 'cache' . DS;
         $this->compile_dir  = RAIZ . 'tmp' . DS . 'template' . DS;
         $this->debugging = false;
+        $this->caching = 0;
+
+
+
         if ($this->_request->getModulo()) {
             $this->_paths['view'] = RAIZ . 'modulos' . DS . $this->_request->getModulo() . DS . 'views' . DS;
         } else {

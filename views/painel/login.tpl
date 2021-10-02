@@ -28,10 +28,12 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <img src="{$_pgParams.path_layout}dist/img/aro-logo.png" width="180" alt="ARO HELPDESK" />
+                <img src="{$_pgParams.path_layout}dist/img/aro-acx.png" width="250" alt="GRUPO ARO" />
             </div>
             <div class="login-logo">
-                <a href="{$_pgParams.RAIZ}"><b>ARO</b> Sistema de HelpDesk</a>
+                <a href="{$_pgParams.RAIZ}" style="font-size: 26px;"><img
+                        src="{$_pgParams.path_layout}dist/img/grupo-aro.png" width="100" alt="GRUPO ARO" /> | Sistema de
+                    HelpDesk</a>
             </div>
             <!-- /.login-logo -->
             <div class="card">
@@ -71,7 +73,9 @@
                 </div>
                 <!-- /.login-card-body -->
             </div>
-        </div>
+        </div><br>
+
+
         <!-- /.login-box -->
 
         <!-- jQuery -->

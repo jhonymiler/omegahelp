@@ -96,7 +96,7 @@
                                 <a href="{$_pgParams.RAIZ}suporte" class="nav-link">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Meus dados</a>
+                                <a href="{$_pgParams.RAIZ}suporte/perfil" class="nav-link">Meus dados</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{$_pgParams.RAIZ}login/sair" class="nav-link">Sair</a>
@@ -211,7 +211,7 @@
                                 <div class="inner">
                                     <h3>6 Usuários</h3>
 
-                                    <p>Aguardando atendimento</p>
+                                    <p>Em atendimento</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-user-plus"></i>

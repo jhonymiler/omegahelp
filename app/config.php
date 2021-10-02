@@ -3,7 +3,7 @@
 
 $url = 'http://';
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
-    $url .= 'localhost/omega-dashboard/';
+    $url .= 'localhost/sistemas/omegahelp/';
     // BANCO DE DADOS
     define('DB_HOST', "localhost");
     define('DB_NAME', 'omegahelp');
@@ -15,9 +15,9 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 
     // BANCO DE DADOS
     define('DB_HOST', "omegasystem.com.br");
-    define('DB_NAME', 'omegahelp');
-    define('DB_USER', 'omegasys_suporte');
-    define('DB_PASS', '!@#omega!@#');
+    define('DB_NAME', 'omegasystem_protocolo');
+    define('DB_USER', 'omegasystem_protocolo');
+    define('DB_PASS', '@Jonatas123');
     define('DB_CHAR', 'utf8');
 }
 

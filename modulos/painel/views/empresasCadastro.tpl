@@ -183,26 +183,19 @@
                                             </td>
                                             <td>
                                                 <div class="col-md-12">
-                                                    <a href="#"><b>{$empresas.EMP_fantasia}</b></a>
-                                                    <p>
-                                                        {$empresas.EMP_razao}<br>
-                                                        Fone: {$empresas.EMP_tel}<br>
-                                                        CNPJ: {$empresas.EMP_cnpj}
-                                                    </p>
+                                                    <a href="#"><b>{$empresas.EMP_fantasia}</b></a><br>
+                                                    CNPJ: {$empresas.EMP_cnpj}
                                                 </div>
 
                                             </td>
                                             <td>
-                                                <b> {$empresas.EMP_email}</b>
-                                                <p>
-                                                    {$empresas.EMP_endereco}<br>
-                                                    {$empresas.EMP_cidade}/{$empresas.EMP_uf}<br>
-                                                </p>
+                                                <b> {$empresas.EMP_email}</b><br>
+                                                Fone: {$empresas.EMP_tel}
 
                                             </td>
                                             <td></td>
                                             <td></td>
-                                            <td class="botao_tabela_edit_exclui">
+                                            <td class="botao_tabela_edit_exclui" style="padding: 10px 0 0 0;">
                                                 <a href="{$_pgParams.RAIZ}painel/empresas/editar/{$empresas.EMP_id}"
                                                     class="btn btn-default">
                                                     <i class="fas fa-edit"></i>

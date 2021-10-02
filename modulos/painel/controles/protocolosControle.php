@@ -45,7 +45,7 @@ class protocolosControle extends painelControle
 
     public function index()
     {
-        $this->_view->assign('titulo', 'Painel do Usuário');
+        $this->_view->assign('titulo', 'Protocolos');
 
         $this->_view->addNavLink('protocolos', 'Gerenciamento de Protocolos');
         $this->_view->assign('current_link', 'protocolos');
@@ -88,8 +88,11 @@ class protocolosControle extends painelControle
      */
     public function ver($proID)
     {
+
+
         $protocolo = $this->protocolos->getProtocolo($proID);
         if (isset($protocolo["PRO_id"])) {
+
             $respostas = $this->protocolos->getRespostas($proID);
             if (is_array($respostas)) {
                 foreach ($respostas as $k => $v) {
@@ -111,7 +114,7 @@ class protocolosControle extends painelControle
             $this->_view->addConteudo('protocolo');
             $this->_view->renderizar();
         } else {
-            $this->redir('suporte/protocolos/');
+            $this->redir('painel/protocolos/');
         }
     }
 

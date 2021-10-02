@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Set-2021 às 17:30
+-- Tempo de geração: 01-Out-2021 às 01:45
 -- Versão do servidor: 10.4.19-MariaDB
 -- versão do PHP: 8.0.7
 
@@ -65,7 +65,37 @@ INSERT INTO `anexos` (`ANE_id`, `ANE_arquivo`, `CHA_id`, `PRO_id`, `RES_id`) VAL
 (135, 'login_010021.png', NULL, NULL, 19),
 (136, 'ncm-faturamento-2021_018810.xlsx', NULL, NULL, 19),
 (137, 'o-livro-que-nao-tinha-fim_028739.pdf', NULL, NULL, 19),
-(138, 'teste_109961.xml', NULL, NULL, 19);
+(138, 'teste_109961.xml', NULL, NULL, 19),
+(139, 'depositphotos-2491833-stock-photo-haliaeetus-leucocephalus_149607.jpg', NULL, 27, NULL),
+(140, 'escopo-documentacao-fiscal_211681.docx', NULL, 27, NULL),
+(141, 'login_218148.png', NULL, 27, NULL),
+(142, 'ncm-faturamento-2021_222793.xlsx', NULL, 27, NULL),
+(143, 'cadastro-usuarios_362306.png', NULL, 28, NULL),
+(144, 'home_366593.png', NULL, 28, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `config`
+--
+
+CREATE TABLE `config` (
+  `CON_id` int(11) NOT NULL,
+  `CON_email` varchar(200) NOT NULL,
+  `CON_host` varchar(200) NOT NULL,
+  `CON_auth` tinyint(1) NOT NULL DEFAULT 1,
+  `CON_secure` varchar(200) NOT NULL,
+  `CON_port` varchar(200) NOT NULL,
+  `CON_user` varchar(200) NOT NULL,
+  `CON_pass` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `config`
+--
+
+INSERT INTO `config` (`CON_id`, `CON_email`, `CON_host`, `CON_auth`, `CON_secure`, `CON_port`, `CON_user`, `CON_pass`) VALUES
+(1, 'jonatas@aroerp.com.br', 'mail.aroerp.com.br', 1, 'tls', '465', 'jonatas@aroerp.com.br', 'commaster');
 
 -- --------------------------------------------------------
 
@@ -114,7 +144,9 @@ CREATE TABLE `empresas` (
 --
 
 INSERT INTO `empresas` (`EMP_id`, `EMP_razao`, `EMP_fantasia`, `EMP_cnpj`, `EMP_ie`, `EMP_email`, `EMP_tel`, `EMP_cep`, `EMP_cidade`, `EMP_uf`, `EMP_bairro`, `EMP_endereco`) VALUES
-(1, 'ARO CONTABILIDADE EIRELI', 'ARO CONTABILIDADE', '11.747.215/0001-97', '', 'societario@arocontabilidade.com.br', '(19) 3621-4042', '13468-160', 'Americana', 'SP', 'Jardim São Paulo', 'Rua das Figueiras, 422');
+(1, 'ARO CONTABILIDADE EIRELI', 'ARO CONTABILIDADE', '11.747.215/0001-97', '', 'societario@arocontabilidade.com.br', '(19) 3621-4042', '13468-160', 'Americana', 'SP', 'Jardim São Paulo', 'Rua das Figueiras, 422'),
+(2, 'Microsoft', 'Microsoft', '99.999.999/9999-99', '', 'jonatas@aroerp.com.br', '(14) 9986-8830', '18708-040', 'Avaré', 'SP', 'Vila Três Marias', 'Avenida Três Marias, 99'),
+(3, 'Spacex', 'Spacex', '99.999.999/9999-99', '', 'jonatasmiler@gmail.com', '(14) 9986-8830', '18708-040', 'Avaré', 'SP', 'Vila Três Marias', 'Avenida Três Marias, 99');
 
 -- --------------------------------------------------------
 
@@ -143,7 +175,9 @@ CREATE TABLE `protocolos` (
 INSERT INTO `protocolos` (`PRO_id`, `PRO_assunto`, `PRO_texto`, `TIP_id`, `PRO_status`, `PRO_prioridade`, `PRO_aberto`, `PRO_alterado`, `PRO_fechado`, `USU_id`, `DEP_id`) VALUES
 (24, 'Testando Protocolo', 'Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;Teste&nbsp;', 2, 1, 1, '2021-08-28 18:04:04', NULL, NULL, 2, 0),
 (25, 'Testando outro Ticket', 'Testando outro tiquetTestando outro tiquetTestando outro tiquetTestando outro tiquetTestando outro tiquetTestando outro tiquet', 4, 1, 1, '2021-08-28 18:18:42', NULL, NULL, 2, 0),
-(26, 'Não consigo tirar a nota', 'Está dando uma mesagem de erro, e não consigo faturar a nota.&nbsp;', 8, 1, 1, '2021-08-28 19:04:06', NULL, NULL, 2, 0);
+(26, 'Não consigo tirar a nota', 'Está dando uma mesagem de erro, e não consigo faturar a nota.&nbsp;', 8, 1, 1, '2021-08-28 19:04:06', NULL, NULL, 2, 0),
+(27, 'Comé que eu tiro nota?', 'Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável. Wikipédia', 8, 1, 1, '2021-09-12 00:47:34', NULL, NULL, 9, 0),
+(28, 'Não está dando baixa nas parcelas', '&nbsp;&nbsp;&nbsp;&nbsp;Texto é uma produção, verbal ou não verbal, que se constitui com algum código, no intuito de comunicar algo a alguém, em determinado tempo e espaço. Sua definição ampla se deve ao fato de também abranger diversos formatos.Pode-se compreender o texto verbal, oral e escrito, como uma prática social que utiliza estruturas verbais, organizadas e caracterizadas por suas estruturas linguísticas e sua função social, com vistas a cumprir um papel pessoal ou coletivo na vida humana. O mesmo se aplica aos textos não verbais, também compreendidos como uma ação social, diferenciando-se somente em função das estruturas e códigos utilizados.', 9, 1, 1, '2021-09-12 00:48:30', NULL, NULL, 9, 0);
 
 -- --------------------------------------------------------
 
@@ -264,7 +298,8 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`USU_id`, `USU_nome`, `USU_email`, `USU_senha`, `USU_imagem`, `USU_tel`, `USU_nivel`, `EMP_id`, `DEP_id`) VALUES
 (1, 'Jonatas Miler', 'jonatas@aroerp.com.br', 'e7a3d94707400e3992cccbb6b41065f5', 'jonatas-miler_1630194557.png', '(14) 99707-6506', 3, 1, NULL),
 (2, 'Teste Usuário', 'usuario@teste.com.br', '76bb1ff3699e0af3750e9fa119dea44e', 'teste-usuario_1630763776.png', '(99) 99999-9999', 0, 1, 0),
-(7, 'Usuário Teste 2', 'teste@teste.com.br', '76bb1ff3699e0af3750e9fa119dea44e', 'usuario-teste-2_1630794461.png', '(99) 99999-9999', 1, 1, 3);
+(7, 'Usuário Teste 2', 'teste@teste.com.br', '76bb1ff3699e0af3750e9fa119dea44e', 'usuario-teste-2_1630794461.png', '(99) 99999-9999', 1, 1, 3),
+(9, 'Jhon Snow', 'jhonsnow@teste.com.br', '76bb1ff3699e0af3750e9fa119dea44e', 'jhon-snow_1631418350.png', '(99) 99999-9999', 0, 3, 0);
 
 --
 -- Índices para tabelas despejadas
@@ -275,6 +310,12 @@ INSERT INTO `usuarios` (`USU_id`, `USU_nome`, `USU_email`, `USU_senha`, `USU_ima
 --
 ALTER TABLE `anexos`
   ADD PRIMARY KEY (`ANE_id`);
+
+--
+-- Índices para tabela `config`
+--
+ALTER TABLE `config`
+  ADD PRIMARY KEY (`CON_id`);
 
 --
 -- Índices para tabela `departamentos`
@@ -328,25 +369,31 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anexos`
 --
 ALTER TABLE `anexos`
-  MODIFY `ANE_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `ANE_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+
+--
+-- AUTO_INCREMENT de tabela `config`
+--
+ALTER TABLE `config`
+  MODIFY `CON_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `DEP_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `DEP_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `empresas`
 --
 ALTER TABLE `empresas`
-  MODIFY `EMP_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `EMP_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `protocolos`
 --
 ALTER TABLE `protocolos`
-  MODIFY `PRO_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `PRO_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de tabela `respostas`
@@ -370,7 +417,7 @@ ALTER TABLE `tipoprotocolos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `USU_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `USU_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

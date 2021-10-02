@@ -1,9 +1,7 @@
 {if is_array($protocolo)}
+
     <div class="row">
         <div class="col-md-12">
-
-
-
             <div class="card card-primary card-tabs">
 
                 <nav class="navbar navbar-expand navbar-primary navbar-dark">
@@ -39,10 +37,6 @@
 
                     </ul>
                     <div class="card-tools float-right">
-                        <button type="button" class="btn btn-tool" title="Marcar como Lido" style="color:#FFF">
-                            <!-- <i class="far fa-circle"></i> !-->
-                            <i class="far fa-dot-circle"></i>
-                        </button>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" style="color:#FFF">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -54,14 +48,14 @@
                 <div class="card-body">
                     <div class="tab-content" id="custom-tabs-one-tabContent">
                         <div class="tab-pane fade show active" id="chamado" role="tabpanel" aria-labelledby="chamado-tab">
-                            <div class="mailbox-read-info">
-                                <h3><b>{$protocolo.PRO_assunto}</b>
-                                    <span
-                                        class="badge bg-{$protocolo.STA_corHtml}  float-right">{$protocolo.STA_status}</span>
-                                </h3>
-                                <h6>Depto: <b>{$protocolo.TIP_tipo}</b>
-                                    <span class="mailbox-read-time float-right">{$protocolo.PRO_aberto}</span>
-                                </h6>
+                            <div class="clearfix">
+                                <h5 class="float-left"><b>{$protocolo.PRO_assunto}</b></h5>
+                                <span class="badge bg-{$protocolo.STA_corHtml}  float-right"
+                                    style="font-size: 1em;">{$protocolo.STA_status}</span>
+                            </div>
+                            <div class="clearfix">
+                                <h6 class="float-left">Depto: <b>{$protocolo.TIP_tipo}</b></h6>
+                                <span class="mailbox-read-time float-right"><b>Criado em: </b>{$protocolo.PRO_aberto}</span>
                             </div>
                             <div class="card-body">
 
@@ -166,37 +160,38 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="responder" role="tabpanel" aria-labelledby="responder-tab">
-                            <h3>Responder Chamado:</h3>
-                            <div class="mailbox-read-info">
-
-                                <h5><b>{$protocolo.PRO_assunto}</b>
-                                    <span
-                                        class="badge bg-{$protocolo.STA_corHtml}  float-right">{$protocolo.STA_status}</span>
-                                </h5>
-                                <h6>Depto: <b>{$protocolo.TIP_tipo}</b>
-                                    <span class="mailbox-read-time float-right">{$protocolo.PRO_aberto}</span>
-                                </h6>
-                            </div>
 
                             <!-- .Post Resposta -->
                             <div class="card-footer">
                                 <form id="responder" action="{$_pgParams.RAIZ}suporte/protocolos/resposta" method="post"
                                     enctype="multipart/form-data">
                                     <input name="PRO_id" type="hidden" value="{$protocolo.PRO_id}">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                                    placeholder="Enter email">
-                                            </div>
+
+                                    <div class="clearfix">
+                                        <div class="form-group float-left">
+                                            <label>Ação</label>
+                                            <select class="form-control select2" style="width: 100%;">
+                                                <option selected="selected">Aguardando ação do usuário</option>
+                                                <option>Aguardando retorno interno</option>
+                                                <option>Investigando</option>
+                                                <option>Encerrar Protocolo</option>
+                                            </select>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                                    placeholder="Enter email">
+                                        <div class="form-group float-right" style="padding: 0px 10px;">
+                                            <label>Enviar email para usuário</label><br>
+                                            <div class=" float-right">
+                                                <input type="checkbox" name="enviar_email" checked data-bootstrap-switch
+                                                    data-off-color="danger" data-on-color="success">
                                             </div>
+
+                                        </div>
+                                        <div class="form-group float-right" style="padding: 0px 10px;">
+                                            <label>Visível para usuário</label><br>
+                                            <div class=" float-right">
+                                                <input type="checkbox" name="visivel" checked data-bootstrap-switch
+                                                    data-off-color="danger" data-on-color="success">
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -254,6 +249,8 @@
     <script src="{$_pgParams.path_layout}plugins/inputfile/js/fileinput.js" type="text/javascript"></script>
     <script src="{$_pgParams.path_layout}plugins/inputfile/js/pt-BR.js" type="text/javascript"></script>
     <script src="{$_pgParams.path_layout}plugins/ckeditor/build/ckeditor.js"></script>
+    <script src="{$_pgParams.path_layout}plugins/select2/js/select2.full.min.js"></script>
+    <script src="{$_pgParams.path_layout}plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 
     <script src="{$_pgParams.path_layout}plugins/inputfile/js/theme.js" type="text/javascript"></script>
     <script>
@@ -262,6 +259,12 @@
         });
 
         $(document).ready(function() {
+            $('.select2').select2()
+
+            $("input[data-bootstrap-switch]").each(function() {
+                $(this).bootstrapSwitch('state', $(this).prop('checked'));
+            })
+
             $('#file-pt-BR').fileinput({
                 theme: 'fas',
                 language: 'pt-BR',
