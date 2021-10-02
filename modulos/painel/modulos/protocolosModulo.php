@@ -72,21 +72,25 @@ class protocolosModulo extends Modulo
 
     public function load($campos)
     {
-        $this->novoProtocolo = array(
-            'PRO_assunto' => $campos['PRO_assunto'],
-            'PRO_texto' => $campos['PRO_texto'],
-            'TIP_id' => $campos['TIP_id'],
-            'USU_id' => Sessao::get('user')['USU_id']
-        );
+        if (isset($campos['PRO_assunto']) && $campos['PRO_assunto'] != '') {
+            $this->novoProtocolo = array(
+                'PRO_assunto' => $campos['PRO_assunto'],
+                'PRO_texto' => $campos['PRO_texto'],
+                'TIP_id' => $campos['TIP_id'],
+                'USU_id' => Sessao::get('user')['USU_id']
+            );
+        }
     }
 
     public function loadResposta($campos)
     {
-        $this->novaResposta = array(
-            'RES_texto' => $campos['RES_texto'],
-            'PRO_id' => $campos['PRO_id'],
-            'USU_id' => Sessao::get('user')['USU_id']
-        );
+        if (is_array($campos) && count($campos) > 0) {
+            $this->novaResposta = array(
+                'RES_texto' => $campos['RES_texto'],
+                'PRO_id' => $campos['PRO_id'],
+                'USU_id' => Sessao::get('user')['USU_id']
+            );
+        }
     }
 
     public function grava()

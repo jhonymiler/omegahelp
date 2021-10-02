@@ -41,9 +41,8 @@
                 </div>
                 <!-- /.col -->
             </div>
-            <!-- /.row -->
         </div>
-        <div class="card-footer p-0">
+        <!--<div class="card-footer p-0">
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a href="{$_pgParams.RAIZ}suporte/" class="nav-link">
@@ -51,7 +50,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{$_pgParams.RAIZ}suporte/perfil" class="nav-link">
                         Meu Perfil
                     </a>
                 </li>
@@ -60,12 +59,7 @@
                         Novo Protocolo
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{$_pgParams.RAIZ}suporte/protocolos/" class="nav-link">
-                        Meus Protocolos
-                    </a>
-                </li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </div>

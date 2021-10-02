@@ -6,36 +6,36 @@ $( function () {
     var conn_status = false;
 
 
-    window.onload = function () {
-        if ( conn_status ) {
-            conn.close();
-            conn_status = false;
-            $( "#ChatMensagens" ).html( '' );
-        }
+    /*  window.onload = function () {
+          if ( conn_status ) {
+              conn.close();
+              conn_status = false;
+              $( "#ChatMensagens" ).html( '' );
+          }
 
-        conn = new ab.Session( 'ws://localhost:3000',
-            function () {
-                conn_status = true;
-                conn.subscribe( room, function ( topic, data ) {
-                    console.log( data );
-                    if ( typeof data === 'string' ) {
-                        data = JSON.parse( data );
+          conn = new ab.Session( 'ws://localhost:3000',
+              function () {
+                  conn_status = true;
+                  conn.subscribe( room, function ( topic, data ) {
+                      console.log( data );
+                      if ( typeof data === 'string' ) {
+                          data = JSON.parse( data );
 
-                        for ( var i = 0; i < data.length; i++ ) {
-                            exibeMsg( data[ i ] );
-                        }
-                    } else {
-                        exibeMsg( data );
-                    }
-                } );
-            },
-            function () {
-                console.warn( 'A conexão foi encerrada' );
-            }, {
-                'skipSubprotocolCheck': true
-            }
-        );
-    }
+                          for ( var i = 0; i < data.length; i++ ) {
+                              exibeMsg( data[ i ] );
+                          }
+                      } else {
+                          exibeMsg( data );
+                      }
+                  } );
+              },
+              function () {
+                  console.warn( 'A conexão foi encerrada' );
+              }, {
+                  'skipSubprotocolCheck': true
+              }
+          );
+      }*/
 
 
     //Printar Mensagens na Tela
@@ -81,11 +81,11 @@ $( function () {
             };
             $( "#slide-smile" ).removeClass( "direct-chat-contacts-open" );
 
-            conn.publish( room, msg );
-            //exibeMsg(msg);
+            //conn.publish( room, msg );
+            exibeMsg( msg );
             $( "#chat-mensagem" ).val( '' ).focus();
         }
         return false;
-    } );
 
+    } );
 } )
