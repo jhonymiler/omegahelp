@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
         <!-- ./wrapper -->
         <link href="{$_pgParams.path_layout}dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/select2/css/select2.min.css">
 
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/cropper.css">
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/custom.css">

@@ -3,17 +3,13 @@
         <!-- general form elements -->
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Cadastro de Clientes</h3>
+                <h3 class="card-title">Cadastro de Departamentos</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" id="fecha">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
             </div>
-
-
-            <!-- /.card-header -->
-            <!-- form start -->
             <form method="post" action="{$formAction}" id="formcadastro">
                 <div class="card-body">
                     <div class="form-group">

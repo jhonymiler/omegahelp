@@ -2,9 +2,9 @@
 
     <!-- Brand Logo -->
     <a href="{$_pgParams.RAIZ}painel/" class="brand-link">
-        <img src="{$_pgParams.path_layout}dist/img/aro-logo.png" alt="ARO HELPDESK"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light"><b>ARO HELPDES</b></span>
+        <img src="{$_pgParams.path_layout}dist/img/aro-logo.png" alt="ARO HELPDESK" class="brand-image"
+            style="opacity: .8">
+        <span class="brand-text font-weight-light"><b>ARO HELPDESK</b></span>
     </a>
 
     <!-- Sidebar -->
