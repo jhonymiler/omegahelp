@@ -71,7 +71,7 @@ module.exports = {
 						options: {
 							injectType: 'singletonStyleTag',
 							attributes: {
-								'data-cke': false
+								'data-cke': true
 							}
 						}
 					},

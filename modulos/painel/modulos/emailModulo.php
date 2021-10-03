@@ -45,12 +45,17 @@ class emailModulo extends Modulo
      *
      * @return bool
      */
-    public function Enviar($assunto = false, $texto = false)
+    public function Enviar($assunto = false, $texto = false, $htmlContent = false)
     {
 
         $this->email->isHTML(true);
         $this->email->Subject = $assunto;
-        $this->email->Body    = $texto;
+
+        if ($htmlContent) {
+            $this->email->msgHTML(file_get_contents(RAIZ . 'modulos' . DS . 'painel' . DS . 'views' . DS . 'emails' . DS . $htmlContent));
+        } else {
+            $this->email->Body    = $texto;
+        }
         //$this->email->AltBody = 'Para visualizar essa mensagem acesse http://site.com.br/mail';
         //$this->email->addAttachment('/tmp/image.jpg', 'nome.jpg');
 
@@ -135,6 +140,38 @@ class emailModulo extends Modulo
         } else if (is_array($endereco) && count($endereco) > 0) {
             foreach ($endereco as $end) {
                 $this->email->addBCC($end['email'], $end['nome']);
+            }
+        }
+    }
+
+    public function substituiTexto($dados, $texto)
+    {
+        preg_match_all("(\\\${([\w\d\-\\.]+)})", $texto, $m, PREG_PATTERN_ORDER);
+        $arr = array();
+        foreach ($m[0] as $i => $valor) {
+            $arr[$valor] = $dados[$m[1][$i]];
+        }
+        return  str_replace(array_keys($arr), array_values($arr), $texto);
+    }
+
+    public function editar_modelo($dados, $id = false)
+    {
+        if (is_numeric($id)) {
+            $this->_db->_load($dados);
+            if ($this->_db->_atualiza('MOD_id', $id)) {
+                Sessao::addMsg('sucesso', 'Modelo atualizado com sucesso!');
+            } else {
+                Sessao::addMsg('erro', 'O modelo não pode ser atualizado');
+            }
+        }
+    }
+    public function excluir_modelo($id = false)
+    {
+        if (is_numeric($id)) {
+            if ($this->_db->_delete('MOD_id', $id)) {
+                Sessao::addMsg('sucesso', 'Modelo excluido com sucesso!');
+            } else {
+                Sessao::addMsg('erro', 'O modelo não pode ser excluido!');
             }
         }
     }

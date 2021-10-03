@@ -14,6 +14,7 @@ class Sessao
         if (!isset($_SESSION)) {
             session_start();
             $_SESSION['sessaoID'] = time();
+            $_SESSION['msg'] = array();
         }
     }
     /**
@@ -94,7 +95,7 @@ class Sessao
 
     public static function getMsg($limpa = true)
     {
-        $msg = is_array($_SESSION['msg']) ? $_SESSION['msg'] : '';
+        $msg = is_array($_SESSION['msg']) ? $_SESSION['msg'] : array();
         if ($limpa === true) unset($_SESSION['msg']);
         return $msg;
     }

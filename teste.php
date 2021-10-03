@@ -1,42 +1,37 @@
 <?php
 
-/*
-    var fSDec = function ( k ) {
-        for ( var e = "", r = 0; r < k.length; r++ ) {
-            //console.log( Math.ceil( k.length / 57 / 5 ) ^ k.charCodeAt( r ) );
-            e += String.fromCharCode( Math.ceil( k.length / 57 / 5 ) ^ k.charCodeAt( r ) );
-        }
-        console.log( e );
-        return e
-    };
 
-*/
-
-function encript($str)
+function substituiTexto($dados, $texto)
 {
-    $e = '';
-    $q = strlen($str);
-    for ($i = 0; $i < $q; $i++) {
-        $e .= chr(ceil($q / 57 / 5) ^ ord($str[$i]));
+
+    preg_match_all("(\\\${([\w\d\-\\.]+)})", $texto, $m, PREG_PATTERN_ORDER);
+    $arr = array();
+    foreach ($m[0] as $i => $valor) {
+        $arr[$valor] = $dados[$m[1][$i]];
     }
-    return strtoupper(implode(unpack("H*", $e)));
+    return  str_replace(array_keys($arr), array_values($arr), $texto);
 }
 
 
-function decript($str)
-{
-    $e = '';
-    $str = pack("H*", $str);
-    $q = strlen($str);
-    for ($i = 0; $i < $q; $i++) {
-        $e .= chr(ceil($q / 57 / 5) ^ ord($str[$i]));
-    }
-    return $e;
-}
+$var = array(
+    'nome' => 'Jonatas Miler',
+    'email' => 'jonatas@gmail.com.br'
+);
 
+$texto = '
+    O que é texto?
+    O conceito de texto pode variar a depender da perspectiva 
+    teórica ${nome} para estudá-lo. A palavra texto, ao longo da 
+    história, foi ganhando diferentes sentidos, 
+    de modo que novas construções foram compreendidas como tal.
 
-$str = '{"id":35,"email":"jonatasmiler@gmail.com"}';
-echo encript($str);
-//7A236865233B32342D23646C60686D233B236B6E6F607560726C686D647341666C60686D2F626E6C237C
+    De acordo com o percusso de ${email} investigações sobre o texto, 
+    nas mais diversas correntes teóricas que se debruçam ${email} sobre esse objeto, 
+    o ${{nome}}conceito foi se ${nome} modificando e se $nome ampliando. 
+    Hoje o texto não é considerado uma estrutura pronta, 
+    com unidade de sentido completa, 
+    pois consideram-se ${email} também os processos de planejamento,
+    construção e recepção do texto.
+';
 
-echo decript('7A236865233B32342D23646C60686D233B236B6E6F607560726C686D647341666C60686D2F626E6C237C');
+echo substituiTexto($var, $texto);

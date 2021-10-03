@@ -42,7 +42,6 @@ main .ck-editor[role='application'] {
 	width: 100%;
 }
 
-
 /* Because of sidebar `position: relative`, Edge is overriding the outline of a focused editor. */
 .ck.ck-editor__editable {
 	position: relative;
@@ -52,8 +51,8 @@ main .ck-editor[role='application'] {
 .editor-container {
 	display: flex;
 	flex-direction: row;
-	flex-wrap: nowrap;
-	position: relative;
+    flex-wrap: nowrap;
+    position: relative;
 	width: 100%;
 	justify-content: center;
 }
@@ -63,25 +62,30 @@ body[data-editor='DecoupledDocumentEditor'] .document-editor__toolbar {
 	width: 100%;
 }
 
-body[ data-editor='DecoupledDocumentEditor'] .collaboration-demo__editable,
-body[ data-editor='DecoupledDocumentEditor'] .row-editor .editor {
-	width: 18.5cm;
-	height: 100%;
-	min-height: 26.25cm;
-	padding: 1.75cm 1.5cm;
+body[data-editor='DecoupledDocumentEditor'] .collaboration-demo__editable,
+body[data-editor='DecoupledDocumentEditor'] .row-editor .editor {
+	/* A pixel is added for each of the border. */
+	width: calc(21cm + 2px);
+	min-height: calc(29.7cm + 2px);
+	/* To avoid having extra scrolls inside the editor container. */
+	height: fit-content;
+	padding: 2cm 1.2cm;
 	margin: 2.5rem;
-	border: 1px hsl(0, 0%, 82.7%) solid;
+	border: 1px hsl( 0, 0%, 82.7% ) solid;
 	background-color: var(--ck-sample-color-white);
-	box-shadow: 0 0 5px hsla(0, 0%, 0%, .1);
+	box-shadow: 0 0 5px hsla( 0, 0%, 0%, .1 );
+	box-sizing: border-box;
 }
 
-body[ data-editor='DecoupledDocumentEditor'] .row-editor {
+body[data-editor='DecoupledDocumentEditor'] .row-editor {
 	display: flex;
 	position: relative;
 	justify-content: center;
 	overflow-y: auto;
 	background-color: #f2f2f2;
 	border: 1px solid hsl(0, 0%, 77%);
+	/* Limit the max-height of the editor to avoid scrolling from bottom to top to see the toolbar. */
+	max-height: 700px;
 }
 
 body[data-editor='DecoupledDocumentEditor'] .sidebar {
@@ -133,13 +137,13 @@ body[data-editor='DecoupledDocumentEditor'] .sidebar {
 	top: 30px;
 	border: 0;
 	padding: 0;
-	color: hsl(0, 0%, 50%);
+	color: hsl( 0, 0%, 50% );
 	transition: 250ms ease color;
 	background-color: transparent;
 }
 
 #sidebar-display-toggle:hover {
-	color: hsl(0, 0%, 30%);
+	color: hsl( 0, 0%, 30% );
 	cursor: pointer;
 }
 
@@ -169,8 +173,8 @@ body[data-editor='DecoupledDocumentEditor'] .sidebar {
 }
 
 .ck.ck-presence-list {
-	flex: 1;
-	padding: 1.25rem .75rem;
+    flex: 1;
+    padding: 1.25rem .75rem;
 }
 
 .presence .ck.ck-presence-list__counter {
@@ -188,7 +192,7 @@ body[data-editor='DecoupledDocumentEditor'] .sidebar {
 	border: 1px solid hsl(0, 0%, 77%);
 }
 
-body[ data-editor='InlineEditor'] .collaboration-demo__row {
+body[data-editor='InlineEditor'] .collaboration-demo__row {
 	border: 0;
 }
 
@@ -198,31 +202,30 @@ body[ data-editor='InlineEditor'] .collaboration-demo__row {
 	padding: 1.25rem;
 }
 
-.presence,
-.collaboration-demo__row {
+.presence, .collaboration-demo__row {
 	transition: .2s opacity;
 }
 
 .collaboration-demo__topbar {
 	background: #fff;
 	border: 1px solid var(--ck-color-toolbar-border);
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-bottom: 0;
-	border-radius: 4px 4px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0;
+    border-radius: 4px 4px 0 0;
 }
 
 .collaboration-demo__topbar .btn {
 	margin-right: 1em;
 	outline-offset: 2px;
 	outline-width: 2px;
-	background-color: var(--ck-sample-color-blue);
+	background-color: var( --ck-sample-color-blue );
 }
 
 .collaboration-demo__topbar .btn:focus,
 .collaboration-demo__topbar .btn:hover {
-	border-color: var(--ck-sample-color-blue);
+	border-color: var( --ck-sample-color-blue );
 }
 
 .collaboration-demo__share {
@@ -263,44 +266,44 @@ body[ data-editor='InlineEditor'] .collaboration-demo__row {
 .collaboration-demo__share button[data-tooltip]::before,
 .collaboration-demo__share button[data-tooltip]::after {
 	position: absolute;
-	visibility: hidden;
-	opacity: 0;
-	pointer-events: none;
-	transition: all .15s cubic-bezier(.5, 1, .25, 1);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .15s cubic-bezier(.5,1,.25,1);
 	z-index: 1;
 }
 
 .collaboration-demo__share button[data-tooltip]::before {
 	content: attr(data-tooltip);
-	padding: 5px 15px;
-	border-radius: 3px;
-	background: #111;
-	color: #fff;
-	text-align: center;
-	font-size: 11px;
+    padding: 5px 15px;
+    border-radius: 3px;
+    background: #111;
+    color: #fff;
+    text-align: center;
+    font-size: 11px;
 	top: 100%;
-	left: 50%;
-	margin-top: 5px;
-	transform: translateX(-50%);
+    left: 50%;
+    margin-top: 5px;
+    transform: translateX(-50%);
 }
 
 .collaboration-demo__share button[data-tooltip]::after {
-	content: '';
+    content: '';
 	border: 5px solid transparent;
-	width: 0;
-	font-size: 0;
-	line-height: 0;
+    width: 0;
+    font-size: 0;
+    line-height: 0;
 	top: 100%;
-	left: 50%;
-	transform: translateX(-50%);
-	border-bottom: 5px solid #111;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: 5px solid #111;
 	border-top: none;
 }
 
 .collaboration-demo__share button[data-tooltip]:hover:before,
 .collaboration-demo__share button[data-tooltip]:hover:after {
 	visibility: visible;
-	opacity: 1;
+    opacity: 1;
 }
 
 .collaboration-demo--ready {
@@ -324,29 +327,28 @@ body[ data-editor='InlineEditor'] .collaboration-demo__row {
 /* --------- REVISION HISTORY FEATURE ------------------------------------------------------------------------------ */
 
 .revision-viewer-container {
-	display: none;
+    display: none;
 }
 
 .revision-viewer-sidebar {
-	position: relative;
-	min-width: 310px;
-	overflow: hidden;
-	background: var(--ck-color-toolbar-background);
-	border: 1px solid var(--ck-color-toolbar-border);
-	margin-left: -1px;
+    position: relative;
+    min-width: 310px;
+    overflow: hidden;
+    background: var(--ck-color-toolbar-background);
+    border: 1px solid var(--ck-color-toolbar-border);
+    margin-left: -1px;
 }
 
-/* Move the square with page number from the Pagination plugin to the left side,
-   so that it does not cover the sidebar. */
-.ck.ck-pagination-view-line::after {
-	transform: translateX(-100%);
-	left: -1px;
-	right: unset;
+/* A case when Pagination and Revision History features are enabled in the editor. */
+/* Move the square with page number from the Pagination plugin to the left side, so that it does not cover the RH sidebar. */
+body[data-revision-history='true'] .ck.ck-pagination-view-line::after {
+	transform: translateX(-100%) !important;
+	left: -1px !important;
+	right: unset !important;
 }
 
 /* --------- SAMPLE GENERIC STYLES (not related to CKEditor) ------------------------------------------------------- */
-body,
-html {
+body, html {
 	padding: 0;
 	margin: 0;
 
@@ -399,7 +401,7 @@ header nav ul li {
 	display: inline-block;
 }
 
-header nav ul li+li {
+header nav ul li + li {
 	margin-left: 1em;
 }
 
@@ -455,7 +457,7 @@ main .message h2 {
 	font-size: 1rem;
 	user-select: none;
 	border-radius: 4px;
-	transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out, opacity .2s ease-in-out;
+	transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out,opacity .2s ease-in-out;
 	background-color: var(--ck-sample-color-button-blue);
 	border-color: var(--ck-sample-color-button-blue);
 	color: var(--ck-sample-color-white);
@@ -471,11 +473,11 @@ footer {
 	margin: calc(2*var(--ck-sample-base-spacing)) var(--ck-sample-base-spacing);
 	font-size: .8em;
 	text-align: center;
-	color: rgba(0, 0, 0, .4);
+	color: rgba(0,0,0,.4);
 }
 
 /* --------- RWD --------------------------------------------------------------------------------------------------- */
-@media screen and (max-width: 800px) {
+@media screen and ( max-width: 800px ) {
 	:root {
 		--ck-sample-base-spacing: 1em;
 	}

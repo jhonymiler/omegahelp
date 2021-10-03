@@ -103,7 +103,7 @@ class loginControle extends Controlador
                     <a href="' . BASE_URL . 'login/recuperar_senha/' . $this->encript('{"id":' . $user['USU_id'] . ',"email":"' . $user['USU_email'] . '"}') . '" target="_blank">Clique Aqui para Alterar a Senha.</a>
                 
                 ';
-                $enviado = $this->email->Enviar(APP_NOME - 'Alteração de Senha', $texto);
+                $enviado = $this->email->Enviar(APP_NOME . ' - Alteração de Senha', false, 'email.html');
                 if ($enviado) {
                     $this->_view->assign('enviado', true);
                 }
