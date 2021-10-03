@@ -122,7 +122,13 @@ abstract class controlador
     }
 
 
-
+    /**
+     * função de encriptação para gerar o toquem que vai ser venviado por email
+     *
+     * @param [String] $str
+     *
+     * @return String
+     */
     protected function encript($str)
     {
         $e = '';
@@ -134,6 +140,13 @@ abstract class controlador
     }
 
 
+    /**
+     * função de decriptação, será usado para descriptografar o token enviado por email
+     *
+     * @param [String] $str
+     *
+     * @return String
+     */
     protected function decript($str)
     {
         $e = '';
@@ -143,5 +156,13 @@ abstract class controlador
             $e .= chr(ceil($q / 57 / 5) ^ ord($str[$i]));
         }
         return $e;
+    }
+
+    public function exibe($arr, $exit = false)
+    {
+        echo "<pre>";
+        print_r($arr);
+        echo "</pre>";
+        if ($exit) exit();
     }
 }

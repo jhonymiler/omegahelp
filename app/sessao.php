@@ -68,7 +68,7 @@ class Sessao
     public static function addMsg($tipo = 'sucesso', $msg = '')
     {
         $status = '';
-        switch ($status) {
+        switch ($tipo) {
             case 'erro':
                 $status = 'bg-danger';
                 break;

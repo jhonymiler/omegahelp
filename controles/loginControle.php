@@ -12,6 +12,7 @@
 class loginControle extends Controlador
 {
     protected $_user;
+    protected $email;
     public $_info;
 
     //put your code here
@@ -19,6 +20,7 @@ class loginControle extends Controlador
     {
         parent::__construct();
         $this->_user = $this->loadModulo('painel', 'usuario');
+        $this->email = $this->loadModulo('painel', 'email');
         $this->_view->setTemplate(DEFAOULT_LAYOUT);
         $this->_info = array(
             'nome'       => $this->_user->info['USU_nome'],
@@ -33,6 +35,8 @@ class loginControle extends Controlador
 
         $this->_view->assign('titulo', APP_NOME . ' - LOGIN');
         $this->_view->assign('user', $this->_info);
+        $this->_view->assign('msg', Sessao::getMsg($limpa = true));
+
         $this->_view->display($this->_view->getPath('view') . 'login.tpl');
     }
 
@@ -43,10 +47,10 @@ class loginControle extends Controlador
         if (!$this->POST('email')) {
             $assign = $this->_view->assign('_error', 'Digite um nome de Usuário');
         } elseif (!$this->POST('senha')) {
-            $this->_view->assign('_error', 'Digite uma senha');
+            Sessao::addMsg('erro', 'Digite uma senha');
         } else {
             if (!is_array($this->_user->_selectUser("USU_email", $this->POST('email')))) {
-                $this->_view->assign('_error', 'Usuário ou senha incorretos');
+                Sessao::addMsg('erro', 'Usuário ou senha incorretos');
             } else {
                 if ($this->_user->_get('USU_senha') == md5($this->POST('senha'))) {
                     // se a senha for verdadeira
@@ -62,7 +66,7 @@ class loginControle extends Controlador
                     );
                     Sessao::set('user', $usuario);
                 } else {
-                    $this->_view->assign('_error', 'Usuário ou senha incorretos');
+                    Sessao::addMsg('erro', 'Usuário ou senha incorretos');
                 }
             }
         }
@@ -85,12 +89,33 @@ class loginControle extends Controlador
         Sessao::set('autenticado', false);
 
         if ($this->POST('email')) {
-            if (!is_array($this->_user->_selectUser("USU_email", $this->POST('email')))) {
-                $this->_view->assign('alterar_senha', true);
+            $user = $this->_user->_selectUser("USU_email", $this->POST('email'));
+            //$this->exibe($user);
+            if (is_array($user) && count($user) > 0) {
+                $user = $user[0];
+                $this->email->Para($user['USU_email'], $user['USU_nome']);
+                $texto = '
+                    <h2>Olá ' . $user['USU_nome'] . '</h2>. <br>
+                    Você solicitou a alteração da senha.<br>
+                    Segue o Link para sua alteração: <br>
+                    <br>
+
+                    <a href="' . BASE_URL . 'login/recuperar_senha/' . $this->encript('{"id":' . $user['USU_id'] . ',"email":"' . $user['USU_email'] . '"}') . '" target="_blank">Clique Aqui para Alterar a Senha.</a>
+                
+                ';
+                $enviado = $this->email->Enviar(APP_NOME - 'Alteração de Senha', $texto);
+                if ($enviado) {
+                    $this->_view->assign('alterar_senha', true);
+                }
+            } else {
+
+                Sessao::addMsg('erro', 'Desculpe, este email não existe.');
             }
         }
+        //$this->exibe($user[0], true);
 
         $this->_view->assign('titulo', APP_NOME . ' - Recuperar Senha');
+        $this->_view->assign('msg', Sessao::getMsg($limpa = true));
         $this->_view->display($this->_view->getPath('view') . 'recupera_senha.tpl');
     }
 

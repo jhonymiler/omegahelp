@@ -12,7 +12,7 @@ class Modulo
     {
         $this->_registro = Registro::getInstancia();
         $this->_db = $this->_registro->_db;
-        $this->getLibs('data.class');
+        $this->getLibs('data');
         $this->_data = Data::getData();
     }
 
@@ -53,12 +53,11 @@ bsaaaaaaacceeeeiiiidnoooooouuuyybyRr-es----------- (-)';
     // CARREGA AS LIVRARIAS LIBS
     protected function getLibs($libs)
     {
-        $pathLibs = RAIZ . 'lbs' . DS . 'classes' . DS . $libs . '.php';
-
+        $pathLibs = RAIZ . 'lbs' . DS . 'classes' . DS . $libs . DS . $libs . '.php';
         if (is_readable($pathLibs)) {
             require_once $pathLibs;
         } else {
-            throw new Exception('ERRO ao carregar a livraria, LIBS');
+            Sessao::addMsg('erro', 'ERRO ao carregar a livraria, LIBS');
         }
     }
 

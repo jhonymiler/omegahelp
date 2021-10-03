@@ -121,23 +121,24 @@
         <script src="{$_pgParams.path_layout}dist/js/adminlte.min.js"></script>
         <script src="{$_pgParams.path_layout}dist/js/app.js"></script>
 
-        {if !empty($_error)}
-            <script>
-                var msg = '{$_error}';      
-                {literal}
-                    $(function() {
+
+        {if is_array($msg)}
+            <script type="text/javascript">
+                $(document).ready(function() {
+
+                    {foreach item=m from=$msg}
                         $(document).Toasts('create', {
                             toast: true,
                             delay: 5000,
-                            class: 'bg-danger',
+                            class: '{$m.tipo}',
                             position: 'topRight',
                             autohide: true,
-                            title: 'Erro!',
-                            body: msg
+                            body: '{$m.msg}'
                         });
-                    });
-                {/literal}
+                    {/foreach}
+                });
             </script>
+
         {/if}
 
         <script>

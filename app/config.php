@@ -31,13 +31,20 @@ define('DEFAOULT_LAYOUT', 'painel'); // template padrão
 //define('TIME', 10); //Tempomáximo de acesso STANDBY em minutos
 
 // DADOS BÁSICOS DO SISTEMA
-define('APP_NOME', 'ARO HELP'); // template padrão
+define('APP_NOME', 'ARO HELPDESK'); // template padrão
 define('APP_SLOGAN', 'Sistema de ajuda'); // template padrão
 define('APP_COMPANIA', 'JM SOLUTIONS'); // template padrão
 define('APP_PATH', RAIZ . 'app' . DS);
 define('UPLOAD', RAIZ . 'upload');
 
-
+// CONFIGURAÇÕES DE EMAIL
+define('EMAIL_HOST', 'mail.aroerp.com.br');
+define('EMAIL_AUTH', true);
+define('EMAIL_SECURE', 'tls');
+define('EMAIL_USER', 'jonatas@aroerp.com.br');
+define('EMAIL_PASS', '@Jonatas123');
+define('EMAIL_PORT', 587);
+define('EMAIL_RESPOSTA_PADRAO', 'nao-responda@aroerp.com.br');
 
 
 
