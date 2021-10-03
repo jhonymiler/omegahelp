@@ -84,7 +84,7 @@ class loginControle extends Controlador
         }
     }
 
-    public function recuperar_senha()
+    public function recuperar_senha($token = false)
     {
         Sessao::set('autenticado', false);
 
@@ -105,7 +105,7 @@ class loginControle extends Controlador
                 ';
                 $enviado = $this->email->Enviar(APP_NOME - 'Alteração de Senha', $texto);
                 if ($enviado) {
-                    $this->_view->assign('alterar_senha', true);
+                    $this->_view->assign('enviado', true);
                 }
             } else {
 
@@ -113,6 +113,27 @@ class loginControle extends Controlador
             }
         }
         //$this->exibe($user[0], true);
+
+        if ($token) {
+            $dados = json_decode($this->decript($token));
+            if (is_object($dados)) {
+                if ($this->POST('senha') && $this->POST('senha') == $this->POST('confirma_senha')) {
+                    $this->_user->_load(array('USU_senha' => $this->POST('senha')));
+                    if ($this->_user->_atualiza($dados->id)) {
+
+                        Sessao::addMsg('sucesso', 'Senha atualizada com sucesso.');
+                        $this->redir('login');
+                    } else {
+                        Sessao::addMsg('erro', 'Desculpe, ocorreu um erro. Sua senha não pode ser atualizada! Por Favor, escolha outra senha.');
+                    }
+                }
+
+                $this->_view->assign('alterar_senha', true);
+            } else {
+                Sessao::addMsg('erro', 'Desculpe, este Token não existe.');
+            }
+            $this->_view->assign('token', $token);
+        }
 
         $this->_view->assign('titulo', APP_NOME . ' - Recuperar Senha');
         $this->_view->assign('msg', Sessao::getMsg($limpa = true));

@@ -150,12 +150,17 @@ abstract class controlador
     protected function decript($str)
     {
         $e = '';
-        $str = pack("H*", $str);
-        $q = strlen($str);
-        for ($i = 0; $i < $q; $i++) {
-            $e .= chr(ceil($q / 57 / 5) ^ ord($str[$i]));
+        if (ctype_xdigit($str)) {
+            $str = pack("H*", $str);
+            $q = strlen($str);
+            for ($i = 0; $i < $q; $i++) {
+                $e .= chr(ceil($q / 57 / 5) ^ ord($str[$i]));
+            }
+            return $e;
+        } else {
+            Sessao::addMsg('erro', 'Este Token não existe.');
+            return false;
         }
-        return $e;
     }
 
     public function exibe($arr, $exit = false)

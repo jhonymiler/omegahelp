@@ -40,7 +40,8 @@
                 <div class="card-body login-card-body">
                     <h5 align="center">Recuperar Senha!</h5>
 
-                    <form action="{$_pgParams.RAIZ}login/recuperar_senha" id="recupera_senha" method="post">
+                    <form action="{$_pgParams.RAIZ}login/recuperar_senha/{if isset($token)}{$token}{/if}"
+                        id="recupera_senha" method="post">
 
                         {if isset($alterar_senha)}
                             <div class="input-group mb-3">
@@ -51,6 +52,7 @@
                                         <span class="fas fa-lock"></span>
                                     </div>
                                 </div>
+                                <span></span>
                             </div>
                             <div class="input-group mb-3">
                                 <input type="password" name="confirma_senha" class="form-control"
@@ -104,6 +106,11 @@
                 <!-- /.login-card-body -->
             </div>
         </div><br>
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__wobble" src="{$_pgParams.path_layout}dist/img/aro-logo.png" alt="ARO HELPDESK"
+                height="60" width="60">
+        </div>
 
 
         <!-- /.login-box -->
@@ -142,26 +149,76 @@
         {/if}
 
         <script>
-            $(document).ready(function() {
-                $('#recupera_senha').submit(function() {
-                    $(this).validate({
-                        rules: {
-                            senha: {
-                                required: true,
-                                minlength: 8
-                            },
-                            confirma_senha: {
-                                required: true,
-                                minlength: 8,
-                                equalTo: "#senha"
-                            },
-                            email: {
-                                required: true
-                            }
+            $(function() {
+                $.validator.setDefaults({
+                    submitHandler: function() {
+                        $preloader = $('.preloader')
+
+                        if ($preloader) {
+                            $preloader.attr('style', 'height:100%');
+                            $preloader.children().show();
                         }
-                    });
+                        return true;
+                    },
+                    onfocusout: function(e) {
+                        this.element(e);
+                    },
+                    onkeyup: false,
+
+                    highlight: function(element) {
+                        jQuery(element).closest('.form-control').addClass('is-invalid');
+                    },
+                    unhighlight: function(element) {
+                        jQuery(element).closest('.form-control').removeClass('is-invalid');
+                        jQuery(element).closest('.form-control').addClass('is-valid');
+                    },
+
+                    errorElement: 'span',
+                    errorClass: 'invalid-feedback',
+                    errorPlacement: function(error, element) {
+                        console.log(element.next());
+                        if (element.next().length) {
+                            $(element).next().siblings(".invalid-feedback").append(error);
+                            error.insertAfter(element.next());
+                        } else {
+                            error.insertAfter(element);
+                        }
+                    },
+
                 });
 
+                $('#recupera_senha').validate({
+                    rules: {
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                        senha: {
+                            required: true,
+                            minlength: 8,
+                        },
+                        confirma_senha: {
+                            required: true,
+                            minlength: 8,
+                            equalTo: "#senha"
+                        }
+                    },
+                    messages: {
+                        email: {
+                            required: "Por favor digite um email.",
+                            email: "Este email é inválido"
+                        },
+                        senha: {
+                            required: "Digite a nova senha",
+                            maxlength: "No mínimo 8 caracteres"
+                        },
+                        confirma_senha: {
+                            required: "Digite a confirmação da nova senha",
+                            maxlength: "No mínimo 8 caracteres",
+                            equalTo: "As não são iguais."
+                        },
+                    }
+                });
             });
         </script>
     </body>

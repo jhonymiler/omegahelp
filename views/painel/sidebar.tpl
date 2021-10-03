@@ -36,6 +36,12 @@
                         <p>Painel</p>
                     </a>
                 </li>
+                <li class="nav-item menu-open">
+                    <a href="{$_pgParams.RAIZ}painel/configuracoes" data-link="configuracoes" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>Configurações</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{$_pgParams.RAIZ}painel/empresas" data-link="empresas" class="nav-link">
                         <i class="nav-icon fas fa-user-tie "></i>
