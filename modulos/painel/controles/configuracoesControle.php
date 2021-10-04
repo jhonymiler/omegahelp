@@ -20,8 +20,8 @@ class configuracoesControle extends painelControle
         $this->_db->_setTabela('email_modelos');
 
         $this->_view->addNavLink('configuracoes', 'Configurações');
-        //$this->config = $this->loadModulo('painel', 'configuracoes');
         $this->email = $this->loadModulo('painel', 'email');
+        $this->_view->assign('current_link', 'configuracoes');
     }
 
     public function index($id = false)

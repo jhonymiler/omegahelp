@@ -30,13 +30,13 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar nav-collapse-hide-child flex-column" data-widget="treeview"
                 role="menu">
-                <li class="nav-item menu-open">
+                <li class="nav-item">
                     <a href="{$_pgParams.RAIZ}painel/" data-link="home" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Painel</p>
                     </a>
                 </li>
-                <li class="nav-item menu-open">
+                <li class="nav-item">
                     <a href="{$_pgParams.RAIZ}painel/configuracoes" data-link="configuracoes" class="nav-link">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>Configurações</p>
@@ -79,14 +79,14 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a href="{$_pgParams.RAIZ}painel/suporte" data-link="suporte" class="nav-link">
                         <i class="nav-icon fas fa-question-circle"></i>
                         <p>
                             Suporte Online
                         </p>
                     </a>
-                </li>
+                </li>-->
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

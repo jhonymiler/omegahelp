@@ -94,16 +94,14 @@ class loginControle extends Controlador
             if (is_array($user) && count($user) > 0) {
                 $user = $user[0];
                 $this->email->Para($user['USU_email'], $user['USU_nome']);
-                $texto = '
-                    <h2>Olá ' . $user['USU_nome'] . '</h2>. <br>
-                    Você solicitou a alteração da senha.<br>
-                    Segue o Link para sua alteração: <br>
-                    <br>
 
-                    <a href="' . BASE_URL . 'login/recuperar_senha/' . $this->encript('{"id":' . $user['USU_id'] . ',"email":"' . $user['USU_email'] . '"}') . '" target="_blank">Clique Aqui para Alterar a Senha.</a>
-                
-                ';
-                $enviado = $this->email->Enviar(APP_NOME . ' - Alteração de Senha', false, 'email.html');
+                $user['link'] = BASE_URL . 'login/recuperar_senha/' . $this->encript('{"id":' . $user['USU_id'] . ',"email":"' . $user['USU_email'] . '"}');
+                $user['email'] = EMAIL_USER;
+
+                $modelo = $this->email->getModelo(1);
+                $modelo = $this->email->substituiTexto($user, $modelo[0]['MOD_html']);
+
+                $enviado = $this->email->Enviar(APP_NOME . ' - Alteração de Senha', $modelo);
                 if ($enviado) {
                     $this->_view->assign('enviado', true);
                 }

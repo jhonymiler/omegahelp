@@ -86,9 +86,6 @@
                         <a href="{$_pgParams.RAIZ}" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="#" class="nav-link">Configurações</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
                         <a href="{$_pgParams.RAIZ}login/sair" class="nav-link">Sair</a>
                     </li>
                 </ul>

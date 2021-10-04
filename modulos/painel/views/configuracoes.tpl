@@ -193,10 +193,12 @@
 <script type="text/javascript" src="{$_pgParams.path_layout}plugins/froala/js/plugins/special_characters.min.js">
 </script>
 <script type="text/javascript" src="{$_pgParams.path_layout}plugins/froala/js/plugins/word_paste.min.js"></script>
+<script type="text/javascript" src="{$_pgParams.path_layout}plugins/froala/js/languages/pt_br.js"></script>
 
 <script>
     (function() {
         new FroalaEditor("#MOD_html", {
+            language: 'pt_br',
             events: {
                 "image.beforeUpload": function(files) {
                     var editor = this;

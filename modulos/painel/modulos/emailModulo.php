@@ -9,13 +9,12 @@
 class emailModulo extends Modulo
 {
 
-    private $tabela = 'modelos_email';
+    private $tabela = 'email_modelos';
     public $email;
 
     public function __construct()
     {
         parent::__construct();
-        //$this->_db->_setTabela($this->tabela);
 
         $this->getLibs('PHPMailer');
         $this->email = new PHPMailer();
@@ -146,7 +145,10 @@ class emailModulo extends Modulo
 
     public function substituiTexto($dados, $texto)
     {
+
+
         preg_match_all("(\\\${([\w\d\-\\.]+)})", $texto, $m, PREG_PATTERN_ORDER);
+
         $arr = array();
         foreach ($m[0] as $i => $valor) {
             $arr[$valor] = $dados[$m[1][$i]];
@@ -172,6 +174,21 @@ class emailModulo extends Modulo
                 Sessao::addMsg('sucesso', 'Modelo excluido com sucesso!');
             } else {
                 Sessao::addMsg('erro', 'O modelo não pode ser excluido!');
+            }
+        }
+    }
+
+    public function getModelo($id = false)
+    {
+        if (is_numeric($id)) {
+            $this->_db->_setTabela($this->tabela);
+
+            $modelo = $this->_db->_select('MOD_id', $id);
+            if ($modelo) {
+                return $modelo;
+            } else {
+                Sessao::addMsg('erro', 'Não foi possível encontrar o modelo de email!');
+                return false;
             }
         }
     }

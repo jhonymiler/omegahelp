@@ -78,8 +78,9 @@
                                 <h5><i class="icon fas fa-check"></i> Email enviado!</h5>
                                 Uma mensagem foi enviada para seu email. Verifique sua caixa de entrada e leia as
                                 instruções para recuperar sua senha.
-                            </div>
-
+                            </div><BR>
+                            <a type="button" href="{$_pgParams.RAIZ}"
+                                class="btn btn-primary btn-block float-right">Voltar</a>
                         {else}
 
                             <div class="input-group mb-3">
