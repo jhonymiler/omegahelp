@@ -29,9 +29,8 @@
                                     class="fas fa-reply"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" title="Atribuir chamado para especialista" id="custom-tabs-one-settings-tab"
-                                data-toggle="pill" href="#custom-tabs-one-settings" role="tab"
-                                aria-controls="custom-tabs-one-settings" aria-selected="false"><i class="fas fa-share"><i
+                            <a class="nav-link" title="Atribuir chamado para especialista" data-toggle="modal"
+                                data-target="#modal_atribuir"><i class="fas fa-share"><i
                                         class="fas fa-user-plus"></i></i></a>
                         </li>
 
@@ -163,18 +162,19 @@
 
                             <!-- .Post Resposta -->
                             <div class="card-footer">
-                                <form id="responder" action="{$_pgParams.RAIZ}suporte/protocolos/resposta" method="post"
+                                <form id="responder" action="{$_pgParams.RAIZ}painel/protocolos/resposta" method="post"
                                     enctype="multipart/form-data">
                                     <input name="PRO_id" type="hidden" value="{$protocolo.PRO_id}">
 
                                     <div class="clearfix">
                                         <div class="form-group float-left">
                                             <label>Ação</label>
-                                            <select class="form-control select2" style="width: 100%;">
-                                                <option selected="selected">Aguardando ação do usuário</option>
-                                                <option>Aguardando retorno interno</option>
-                                                <option>Investigando</option>
-                                                <option>Encerrar Protocolo</option>
+                                            <select name="acao" class="form-control select2" style="width: 100%;">
+                                                {if isset($listaStatus)}
+                                                    {foreach from=$listaStatus item="status" name=i}
+                                                        <option value="{$status.STA_id}">{$status.STA_status}</option>
+                                                    {/foreach}
+                                                {/if}
                                             </select>
                                         </div>
                                         <div class="form-group float-right" style="padding: 0px 10px;">
@@ -216,15 +216,7 @@
                             </div>
                             <!-- /.Post Resposta -->
                         </div>
-                        <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel"
-                            aria-labelledby="custom-tabs-one-settings-tab">
-                            Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis
-                            ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate.
-                            Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec
-                            interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at
-                            consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst.
-                            Praesent imperdiet accumsan ex sit amet facilisis.
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -235,6 +227,39 @@
         </div>
 
     </div>
+
+    <div class="modal fade" id="modal_atribuir">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Atribuir Protocolo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Multiple</label>
+                        <select class="select2" multiple="multiple" data-placeholder="Atendentes" style="width: 100%;">
+                            {if isset($atendentes)}
+                                {foreach from=$atendentes item="atend" name=i}
+                                    <option value="{$atend.USU_id}">{$atend.USU_nome} [{$atend.DEP_titulo}]</option>
+                                {/foreach}
+                            {/if}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="excluir-sim">Salvar</button>
+
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
 
     <link rel="stylesheet" type="text/css" href="{$_pgParams.path_layout}plugins/ckeditor/examples/styles.css">
 
@@ -250,7 +275,7 @@
     <script src="{$_pgParams.path_layout}plugins/inputfile/js/pt-BR.js" type="text/javascript"></script>
     <script src="{$_pgParams.path_layout}plugins/ckeditor/build/ckeditor.js"></script>
     <script src="{$_pgParams.path_layout}plugins/select2/js/select2.full.min.js"></script>
-    <script src="{$_pgParams.path_layout}plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script src="{$_pgParams.path_layout}plugins/bootstrap-switch/js/bootstrap-switch.js"></script>
 
     <script src="{$_pgParams.path_layout}plugins/inputfile/js/theme.js" type="text/javascript"></script>
     <script>

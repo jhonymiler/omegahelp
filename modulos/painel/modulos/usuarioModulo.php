@@ -119,6 +119,12 @@ class usuarioModulo extends Modulo
         return $usuarios[0];
     }
 
+    public function getAtendentes()
+    {
+        $usuarios = $this->_db->_query("SELECT * FROM usuarios as u INNER JOIN departamentos as d ON u.DEP_id=d.DEP_id WHERE u.USU_nivel > 0");
+        return $usuarios;
+    }
+
 
     public function _grava()
     {

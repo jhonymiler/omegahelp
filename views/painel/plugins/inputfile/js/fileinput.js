@@ -1858,7 +1858,7 @@
                 'title="{zoomTitle}">{zoomIcon}</button>';
             tActionDrag = '<span class="file-drag-handle {dragClass}" title="{dragTitle}">{dragIcon}</span>';
             tIndicator = '<div class="file-upload-indicator" title="{indicatorTitle}">{indicator}</div>';
-            tTagBef = '<div class="file-preview-frame {frameClass} col-md-4" id="{previewId}" data-fileindex="{fileindex}"' +
+            tTagBef = '<div class="file-preview-frame {frameClass} col-md-2" id="{previewId}" data-fileindex="{fileindex}"' +
                 ' data-fileid="{fileid}" data-template="{template}" data-zoom="{zoomData}"';
             tTagBef1 = tTagBef + '><div class="kv-file-content">\n';
             tTagBef2 = tTagBef + ' title="{caption}"><div class="kv-file-content">\n';

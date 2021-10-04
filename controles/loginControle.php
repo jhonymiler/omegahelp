@@ -73,12 +73,20 @@ class loginControle extends Controlador
 
         if (Sessao::get('autenticado') === true) {
             if ($this->_user->_get('USU_nivel') == 0) {
-                $this->redir('suporte');
+                if (Sessao::get('url_pretendido')) {
+                    header('location:' . BASE_URL . Sessao::get('url_pretendido'));
+                    exit;
+                } else {
+                    $this->redir('suporte');
+                }
             } else {
-                $this->redir('painel');
+                if (Sessao::get('url_pretendido')) {
+                    header('location:' . BASE_URL . Sessao::get('url_pretendido'));
+                    exit;
+                } else {
+                    $this->redir('painel');
+                }
             }
-
-            exit();
         } else {
             $this->index();
         }

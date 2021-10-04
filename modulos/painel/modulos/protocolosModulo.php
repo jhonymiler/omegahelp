@@ -74,8 +74,8 @@ class protocolosModulo extends Modulo
     {
         if (isset($campos['PRO_assunto']) && $campos['PRO_assunto'] != '') {
             $this->novoProtocolo = array(
-                'PRO_assunto' => $campos['PRO_assunto'],
-                'PRO_texto' => $campos['PRO_texto'],
+                'PRO_assunto' => addslashes($campos['PRO_assunto']),
+                'PRO_texto' => addslashes($campos['PRO_texto']),
                 'TIP_id' => $campos['TIP_id'],
                 'USU_id' => Sessao::get('user')['USU_id']
             );
@@ -86,10 +86,27 @@ class protocolosModulo extends Modulo
     {
         if (is_array($campos) && count($campos) > 0) {
             $this->novaResposta = array(
-                'RES_texto' => $campos['RES_texto'],
+                'RES_texto' => addslashes($campos['RES_texto']),
                 'PRO_id' => $campos['PRO_id'],
                 'USU_id' => Sessao::get('user')['USU_id']
             );
+
+            if (isset($campos['visivel'])) {
+                $this->novaResposta['RES_visivel'] = $campos['visivel'] == 'on' ? 1 : 0;
+            }
+
+            $this->addStatus($campos['PRO_id'], $campos['acao']);
+        }
+    }
+
+    public function addStatus($pro_id, $sta_id)
+    {
+        $update = $this->_db->_query("UPDATE protocolos SET PRO_status='" . $sta_id . "', PRO_alterado='NOW()' WHERE PRO_id='" . $pro_id . "' ");
+        if ($update) {
+            return true;
+        } else {
+            Sessao::addMsg('erro', 'Não foi possível alterar o status do protocolo.');
+            return false;
         }
     }
 
@@ -187,6 +204,17 @@ class protocolosModulo extends Modulo
     public function getProtocolo($id)
     {
         if (is_numeric($id)) {
+
+
+            if (Sessao::get('user')['USU_nivel'] == 3) {
+                $where = '';
+            } else {
+                //$where = " and u.USU_id='" . Sessao::get('user')['USU_id'] . "' or ";
+                $where = '';
+            }
+
+
+
             $sql = "SELECT p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml,u.USU_nome,e.EMP_fantasia, 
             DATE_FORMAT(p.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,t.TIP_tipo,t.TIP_prioridade 
             FROM protocolos p 
@@ -194,7 +222,7 @@ class protocolosModulo extends Modulo
             inner join statusprotocolos as s on p.PRO_status=s.STA_id 
             inner join usuarios as u on u.USU_id=p.USU_id
             inner join empresas as e on u.EMP_id=e.EMP_id
-            where p.PRO_id=" . $id;
+            where p.PRO_id='" . $id . "' " . $where;
             $protocolo = $this->_db->_query($sql);
 
             if (is_array($protocolo)) {
@@ -210,6 +238,17 @@ class protocolosModulo extends Modulo
             return false;
         }
     }
+
+    public function listaStatus()
+    {
+        $lista = $this->_db->_query('select * from statusprotocolos order by STA_status');
+        if ($lista) {
+            return $lista;
+        } else {
+            Sessao::addMsg('erro', 'Não foi possível obter a lista de Status do protocolo');
+        }
+    }
+
 
     public function getRespostas($ProID)
     {

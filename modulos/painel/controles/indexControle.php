@@ -37,9 +37,9 @@ class indexControle extends painelControle
 
         $this->_view->assign('listaProtocolos', $listaProtocolos);
         $this->_view->assign('abertos', $this->protocolos->qtd(false, false));
-        $this->_view->assign('atendidos', $this->protocolos->qtd(2, false));
         $this->_view->assign('aguardando', $this->protocolos->qtd(1, false));
         $this->_view->assign('pendentes', $this->protocolos->qtd(1, false));
+        $this->_view->assign('atendidos', array('qtd' => $this->protocolos->qtd(false, false)['qtd'] - $this->protocolos->qtd(1, false)['qtd']));
     }
 
     public function index()

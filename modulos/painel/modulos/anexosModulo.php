@@ -22,7 +22,6 @@ class anexosModulo extends Modulo
     public function __construct()
     {
         parent::__construct();
-        $this->_db->_setTabela($this->tabela); // seta a tabela protocolos
         $this->ext_arquivos = array('xls', 'xlsx', 'doc', 'docx', 'pdf');
         $this->ext_custom = array('xml', 'zip', 'rar');
         $this->ext_imagens = array('jpg', 'jpeg', 'png', 'gif');
@@ -36,6 +35,7 @@ class anexosModulo extends Modulo
      */
     public function getAnexos($campo, $id)
     {
+        $this->_db->_setTabela($this->tabela);
         $anexos = $this->_db->_select($campo, $id);
         if (is_array($anexos)) {
 

@@ -17,7 +17,10 @@
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
         <!-- Toastr -->
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/toastr/toastr.min.css">
-        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/adminlte.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link href="{$_pgParams.path_layout}plugins/inputfile/css/fileinput.css" media="all" rel="stylesheet"
+            type="text/css" />
+        <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/select2/css/select2.min.css">
 
         <!-- FAVICON -->
         <link rel="apple-touch-icon" sizes="180x180" href="{$_pgParams.path_layout}dist/img/aro-logo.png">
@@ -31,7 +34,7 @@
         <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
         <!-- ./wrapper -->
         <link href="{$_pgParams.path_layout}dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="{$_pgParams.path_layout}plugins/select2/css/select2.min.css">
+        <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/adminlte.css">
 
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/cropper.css">
         <link rel="stylesheet" href="{$_pgParams.path_layout}dist/css/custom.css">

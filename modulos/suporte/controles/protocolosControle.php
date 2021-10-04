@@ -56,7 +56,7 @@ class protocolosControle extends suporteControle
         $this->_view->assign('tipos', $tipos);
 
         if ($this->POST()) {
-            $this->protocolos->load($this->POST());
+            $this->protocolos->load($_POST);
             if ($id = $this->protocolos->grava()) {
                 Sessao::addMsg('sucesso', 'Protocolo gravado com Sucesso');
                 if ($id > 0 && is_array($_FILES['files']['name'])) {
@@ -109,7 +109,7 @@ class protocolosControle extends suporteControle
     {
         if ($this->POST()) {
 
-            $this->protocolos->loadResposta($this->POST());
+            $this->protocolos->loadResposta($_POST);
             if ($id = $this->protocolos->gravaResposta()) {
                 Sessao::addMsg('sucesso', 'Resposta gravada com sucesso');
                 if ($id > 0 && is_array($_FILES['files']['name'])) {

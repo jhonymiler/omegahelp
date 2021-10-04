@@ -17,6 +17,10 @@ class suporteControle extends Controlador
     {
         parent::__construct();
         if (!Sessao::get('autenticado')) {
+            // caso alguém seja direcionado diretamente para um protocolo
+            // seu url será gravado, e primeiro ele fará o login e então será
+            // redirecionado para o url pretendido.
+            Sessao::set('url_pretendido', $this->getUrlAtual());
             $this->redir('login');
             exit();
         } elseif (Sessao::get('user')['USU_nivel'] > 0) {
