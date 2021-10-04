@@ -227,7 +227,6 @@
         </div>
 
     </div>
-
     <div class="modal fade" id="modal_atribuir">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
