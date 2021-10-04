@@ -4,4 +4,8 @@
 composer.lock
 omegahelp.git
 LICENSE
+/mp3/
+teste.php
+voto.php
 .gitignore
+omegahelp.sql
