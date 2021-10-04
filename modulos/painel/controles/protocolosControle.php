@@ -132,7 +132,6 @@ class protocolosControle extends painelControle
 
     public function resposta()
     {
-        //$this->exibe($this->POST(), true);
         if ($this->POST()) {
 
             $this->protocolos->loadResposta($_POST);

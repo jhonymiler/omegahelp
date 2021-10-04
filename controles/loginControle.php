@@ -98,7 +98,6 @@ class loginControle extends Controlador
 
         if ($this->POST('email')) {
             $user = $this->_user->_selectUser("USU_email", $this->POST('email'));
-            //$this->exibe($user);
             if (is_array($user) && count($user) > 0) {
                 $user = $user[0];
                 $this->email->Para($user['USU_email'], $user['USU_nome']);
@@ -118,7 +117,6 @@ class loginControle extends Controlador
                 Sessao::addMsg('erro', 'Desculpe, este email não existe.');
             }
         }
-        //$this->exibe($user[0], true);
 
         if ($token) {
             $dados = json_decode($this->decript($token));
