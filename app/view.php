@@ -15,8 +15,6 @@ class View extends Smarty
     private $_conteudo = array();
     public $_msg = array();
 
-
-
     public function __construct(Requisicao $peticion)
     {
         parent::__construct();
