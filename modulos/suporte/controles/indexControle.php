@@ -34,7 +34,7 @@ class indexControle extends suporteControle
         $this->_view->assign('atendidos', $this->protocolos->qtd(2, $this->user['USU_id']));
         $this->_view->assign('aguardando', $this->protocolos->qtd(1, $this->user['USU_id']));
 
-
+        $this->exibe($listaProtocolos, true);
         $this->_view->assign('titulo', 'Painel do Usuário');
         $this->_view->addNavLink('usuarios', 'Painel de Usuários');
         $this->_view->assign('current_link', 'home');
