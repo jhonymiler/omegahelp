@@ -1,6 +1,8 @@
 <?php
-
-
+echo "<pre>";
+print_r(getenv());
+echo "<pre>";
+exit();
 $url = 'http://';
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     $url .= 'localhost/sistemas/omegahelp/';
