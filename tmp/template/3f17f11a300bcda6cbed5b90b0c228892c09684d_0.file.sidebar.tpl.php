@@ -1,30 +1,18 @@
 <?php
-<<<<<<< HEAD
-/* Smarty version 3.1.39, created on 2021-10-03 21:03:18
-=======
-/* Smarty version 3.1.39, created on 2021-10-04 19:00:35
->>>>>>> master
+/* Smarty version 3.1.39, created on 2021-10-09 18:31:37
   from 'C:\xampp\htdocs\sistemas\omegahelp\views\painel\sidebar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-<<<<<<< HEAD
-  'unifunc' => 'content_615a44c64fae87_58798541',
-=======
-  'unifunc' => 'content_615b79834ac2b3_63142805',
->>>>>>> master
+  'unifunc' => 'content_61620a39ce3004_10562950',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3f17f11a300bcda6cbed5b90b0c228892c09684d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\views\\painel\\sidebar.tpl',
-<<<<<<< HEAD
-      1 => 1633305795,
-=======
       1 => 1633320512,
->>>>>>> master
       2 => 'file',
     ),
   ),
@@ -32,11 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-<<<<<<< HEAD
-function content_615a44c64fae87_58798541 (Smarty_Internal_Template $_smarty_tpl) {
-=======
-function content_615b79834ac2b3_63142805 (Smarty_Internal_Template $_smarty_tpl) {
->>>>>>> master
+function content_61620a39ce3004_10562950 (Smarty_Internal_Template $_smarty_tpl) {
 ?><aside class="main-sidebar sidebar-dark-primary elevation-4">
 
     <!-- Brand Logo -->

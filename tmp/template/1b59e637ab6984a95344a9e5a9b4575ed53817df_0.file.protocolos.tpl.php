@@ -1,19 +1,11 @@
 <?php
-<<<<<<< HEAD
-/* Smarty version 3.1.39, created on 2021-09-25 10:39:14
-=======
-/* Smarty version 3.1.39, created on 2021-10-04 19:00:35
->>>>>>> master
+/* Smarty version 3.1.39, created on 2021-10-09 18:31:37
   from 'C:\xampp\htdocs\sistemas\omegahelp\modulos\painel\views\protocolos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-<<<<<<< HEAD
-  'unifunc' => 'content_614f26825bfb59_82846328',
-=======
-  'unifunc' => 'content_615b79834c56c0_90294783',
->>>>>>> master
+  'unifunc' => 'content_61620a39d46306_70993543',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -28,11 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-<<<<<<< HEAD
-function content_614f26825bfb59_82846328 (Smarty_Internal_Template $_smarty_tpl) {
-=======
-function content_615b79834c56c0_90294783 (Smarty_Internal_Template $_smarty_tpl) {
->>>>>>> master
+function content_61620a39d46306_70993543 (Smarty_Internal_Template $_smarty_tpl) {
 ?>        <!-- =========================================================== -->
         <!-- Small Box (Stat card) -->
         <div class="row">
