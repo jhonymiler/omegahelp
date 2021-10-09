@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 09-Out-2021 às 20:31
--- Versão do servidor: 10.4.19-MariaDB
--- versão do PHP: 8.0.7
+-- Host: omegasystem.com.br
+-- Generation Time: 09-Out-2021 às 18:16
+-- Versão do servidor: 10.1.41-MariaDB
+-- PHP Version: 5.6.40-0+deb8u12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `omegahelp`
+-- Database: `omegasystem_protocolo`
 --
 
 -- --------------------------------------------------------
@@ -74,7 +75,9 @@ INSERT INTO `anexos` (`ANE_id`, `ANE_arquivo`, `CHA_id`, `PRO_id`, `RES_id`) VAL
 (144, 'home_366593.png', NULL, 28, NULL),
 (145, 'aro1_991060.png', NULL, NULL, 21),
 (146, 'teste_208049.png', NULL, NULL, 22),
-(147, 'teste_128141.png', NULL, NULL, 23);
+(147, 'teste_128141.png', NULL, NULL, 23),
+(148, '10-08_000000.png', NULL, 34, NULL),
+(149, 'acesso-anydesk_000000.png', NULL, 34, NULL);
 
 -- --------------------------------------------------------
 
@@ -86,7 +89,7 @@ CREATE TABLE `config` (
   `CON_id` int(11) NOT NULL,
   `CON_email` varchar(200) NOT NULL,
   `CON_host` varchar(200) NOT NULL,
-  `CON_auth` tinyint(1) NOT NULL DEFAULT 1,
+  `CON_auth` tinyint(1) NOT NULL DEFAULT '1',
   `CON_secure` varchar(200) NOT NULL,
   `CON_port` varchar(200) NOT NULL,
   `CON_user` varchar(200) NOT NULL,
@@ -130,8 +133,8 @@ INSERT INTO `departamentos` (`DEP_id`, `DEP_titulo`, `DEP_descricao`) VALUES
 CREATE TABLE `email_modelos` (
   `MOD_id` int(11) NOT NULL,
   `MOD_titulo` varchar(255) DEFAULT NULL,
-  `MOD_html` text DEFAULT NULL,
-  `MOD_data` datetime DEFAULT current_timestamp()
+  `MOD_html` text,
+  `MOD_data` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -186,9 +189,9 @@ CREATE TABLE `protocolos` (
   `PRO_assunto` varchar(200) NOT NULL,
   `PRO_texto` text NOT NULL,
   `TIP_id` int(10) NOT NULL,
-  `PRO_status` int(2) NOT NULL DEFAULT 1,
-  `PRO_prioridade` int(2) NOT NULL DEFAULT 1,
-  `PRO_aberto` datetime NOT NULL DEFAULT current_timestamp(),
+  `PRO_status` int(2) NOT NULL DEFAULT '1',
+  `PRO_prioridade` int(2) NOT NULL DEFAULT '1',
+  `PRO_aberto` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `PRO_alterado` datetime DEFAULT NULL,
   `PRO_fechado` datetime DEFAULT NULL,
   `USU_id` int(11) NOT NULL,
@@ -201,11 +204,13 @@ CREATE TABLE `protocolos` (
 
 INSERT INTO `protocolos` (`PRO_id`, `PRO_assunto`, `PRO_texto`, `TIP_id`, `PRO_status`, `PRO_prioridade`, `PRO_aberto`, `PRO_alterado`, `PRO_fechado`, `USU_id`, `DEP_id`) VALUES
 (24, 'Testando Protocolo', 'Por outro lado, a estrutura atual da organização afeta positivamente a correta previsão do sistema de participação geral. Por conseguinte, o surgimento do comércio virtual deve passar por modificações independentemente do processo de comunicação como um todo. É claro que o comprometimento entre as equipes assume importantes posições no estabelecimento das regras de conduta normativas. Podemos já vislumbrar o modo pelo qual a percepção das dificuldades nos obriga à análise do impacto na agilidade decisória.', 2, 1, 1, '2021-08-28 18:04:04', NULL, NULL, 2, 0),
-(25, 'Testando outro Ticket', ' O empenho em analisar a crescente influência da mídia desafia a capacidade de equalização dos paradigmas corporativos. A nível organizacional, o entendimento das metas propostas agrega valor ao estabelecimento do retorno esperado a longo prazo. As experiências acumuladas demonstram que o fenômeno da Internet ainda não demonstrou convincentemente que vai participar na mudança do investimento em reciclagem técnica.', 4, 1, 1, '2021-08-28 18:18:42', NULL, NULL, 2, 0),
+(25, 'Testando outro Ticket', ' O empenho em analisar a crescente influência da mídia desafia a capacidade de equalização dos paradigmas corporativos. A nível organizacional, o entendimento das metas propostas agrega valor ao estabelecimento do retorno esperado a longo prazo. As experiências acumuladas demonstram que o fenômeno da Internet ainda não demonstrou convincentemente que vai participar na mudança do investimento em reciclagem técnica.', 4, 3, 1, '2021-08-28 18:18:42', '0000-00-00 00:00:00', NULL, 2, 0),
 (26, 'Não consigo tirar a nota', 'Está dando uma mesagem de erro, e não consigo faturar a nota.&nbsp;', 8, 1, 1, '2021-08-28 19:04:06', NULL, NULL, 2, 0),
 (27, 'Comé que eu tiro nota?', 'Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável. Wikipédia', 8, 1, 1, '2021-09-12 00:47:34', NULL, NULL, 9, 0),
 (28, 'Não está dando baixa nas parcelas', ' Evidentemente, o novo modelo estrutural aqui preconizado obstaculiza a apreciação da importância das posturas dos órgãos dirigentes com relação às suas atribuições. No mundo atual, a consolidação das estruturas aponta para a melhoria de alternativas às soluções ortodoxas. A certificação de metodologias que nos auxiliam a lidar com o julgamento imparcial das eventualidades estende o alcance e a importância do remanejamento dos quadros funcionais. Acima de tudo, é fundamental ressaltar que a competitividade nas transações comerciais causa impacto indireto na reavaliação das condições financeiras e administrativas exigidas. No mundo atual, a constante divulgação das informações facilita a criação das diretrizes de desenvolvimento para o futuro.', 9, 3, 1, '2021-09-12 00:48:30', '0000-00-00 00:00:00', NULL, 9, 0),
-(33, 'teste', ' Não obstante, a contínua expansão de nossa atividade cumpre um papel essencial na formulação do orçamento setorial. Ainda assim, existem dúvidas a respeito de como a crescente influência da mídia obstaculiza a apreciação da importância dos métodos utilizados na avaliação de resultados. O empenho em analisar o novo modelo estrutural aqui preconizado nos obriga à análise de alternativas às soluções ortodoxas. Podemos já vislumbrar o modo pelo qual a consolidação das estruturas prepara-nos para enfrentar situações atípicas decorrentes dos procedimentos normalmente adotados.', 1, 4, 1, '2021-10-02 09:14:19', NULL, NULL, 2, 0);
+(33, 'teste', ' Não obstante, a contínua expansão de nossa atividade cumpre um papel essencial na formulação do orçamento setorial. Ainda assim, existem dúvidas a respeito de como a crescente influência da mídia obstaculiza a apreciação da importância dos métodos utilizados na avaliação de resultados. O empenho em analisar o novo modelo estrutural aqui preconizado nos obriga à análise de alternativas às soluções ortodoxas. Podemos já vislumbrar o modo pelo qual a consolidação das estruturas prepara-nos para enfrentar situações atípicas decorrentes dos procedimentos normalmente adotados.', 1, 4, 1, '2021-10-02 09:14:19', NULL, NULL, 2, 0),
+(34, 'Testando Protocolo', '<p>Testando <strong>Descrição </strong>dos protocolos</p>', 1, 1, 1, '2021-10-05 12:04:53', NULL, NULL, 2, 0),
+(35, 'Outro teste', '<p>Testando Mais a descrição do&nbsp;</p>', 1, 1, 1, '2021-10-05 12:07:53', NULL, NULL, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -216,8 +221,8 @@ INSERT INTO `protocolos` (`PRO_id`, `PRO_assunto`, `PRO_texto`, `TIP_id`, `PRO_s
 CREATE TABLE `respostas` (
   `RES_id` int(11) NOT NULL,
   `RES_texto` text NOT NULL,
-  `RES_data` datetime NOT NULL DEFAULT current_timestamp(),
-  `RES_visivel` int(2) NOT NULL DEFAULT 1,
+  `RES_data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `RES_visivel` int(2) NOT NULL DEFAULT '1',
   `PRO_id` int(11) NOT NULL,
   `USU_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -234,7 +239,8 @@ INSERT INTO `respostas` (`RES_id`, `RES_texto`, `RES_data`, `RES_visivel`, `PRO_
 (18, 'Já conseguiu ver pra mim? O caminhão ta aki esperandooo', '2021-08-28 19:05:17', 1, 26, 2),
 (19, ' importante questionar o quanto o acompanhamento das preferências de consumo agrega valor ao estabelecimento das diretrizes de desenvolvimento para o futuro. ', '2021-09-04 13:35:44', 1, 24, 2),
 (21, '<p><strong>Bom dia;</strong></p><p>Por gentileza informar com prints e enviar mais detalhes sobre sua ocorrência para que possamos avaliar melhor.</p><p><strong>Obrigado.&nbsp;</strong></p>', '2021-10-03 22:46:24', 1, 33, 7),
-(23, '<p><strong>Olá Jhon Snow</strong></p><p>Como está o reino do norte? Espero que tudo bem.</p><p>Seu protocolo está sendo avaliado pelo departamento técnico. Em breve você receberá a resposta através deste sistema e também pelo seu email.</p><p>Obrigado.</p>', '2021-10-04 00:03:07', 1, 28, 1);
+(23, '<p><strong>Olá Jhon Snow</strong></p><p>Como está o reino do norte? Espero que tudo bem.</p><p>Seu protocolo está sendo avaliado pelo departamento técnico. Em breve você receberá a resposta através deste sistema e também pelo seu email.</p><p>Obrigado.</p>', '2021-10-04 00:03:07', 1, 28, 1),
+(24, '<p>investigação</p>', '2021-10-05 11:40:56', 1, 25, 1);
 
 -- --------------------------------------------------------
 
@@ -329,137 +335,138 @@ INSERT INTO `usuarios` (`USU_id`, `USU_nome`, `USU_email`, `USU_senha`, `USU_ima
 (1, 'Jonatas Miler', 'jonatas@aroerp.com.br', 'e7a3d94707400e3992cccbb6b41065f5', 'jonatas-miler_1630194557.png', '(14) 99707-6506', 3, 1, NULL),
 (2, 'Usuario da Silva', 'usuario@teste.com.br', '76bb1ff3699e0af3750e9fa119dea44e', 'usuario-da-silva_1633180939.png', '(99) 99999-9999', 0, 1, 0),
 (7, 'Usuário Teste 2', 'teste@teste.com.br', '76bb1ff3699e0af3750e9fa119dea44e', 'usuario-teste-2_1630794461.png', '(99) 99999-9999', 1, 1, 3),
-(9, 'Jhon Snow', 'jotacastro123@gmail.com', '76bb1ff3699e0af3750e9fa119dea44e', 'jhon-snow_1631418350.png', '(99) 99999-9999', 0, 3, 0);
+(9, 'Jhon Snow', 'jotacastro123@gmail.com', '76bb1ff3699e0af3750e9fa119dea44e', 'jhon-snow_1631418350.png', '(99) 99999-9999', 0, 3, 0),
+(10, 'Alexandre', 'alexandre@grupo4aro.com.br', 'e10adc3949ba59abbe56e057f20f883e', '', '(19) 98213-4314', 3, 1, 0);
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `anexos`
+-- Indexes for table `anexos`
 --
 ALTER TABLE `anexos`
   ADD PRIMARY KEY (`ANE_id`);
 
 --
--- Índices para tabela `config`
+-- Indexes for table `config`
 --
 ALTER TABLE `config`
   ADD PRIMARY KEY (`CON_id`);
 
 --
--- Índices para tabela `departamentos`
+-- Indexes for table `departamentos`
 --
 ALTER TABLE `departamentos`
   ADD PRIMARY KEY (`DEP_id`);
 
 --
--- Índices para tabela `email_modelos`
+-- Indexes for table `email_modelos`
 --
 ALTER TABLE `email_modelos`
   ADD PRIMARY KEY (`MOD_id`);
 
 --
--- Índices para tabela `empresas`
+-- Indexes for table `empresas`
 --
 ALTER TABLE `empresas`
   ADD PRIMARY KEY (`EMP_id`);
 
 --
--- Índices para tabela `protocolos`
+-- Indexes for table `protocolos`
 --
 ALTER TABLE `protocolos`
   ADD PRIMARY KEY (`PRO_id`);
 ALTER TABLE `protocolos` ADD FULLTEXT KEY `PRO_texto` (`PRO_texto`);
 
 --
--- Índices para tabela `respostas`
+-- Indexes for table `respostas`
 --
 ALTER TABLE `respostas`
   ADD PRIMARY KEY (`RES_id`);
 
 --
--- Índices para tabela `statusprotocolos`
+-- Indexes for table `statusprotocolos`
 --
 ALTER TABLE `statusprotocolos`
   ADD PRIMARY KEY (`STA_id`);
 
 --
--- Índices para tabela `tipoprotocolos`
+-- Indexes for table `tipoprotocolos`
 --
 ALTER TABLE `tipoprotocolos`
   ADD PRIMARY KEY (`TIP_id`);
 
 --
--- Índices para tabela `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`USU_id`),
   ADD UNIQUE KEY `USU_email` (`USU_email`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `anexos`
+-- AUTO_INCREMENT for table `anexos`
 --
 ALTER TABLE `anexos`
-  MODIFY `ANE_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `ANE_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
 
 --
--- AUTO_INCREMENT de tabela `config`
+-- AUTO_INCREMENT for table `config`
 --
 ALTER TABLE `config`
   MODIFY `CON_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de tabela `departamentos`
+-- AUTO_INCREMENT for table `departamentos`
 --
 ALTER TABLE `departamentos`
   MODIFY `DEP_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de tabela `email_modelos`
+-- AUTO_INCREMENT for table `email_modelos`
 --
 ALTER TABLE `email_modelos`
   MODIFY `MOD_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de tabela `empresas`
+-- AUTO_INCREMENT for table `empresas`
 --
 ALTER TABLE `empresas`
   MODIFY `EMP_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de tabela `protocolos`
+-- AUTO_INCREMENT for table `protocolos`
 --
 ALTER TABLE `protocolos`
-  MODIFY `PRO_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `PRO_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT de tabela `respostas`
+-- AUTO_INCREMENT for table `respostas`
 --
 ALTER TABLE `respostas`
-  MODIFY `RES_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `RES_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT de tabela `statusprotocolos`
+-- AUTO_INCREMENT for table `statusprotocolos`
 --
 ALTER TABLE `statusprotocolos`
   MODIFY `STA_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de tabela `tipoprotocolos`
+-- AUTO_INCREMENT for table `tipoprotocolos`
 --
 ALTER TABLE `tipoprotocolos`
   MODIFY `TIP_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT de tabela `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `USU_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `USU_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
