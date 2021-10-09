@@ -1,12 +1,5 @@
 <?php
-echo "<pre>";
-print_r(getenv());
-echo "<pre>";
 
-echo "<pre>";
-print_r($_ENV);
-echo "<pre>";
-exit();
 $url = 'http://';
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     $url .= 'localhost/sistemas/omegahelp/';
@@ -14,6 +7,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     $url .= 'omegasystem.ddns.net/';
 }
 
+// ${{ secrets.SSH_HOST }}
 
 //CONFIGURAÇÕES DE DIRETÓRIOS
 define('DS', DIRECTORY_SEPARATOR); // para não dar conflito em sistemas que não são windows 

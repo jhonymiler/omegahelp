@@ -25,12 +25,6 @@ jobs:
           composer install  
           
     - name: Reiniciando Supervisor
-      env:
-        FIRST_NAME: Mona
-        middle_name: The
-        Last_Name: Octocat
-        
-
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
