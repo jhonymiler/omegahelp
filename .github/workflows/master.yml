@@ -22,7 +22,16 @@ jobs:
         script: |
           cd /var/www/html
           git pull origin master
-          composer install
+          composer install  
+          
+    - name: Rodando Supervisor
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_ROOT }}
+        password: ${{ secrets.SSH_PASS }}
+        port: ${{ secrets.SSH_PORT }}
+        sync: true
+        script: |
           sudo systemctl restart supervisord.service
           ${{ secrets.SSH_PASS }}
-        
