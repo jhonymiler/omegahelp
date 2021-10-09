@@ -27,6 +27,8 @@ class suporteControle extends Controlador
             $this->redir('painel');
             exit();
         }
+
+
         $this->user = $this->loadModulo('painel', 'usuario');
         $usu_emp = $this->user->getEmpresa(Sessao::get('user')['USU_id']);
 

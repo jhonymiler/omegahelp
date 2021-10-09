@@ -1,24 +1,10 @@
 <?php
 
-
 $url = 'http://';
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     $url .= 'localhost/sistemas/omegahelp/';
-    // BANCO DE DADOS
-    define('DB_HOST', "localhost");
-    define('DB_NAME', 'omegahelp');
-    define('DB_USER', 'root');
-    define('DB_PASS', '');
-    define('DB_CHAR', 'utf8');
 } else {
-    $url .= 'protocolo.omegasystem.com.br/';
-
-    // BANCO DE DADOS
-    define('DB_HOST', "omegasystem.com.br");
-    define('DB_NAME', 'omegasystem_protocolo');
-    define('DB_USER', 'omegasystem_protocolo');
-    define('DB_PASS', '@Jonatas123');
-    define('DB_CHAR', 'utf8');
+    $url .= 'omegasystem.ddns.net/';
 }
 
 
@@ -37,15 +23,10 @@ define('APP_COMPANIA', 'JM SOLUTIONS'); // template padrão
 define('APP_PATH', RAIZ . 'app' . DS);
 define('UPLOAD', RAIZ . 'upload');
 
-// CONFIGURAÇÕES DE EMAIL
-define('EMAIL_HOST', 'mail.aroerp.com.br');
-define('EMAIL_AUTH', true);
-define('EMAIL_SECURE', 'tls');
-define('EMAIL_USER', 'jonatas@aroerp.com.br');
-define('EMAIL_PASS', '@Jonatas123');
-define('EMAIL_PORT', 587);
-define('EMAIL_RESPOSTA_PADRAO', 'nao-responda@aroerp.com.br');
-
+$envs = parse_ini_file(RAIZ . '.env');
+foreach ($envs as $key => $value) {
+    define($key, $value);
+}
 
 
 try {

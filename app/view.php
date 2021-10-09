@@ -46,7 +46,7 @@ class View extends Smarty
         $this->cache_dir    = RAIZ . 'tmp' . DS . 'cache' . DS;
         $this->compile_dir  = RAIZ . 'tmp' . DS . 'template' . DS;
         $this->debugging = false;
-        $this->caching = 1;
+        $this->caching = 0;
 
 
 
