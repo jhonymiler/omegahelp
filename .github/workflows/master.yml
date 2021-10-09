@@ -12,13 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Atualizando Servidor
+      env:
+        FIRST_NAME: Mona
+        middle_name: The
+        Last_Name: Octocat
+        
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASS }}
         port: ${{ secrets.SSH_PORT }}
-        envs: FOO,BAR
         sync: true
         script: |
           cd /var/www/html

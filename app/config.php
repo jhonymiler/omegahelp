@@ -2,6 +2,10 @@
 echo "<pre>";
 print_r(getenv());
 echo "<pre>";
+
+echo "<pre>";
+print_r($_ENV);
+echo "<pre>";
 exit();
 $url = 'http://';
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
