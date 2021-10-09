@@ -11,7 +11,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Executando comandos remotos
+    - name: Atualizando Servidor
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -24,7 +24,7 @@ jobs:
           git pull origin master
           composer install  
           
-    - name: Rodando Supervisor
+    - name: Reiniciando Supervisor
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
