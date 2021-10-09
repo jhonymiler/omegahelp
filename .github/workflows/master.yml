@@ -19,4 +19,9 @@ jobs:
         password: ${{ secrets.SSH_PASS }}
         port: ${{ secrets.SSH_PORT }}
         sync: true
-        script: cd /var/www/html
+        script: |
+          cd /var/www/html
+          ls -l
+          git pull origin master
+          composer install
+        
