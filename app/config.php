@@ -23,6 +23,7 @@ define('APP_COMPANIA', 'JM SOLUTIONS'); // template padrão
 define('APP_PATH', RAIZ . 'app' . DS);
 define('UPLOAD', RAIZ . 'upload');
 
+
 $envs = parse_ini_file(RAIZ . '.env');
 foreach ($envs as $key => $value) {
     define($key, $value);
