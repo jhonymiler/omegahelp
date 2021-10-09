@@ -13,6 +13,9 @@ jobs:
     steps:
     - name: Atualizando Servidor
       uses: appleboy/ssh-action@master
+      env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
@@ -35,10 +38,6 @@ jobs:
         script: |
           sudo systemctl restart supervisord.service
           ${{ secrets.SSH_PASS }}
-       
-    - name: Variaveis de ambiente
-      env:
-        SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_PORT: ${{ secrets.SSH_PORT }}
+        
    
       
