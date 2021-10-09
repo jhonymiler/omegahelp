@@ -35,7 +35,8 @@ jobs:
         script: |
           sudo systemctl restart supervisord.service
           ${{ secrets.SSH_PASS }}
-          
+       
+    - name: Variaveis de ambiente
       env:
         SSH_HOST: ${{ secrets.SSH_HOST }}
         SSH_PORT: ${{ secrets.SSH_PORT }}
