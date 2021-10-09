@@ -19,6 +19,7 @@ jobs:
         password: ${{ secrets.SSH_PASS }}
         port: ${{ secrets.SSH_PORT }}
         sync: true
+        source: ".env"
         script: |
           cd /var/www/html
           git pull origin master
@@ -35,3 +36,6 @@ jobs:
         script: |
           sudo systemctl restart supervisord.service
           ${{ secrets.SSH_PASS }}
+        
+   
+      
