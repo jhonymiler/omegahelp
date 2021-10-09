@@ -20,8 +20,6 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         sync: true
         script: |
-          sudo su
-          ${{ secrets.SSH_PASS }}
           cd /var/www/html
           git pull origin master
           composer install
