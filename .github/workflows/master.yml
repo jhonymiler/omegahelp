@@ -1,4 +1,4 @@
-name: Update FTP Server
+name: Atualizando arquivos
 
 on:
   push:
@@ -7,29 +7,35 @@ on:
     branches: master 
 
 jobs:
-  build: 
-
+  Build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        
+    - name: Atualizando Servidor
+      uses: appleboy/ssh-action@master
       with:
-        #server-dir: public_html/
-        server: ${{ secrets.ftp_host }}
-        username: ${{ secrets.ftp_user }}
-        password: ${{ secrets.ftp_password }}
-
-    - name: Validate composer.json and composer.lock
-      run: composer update 
-
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASS }}
+        port: ${{ secrets.SSH_PORT }}
+        sync: true
+        script: |
+          cd /var/www/html
+          git pull origin master
+          composer install  
+          
+    - name: Reiniciando Supervisor
+      uses: appleboy/ssh-action@master
       with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_ROOT }}
+        password: ${{ secrets.SSH_PASS }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          sudo systemctl restart supervisord.service
+          ${{ secrets.SSH_PASS }}
+        
+   
+      

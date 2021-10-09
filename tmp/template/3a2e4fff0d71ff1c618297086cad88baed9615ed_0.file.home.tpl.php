@@ -1,11 +1,19 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.39, created on 2021-08-28 18:49:16
+=======
+/* Smarty version 3.1.39, created on 2021-10-04 19:00:16
+>>>>>>> master
   from 'C:\xampp\htdocs\sistemas\omegahelp\modulos\suporte\views\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
+<<<<<<< HEAD
   'unifunc' => 'content_612aaf5cf38086_14738623',
+=======
+  'unifunc' => 'content_615b7970df5be1_04594450',
+>>>>>>> master
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +28,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_612aaf5cf38086_14738623 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_615b7970df5be1_04594450 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> master
 $_smarty_tpl->_subTemplateRender(((string)$_smarty_tpl->tpl_vars['_pgParams']->value['REAL_PATH'])."modulos/suporte/views/card-user.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
 <div class="card col-md-9">

@@ -1,24 +1,10 @@
 <?php
 
-
 $url = 'http://';
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     $url .= 'localhost/sistemas/omegahelp/';
-    // BANCO DE DADOS
-    define('DB_HOST', "localhost");
-    define('DB_NAME', 'omegahelp');
-    define('DB_USER', 'root');
-    define('DB_PASS', '');
-    define('DB_CHAR', 'utf8');
 } else {
-    $url .= 'protocolo.omegasystem.com.br/';
-
-    // BANCO DE DADOS
-    define('DB_HOST', "omegasystem.com.br");
-    define('DB_NAME', 'omegasystem_protocolo');
-    define('DB_USER', 'omegasystem_protocolo');
-    define('DB_PASS', '@Jonatas123');
-    define('DB_CHAR', 'utf8');
+    $url .= 'omegasystem.ddns.net/';
 }
 
 
@@ -36,6 +22,13 @@ define('APP_SLOGAN', 'Sistema de ajuda'); // template padrão
 define('APP_COMPANIA', 'JM SOLUTIONS'); // template padrão
 define('APP_PATH', RAIZ . 'app' . DS);
 define('UPLOAD', RAIZ . 'upload');
+
+// BANCO DE DADOS
+define('DB_HOST', "localhost");
+define('DB_NAME', 'omegahelp');
+define('DB_USER', 'grupoaro');
+define('DB_PASS', 'commaster');
+define('DB_CHAR', 'utf8');
 
 // CONFIGURAÇÕES DE EMAIL
 define('EMAIL_HOST', 'mail.aroerp.com.br');

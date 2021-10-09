@@ -1,0 +1,16 @@
+DB_HOST=localhost
+DB_NAME=omegahelp
+DB_USER=root
+DB_PASS=''
+DB_CHAR=utf8
+
+
+;CONFIGURAÇÕES DE EMAIL
+
+EMAIL_HOST=mail.aroerp.com.br
+EMAIL_AUTH=true
+EMAIL_SECURE=tls
+EMAIL_USER=jonatas@aroerp.com.br
+EMAIL_PASS=@Jonatas123
+EMAIL_PORT=587
+EMAIL_RESPOSTA_PADRAO=nao-responda@aroerp.com.br

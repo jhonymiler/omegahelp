@@ -1,24 +1,40 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.39, created on 2021-10-02 10:59:55
+=======
+/* Smarty version 3.1.39, created on 2021-10-04 19:33:49
+>>>>>>> master
   from 'C:\xampp\htdocs\sistemas\omegahelp\views\painel\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
+<<<<<<< HEAD
   'unifunc' => 'content_615865db852718_10985988',
+=======
+  'unifunc' => 'content_615b814d0f6136_92011484',
+>>>>>>> master
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '261a5e01eb44e2044ff599180fb38a915359c390' => 
     array (
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\views\\painel\\index.tpl',
+<<<<<<< HEAD
       1 => 1633182053,
+=======
+      1 => 1633320510,
+>>>>>>> master
       2 => 'file',
     ),
     '3f17f11a300bcda6cbed5b90b0c228892c09684d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\views\\painel\\sidebar.tpl',
+<<<<<<< HEAD
       1 => 1633183077,
+=======
+      1 => 1633320512,
+>>>>>>> master
       2 => 'file',
     ),
     '1b59e637ab6984a95344a9e5a9b4575ed53817df' => 
@@ -30,7 +46,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 3600,
 ),true)) {
+<<<<<<< HEAD
 function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_615b814d0f6136_92011484 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> master
 ?><!DOCTYPE html>
 <html lang="pt-br">
 
@@ -50,7 +70,14 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
         <link rel="stylesheet" href="http://localhost/sistemas/omegahelp/views/painel/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
         <!-- Toastr -->
         <link rel="stylesheet" href="http://localhost/sistemas/omegahelp/views/painel/plugins/toastr/toastr.min.css">
+<<<<<<< HEAD
         <link rel="stylesheet" href="http://localhost/sistemas/omegahelp/views/painel/dist/css/adminlte.css">
+=======
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link href="http://localhost/sistemas/omegahelp/views/painel/plugins/inputfile/css/fileinput.css" media="all" rel="stylesheet"
+            type="text/css" />
+        <link rel="stylesheet" href="http://localhost/sistemas/omegahelp/views/painel/plugins/select2/css/select2.min.css">
+>>>>>>> master
 
         <!-- FAVICON -->
         <link rel="apple-touch-icon" sizes="180x180" href="http://localhost/sistemas/omegahelp/views/painel/dist/img/aro-logo.png">
@@ -64,6 +91,10 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
         <link rel="stylesheet" href="http://localhost/sistemas/omegahelp/views/painel/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
         <!-- ./wrapper -->
         <link href="http://localhost/sistemas/omegahelp/views/painel/dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
+<<<<<<< HEAD
+=======
+        <link rel="stylesheet" href="http://localhost/sistemas/omegahelp/views/painel/dist/css/adminlte.css">
+>>>>>>> master
 
         <link rel="stylesheet" href="http://localhost/sistemas/omegahelp/views/painel/dist/css/cropper.css">
         <link rel="stylesheet" href="http://localhost/sistemas/omegahelp/views/painel/dist/css/custom.css">
@@ -113,9 +144,12 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
                         <a href="http://localhost/sistemas/omegahelp/" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
+<<<<<<< HEAD
                         <a href="#" class="nav-link">Configurações</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
+=======
+>>>>>>> master
                         <a href="http://localhost/sistemas/omegahelp/login/sair" class="nav-link">Sair</a>
                     </li>
                 </ul>
@@ -230,9 +264,15 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
 
     <!-- Brand Logo -->
     <a href="http://localhost/sistemas/omegahelp/painel/" class="brand-link">
+<<<<<<< HEAD
         <img src="http://localhost/sistemas/omegahelp/views/painel/dist/img/aro-logo.png" alt="ARO HELPDESK"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light"><b>ARO HELPDES</b></span>
+=======
+        <img src="http://localhost/sistemas/omegahelp/views/painel/dist/img/aro-logo.png" alt="ARO HELPDESK" class="brand-image"
+            style="opacity: .8">
+        <span class="brand-text font-weight-light"><b>ARO HELPDESK</b></span>
+>>>>>>> master
     </a>
 
     <!-- Sidebar -->
@@ -252,13 +292,26 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar nav-collapse-hide-child flex-column" data-widget="treeview"
                 role="menu">
+<<<<<<< HEAD
                 <li class="nav-item menu-open">
+=======
+                <li class="nav-item">
+>>>>>>> master
                     <a href="http://localhost/sistemas/omegahelp/painel/" data-link="home" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Painel</p>
                     </a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
+=======
+                    <a href="http://localhost/sistemas/omegahelp/painel/configuracoes" data-link="configuracoes" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>Configurações</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+>>>>>>> master
                     <a href="http://localhost/sistemas/omegahelp/painel/empresas" data-link="empresas" class="nav-link">
                         <i class="nav-icon fas fa-user-tie "></i>
                         <p>Empresas</p>
@@ -295,14 +348,22 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
                         </p>
                     </a>
                 </li>
+<<<<<<< HEAD
                 <li class="nav-item">
+=======
+                <!--<li class="nav-item">
+>>>>>>> master
                     <a href="http://localhost/sistemas/omegahelp/painel/suporte" data-link="suporte" class="nav-link">
                         <i class="nav-icon fas fa-question-circle"></i>
                         <p>
                             Suporte Online
                         </p>
                     </a>
+<<<<<<< HEAD
                 </li>
+=======
+                </li>-->
+>>>>>>> master
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -350,7 +411,11 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
                         <!-- small card -->
                         <div class="small-box bg-info">
                             <div class="inner">
+<<<<<<< HEAD
                                 <h3>10</h3>
+=======
+                                <h3>6</h3>
+>>>>>>> master
                                 <p>Abertos</p>
                             </div>
                             <div class="icon">
@@ -363,7 +428,11 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
                         <!-- small card -->
                         <div class="small-box bg-success">
                             <div class="inner">
+<<<<<<< HEAD
                                 <h3>0</h3>
+=======
+                                <h3>2</h3>
+>>>>>>> master
 
                                 <p>Atendidos</p>
                             </div>
@@ -377,7 +446,11 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
                         <!-- small card -->
                         <div class="small-box bg-warning">
                             <div class="inner">
+<<<<<<< HEAD
                                 <h3>10</h3>
+=======
+                                <h3>4</h3>
+>>>>>>> master
                                 <p>aguardando</p>
                             </div>
                             <div class="icon">
@@ -390,7 +463,11 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
                         <!-- small card -->
                         <div class="small-box bg-danger">
                             <div class="inner">
+<<<<<<< HEAD
                                 <h3>10</h3>
+=======
+                                <h3>4</h3>
+>>>>>>> master
                                 <p>Pendentes</p>
                             </div>
                             <div class="icon">
@@ -452,7 +529,11 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
                                             </td>
                                             <td>[Atualização] teste</td>
                                             <td>02/10/2021 09:10:19</td>
+<<<<<<< HEAD
                                             <td><span class="badge bg-warning">Aguardando</span></td>
+=======
+                                            <td><span class="badge bg-danger">Aguardando Retorno do Cliente</span></td>
+>>>>>>> master
                                             <td>
                                                 <a href="http://localhost/sistemas/omegahelp/painel/protocolos/ver/33"
                                                     class="btn btn-primary float-right">
@@ -469,7 +550,11 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
                                             </td>
                                             <td>[Financeiro] Não está dando baixa nas parcelas</td>
                                             <td>12/09/2021 00:09:30</td>
+<<<<<<< HEAD
                                             <td><span class="badge bg-warning">Aguardando</span></td>
+=======
+                                            <td><span class="badge bg-info">Em Investigação</span></td>
+>>>>>>> master
                                             <td>
                                                 <a href="http://localhost/sistemas/omegahelp/painel/protocolos/ver/28"
                                                     class="btn btn-primary float-right">
@@ -623,9 +708,15 @@ function content_615865db852718_10985988 (Smarty_Internal_Template $_smarty_tpl)
             </footer>
         </div>
         <textarea id="campos" style="display: none;"><br />
+<<<<<<< HEAD
 <b>Warning</b>:  Undefined array key "campos" in <b>C:\xampp\htdocs\sistemas\omegahelp\tmp\template\261a5e01eb44e2044ff599180fb38a915359c390_0.file.index.tpl.cache.php</b> on line <b>357</b><br />
 <br />
 <b>Warning</b>:  Attempt to read property "value" on null in <b>C:\xampp\htdocs\sistemas\omegahelp\tmp\template\261a5e01eb44e2044ff599180fb38a915359c390_0.file.index.tpl.cache.php</b> on line <b>357</b><br />
+=======
+<b>Warning</b>:  Undefined array key "campos" in <b>C:\xampp\htdocs\sistemas\omegahelp\tmp\template\261a5e01eb44e2044ff599180fb38a915359c390_0.file.index.tpl.cache.php</b> on line <b>360</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "value" on null in <b>C:\xampp\htdocs\sistemas\omegahelp\tmp\template\261a5e01eb44e2044ff599180fb38a915359c390_0.file.index.tpl.cache.php</b> on line <b>360</b><br />
+>>>>>>> master
 </textarea>
         <script type="text/javascript">
             $(document).ready(function() {

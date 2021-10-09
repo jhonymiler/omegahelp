@@ -1,18 +1,30 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.39, created on 2021-10-04 01:04:15
+=======
+/* Smarty version 3.1.39, created on 2021-10-04 19:00:38
+>>>>>>> master
   from 'C:\xampp\htdocs\sistemas\omegahelp\modulos\painel\views\protocolo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
+<<<<<<< HEAD
   'unifunc' => 'content_615a7d3f5c8f37_80929665',
+=======
+  'unifunc' => 'content_615b7986ef5870_70190649',
+>>>>>>> master
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fa4c37048133288cbfb7a686956eaa3a1d8c23fc' => 
     array (
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\modulos\\painel\\views\\protocolo.tpl',
+<<<<<<< HEAD
       1 => 1633320253,
+=======
+      1 => 1633321201,
+>>>>>>> master
       2 => 'file',
     ),
   ),
@@ -20,7 +32,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_615a7d3f5c8f37_80929665 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_615b7986ef5870_70190649 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> master
 if (is_array($_smarty_tpl->tpl_vars['protocolo']->value)) {?>
 
     <div class="row">
@@ -313,7 +329,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
 
     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
     <div class="modal fade" id="modal_atribuir">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

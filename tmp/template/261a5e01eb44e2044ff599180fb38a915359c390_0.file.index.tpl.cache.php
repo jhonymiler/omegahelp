@@ -1,18 +1,30 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.39, created on 2021-10-02 10:59:55
+=======
+/* Smarty version 3.1.39, created on 2021-10-04 19:33:49
+>>>>>>> master
   from 'C:\xampp\htdocs\sistemas\omegahelp\views\painel\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
+<<<<<<< HEAD
   'unifunc' => 'content_615865db7fc866_42219804',
+=======
+  'unifunc' => 'content_615b814d0b0e83_22969568',
+>>>>>>> master
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '261a5e01eb44e2044ff599180fb38a915359c390' => 
     array (
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\views\\painel\\index.tpl',
+<<<<<<< HEAD
       1 => 1633182053,
+=======
+      1 => 1633320510,
+>>>>>>> master
       2 => 'file',
     ),
   ),
@@ -21,8 +33,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar.tpl' => 1,
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_615865db7fc866_42219804 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->compiled->nocache_hash = '1867815907615865db7a8131_51927644';
+=======
+function content_615b814d0b0e83_22969568 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '864160218615b814d070b66_62779242';
+>>>>>>> master
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -49,8 +66,17 @@ plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
         <!-- Toastr -->
         <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 plugins/toastr/toastr.min.css">
+<<<<<<< HEAD
         <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 dist/css/adminlte.css">
+=======
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+plugins/inputfile/css/fileinput.css" media="all" rel="stylesheet"
+            type="text/css" />
+        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+plugins/select2/css/select2.min.css">
+>>>>>>> master
 
         <!-- FAVICON -->
         <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
@@ -72,6 +98,11 @@ plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
         <!-- ./wrapper -->
         <link href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
+<<<<<<< HEAD
+=======
+        <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+dist/css/adminlte.css">
+>>>>>>> master
 
         <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
 dist/css/cropper.css">
@@ -151,9 +182,12 @@ dist/img/aro-logo.png" alt="ARO HELPDESK"
 " class="nav-link">Home</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
+<<<<<<< HEAD
                         <a href="#" class="nav-link">Configurações</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
+=======
+>>>>>>> master
                         <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
 login/sair" class="nav-link">Sair</a>
                     </li>

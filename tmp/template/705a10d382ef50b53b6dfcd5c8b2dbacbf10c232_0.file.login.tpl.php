@@ -1,11 +1,19 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.39, created on 2021-10-04 18:45:51
+=======
+/* Smarty version 3.1.39, created on 2021-10-04 19:00:27
+>>>>>>> master
   from 'C:\xampp\htdocs\sistemas\omegahelp\views\painel\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
+<<<<<<< HEAD
   'unifunc' => 'content_615b760f100c55_10807536',
+=======
+  'unifunc' => 'content_615b797be52961_05695295',
+>>>>>>> master
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +28,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_615b760f100c55_10807536 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_615b797be52961_05695295 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> master
 ?><!DOCTYPE html>
 <html lang="en">
 

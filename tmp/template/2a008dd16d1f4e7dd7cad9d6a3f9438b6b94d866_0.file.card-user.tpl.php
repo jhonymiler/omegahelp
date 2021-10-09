@@ -1,11 +1,19 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.39, created on 2021-10-03 23:38:29
+=======
+/* Smarty version 3.1.39, created on 2021-10-04 19:00:16
+>>>>>>> master
   from 'C:\xampp\htdocs\sistemas\omegahelp\modulos\suporte\views\card-user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
+<<<<<<< HEAD
   'unifunc' => 'content_615a69255c5457_04908662',
+=======
+  'unifunc' => 'content_615b7970e035c1_70635193',
+>>>>>>> master
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +28,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_615a69255c5457_04908662 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_615b7970e035c1_70635193 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> master
 ?><div class="col-md-3">
 
 

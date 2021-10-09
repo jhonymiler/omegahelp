@@ -151,9 +151,9 @@ class protocolosModulo extends Modulo
      *
      * @return void
      */
-    public function getListaUser(int $userID)
+    public function getListaUser($userID)
     {
-        if (is_int($userID)) {
+        if (is_numeric($userID)) {
             $sql = "
             SELECT p.PRO_id,p.PRO_assunto,p.PRO_texto,s.STA_status,s.STA_corHtml, DATE_FORMAT(p.PRO_aberto,'%d/%m/%Y %H:%m:%s') as PRO_aberto,t.TIP_tipo,t.TIP_prioridade 
             FROM protocolos p 

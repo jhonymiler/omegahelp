@@ -1,18 +1,30 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.39, created on 2021-10-04 01:02:56
+=======
+/* Smarty version 3.1.39, created on 2021-10-04 19:00:35
+>>>>>>> master
   from 'C:\xampp\htdocs\sistemas\omegahelp\views\painel\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
+<<<<<<< HEAD
   'unifunc' => 'content_615a7cf096b113_03751510',
+=======
+  'unifunc' => 'content_615b7983492501_74255832',
+>>>>>>> master
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '261a5e01eb44e2044ff599180fb38a915359c390' => 
     array (
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\views\\painel\\index.tpl',
+<<<<<<< HEAD
       1 => 1633320172,
+=======
+      1 => 1633320510,
+>>>>>>> master
       2 => 'file',
     ),
   ),
@@ -21,7 +33,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:sidebar.tpl' => 1,
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_615a7cf096b113_03751510 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_615b7983492501_74255832 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> master
 ?><!DOCTYPE html>
 <html lang="pt-br">
 

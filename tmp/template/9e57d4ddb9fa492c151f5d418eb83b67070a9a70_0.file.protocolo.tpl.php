@@ -1,11 +1,19 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.39, created on 2021-09-04 18:51:41
+=======
+/* Smarty version 3.1.39, created on 2021-10-04 19:00:23
+>>>>>>> master
   from 'C:\xampp\htdocs\sistemas\omegahelp\modulos\suporte\views\protocolo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
+<<<<<<< HEAD
   'unifunc' => 'content_6133ea6dc46795_82896641',
+=======
+  'unifunc' => 'content_615b79771bf961_18983124',
+>>>>>>> master
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +28,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_6133ea6dc46795_82896641 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_615b79771bf961_18983124 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> master
 if (is_array($_smarty_tpl->tpl_vars['protocolo']->value)) {?>
     <div class="col-md-8">
         <div class="card card-primary">

@@ -1,18 +1,30 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.39, created on 2021-10-02 10:59:55
+=======
+/* Smarty version 3.1.39, created on 2021-10-04 19:33:49
+>>>>>>> master
   from 'C:\xampp\htdocs\sistemas\omegahelp\views\painel\sidebar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
+<<<<<<< HEAD
   'unifunc' => 'content_615865db81e761_98903616',
+=======
+  'unifunc' => 'content_615b814d0cfa29_53997939',
+>>>>>>> master
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3f17f11a300bcda6cbed5b90b0c228892c09684d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\views\\painel\\sidebar.tpl',
+<<<<<<< HEAD
       1 => 1633183077,
+=======
+      1 => 1633320512,
+>>>>>>> master
       2 => 'file',
     ),
   ),
@@ -20,8 +32,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_615865db81e761_98903616 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->compiled->nocache_hash = '2090068053615865db8152e8_14892513';
+=======
+function content_615b814d0cfa29_53997939 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '1180105341615b814d0c3b26_75739897';
+>>>>>>> master
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
@@ -29,9 +46,15 @@ $_smarty_tpl->compiled->nocache_hash = '2090068053615865db8152e8_14892513';
     <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
 painel/" class="brand-link">
         <img src="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['path_layout'];?>
+<<<<<<< HEAD
 dist/img/aro-logo.png" alt="ARO HELPDESK"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light"><b>ARO HELPDES</b></span>
+=======
+dist/img/aro-logo.png" alt="ARO HELPDESK" class="brand-image"
+            style="opacity: .8">
+        <span class="brand-text font-weight-light"><b>ARO HELPDESK</b></span>
+>>>>>>> master
     </a>
 
     <!-- Sidebar -->
@@ -60,7 +83,11 @@ dist/img/aro-logo.png" alt="ARO HELPDESK"
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar nav-collapse-hide-child flex-column" data-widget="treeview"
                 role="menu">
+<<<<<<< HEAD
                 <li class="nav-item menu-open">
+=======
+                <li class="nav-item">
+>>>>>>> master
                     <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
 painel/" data-link="home" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -69,6 +96,16 @@ painel/" data-link="home" class="nav-link active">
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+<<<<<<< HEAD
+=======
+painel/configuracoes" data-link="configuracoes" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>Configurações</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
+>>>>>>> master
 painel/empresas" data-link="empresas" class="nav-link">
                         <i class="nav-icon fas fa-user-tie "></i>
                         <p>Empresas</p>
@@ -109,7 +146,11 @@ painel/usuarios" data-link="usuarios" class="nav-link">
                         </p>
                     </a>
                 </li>
+<<<<<<< HEAD
                 <li class="nav-item">
+=======
+                <!--<li class="nav-item">
+>>>>>>> master
                     <a href="<?php echo $_smarty_tpl->tpl_vars['_pgParams']->value['RAIZ'];?>
 painel/suporte" data-link="suporte" class="nav-link">
                         <i class="nav-icon fas fa-question-circle"></i>
@@ -117,7 +158,11 @@ painel/suporte" data-link="suporte" class="nav-link">
                             Suporte Online
                         </p>
                     </a>
+<<<<<<< HEAD
                 </li>
+=======
+                </li>-->
+>>>>>>> master
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
