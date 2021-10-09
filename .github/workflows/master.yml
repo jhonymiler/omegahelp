@@ -13,14 +13,12 @@ jobs:
     steps:
     - name: Atualizando Servidor
       uses: appleboy/ssh-action@master
-      env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASS }}
         port: ${{ secrets.SSH_PORT }}
+        source: ".env"
         sync: true
         source: ".env"
         script: |
