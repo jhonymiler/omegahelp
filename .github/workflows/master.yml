@@ -23,4 +23,6 @@ jobs:
           cd /var/www/html
           git pull origin master
           composer install
+          sudo systemctl restart supervisord.service
+          ${{ secrets.SSH_PASS }}
         
