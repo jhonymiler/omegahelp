@@ -33,8 +33,8 @@ define('UPLOAD', RAIZ . 'upload');
 // BANCO DE DADOS
 define('DB_HOST', "localhost");
 define('DB_NAME', 'omegahelp');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_USER', 'grupoaro');
+define('DB_PASS', 'commaster');
 define('DB_CHAR', 'utf8');
 
 // CONFIGURAÇÕES DE EMAIL
