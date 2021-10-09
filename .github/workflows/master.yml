@@ -18,4 +18,5 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASS }}
         port: ${{ secrets.SSH_PORT }}
-        script: whoami
+        sync: true
+        script: cd /var/www/html && git pull origin master && composer install
