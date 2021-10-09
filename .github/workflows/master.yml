@@ -7,20 +7,14 @@ on:
     branches: master 
 
 jobs:
-  Build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Executando comandos remotos
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USER }}
-        password: ${{ secrets.SSH_PASS }}
-        port: ${{ secrets.SSH_PORT }}
-        sync: true
-        script: |
-          cd /var/www/html
-          git pull origin master
-          composer install
-        
+  name: Build
+  runs-on: ubuntu-latest
+  steps:
+  - name: Executando comandos remotos
+    uses: appleboy/ssh-action@master
+    with:
+      host: ${{ secrets.SSH_HOST }}
+      username: ${{ secrets.SSH_USER }}
+      password: ${{ secrets.SSH_PASS }}
+      port: ${{ secrets.SSH_PORT }}
+      script: whoami
