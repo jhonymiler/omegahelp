@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-10 12:46:07
+/* Smarty version 3.1.39, created on 2021-10-10 13:06:24
   from 'C:\xampp\htdocs\sistemas\omegahelp\modulos\suporte\views\protocolo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61630abf7159f0_84502408',
+  'unifunc' => 'content_61630f805c0904_17599471',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9e57d4ddb9fa492c151f5d418eb83b67070a9a70' => 
     array (
       0 => 'C:\\xampp\\htdocs\\sistemas\\omegahelp\\modulos\\suporte\\views\\protocolo.tpl',
-      1 => 1630787141,
+      1 => 1633881982,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_61630abf7159f0_84502408 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61630f805c0904_17599471 (Smarty_Internal_Template $_smarty_tpl) {
 if (is_array($_smarty_tpl->tpl_vars['protocolo']->value)) {?>
     <div class="col-md-8">
         <div class="card card-primary">
@@ -151,12 +151,13 @@ suporte/protocolos/resposta" method="post"
 ">
 
                 <div class="form-group">
+                    <textarea rows="5" id="RES_texto" class="form-control" name="RES_texto"></textarea>
+                </div>
+
+                <div class="form-group">
                     <div class="file-loading">
                         <input id="file-pt-BR" name="files[]" type="file" multiple>
                     </div>
-                </div>
-                <div class="form-group">
-                    <textarea rows="5" id="RES_texto" class="form-control" name="RES_texto"></textarea>
                 </div>
                 <!-- /.card-body -->
 

@@ -80,6 +80,7 @@ class protocolosControle extends suporteControle
     {
         $protocolo = $this->protocolos->getProtocolo($proID);
         if (isset($protocolo["PRO_id"])) {
+
             $respostas = $this->protocolos->getRespostas($proID);
             if (is_array($respostas)) {
                 foreach ($respostas as $k => $v) {

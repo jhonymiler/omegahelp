@@ -90,14 +90,16 @@
             <form id="responder" action="{$_pgParams.RAIZ}suporte/protocolos/resposta" method="post"
                 enctype="multipart/form-data">
                 <input name="PRO_id" type="hidden" value="{$protocolo.PRO_id}">
+                <input name="acao" type="hidden" value="1">
+
+                <div class="form-group">
+                    <textarea rows="5" id="RES_texto" class="form-control" name="RES_texto"></textarea>
+                </div>
 
                 <div class="form-group">
                     <div class="file-loading">
                         <input id="file-pt-BR" name="files[]" type="file" multiple>
                     </div>
-                </div>
-                <div class="form-group">
-                    <textarea rows="5" id="RES_texto" class="form-control" name="RES_texto"></textarea>
                 </div>
                 <!-- /.card-body -->
 

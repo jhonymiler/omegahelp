@@ -82,11 +82,10 @@ class protocolosModulo extends Modulo
         }
     }
 
+
     public function loadResposta($campos)
     {
         if (is_array($campos) && count($campos) > 0) {
-
-            print_r($campos);
 
             $this->novaResposta = array(
                 'RES_texto' => addslashes($campos['RES_texto']),
@@ -102,8 +101,9 @@ class protocolosModulo extends Modulo
         }
     }
 
-    public function addStatus($pro_id, $sta_id)
+    public function addStatus($pro_id, $sta_id = false)
     {
+        $sta_id = ($sta_id) ? $sta_id : 1;
         $update = $this->_db->_query("UPDATE protocolos SET PRO_status='" . $sta_id . "', PRO_alterado='NOW()' WHERE PRO_id='" . $pro_id . "' ");
         if ($update) {
             return true;
