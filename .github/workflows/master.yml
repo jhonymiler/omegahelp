@@ -9,33 +9,48 @@ on:
 jobs:
   Build:
     name: Build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-        
-    - name: Atualizando Servidor
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USER }}
-        password: ${{ secrets.SSH_PASS }}
-        port: ${{ secrets.SSH_PORT }}
-        sync: true
-        script: |
-          cd /var/www/html
-          git pull origin master
-          composer install  
+    runs-on: ubuntu-latest 
+    steps:    
+      - name: Atualizando Servidor
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASS }}
+          port: ${{ secrets.SSH_PORT }}
+          sync: true
+          script: |
+            cd /var/www/html
+            git pull origin master
+            
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: 'develop'
+          ssh-key: ${{ secrets.SSH_CHAVE_PRIVADA }}
+          persist-credentials: true
           
-    - name: Reiniciando Supervisor
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_ROOT }}
-        password: ${{ secrets.SSH_PASS }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          
+      - name: Validate composer.json and composer.lock
+        run: composer update 
+
+      - name: Reiniciando Serviço do Socket
+        run: |
           sudo systemctl restart supervisord.service
-          ${{ secrets.SSH_PASS }}
-        
+          ${{ secrets.SSH_PASS }}  
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+          
    
       
