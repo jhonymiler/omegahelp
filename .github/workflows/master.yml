@@ -43,21 +43,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         sync: true
         script: |
-<<<<<<< HEAD
-          cd /var/www/html
-          git pull origin master
-          composer install
-          sudo systemctl restart supervisord.service
-          ${{ secrets.SSH_PASS }}  
-          
-   
-          
-        
-   
-      
-=======
           systemctl restart supervisord.service
           
 
 
->>>>>>> master
