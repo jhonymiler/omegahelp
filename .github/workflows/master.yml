@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: 'develop'
+          ref: 'master'
           ssh-key: ${{ secrets.SSH_CHAVE_PRIVADA }}
           persist-credentials: true
           
