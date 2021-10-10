@@ -1,4 +1,4 @@
-name: Atualizando arquivos
+name: Atualizando arquivos no servidor
 
 on:
   push:
@@ -7,49 +7,43 @@ on:
     branches: master 
 
 jobs:
-  Build:
-    name: Build
-    runs-on: ubuntu-latest 
-    steps:    
-      - name: Atualizando Servidor
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASS }}
-          port: ${{ secrets.SSH_PORT }}
-          sync: true
-            
-            
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: 'master'
-          ssh-key: ${{ secrets.SSH_CHAVE_PRIVADA }}
-          persist-credentials: true
-          
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 7.4
-          
-      - name: Validate composer.json and composer.lock
-        run: composer update 
+  build: 
 
-      - name: Reiniciando Serviço do Socket
-        run: sudo systemctl restart supervisord.service
-        
-      - name: senha
-        run: ${{ secrets.SSH_PASS }}  
+    runs-on: ubuntu-latest
 
-      - name: Cache Composer packages
-        id: composer-cache
-        uses: actions/cache@v2
-        with:
-          path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.1.0
+      with:
+        #server-dir: public_html/
+        server: ${{ secrets.ftp_host }}
+        username: ${{ secrets.ftp_user }}
+        password: ${{ secrets.ftp_password }}
+
+    - name: Validate composer.json and composer.lock
+      run: composer update 
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v2
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Atualizando Servidor
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_ROOT }}
+        password: ${{ secrets.SSH_PASS }}
+        port: ${{ secrets.SSH_PORT }}
+        sync: true
+        script: |
+          systemctl restart supervisord.service
           
-   
-      
+
+
