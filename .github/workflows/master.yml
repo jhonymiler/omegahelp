@@ -24,18 +24,12 @@ jobs:
         script: |
           cd /var/www/html
           git pull origin master
-          composer install  
-          
-    - name: Reiniciando Supervisor
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_ROOT }}
-        password: ${{ secrets.SSH_PASS }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
+          composer install
           sudo systemctl restart supervisord.service
-          ${{ secrets.SSH_PASS }}
+          ${{ secrets.SSH_PASS }}  
+          
+   
+          
         
    
       
