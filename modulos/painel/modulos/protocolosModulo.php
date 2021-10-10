@@ -85,6 +85,9 @@ class protocolosModulo extends Modulo
     public function loadResposta($campos)
     {
         if (is_array($campos) && count($campos) > 0) {
+
+            print_r($campos);
+
             $this->novaResposta = array(
                 'RES_texto' => addslashes($campos['RES_texto']),
                 'PRO_id' => $campos['PRO_id'],
