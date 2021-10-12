@@ -43,9 +43,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{$_pgParams.RAIZ}painel/protocolos" data-link="protocolos" class="nav-link">
+                        <i class="nav-icon fas fa-ticket-alt"></i>
+                        <p>
+                            Protocolos
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{$_pgParams.RAIZ}painel/empresas" data-link="empresas" class="nav-link">
                         <i class="nav-icon fas fa-user-tie "></i>
-                        <p>Empresas</p>
+                        <p>Clientes</p>
                     </a>
                 </li>
                 <!--<li class="nav-item">
@@ -53,16 +61,9 @@
                         <i class="nav-icon fas fa-file-invoice-dollar"></i>
                         <p>Ordens de Serviço</p>
                     </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{$_pgParams.RAIZ}painel/protocolos" data-link="protocolos" class="nav-link">
-                        <i class="nav-icon fas fa-ticket-alt"></i>
-                        <p>
-                            Protocolos
-                        </p>
-                    </a>
                 </li> !-->
+
+
                 <li class="nav-item">
                     <a href="{$_pgParams.RAIZ}painel/departamentos" data-link="departamentos" class="nav-link">
                         <i class="nav-icon fas fa-map-signs"></i>

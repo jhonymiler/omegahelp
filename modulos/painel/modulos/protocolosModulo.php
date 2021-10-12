@@ -267,4 +267,48 @@ class protocolosModulo extends Modulo
             return false;
         }
     }
+
+
+    //------------------------------------------------------
+    //      GRÁFICOS DOS PROTOCOLOS
+    //------------------------------------------------------
+
+    public function protocolosXassuntos()
+    {
+        //{ x: 50, y: 92, indexLabel: "\u2605 Highest" }
+        $sql = "SELECT count(*) AS y, t.TIP_tipo as x
+            FROM protocolos as p
+            inner join tipoprotocolos as t
+            on p.TIP_id=t.TIP_id
+            where PRO_fechado is NULL
+            group by p.TIP_id";
+
+        $json = array();
+        foreach ($this->_db->_query($sql) as $v) {
+            $json[] = '{label:"' . $v['x'] . '",y:' . $v['y'] . '}';
+        }
+        return '[' . implode(',', $json) . ']';
+    }
+
+    public function protocoloXstatus()
+    {
+        $sql = "select ROUND(count(*)/t.total*100,2) as y, 
+        s.STA_status as status from protocolos as p 
+        inner join statusprotocolos as s on p.PRO_status=s.STA_id, 
+        (select count(*) as total from protocolos where PRO_fechado is null) t
+        where p.PRO_fechado is null GROUP by p.PRO_status;";
+
+        $json = array();
+        $i = 0;
+        foreach ($this->_db->_query($sql) as $v) {
+            if ($i == 0) {
+                $explode = ',exploded: true';
+                $i++;
+            } else {
+                $explode = '';
+            }
+            $json[] = '{name:"' . $v['status'] . '",y:' . $v['y'] . $explode . '}';
+        }
+        return '[' . implode(',', $json) . ']';
+    }
 }

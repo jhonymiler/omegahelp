@@ -147,7 +147,7 @@ class emailModulo extends Modulo
     {
 
 
-        preg_match_all("(\\\${([\w\d\-\\.]+)})", $texto, $m, PREG_PATTERN_ORDER);
+        preg_match_all("({{([\w\d\-\\.]+)}})", $texto, $m, PREG_PATTERN_ORDER);
 
         $arr = array();
         foreach ($m[0] as $i => $valor) {

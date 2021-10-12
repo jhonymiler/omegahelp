@@ -107,7 +107,6 @@ class loginControle extends Controlador
 
                 $modelo = $this->email->getModelo(1);
                 $modelo = $this->email->substituiTexto($user, $modelo[0]['MOD_html']);
-
                 $enviado = $this->email->Enviar(APP_NOME . ' - Alteração de Senha', $modelo);
                 if ($enviado) {
                     $this->_view->assign('enviado', true);

@@ -44,8 +44,14 @@ class indexControle extends painelControle
 
     public function index()
     {
-        $this->_view->assign('titulo', 'Painel Adminsitrativo');
+        $this->_view->assign('titulo', 'Protocolos');
+        $protocolosXassuntos = $this->protocolos->protocolosXassuntos();
+        $protocoloXstatus = $this->protocolos->protocoloXstatus();
 
+        $this->_view->addNavLink('protocolos', 'Gerenciamento de Protocolos');
+        $this->_view->assign('current_link', 'protocolos');
+        $this->_view->assign('protocoloXstatus', $protocoloXstatus);
+        $this->_view->assign('protocolosXassuntos', $protocolosXassuntos);
         $this->_view->addConteudo('protocolos');
         $this->_view->renderizar();
     }

@@ -132,10 +132,17 @@
             <div class="input-group input-group-mm">
                 <!-- Check all button -->
                 <div class="btn-group">
-                    <button type="button" class="btn btn-success" id="novo-cadastro">
-                        <i class="fas fa-plus"></i>
-                        Novo
-                    </button>
+                    {if isset($campos)}
+                        <a href="{$_pgParams.RAIZ}painel/empresas/?novo" type="button" class="btn btn-success">
+                            <i class="fas fa-plus"></i>
+                            Novo
+                        </a>
+                    {else}
+                        <button type="button" class="btn btn-success" id="novo-cadastro">
+                            <i class="fas fa-plus"></i>
+                            Novo
+                        </button>
+                    {/if}
                 </div>
                 <div class="btn-group" style="margin-left: 10px;">
                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-danger">
@@ -161,10 +168,10 @@
                         <thead>
                             <tr>
                                 <th><input id="select-all" type="checkbox"></th>
-                                <th>Informações</th>
-                                <th>Contato</th>
-                                <th>Protocolos</th>
-                                <th>Ordens de Serviço</th>
+                                <th>Nome Fantasia</th>
+                                <th>CNPJ</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -183,18 +190,19 @@
                                             </td>
                                             <td>
                                                 <div class="col-md-12">
-                                                    <a href="#"><b>{$empresas.EMP_fantasia}</b></a><br>
-                                                    CNPJ: {$empresas.EMP_cnpj}
+                                                    <a
+                                                        href="{$_pgParams.RAIZ}painel/empresas/editar/{$empresas.EMP_id}"><b>{$empresas.EMP_fantasia}</b></a><br>
                                                 </div>
 
                                             </td>
                                             <td>
-                                                <b> {$empresas.EMP_email}</b><br>
-                                                Fone: {$empresas.EMP_tel}
+                                                {$empresas.EMP_cnpj}
+                                            </td>
+                                            <td>
+                                                {$empresas.EMP_email}
 
                                             </td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{$empresas.EMP_tel}</td>
                                             <td class="botao_tabela_edit_exclui" style="padding: 10px 0 0 0;">
                                                 <a href="{$_pgParams.RAIZ}painel/empresas/editar/{$empresas.EMP_id}"
                                                     class="btn btn-default">
@@ -310,6 +318,10 @@
         {else}
             $("#cadastro").hide();
         {/if}
+
+        {if isset($_GET['novo'])}
+            $("#cadastro").show(100);
+        {/if}}
 
         $('#novo-cadastro').click(function() {
             $("#cadastro").show(100);

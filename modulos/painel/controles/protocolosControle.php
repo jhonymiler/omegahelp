@@ -50,9 +50,13 @@ class protocolosControle extends painelControle
     public function index()
     {
         $this->_view->assign('titulo', 'Protocolos');
+        $protocolosXassuntos = $this->protocolos->protocolosXassuntos();
+        $protocoloXstatus = $this->protocolos->protocoloXstatus();
 
         $this->_view->addNavLink('protocolos', 'Gerenciamento de Protocolos');
         $this->_view->assign('current_link', 'protocolos');
+        $this->_view->assign('protocoloXstatus', $protocoloXstatus);
+        $this->_view->assign('protocolosXassuntos', $protocolosXassuntos);
         $this->_view->addConteudo('protocolos');
         $this->_view->renderizar();
     }
@@ -157,12 +161,13 @@ class protocolosControle extends painelControle
                         $this->email->Para($pro_user['USU_email'], $pro_user['USU_nome']);
 
                         $pro_user['link_protocolo'] = BASE_URL . 'suporte/protocolos/ver/' . $pro_user['PRO_id'];
+
                         $pro_user['email'] = EMAIL_USER;
 
                         $modelo = $this->email->getModelo(5);
                         $modelo = $this->email->substituiTexto($pro_user, $modelo[0]['MOD_html']);
 
-                        $this->email->Enviar(APP_NOME . ' - Alteração de Senha', $modelo);
+                        $this->email->Enviar(APP_NOME . ' - Protocolo ' . $_POST['PRO_id'] . ' respondido', $modelo);
                     }
                 }
             } else {

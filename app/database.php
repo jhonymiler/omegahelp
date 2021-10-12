@@ -258,6 +258,16 @@ class Database
         }
     }
 
+    public function _queryObject($param)
+    {
+        $resultado = array();
+        $query = mysqli_query($this->conexao, $param) or die($this->trataerro(__FILE__, __FUNCTION__, mysqli_errno($this->conexao), mysqli_error($this->conexao), true));
+        while ($obj = mysqli_fetch_object($query)) {
+            $resultado[] = $obj;
+        }
+        return $resultado;
+    }
+
     // função boa pra procurar palavra
     public function procpalavras($frase, $palavras, $resultado = 0)
     {

@@ -193,7 +193,6 @@
                                 {foreach from=$departamentos item="departamento"}
                                     <option value="{$departamento.DEP_id}">{$departamento.DEP_titulo}</option>
                                 {/foreach}
-                                <option value="null">Todos</option>
                             </select>
                         </div>
 
@@ -332,7 +331,7 @@
                 body: 'O usuário não pode possuir departamento.'
             });
             $("DEP_id").val(0)
-        } else if ($("#USU_nivel").val() == 3 && $("#DEP_id").val() != 'null') {
+        } else if ($("#USU_nivel").val() == 3 && $("#DEP_id").val() != 0) {
             $(document).Toasts('create', {
                 toast: true,
                 delay: 5000,
@@ -341,7 +340,7 @@
                 autohide: true,
                 fade: true,
                 title: 'Erro!',
-                body: 'O Administrador deve ter acesso a todos os departamentos.'
+                body: 'O Administrador não pode ser vinculado a um departamento.'
             });
             $("DEP_id").val(0)
         } else if ($("#USU_nivel").val() == 1 && $("#DEP_id").val() == 0) {
@@ -354,18 +353,6 @@
                 fade: true,
                 title: 'Erro!',
                 body: 'Selecione um departamento para o Atendente.'
-            });
-            $("DEP_id").val(0)
-        } else if ($("#USU_nivel").val() == 1 && $("#DEP_id").val() == 'null') {
-            $(document).Toasts('create', {
-                toast: true,
-                delay: 5000,
-                class: 'bg-danger',
-                position: 'topRight',
-                autohide: true,
-                fade: true,
-                title: 'Erro!',
-                body: 'O Atendente não pode ter todos os departamentos.'
             });
             $("DEP_id").val(0)
         } else {
