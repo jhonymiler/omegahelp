@@ -43,14 +43,14 @@
 
                     <div class="input-group input-group-mm">
                         <!-- Check all button -->
-                        <div class="btn-group" style="margin-left: 10px;">
-                            <div class="btn-group">
-                                <a href="{$_pgParams.RAIZ}painel/departamentos/novo" type="button"
-                                    class="btn btn-success" id="novo-cadastro">
-                                    <i class="fas fa-plus"></i>
-                                    Novo
-                                </a>
-                            </div>
+                        <div class="btn-group">
+                            <a href="{$_pgParams.RAIZ}painel/departamentos/novo" type="button" class="btn btn-success"
+                                id="novo-cadastro" style="margin-right: 5px;">
+                                <i class="fas fa-plus"></i>
+                                Novo
+                            </a>
+                        </div>
+                        <div class="btn-group">
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-danger">
                                 <i class="fas fa-trash"></i>
                                 Excluir Selecionados

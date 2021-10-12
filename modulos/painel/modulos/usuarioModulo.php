@@ -10,6 +10,7 @@
  *
  * @author Jonatas
  */
+
 class usuarioModulo extends Modulo
 {
 
@@ -46,9 +47,6 @@ class usuarioModulo extends Modulo
             unset($usuario['USU_senha']);
         }
 
-        print_r($usuario);
-        exit();
-
         $this->_db->_load($usuario);
     }
     // seleciona usuário
@@ -75,7 +73,7 @@ class usuarioModulo extends Modulo
 
     public function base64ToImage($base64_string)
     {
-        $output_file = RAIZ . 'upload/saida.PNG';
+        $output_file = RAIZ . 'upload/saida.png';
 
         if (!file_exists($output_file)) {
             imagecreatefrompng($output_file);
@@ -94,7 +92,7 @@ class usuarioModulo extends Modulo
         $nome = $this->slug($this->_get('USU_nome'));
         $data = $this->base64ToImage($this->_get('USU_imagem'));
         if ($data) {
-            require_once RAIZ . 'lbs' . DS . 'classes' . DS . 'upload.php';
+            require_once RAIZ . 'lbs' . DS . 'classes' . DS . 'upload' . DS . 'upload.php';
             $handle = new upload($data);
             $handle->file_max_size = '5000000';
             $handle->file_new_name_body = $nome . '_' . time();

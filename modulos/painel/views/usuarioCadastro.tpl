@@ -1,5 +1,6 @@
 <!-- Media table sample -->
 <!-- DataTables  & Plugins -->
+
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
@@ -11,10 +12,17 @@
             <div class="input-group input-group-mm">
                 <!-- Check all button -->
                 <div class="btn-group">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novo-registro">
-                        <i class="fas fa-plus"></i>
-                        Novo
-                    </button>
+                    {if isset($campos)}
+                        <a type="button" class="btn btn-primary" href="{$_pgParams.RAIZ}painel/usuarios">
+                            <i class="fas fa-arrow-left"></i>
+                            Voltar
+                        </a>
+                    {else}
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#novo-registro">
+                            <i class="fas fa-plus"></i>
+                            Novo
+                        </button>
+                    {/if}
                 </div>
                 <div class="btn-group" style="margin-left: 10px;">
                     <button type="button" id="deletarSelecionados" class="btn btn-info">
@@ -38,12 +46,13 @@
                 <table id="example1" class="table table-hover table-striped">
                     <thead>
                         <tr>
-                            <th><input id="select-all" type="checkbox"></th>
-                            <th>Nome</th>
-                            <th>Empresa</th>
-                            <th>Protocolos</th>
-                            <th>Ordens de Serviço</th>
+                            <th><input id="select-all" type="checkbox"> </th>
                             <th></th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Empresa</th>
+                            <th data-priority="1"></th>
                         </tr>
                     </thead>
 
@@ -76,23 +85,14 @@
                                             <img width="50" src="{$avatar}" class="img-circle elevation-2"
                                                 alt="{$user_data.USU_nome}">
                                         </div>
-                                        <div class="col-md-9">
-                                            <a href="#"><b>{$user_data.USU_nome}</b></a>
-                                            <p>
-                                                {$user_data.USU_email}<br>
-                                                Fone: {$user_data.USU_tel}
-                                            </p>
-                                        </div>
 
                                     </td>
-                                    <td class="mailbox-subject"><b>{$user_data.EMP_fantasia}</b>
-                                        <p>
-                                            {$user_data.EMP_email}<br>
-                                            Fone: {$user_data.EMP_tel}
-                                        </p>
+                                    <td><b>{$user_data.USU_nome}</b></td>
+                                    <td>{$user_data.USU_email}</td>
+                                    <td>{$user_data.USU_tel}</td>
+                                    <td class="mailbox-subject"><a
+                                            href="{$_pgParams.RAIZ}painel/empresas/editar/{$user_data.EMP_id}">{$user_data.EMP_fantasia}</a>
                                     </td>
-                                    <td></td>
-                                    <td></td>
                                     <td class="botao_tabela_edit_exclui">
                                         <a href="{$_pgParams.RAIZ}painel/usuarios/editar/{$user_data.USU_id}"
                                             class="btn btn-default">
@@ -103,8 +103,6 @@
                                             class="btn btn-default">
                                             <i class="fas fa-trash"></i>
                                         </a>
-
-
                                     </td>
                                 </tr>
                             {/foreach}
@@ -298,6 +296,7 @@
         });
 
     {/if}
+
 
 
 
