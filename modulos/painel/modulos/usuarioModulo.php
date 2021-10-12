@@ -46,6 +46,9 @@ class usuarioModulo extends Modulo
             unset($usuario['USU_senha']);
         }
 
+        print_r($usuario);
+        exit();
+
         $this->_db->_load($usuario);
     }
     // seleciona usuário

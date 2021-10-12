@@ -26,6 +26,8 @@ class Chat implements WampServerInterface
 {
 
     protected $controle;
+    protected $subscribedTopics = array();
+    protected $messages = array();
 
     public function __construct()
     {
@@ -34,7 +36,15 @@ class Chat implements WampServerInterface
 
     public function onSubscribe(ConnectionInterface $conn, $topic)
     {
-        $this->controle->Inscrever($conn, $topic);
+        //$this->controle->Inscrever($conn, $topic);
+        $this->subscribedTopics[$topic->getId()] = $topic;
+        //enviar historico das mensagens
+        if (isset($this->messages[$topic->getId()])) {
+            $json = '[' . $this->messages[$topic->getId()] . ']';
+            //envia o histórico apenas para o usuário que acabou de "conectar/subscribe"
+            //echo $topic->getId();
+            $conn->event($topic, $json);
+        }
     }
 
     public function onUnSubscribe(ConnectionInterface $conn, $topic)

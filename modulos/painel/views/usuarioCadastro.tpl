@@ -415,7 +415,7 @@
                     }
                 },
                 success: function(data) {
-                    window.location.href = redir;
+                    //window.location.href = redir;
                 }
             });
             return false;

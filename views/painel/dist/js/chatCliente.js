@@ -13,7 +13,7 @@ $( function () {
             $( "#ChatMensagens" ).html( '' );
         }
 
-        conn = new ab.Session( 'ws://omegasystem.ddns.net:8080',
+        conn = new ab.Session( 'ws://localhost:8080',
             function () {
                 conn_status = true;
                 conn.subscribe( room, function ( topic, data ) {
@@ -82,7 +82,7 @@ $( function () {
             $( "#slide-smile" ).removeClass( "direct-chat-contacts-open" );
 
             conn.publish( room, msg );
-            exibeMsg( msg );
+            //exibeMsg( msg );
             $( "#chat-mensagem" ).val( '' ).focus();
         }
         return false;
