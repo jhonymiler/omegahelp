@@ -13,6 +13,8 @@ Sistema destinado ao atendimento online e controle de tickets
 
 <img src="views/painel/dist/img/home.png" alt="Home">
 
+
+
 ### Aplicações do Sistema
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
