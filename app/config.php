@@ -25,8 +25,8 @@ define('UPLOAD', RAIZ . 'upload');
 
 // BANCO DE DADOS
 define('DB_HOST', "localhost");
-define('DB_NAME', 'omegahelp');
-define('DB_USER', 'grupoaro');
+define('DB_NAME', 'baixaxml');
+define('DB_USER', 'jhony');
 define('DB_PASS', 'commaster');
 define('DB_CHAR', 'utf8');
 
